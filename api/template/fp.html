@@ -38,12 +38,12 @@
             </div>
             <div class="col-md-4 my-4">
                 <div class="table responsive">
-                    <table class="table table-striped">
+                    <table id='tabla' class="table table-striped">
                         <thead class="table-dark">
                                 <tr>
                                     <th class="centrado">#</th>
-                                    <th class="centrado">Cursos</th>
-                                    <th class="centrado">Cr&eacute;ditos</th>
+                                    <th class="centrado">Documento</th>
+                                    <th class="centrado">Nombre</th>
     
                                 </tr>
                         </thead>
@@ -51,8 +51,8 @@
                             {% for c in object_list %}
                             <tr>
                                 <td class="centrado">{{forloop.counter}}</td>
-                                <td class="centrado">{{c.nombre}}</td>
-                                <td class="centrado">{{c.creditos}}</td>
+                                <td class="centrado">{{c.ID_DOCUMENTO}}</td>
+                                <td class="centrado">{{c.ID_NOMBRE}}</td>
                             </tr>
                             {% endfor %}
                         </tbody>
