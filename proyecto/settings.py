@@ -55,7 +55,7 @@ ROOT_URLCONF = 'proyecto.urls'
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': ['C:/Users/naru-/OneDrive/Escritorio/Proyecto/api/template'],
+        'DIRS': ['C:/Users/naru-/OneDrive/Escritorio/analitica-upc/api/template'],
         'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [
@@ -77,7 +77,7 @@ WSGI_APPLICATION = 'proyecto.wsgi.application'
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.postgresql_psycopg2',
-        'NAME': 'universidad',
+        'NAME': 'ADI',
         'USER':'postgres',
         'PASSWORD': '123a456c',
         'HOST': '127.0.0.1',

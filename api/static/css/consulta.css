@@ -1,8 +1,8 @@
-.chart {
-    width: 100%;
-    min-height: 500px;
-}
 
+.table-head-dark-green {
+    background-color: #008000; /* Cambia este valor al color verde oscuro que desees */
+    color: white; /* Color del texto */
+}
 body{
 background: #11998e;  /* fallback for old browsers */
 background: -webkit-linear-gradient(to right, #38ef7d, #11998e);  /* Chrome 10-25, Safari 5.1-6 */
