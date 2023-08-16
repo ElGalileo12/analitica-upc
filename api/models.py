@@ -15,7 +15,7 @@ class Estudiante(models.Model):
     ID_DOCUMENTO = models.IntegerField(primary_key=True)
     ID_TIPO_DOCUMENTO = models.CharField(max_length=1)
     ID_NOMBRE = models.CharField(max_length=35)
-    ID_EDAD = models.IntegerField()
+    ID_EDAD= models.IntegerField()
     ID_NUM_CONTACTO = models.CharField(max_length=10)
     ID_GENERO = models.IntegerField(null=True)
     ID_VIC_CONFLICTO = models.IntegerField()
