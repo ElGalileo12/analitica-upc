@@ -9,7 +9,7 @@
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css" rel="stylesheet"
         integrity="sha384-rbsA2VBKQhggwzxH7pPCaAqO46MgnOM80zW1RWuH61DGLwZJEdK2Kadq2F9CUG65" crossorigin="anonymous">
 
-    <link rel="stylesheet" href="{% static 'css/consulta.css' %}">
+    <link rel="stylesheet" href="{% static 'css/consultastile.css' %}">
 
 </head>
 
@@ -34,7 +34,7 @@
     <div class="container">
         <div class="row">
             <div class="col-md-4 my-4">
-                <h2 class="text-center">Consulta de estudiante</h2>
+                <h2 class="text-center text-dark">Consulta de estudiante</h2>
                 <div class="card text-white bg-dark">
                     <div class="card-body">
                         <form id="formularioconsulta" action="/api/consultastd/" method="POST">
@@ -58,276 +58,276 @@
                     <table class="table table-hover">
                         <thead>
                             <tr>
-                                <th colspan="2" class="text-center" style="background-color: #198754 ; color: ghostwhite">Datos personales</th>
+                                <th colspan="2" class="text-center" style="background-color: #000000 ; color: ghostwhite">Datos Personales</th>
                             </tr>
                         </thead>
-                        <tbody class="table-dark table-striped-columns">
+                        <tbody class="table-secondary table-striped-columns">
                             <tr>
-                                <td class="text-center " >NOMBRE</td>
+                                <th class="text-center" >NOMBRE</th>
                                 <td class="table-light"style="min-width: 200px;">{{Std_C.ID_NOMBRE}}</td>
                             </tr>
                             <tr>
-                                  <td class="text-center">EDAD</td>
+                                  <th class="text-center">EDAD</th>
                                  <td class="table-light">{{Std_C.ID_EDAD}}</td>
                             </tr>
                             <tr>
-                                  <td class="text-center">NUM_CONTACTO</td>
+                                  <th class="text-center">NUM_CONTACTO</th>
                                  <td class="table-light">{{Std_C.ID_NUM_CONTACTO}}</td>
                             </tr>
                             <tr>
-                                  <td class="text-center">GENERO</td>
+                                  <th class="text-center">GENERO</th>
                                  <td class="table-light">{{Std_C.ID_GENERO}}</td>
                             </tr>
                             <tr>
-                                  <td class="text-center">VIC_CONFLICTO</td>
+                                  <th class="text-center">VIC_CONFLICTO</th>
                                  <td class="table-light">{{Std_C.ID_VIC_CONFLICTO}}</td>
                             </tr>
                             <tr>
-                                  <td class="text-center">ESTADO_CIVIL</td>
+                                  <th class="text-center">ESTADO_CIVIL</th>
                                  <td class="table-light">{{Std_C.ID_ESTADO_CIVIL}}</td>
                             </tr>
                             <tr>
-                                  <td class="text-center">DPTO_NAC</td>
+                                  <th class="text-center">DPTO_NAC</th>
                                  <td class="table-light">{{Std_C.ID_DPTO_NAC}}</td>
                             </tr>
                             <tr>
-                                  <td class="text-center">MUN_NAC</td>
+                                  <th class="text-center">MUN_NAC</th>
                                  <td class="table-light">{{Std_C.ID_MUN_NAC}}</td>
                             </tr>
                             <tr>
-                                  <td class="text-center">TIPO_DISC</td>
+                                  <th class="text-center">TIPO_DISC</th>
                                  <td class="table-light">{{Std_C.ID_TIPO_DISC}}</td>
                             </tr>
                             <tr>
-                                  <td class="text-center">ETNIA</td>
+                                  <th class="text-center">ETNIA</th>
                                  <td class="table-light">{{Std_C.ID_ETNIA}}</td>
                             </tr>
                             <tr>
-                                  <td class="text-center">EMAIL</td>
+                                  <th class="text-center">EMAIL</th>
                                  <td class="table-light">{{Std_C.ID_EMAIL}}</td>
                             </tr>
                             <tr>
-                                  <td class="text-center">MAD_CAB_HOGAR</td>
+                                  <th class="text-center">MAD_CAB_HOGAR</th>
                                  <td class="table-light">{{Std_C.ID_MAD_CAB_HOGAR}}</td>
                             </tr>
                             <tr>
-                                  <td class="text-center">EDAD_MAYOR</td>
+                                  <th class="text-center">EDAD_MAYOR</th>
                                  <td class="table-light">{{Std_C.ID_EDAD_MAYOR}}</td>
                             </tr>
                             <tr>
-                                  <td class="text-center">EDAD_MENOR</td>
+                                  <th class="text-center">EDAD_MENOR</th>
                                  <td class="table-light">{{Std_C.ID_EDAD_MENOR}}</td>
                             </tr>
                             <tr>
-                                  <td class="text-center">CANT_HIJOS</td>
+                                  <th class="text-center">CANT_HIJOS</th>
                                  <td class="table-light">{{Std_C.ID_CANT_HIJOS}}</td>
                             </tr>
                             <tr>
-                                  <td class="text-center">OCUP_MADRE</td>
+                                  <th class="text-center">OCUP_MADRE</th>
                                  <td class="table-light">{{Std_C.ID_OCUP_MADRE}}</td>
                             </tr>
                             <tr>
-                                  <td class="text-center">OCUP_PADRE</td>
+                                  <th class="text-center">OCUP_PADRE</th>
                                  <td class="table-light">{{Std_C.ID_OCUP_PADRE}}</td>
                             </tr>
                             <tr>
-                                  <td class="text-center">CANT_HERMANOS</td>
+                                  <th class="text-center">CANT_HERMANOS</th>
                                  <td class="table-light">{{Std_C.ID_CANT_HERMANOS}}</td>
                             </tr>
                             <tr>
-                                  <td class="text-center">POS_HERMANO</td>
+                                  <th class="text-center">POS_HERMANO</th>
                                  <td class="table-light">{{Std_C.ID_POS_HERMANO}}</td>
                             </tr>
                             <tr>
-                                  <td class="text-center">INTEGRANTES</td>
+                                  <th class="text-center">INTEGRANTES</th>
                                  <td class="table-light">{{Std_C.ID_INTEGRANTES}}</td>
                             </tr>
                             <tr>
-                                  <td class="text-center">TALENTO</td>
+                                  <th class="text-center">TALENTO</th>
                                  <td class="table-light">{{Std_C.ID_TALENTO}}</td>
                             </tr>
                             <tr>
-                                  <td class="text-center">EPS</td>
+                                  <th class="text-center">EPS</th>
                                  <td class="table-light">{{Std_C.ID_EPS}}</td>
                             </tr>
                             <tr>
-                                  <td class="text-center">SISBEN</td>
+                                  <th class="text-center">SISBEN</th>
                                  <td class="table-light">{{Std_C.ID_SISBEN}}</td>
                             </tr>
                             <tr>
-                                  <td class="text-center">LENTES</td>
+                                  <th class="text-center">LENTES</th>
                                  <td class="table-light">{{Std_C.ID_LENTES}}</td>
                             </tr>
                             <!-- Socio economico-->
                             <tr>
-                                <td colspan="2" class="text-center" style="background-color: #198754 ; color: ghostwhite">Datos Socioeconomicos</td>
+                                <th colspan="2" class="text-center" style="background-color: #000000 ; color: ghostwhite">Datos Socioeconomicos</th>
                             </tr> 
                             <tr>
-                                <td class="text-center">OCUPACION</td>
+                                <th class="text-center">OCUPACION</th>
                                 <td class="table-light">{{Std_S.ID_OCUPACION}}</td>
                             </tr>
                             <tr>
-                                <td class="text-center">ESTRATO</td>
+                                <th class="text-center">ESTRATO</th>
                                 <td class="table-light">{{Std_S.ID_ESTRATO}}</td>
                             </tr>
                             <tr>
-                                <td class="text-center">TIPO VIVIENDA</td>
+                                <th class="text-center">TIPO VIVIENDA</th>
                                 <td class="table-light">{{Std_S.ID_TIPO_VIVIENDA}}</td>
                             </tr>
                             <tr>
-                                <td class="text-center">RECIBE INGRESOS</td>
+                                <th class="text-center">RECIBE INGRESOS</th>
                                 <td class="table-light">{{Std_S.ID_RECIBE_INGRESOS}}</td>
                             </tr>
                             <tr>
-                                <td class="text-center">ACUDIENTE</td>
+                                <th class="text-center">ACUDIENTE</th>
                                 <td class="table-light">{{Std_S.ID_ACUDIENTE}}</td>
                             </tr>
                             <tr>
-                                <td class="text-center">NIVEL ACADEMICO</td>
+                                <th class="text-center">NIVEL ACADEMICO</th>
                                 <td class="table-light">{{Std_S.ID_NIVEL_ACADEMICO}}</td>
                             </tr>
                             <tr>
-                                <td class="text-center">INGRESO FAMILIAR</td>
+                                <th class="text-center">INGRESO FAMILIAR</th>
                                 <td class="table-light">{{Std_S.ID_INGRESO_FAMILIAR}}</td>
                             </tr>
                             <tr>
-                                <td class="text-center">TIENE PC</td>
+                                <th class="text-center">TIENE PC</th>
                                 <td class="table-light">{{Std_S.ID_TIENE_PC}}</td>
                             </tr>
                             <tr>
-                                <td class="text-center">TIENE INTERNET</td>
+                                <th class="text-center">TIENE INTERNET</th>
                                 <td class="table-light">{{Std_S.ID_TIENE_INTERNET}}</td>
                             </tr>
                             <tr>
-                                <td class="text-center">CEL SMART</td>
+                                <th class="text-center">CEL SMART</th>
                                 <td class="table-light">{{Std_S.ID_CEL_SMART}}</td>
                             </tr>
                             <tr>
-                                <td class="text-center">PLAN DATOS</td>
+                                <th class="text-center">PLAN DATOS</th>
                                 <td class="table-light">{{Std_S.ID_PLAN_DATOS}}</td>
                             </tr>
                             <tr>
-                                <td class="text-center">INGRESO TRABAJA</td>
+                                <th class="text-center">INGRESO TRABAJA</th>
                                 <td class="table-light">{{Std_S.ID_INGRESO_TRABAJA}}</td>
                             </tr>
                             <!-- Academico-->
                             <tr>
-                                <td colspan="2" class="text-center" style="background-color: #198754 ; color: ghostwhite">Informacion Academica</td>
+                                <th colspan="2" class="text-center" style="background-color: #000000 ; color: ghostwhite">Informacion Academica</th>
                             </tr> 
                             <tr>
-                                <td class="text-center">PROGR ACTUAL</td>
+                                <th class="text-center">PROGR ACTUAL</th>
                                 <td class="table-light">{{Std_A.ID_PROGR_ACTUAL}}</td>
                             </tr>
                             <tr>
-                                <td class="text-center">HERMANOS IES</td>
+                                <th class="text-center">HERMANOS IES</th>
                                 <td class="table-light">{{Std_A.ID_HERMANOS_IES}}</td>
                             </tr>
                             <tr>
-                                <td class="text-center">INGRESO UPC</td>
+                                <th class="text-center">INGRESO UPC</th>
                                 <td class="table-light">{{Std_A.ID_INGRESO_UPC}}</td>
                             </tr>
                             <tr>
-                                <td class="text-center">INGRESO OFERTA</td>
+                                <th class="text-center">INGRESO OFERTA</th>
                                 <td class="table-light">{{Std_A.ID_INGRESO_OFERTA}}</td>
                             </tr>
                             <tr>
-                                <td class="text-center">MOTIVACION</td>
+                                <th class="text-center">MOTIVACION</th>
                                 <td class="table-light">{{Std_A.ID_MOTIVACION}}</td>
                             </tr>
                             <tr>
-                                <td class="text-center">VALIDO BACH</td>
+                                <th class="text-center">VALIDO BACH</th>
                                 <td class="table-light">{{Std_A.ID_VALIDO_BACH}}</td>
                             </tr>
                             <tr>
-                                <td class="text-center">TIPO COLEGIO</td>
+                                <th class="text-center">TIPO COLEGIO</th>
                                 <td class="table-light">{{Std_A.ID_TIPO_COLEGIO}}</td>
                             </tr>
                             <tr>
-                                <td class="text-center">SEMESTRE INICIO</td>
+                                <th class="text-center">SEMESTRE INICIO</th>
                                 <td class="table-light">{{Std_A.ID_SEMESTRE_INICIO}}</td>
                             </tr>
                             <tr>
-                                <td class="text-center">REPITIO ICFES</td>
+                                <th class="text-center">REPITIO ICFES</th>
                                 <td class="table-light">{{Std_A.ID_REPITIO_ICFES}}</td>
                             </tr>
                             <tr>
-                                <td class="text-center">PUNTAJE ICFES</td>
+                                <th class="text-center">PUNTAJE ICFES</th>
                                 <td class="table-light">{{Std_A.ID_PUNTAJE_ICFES}}</td>
                             </tr>
                             <tr>
-                                <td class="text-center">PUESTO ICFES</td>
+                                <th class="text-center">PUESTO ICFES</th>
                                 <td class="table-light">{{Std_A.ID_PUESTO_ICFES}}</td>
                             </tr>
                             <tr>
-                                <td class="text-center">LECTURA CRITICA</td>
+                                <th class="text-center">LECTURA CRITICA</th>
                                 <td class="table-light">{{Std_A.ID_LECTURA_CRITICA}}</td>
                             </tr>
                             <tr>
-                                <td class="text-center">MATEMATICA</td>
+                                <th class="text-center">MATEMATICA</th>
                                 <td class="table-light">{{Std_A.ID_MATEMATICA}}</td>
                             </tr>
                             <tr>
-                                <td class="text-center">CIUDADANOS</td>
+                                <th class="text-center">CIUDADANOS</th>
                                 <td class="table-light">{{Std_A.ID_CIUDADANOS}}</td>
                             </tr>
                             <tr>
-                                <td class="text-center">CIENCIAS</td>
+                                <th class="text-center">CIENCIAS</th>
                                 <td class="table-light">{{Std_A.ID_CIENCIAS}}</td>
                             </tr>
                             <tr>
-                                <td class="text-center">INGLES</td>
+                                <th class="text-center">INGLES</th>
                                 <td class="table-light">{{Std_A.ID_INGLES}}</td>
                             </tr>
                             <tr>
-                                <td class="text-center">SEMESTRES CURSADOS</td>
+                                <th class="text-center">SEMESTRES CURSADOS</th>
                                 <td class="table-light">{{Std_A.ID_SEMESTRES_CURSADOS}}</td>
                             </tr>
                             <tr>
-                                <td class="text-center">UBICACION SEMESTRE</td>
+                                <th class="text-center">UBICACION SEMESTRE</th>
                                 <td class="table-light">{{Std_A.ID_UBICACION_SEMESTRE}}</td>
                             </tr>
                             <tr>
-                                <td class="text-center">CREDITOS APROBADOS</td>
+                                <th class="text-center">CREDITOS APROBADOS</th>
                                 <td class="table-light">{{Std_A.ID_CREDITOS_APROBADOS}}</td>
                             </tr>
                             <tr>
-                                <td class="text-center">PROMEDIO ACUMULADO</td>
+                                <th class="text-center">PROMEDIO ACUMULADO</th>
                                 <td class="table-light">{{Std_A.ID_PROMEDIO_ACUMULADO}}</td>
                             </tr>
                             <tr>
-                                <td class="text-center">PROMEDIO SEMESTRE ANT</td>
+                                <th class="text-center">PROMEDIO SEMESTRE ANT</th>
                                 <td class="table-light">{{Std_A.ID_PROMEDIO_SEMESTRE_ANT}}</td>
                             </tr>
                             <tr>
-                                <td class="text-center">CREDITOS NO APROBADOS</td>
+                                <th class="text-center">CREDITOS NO APROBADOS</th>
                                 <td class="table-light">{{Std_A.ID_CREDITOS_NO_APROBADOS}}</td>
                             </tr>
                             <tr>
-                                <td class="text-center">CREDITOS MATRIC</td>
+                                <th class="text-center">CREDITOS MATRIC</th>
                                 <td class="table-light">{{Std_A.ID_CREDITOS_MATRIC}}</td>
                             </tr>
                             <tr>
-                                <td class="text-center">MATERIAS CANCELADAS</td>
+                                <th class="text-center">MATERIAS CANCELADAS</th>
                                 <td class="table-light">{{Std_A.ID_MATERIAS_CANCELADAS}}</td>
                             </tr>
                             <tr>
-                                <td class="text-center">ASIGNATURA ENCUESTA</td>
+                                <th class="text-center">ASIGNATURA ENCUESTA</th>
                                 <td class="table-light">{{Std_A.ID_ASIGNATURA_ENCUESTA}}</td>
                             </tr>
                             <tr>
-                                <td class="text-center">JORNADA ACAD</td>
+                                <th class="text-center">JORNADA ACAD</th>
                                 <td class="table-light">{{Std_A.ID_JORNADA_ACAD}}</td>
                             </tr>
                             <tr>
-                                <td class="text-center">NOTA ACTUAL</td>
+                                <th class="text-center">NOTA ACTUAL</th>
                                 <td class="table-light">{{Std_A.ID_NOTA_ACTUAL}}</td>
                             </tr>
                             <tr>
-                                <td class="text-center">RENDIMIENTO ACTUAL</td>
+                                <th class="text-center">RENDIMIENTO ACTUAL</th>
                                 <td class="table-light">{{Std_A.ID_RENDIMIENTO_ACTUAL}}</td>
                             </tr>
                             <tr>
-                                <td class="text-center">NIVEL SATISFACION ASIG</td>
+                                <th class="text-center">NIVEL SATISFACION ASIG</th>
                                 <td class="table-light">{{Std_A.ID_NIVEL_SATISFACION_ASIG}}</td>
                             </tr>
                             
