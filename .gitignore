@@ -1,5 +1,4 @@
-# Editor directories and files
+proyecto/settings.py
+venv/pyvenv.cfg
+venv/Lib/
 
-.proyecto/settings.py
-*.cfg
-.venv/Lib/*
