@@ -55,7 +55,7 @@ ROOT_URLCONF = 'proyecto.urls'
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': ['C:/Users/naru-/OneDrive/Escritorio/analitica-upc/api/template'],
+        'DIRS': ['D:/Analitica Institucional UPC/analitica-upc/api/template'],
         'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [
@@ -79,7 +79,7 @@ DATABASES = {
         'ENGINE': 'django.db.backends.postgresql_psycopg2',
         'NAME': 'ADI',
         'USER':'postgres',
-        'PASSWORD': '123a456c',
+        'PASSWORD': 'Kevin12',
         'HOST': '127.0.0.1',
         'DATABASE_PORT': '5432'
     }
