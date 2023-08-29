@@ -44,8 +44,8 @@
                                 <h6>Tipo de Documento</h6>
                                 <select class="form-control custom-select-lg" name="ID_TIPO_DOCUMENTO"
                                     id="ID_TIPO_DOCUMENTO">
-                                    <option value="C">Cedula</option>
-                                    <option value="T">T. de indentidd</option>
+                                    <option value="cedulaCiudadania">Cedula</option>
+                                    <option value="tarjetaIdentidad">T. de indentidd</option>
                                 </select>
                             </div>
 
@@ -91,10 +91,11 @@
                                 <h6> Estado Civil </h6>
                                 <select class="form-control custom-select-lg" name="ID_ESTADO_CIVIL"
                                     id="ID_ESTADO_CIVIL" required>
-                                    <option value="1">Soltero</option>
-                                    <option value="2">Casado</option>
-                                    <option value="3">Unicn libre</option>
-                                    <option value="4">Viudo(a)</option>
+                                    <option value="1">Casado</option>
+                                    <option value="3">Soltero</option>
+                                    <option value="2">Separado</option>
+                                    <option value="4">Union libre</option>
+                                    <option value="5">Viudo(a)</option>
                                 </select>
                             </div>
 
@@ -114,19 +115,21 @@
                                 <h6> Tiene usted alguna dicapacidad? </h6>
                                 <select class="form-control custom-select-lg" name="ID_TIPO_DISC" id="ID_TIPO_DISC"
                                     required>
-                                    <option value="1">Si</option>
-                                    <option value="2">No</option>
+                                    <option value="1">Movilidad Reducida</option>
+                                    <option value="2">Ninguna</option>
+                                    <option value="3">Auditiva</option>
+                                    <option value="4">Visual</option>
                                 </select>
                             </div>
 
                             <div class="form-group m-2">
                                 <h6> Etnia </h6>
                                 <select class="form-control custom-select-lg" name="ID_ETNIA" id="ID_ETNIA" required>
-                                    <option value="1">Sin distincion racial</option>
-                                    <option value="2">Negro, mulato, afrodescendiente, afrocolombiano</option>
-                                    <option value="3">Indígena libre</option>
-                                    <option value="4">Raizal(a)</option>
-                                    <option value="5">Palenquero</option>
+                                    <option value="3">Sin distincion racial</option>
+                                    <option value="4">Negro, mulato, afrodescendiente, afrocolombiano</option>
+                                    <option value="1">Indígena libre</option>
+                                    <option value="5">Raizal(a)</option>
+                                    <option value="2">Palenquero</option>
                                 </select>
                             </div>
 
@@ -168,13 +171,14 @@
                                 <h6> Ocupacion de la madre </h6>
                                 <select class="form-control custom-select-lg" name="ID_OCUP_MADRE" id="ID_OCUP_MADRE"
                                     required>
-                                    <option value="1">Labora</option>
-                                    <option value="2">Ama de casa</option>
-                                    <option value="3">Pensionada</option>
-                                    <option value="4">Fallecida</option>
-                                    <option value="5">Estudiante</option>
+                                    <option value="5">Labora</option>
+                                    <option value="1">Ama de casa</option>
+                                    <option value="7">Pensionada</option>
+                                    <option value="4">Independiente</option>
+                                    <option value="3">Fallecida</option>
+                                    <option value="2">Estudiante</option>
                                     <option value="6">Madre cabeza de hogar</option>
-                                    <option value="7">No registra</option>
+                                    <option value="0">No registra</option>
                                 </select>
                             </div>
 
@@ -182,13 +186,13 @@
                                 <h6> Ocupacion del padre </h6>
                                 <select class="form-control custom-select-lg" name="ID_OCUP_PADRE" id="ID_OCUP_PADRE"
                                     required>
-                                    <option value="1">Labora</option>
-                                    <option value="2">Ama de casa</option>
-                                    <option value="3">Pensionado</option>
-                                    <option value="4">Fallecido</option>
-                                    <option value="5">Estudiante</option>
-                                    <option value="6">Padre cabeza de hogar</option>
-                                    <option value="7">No registra</option>
+                                    <option value="5">Labora</option>
+                                    <option value="4">Independiente</option>
+                                    <option value="2">Pensionado</option>
+                                    <option value="3">Fallecido</option>
+                                    <option value="6">Estudiante</option>
+                                    <option value="1">Padre cabeza de hogar</option>
+                                    <option value="0">No registra</option>
                                 </select>
                             </div>
 
@@ -220,8 +224,19 @@
                                 <h6> ¿Tiene Talentos?</h6>
                                 <select class="form-control custom-select-lg" name="ID_TALENTO" id="ID_TALENTO"
                                     required>
-                                    <option value="1">Si</option>
-                                    <option value="2">No</option>
+                                    <option value="0">No tengo</option>
+                                    <option value="1">Actor</option>
+                                    <option value="2">Atletismo</option>
+                                    <option value="3">Bailarin</option>
+                                    <option value="4">Baloncesto</option>
+                                    <option value="5">Futbol</option>
+                                    <option value="6">Futbol sala</option>
+                                    <option value="7">Musico</option>
+                                    <option value="8">Natacion</option>
+                                    <option value="9">Softbol</option>
+                                    <option value="10">Taewondo</option>
+                                    <option value="11">Tenis de mesaa</option>
+                                    <option value="12">Voleibol</option>
                                 </select>
                             </div>
 
@@ -269,9 +284,9 @@
                                 <h6> ¿Tipo de vivienda?</h6>
                                 <select class="form-control custom-select-lg" name="ID_TIPO_VIVIENDA"
                                     id="ID_TIPO_VIVIENDA" required>
-                                    <option value="1">Propia</option>
-                                    <option value="2">Arrendada</option>
-                                    <option value="3">Familiar</option>
+                                    <option value="2">Propia</option>
+                                    <option value="3">Arrendada</option>
+                                    <option value="1">Familiar</option>
                                     <option value="4">Otra</option>
                                 </select>
                             </div>
@@ -299,8 +314,9 @@
                                 <select class="form-control custom-select-lg" name="ID_NIVEL_ACADEMICO"
                                     id="ID_NIVEL_ACADEMICO" required>
                                     <option value="1">Bachiller</option>
-                                    <option value="2">Tecnico Bachiller</option>
-                                    <option value="3">Universitario</option>
+                                    <option value="2">Tecnico</option>
+                                    <option value="3">Tecnico Bachiller</option>
+                                    <option value="5">Universitario</option>
                                     <option value="4">Tecnologo</option>
                                 </select>
                             </div>
@@ -359,27 +375,28 @@
                                 <h6> Seleccione la carrera universitaria que está estudiando actualmente</h6>
                                 <select class="form-control custom-select-lg" name="ID_PROGR_ACTUAL"
                                     id="ID_PROGR_ACTUAL" required>
-                                    <option value="1">Administracion de empresas</option>
-                                    <option value="2">Administracion Turistica</option>
-                                    <option value="3">Comercio Internacional</option>
+                                    <option value="16">Administracion de empresas</option>
+                                    <option value="8">Administracion Turistica</option>
+                                    <option value="12">Comercio Internacional</option>
                                     <option value="5">Contaduria publica</option>
                                     <option value="6">Economia</option>
                                     <option value="7">Derecho</option>
-                                    <option value="8">Psicologia</option>
+                                    <option value="3">Psicologia</option>
                                     <option value="9">Sociologia</option>
                                     <option value="10">Enfermeria</option>
                                     <option value="11">Instrumentacion</option>
-                                    <option value="12">Microbiologia</option>
+                                    <option value="2">Microbiologia</option>
                                     <option value="13">Ing. Agroindustrial</option>
                                     <option value="14">Ing. Ambiental</option>
                                     <option value="15">Ing. de Sistemnas</option>
-                                    <option value="16">Ing. Electronica</option>
+                                    <option value="1">Ing. Electronica</option>
                                     <option value="17">Lic. Español e ingles</option>
                                     <option value="18">Lic. en Castellano</option>
                                     <option value="19">Musica</option>
                                     <option value="20">Lic. Educacion Fisica</option>
                                     <option value="21">Lic. Ciencias naturales</option>
                                     <option value="22">Lic. en Arte</option>
+                                    <option value="4">No registra</option>
                                 </select>
                             </div>
 
@@ -394,15 +411,15 @@
                                     acamédica</h6>
                                 <select class="form-control custom-select-lg" name="ID_INGRESO_UPC" id="ID_INGRESO_UPC"
                                     required>
-                                    <option value="1">Aspirante Regular</option>
-                                    <option value="2">Preuniversitario</option>
-                                    <option value="3">Deportista Destacado</option>
-                                    <option value="5">Perteneciente a cabildo indigena</option>
-                                    <option value="6">Transferencia interna</option>
-                                    <option value="7">Transferencia externa</option>
-                                    <option value="8">Reintegro</option>
-                                    <option value="9">Reserva de cupo</option>
-                                    <option value="10">otro</option>
+                                    <option value="2">Aspirante Regular</option>
+                                    <option value="1">Preuniversitario</option>
+                                    <option value="9">Deportista Destacado</option>
+                                    <option value="3">Perteneciente a cabildo indigena</option>
+                                    <option value="7">Transferencia interna</option>
+                                    <option value="6">Transferencia externa</option>
+                                    <option value="4">Reintegro</option>
+                                    <option value="5">Reserva de cupo</option>
+                                    <option value="8">otro</option>
                                 </select>
                             </div>
 
@@ -423,7 +440,7 @@
                                     <option value="1">Bajo</option>
                                     <option value="2">Medio</option>
                                     <option value="3">Alto</option>
-                                    <option value="5">Excelente</option>
+                                    <option value="4">Excelente</option>
                                 </select>
                             </div>
 
@@ -451,34 +468,34 @@
                                     Cesar</h6>
                                 <select class="form-control custom-select-lg" name="ID_SEMESTRE_INICIO"
                                     id="ID_SEMESTRE_INICIO" required>
-                                    <option value="1">2010-1</option>
-                                    <option value="2">2010-2</option>
-                                    <option value="3">2011-1</option>
-                                    <option value="5">2011-2</option>
-                                    <option value="6">2012-1</option>
-                                    <option value="7">2012-2</option>
-                                    <option value="8">2013-1</option>
-                                    <option value="9">2013-2</option>
-                                    <option value="10">2014-1</option>
-                                    <option value="11">2014-2</option>
-                                    <option value="12">2015-1</option>
-                                    <option value="13">2015-2</option>
-                                    <option value="14">2016-1</option>
-                                    <option value="15">2016-2</option>
-                                    <option value="16">2017-1</option>
-                                    <option value="17">2017-2</option>
-                                    <option value="18">2018-1</option>
-                                    <option value="19">2018-2</option>
-                                    <option value="20">2019-1</option>
-                                    <option value="21">2019-2</option>
-                                    <option value="22">2020-1</option>
-                                    <option value="23">2020-2</option>
-                                    <option value="24">2021-1</option>
-                                    <option value="25">2021-2</option>
-                                    <option value="26">2022-1</option>
-                                    <option value="27">2022-2</option>
-                                    <option value="28">2023-1</option>
-                                    <option value="29">2023-2</option>
+                                    <option value="24">2010-1</option>
+                                    <option value="25">2010-2</option>
+                                    <option value="26">2011-1</option>
+                                    <option value="27">2011-2</option>
+                                    <option value="1">2012-1</option>
+                                    <option value="23">2012-2</option>
+                                    <option value="2">2013-1</option>
+                                    <option value="3">2013-2</option>
+                                    <option value="4">2014-1</option>
+                                    <option value="5">2014-2</option>
+                                    <option value="6">2015-1</option>
+                                    <option value="7">2015-2</option>
+                                    <option value="8">2016-1</option>
+                                    <option value="9">2016-2</option>
+                                    <option value="10">2017-1</option>
+                                    <option value="11">2017-2</option>
+                                    <option value="12">2018-1</option>
+                                    <option value="13">2018-2</option>
+                                    <option value="14">2019-1</option>
+                                    <option value="15">2019-2</option>
+                                    <option value="16">2020-1</option>
+                                    <option value="17">2020-2</option>
+                                    <option value="18">2021-1</option>
+                                    <option value="19">2021-2</option>
+                                    <option value="20">2022-1</option>
+                                    <option value="21">2022-2</option>
+                                    <option value="22">2023-1</option>
+                                    <option value="23">2023-2</option>
                                 </select>
                             </div>
 
@@ -558,14 +575,14 @@
                             <div class="form-group m-2">
                                 <h6> ¿Cual es su promedio acumulado actual?</h6>
                                 <input type="number" id="ID_PROMEDIO_ACUMULADO" name="ID_PROMEDIO_ACUMULADO"
-                                    class="form-control" min=1 max=5 placeholder="Promedio acumulado" autofocus
+                                    class="form-control" step="any" min=1 max=5 placeholder="Promedio acumulado" autofocus
                                     required />
                             </div>
 
                             <div class="form-group m-2">
                                 <h6> ¿Cual es su promedio del semestre anterior?</h6>
                                 <input type="number" id="ID_PROMEDIO_SEMESTRE_ANT" name="ID_PROMEDIO_SEMESTRE_ANT"
-                                    class="form-control" min=1 max=5 placeholder="Promedio Semestre anterior" autofocus
+                                    class="form-control" step="any" min=1 max=5 placeholder="Promedio Semestre anterior" autofocus
                                     required />
                             </div>
 
@@ -594,69 +611,77 @@
                                 <h6> Desde que asignatura esta haciendo la encuesta</h6>
                                 <select class="form-control custom-select-lg" name="ID_ASIGNATURA_ENCUESTA"
                                     id="ID_ASIGNATURA_ENCUESTA" required>
-
-                                    <option value="MT301B">ALGEBRA LINEAL COD: MT301B</option>
-                                    <option value="SS407">ALGORITMOS Y FUNDAMENTOS DE PROGRAMACION COD: SS407</option>
-                                    <option value="MT302B">CALCULO DIFERENCIAL COD: MT302B</option>
-                                    <option value="UPC01">CATEDRA UPECISTA COD: UPC01</option>
-                                    <option value="HM301">HUMANIDADES I COD: HM301</option>
-                                    <option value="EL435">INTRODUCCION A LA INGENIERIA ELECTRONICA COD: EL435</option>
-                                    <option value="PG312">TECNICAS DE AUTOAPRENDIZAJE COD: PG312</option>
-                                    <option value="MT303B">CALCULO INTEGRAL COD: MT303B</option>
-                                    <option value="EL436">HERRAMIENTAS DE SOFTWARE COD: EL436</option>
-                                    <option value="HM302">HUMANIDADES II COD: HM302</option>
-                                    <option value="UPC04">LENGUA EXTRANJERA-GRAMATICA COD: UPC04</option>
-                                    <option value="S314">MECANICA COD: FS314</option>
-                                    <option value="SS401">PROGRAMACION DE COMPUTADORES I COD: SS401</option>
-                                    <option value="EL437">SEMILLERO DE INVESTIGACION COD: EL437</option>
-                                    <option value="MT304B">CALCULO MULTIVARIABLE COD: MT304B</option>
-                                    <option value="EL401">CIRCUITOS I COD: EL401</option>
-                                    <option value="FS311">ELECTROMAGNETISMO COD: FS311</option>
-                                    <option value="MT307B">ESTADISTICA DESCRIPTIVA E INFERENCIAL COD: MT307B</option>
-                                    <option value="UPC05">LENGUA EXTRANJERA-LECTURA COD: UPC05</option>
-                                    <option value="EL438">METODOLOGIA DE LA INVESTIGACION COD: EL438</option>
-                                    <option value="MT309B">ANALISIS NUMERICO COD: MT309B</option>
-                                    <option value="EL408">CIRCUITOS II COD: EL408</option>
-                                    <option value="MT305B">ECUACIONES DIFERENCIALES ORDINARIAS COD: MT305B</option>
-                                    <option value="EL402">ELECTRONICA I COD: EL402</option>
-                                    <option value="UPC06">LENGUA EXTRANJERA-ESCRITURA COD: UPC06</option>
-                                    <option value="FS315E">ONDAS ELECTROMACNETICAS COD: FS315E</option>
-                                    <option value="UPC08">ACTIVIDAD DEPORTIVA COD: UPC08 </option>
-                                    <option value="EL411">CIRCUITOS III COD: EL411</option>
-                                    <option value="EL409">DIGITALES I COD: EL409</option>
-                                    <option value="EL412">ELECTRONICA II COD: EL412</option>
-                                    <option value="FS328">FISICA MODERNA Y OPTICA COD: FS328</option>
-                                    <option value="MT306B"> FUNCIONES ESPECIALES Y ECUACIONES DIFERENCIALES COD: MT306B</option>
-                                    <option value="EL439">SEMINARIO DE INVESTIGACION COD: EL439</option>
-                                    <option value="UPC09">ACTIVIDAD CULTURAL COD: UPC09</option>
-                                    <option value="AEL431">ANALISIS DE SEÑALES COD: EL431 </option>
-                                    <option value="EL410">DIGITALES II COD: EL410</option>
-                                    <option value="EL416">ELECTRONICA III COD: EL416</option>
-                                    <option value="AI420">INGENIERIA ECONOMICA COD: AI420 </option>
-                                    <option value="UPC07">LENGUA EXTRANJERA CONVERSACION COD: UPC07</option>
-                                    <option value="EL440">MAQUINAS ELECTRICAS COD: EL440 </option>
-                                    <option value="EL432">MODELAMIENTO Y SIMULACION COD: EL432</option>
-                                    <option value="EL417">CONTROL I COD: EL417</option>
-                                    <option value="EL403">DIGITALES III COD: EL403</option>
-                                    <option value="EL419">ELECTRONICA DE POTENCIA COD: EL419</option>
-                                    <option value="GERENCIA COD: AE118">GERENCIA COD: AE118</option>
-                                    <option value="EL441">LABORATORIO DE DISEÑO INTEGRAL COD: EL441</option>
-                                    <option value="EL442">TRATAMIENTO DE SEÑALES COD: EL442 </option>
-                                    <option value="EL420">COMUNICACIONES I COD: EL420</option>
-                                    <option value="EL422">CONTROL II COD: EL422</option>
-                                    <option value="FC407">FORMULACION Y EVALU DE PROYEC EN INGENIERIA COD: FC407</option>
-                                    <option value="EL424">INSTRUMENTACION COD: EL424</option>
-                                    <option value="EL801">OPTATIVA VIRTUAL COD: EL801</option>
-                                    <option value="EL444">PROFUNDIZACION COD: EL444</option>
-                                    <option value="L443">TELEMATICA I COD: EL443</option>
-                                    <option value="FC403">DISEÑO EXPERIMENTAL COD: FC403 </option>
-                                    <option value="EL425">COMUNICACIONES II COD: EL425</option>
-                                    <option value="EL445">MEDIOS DE TRANSMISION COD: EL445</option>
-                                    <option value="EL447">PROYECTO I COD: EL447</option>
-                                    <option value="EL446">TELEMATICA II COD: EL446</option>
-                                    <option value="PG013">COMPETENCIAS PEDAGOGICAS COD: PG013</option>
-                                    <option value="DR556">LEGISLACION COD: DR556</option>
-                                    <option value="EL448">PROYECTO II COD: EL448</option>
+                                    <option value="1">ALGEBRA LINEAL COD: MT301B</option>
+                                    <option value="2">ALGORITMOS Y FUNDAMENTOS DE PROGRAMACION COD: SS407</option>
+                                    <option value="3">ANALISIS DE SEÑALES COD: EL431 </option>
+                                    <option value="4">CALCULO INTEGRAL COD: MT303B</option>
+                                    <option value="5">CIRCUITOS EN CORRIENTE DIRECTA, COD: EL300</option>
+                                    <option value="6">CIRCUITOS I COD: EL401</option>
+                                    <option value="7">CIRCUITOS II COD: EL408</option>
+                                    <option value="8">CIRCUITOS III COD: EL411</option>
+                                    <option value="9">COMUNICACIONES I COD: EL420</option>
+                                    <option value="10">COMUNICACIONES II COD: EL425</option>
+                                    <option value="11">CONTROL I COD: EL417</option>
+                                    <option value="12">CONTROL II COD: EL422</option>
+                                    <option value="13">DIGITALES I COD: EL409</option>
+                                    <option value="14">ELECTIVA I PROCESAMIENTO DE SEÑALES</option>
+                                    <option value="15">ELECTIVA II PROCESAMIENTO DE SEÑALES</option>
+                                    <option value="16">ELECTIVA III PROCESAMIENTO DE SEÑALES</option>
+                                    <option value="17">ELECTRONICA DE POTENCIA COD: EL419</option>
+                                    <option value="18">ELECTRONICA I COD: EL402</option>
+                                    <option value="19">ELECTRONICA II COD: EL412</option>
+                                    <option value="20">GESTION EMPRESARIAL Y EMPREDIMIENTO COD: MB322</option>
+                                    <option value="21">HERRAMIENTAS DE SOFTWARE COD: EL436</option>
+                                    <option value="22">INSTRUMENTACION COD: EL424</option>
+                                    <option value="23">INTRODUCCION A LA INGENIERIA ELECTRONICA COD: EL435</option>
+                                    <option value="24">LOGICA DIGITAL COD: EL502</option>
+                                    <option value="25">MEDIOS DE TRANSMISION COD: EL445</option>
+                                    <option value="26">MODELAMIENTO Y SIMULACION COD: EL432</option>
+                                    <option value="27">ONDAS ELECTROMACNETICAS COD: FS315E</option>
+                                    <option value="28">PROFUNDIZACION COD: EL444</option>
+                                    <option value="29">PSICOMETRIA COD: EL444</option>
+                                    <option value="30">SEMILLERO DE INVESTIGACION COD: EL437</option>
+                                    <option value="31">SEMILLERO DE PROCESAMIENTO DE SEÑALES</option>
+                                    <option value="32">SEMILLERO DE INVESTIGACION COD: EL439</option>
+                                    <option value="33">TRATAMIENTO DE SEÑALES COD: EL442 </option>
+                                    <option value="34">CATEDRA UPECISTA COD: UPC01</option>
+                                    <option value="35">HUMANIDADES I COD: HM301</option>
+                                    <option value="36">CALCULO DIFERENCIAL COD: MT302B</option>
+                                    <option value="37">TECNICAS DE AUTOAPRENDIZAJE COD: PG312</option>
+                                    <option value="38">HUMANIDADES II COD: HM302</option>
+                                    <option value="39">LENGUA EXTRANJERA-GRAMATICA COD: UPC04</option>
+                                    <option value="40">MECANICA COD: FS314</option>
+                                    <option value="41">PROGRAMACION DE COMPUTADORES I COD: SS401</option>
+                                    <option value="42">CALCULO MULTIVARIABLE COD: MT304B</option>
+                                    <option value="43">ELECTROMAGNETISMO COD: FS311</option>
+                                    <option value="44">ESTADISTICA DESCRIPTIVA E INFERENCIAL COD: MT307B</option>
+                                    <option value="45">LENGUA EXTRANJERA-LECTURA COD: UPC05</option>
+                                    <option value="46">METODOLOGIA DE LA INVESTIGACION COD: EL438</option>
+                                    <option value="47">ANALISIS NUMERICO COD: MT309B</option>
+                                    <option value="48">ECUACIONES DIFERENCIALES ORDINARIAS COD: MT305B</option>
+                                    <option value="49">LENGUA EXTRANJERA-ESCRITURA COD: UPC06</option>
+                                    <option value="50">ACTIVIDAD DEPORTIVA COD: UPC08 </option>
+                                    <option value="51">FISICA MODERNA Y OPTICA COD: FS328</option>
+                                    <option value="52"> FUNCIONES ESPECIALES Y ECUACIONES DIFERENCIALES COD: MT306B</option>
+                                    <option value="53">SEMINARIO DE INVESTIGACION COD: EL439</option>
+                                    <option value="54">ACTIVIDAD CULTURAL COD: UPC09</option>
+                                    <option value="55">DIGITALES II COD: EL410</option>
+                                    <option value="56">ELECTRONICA III COD: EL416</option>
+                                    <option value="57">INGENIERIA ECONOMICA COD: AI420 </option>
+                                    <option value="58">LENGUA EXTRANJERA CONVERSACION COD: UPC07</option>
+                                    <option value="59">MAQUINAS ELECTRICAS COD: EL440 </option>
+                                    <option value="60">DIGITALES III COD: EL403</option>
+                                    <option value="61">GERENCIA COD: AE118</option>
+                                    <option value="62">LABORATORIO DE DISEÑO INTEGRAL COD: EL441</option>
+                                    <option value="63">FORMULACION Y EVALU DE PROYEC EN INGENIERIA COD: FC407</option>
+                                    <option value="64">OPTATIVA VIRTUAL COD: EL801</option>
+                                    <option value="65">TELEMATICA I COD: EL443</option>
+                                    <option value="66">DISEÑO EXPERIMENTAL COD: FC403 </option>
+                                    <option value="67">PROYECTO I COD: EL447</option>
+                                    <option value="68">TELEMATICA II COD: EL446</option>
+                                    <option value="69">COMPETENCIAS PEDAGOGICAS COD: PG013</option>
+                                    <option value="70">LEGISLACION COD: DR556</option>
+                                    <option value="71">PROYECTO II COD: EL448</option>
                                 </select>
                             </div>
 
@@ -674,7 +699,7 @@
                             <div class="form-group m-2">
                                 <h6> Su nota obtenida actualmente en la asignatura donde esta siendo encuestado</h6>
                                 <input type="number" id="ID_NOTA_ACTUAL" name="ID_NOTA_ACTUAL"
-                                    class="form-control" min=0 max=5 placeholder="Nota actual" autofocus
+                                    class="form-control" step="any" min=0 max=5 placeholder="Nota actual" autofocus
                                     required />
                             </div>
 
@@ -685,7 +710,7 @@
                                     <option value="1">Bajo</option>
                                     <option value="2">Medio</option>
                                     <option value="3">Alto</option>
-                                    <option value="5">Excelente</option>
+                                    <option value="4">Excelente</option>
                                 </select>
                             </div>
 
@@ -696,7 +721,7 @@
                                     <option value="1">Bajo</option>
                                     <option value="2">Medio</option>
                                     <option value="3">Alto</option>
-                                    <option value="5">Excelente</option>
+                                    <option value="4">Excelente</option>
                                 </select>
                             </div>
                             <div class="text-center">

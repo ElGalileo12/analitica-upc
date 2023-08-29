@@ -197,6 +197,373 @@ def consultastd(request):
                 Std_c = Estudiante.objects.get(ID_DOCUMENTO=ID_C_DOCUMENTO)
                 Std_s = SocioEconomica.objects.get(ID_ESTUDIANTE=ID_C_DOCUMENTO)
                 Std_a = InfoAcademica.objects.get(ID_ESTUDIANTE=ID_C_DOCUMENTO)
+                
+                #TRADUCCIONES TABLA ESTUDIANTES
+                Genero = {0:'otro',1:'Masculino',2:'Femenino'}
+                Std_c.ID_GENERO = Genero.get(Std_c.ID_GENERO)
+
+                Victima_con = {1:'Si',2:'No'}
+                Std_c.ID_VIC_CONFLICTO = Victima_con.get(Std_c.ID_VIC_CONFLICTO)
+                
+                # Diccionario para ESTADO_CIVIL
+                ESTADO_CIVIL = {
+                    1: 'Casado',
+                    2: 'Separado',
+                    3: 'Soltero',
+                    4: 'Unión libre',
+                    5: 'Viudo'
+                }
+                Std_c.ID_ESTADO_CIVIL = ESTADO_CIVIL.get(Std_c.ID_ESTADO_CIVIL)
+                # Diccionario para TIPO_DISC
+                TIPO_DISC = {
+                    1: 'Movilidad reducida',
+                    2: 'Ninguna',
+                    3: 'Auditiva',
+                    4: 'Visual'
+                }
+                Std_c.ID_TIPO_DISC = TIPO_DISC.get(Std_c.ID_TIPO_DISC)
+                # Diccionario para ETNIA
+                ETNIA = {
+                    1: 'Indigena',
+                    2: 'Palenquero',
+                    3: 'Sin distincion racial',
+                    4: 'Negro, mulato, afrodescendiente, afrocolombiano',
+                    5: 'Raizal'
+                }
+                Std_c.ID_ETNIA = ETNIA.get(Std_c.ID_ETNIA)
+                # Diccionario para MAD_CAB_HOGAR
+                MAD_CAB_HOGAR = {
+                    0: 'nRegistra',
+                    1: 'Sí',
+                    2: 'No'
+                }
+                Std_c.ID_MAD_CAB_HOGAR = MAD_CAB_HOGAR.get(Std_c.ID_MAD_CAB_HOGAR)
+                # Diccionario para OCUP_MADRE
+                OCUP_MADRE = {
+                    0: 'nRegistra',
+                    1: 'amaCasa',
+                    2: 'Estudiante',
+                    3: 'Fallecida',
+                    4: 'Independiente',
+                    5: 'Labora',
+                    6: 'MadreCabezaHogar',
+                    7: 'Pensionada'
+                }
+                Std_c.ID_OCUP_MADRE = OCUP_MADRE.get(Std_c.ID_OCUP_MADRE)
+                # Diccionario para OCUP_PADRE
+                OCUP_PADRE = {
+                    0: 'nRegistra',
+                    1: 'PadreCabezaHogar',
+                    2: 'Pensionado',
+                    3: 'Fallecido',
+                    4: 'Independiente',
+                    5: 'Labora'
+                }
+                Std_c.ID_OCUP_PADRE = OCUP_PADRE.get(Std_c.ID_OCUP_PADRE)
+                # Diccionario para TALENTO
+                TALENTO = {
+                    0: 'nRegistra',
+                    1: 'Actor',
+                    2: 'Atletismo',
+                    3: 'Bailarin',
+                    4: 'Baloncesto',
+                    5: 'Fútbol',
+                    6: 'Fútbol sala',
+                    7: 'Músico',
+                    8: 'Natación',
+                    9: 'Softbol',
+                    10: 'Taewondo',
+                    11: 'Tenis de mesa',
+                    12: 'Voleibol'
+                }
+                Std_c.ID_TALENTO = TALENTO.get(Std_c.ID_TALENTO)
+                # Diccionario para EPS
+                EPS = {
+                    0: 'nRegistra',
+                    1: 'Sí',
+                    2: 'No'
+                }
+                Std_c.ID_EPS = EPS.get(Std_c.ID_EPS)
+                # Diccionario para LENTES
+                LENTES = {
+                    0: 'nRegistra',
+                    1: 'Sí',
+                    2: 'No'
+                }
+                Std_c.ID_LENTES = LENTES.get(Std_c.ID_LENTES)
+                #TRADUCCIONES TABLA SOCIO-ECONOMICAS
+                # Diccionario para OCUPACION
+                OCUPACION = {
+                    1: 'Únicamente estudiante',
+                    2: 'Empleado',
+                    3: 'Independiente',
+                    4: 'Trabaja medio tiempo',
+                    5: 'Trabaja tiempo completo'
+                }
+                Std_s.ID_OCUPACION = OCUPACION.get(Std_s.ID_OCUPACION)
+                # Diccionario para TIPO_VIVIENDA
+                TIPO_VIVIENDA = {
+                    1: 'Familiar',
+                    2: 'Propia',
+                    3: 'Arrendada',
+                    4: 'Otra'
+                }
+                Std_s.ID_TIPO_VIVIENDA = TIPO_VIVIENDA.get(Std_s.ID_TIPO_VIVIENDA)
+                # Diccionario para RECIBE_INGRESOS
+                RECIBE_INGRESOS = {
+                    1: 'Sí',
+                    2: 'No'
+                }
+                Std_s.ID_RECIBE_INGRESOS = RECIBE_INGRESOS.get(Std_s.ID_RECIBE_INGRESOS)
+                # Diccionario para ACUDIENTE
+                ACUDIENTE = {
+                    1: 'Sí',
+                    2: 'No'
+                }
+                Std_s.ID_ACUDIENTE = ACUDIENTE.get(Std_s.ID_ACUDIENTE)
+                # Diccionario para NIVEL_ACADEMICO
+                NIVEL_ACADEMICO = {
+                    1: 'Bachiller',
+                    2: 'Tecnico',
+                    3: 'Tecnico Bachiller',
+                    4: 'Tecnologo',
+                    5: 'Universitario'
+                }
+                Std_s.ID_NIVEL_ACADEMICO = NIVEL_ACADEMICO.get(Std_s.ID_NIVEL_ACADEMICO)
+                # Diccionario para TIENE_PC
+                TIENE_PC = {
+                    0: 'nRegistra',
+                    1: 'Sí',
+                    2: 'No'
+                }   
+                Std_s.ID_TIENE_PC = TIENE_PC.get(Std_s.ID_TIENE_PC)
+                # Diccionario para TIENE_INTERNET
+                TIENE_INTERNET = {
+                    1: 'Sí',
+                    2: 'No'
+                }
+                Std_s.ID_TIENE_INTERNET = TIENE_INTERNET.get(Std_s.ID_TIENE_INTERNET)
+                # Diccionario para CEL_SMART
+                CEL_SMART = {
+                    1: 'Sí',
+                    2: 'No'
+                }
+                Std_s.ID_CEL_SMART = CEL_SMART.get(Std_s.ID_CEL_SMART)
+                # Diccionario para PLAN_DATOS
+                PLAN_DATOS = {
+                    1: 'Sí',
+                    2: 'No'
+                }
+                Std_s.ID_PLAN_DATOS = PLAN_DATOS.get(Std_s.ID_PLAN_DATOS)
+                # Diccionario para INGRESO_TRABAJA
+                INGRESO_TRABAJA = {
+                    1: 'Sí',
+                    2: 'No'
+                }
+                Std_s.ID_INGRESO_TRABAJA = INGRESO_TRABAJA.get(Std_s.ID_INGRESO_TRABAJA)
+                #TRADUCCIONES TABLA ACADEMICA
+                # Diccionario para PROGR_ACTUAL
+                PROGR_ACTUAL = {
+                    22: 'Lic. en Arte',
+                    21: 'Lic. Ciencias naturales',
+                    20: 'Lic. Educacion Fisica',
+                    19: 'Musica',
+                    18: 'Lic. en Castellano',
+                    17: 'Lic. Español e ingles',
+                    16: 'Administracion de empresas',
+                    15: 'Ing. de Sistemas',
+                    14: 'Ing. Ambiental',
+                    13: 'Ing. Agroindustrial',
+                    12: 'Comercio Internacional',
+                    11: 'Instrumentacion',
+                    10: 'Enfermeria',
+                    9: 'Sociologia',
+                    8: 'Administracion Turistica',
+                    7: 'Derecho',
+                    6: 'Economia',
+                    5: 'Contaduria publica',
+                    4: 'No registra',
+                    3: 'Psicologia',
+                    2: 'Microbiologia',
+                    1: 'Ing. Electronica'
+                }
+                Std_a.ID_PROGR_ACTUAL = PROGR_ACTUAL.get(Std_a.ID_PROGR_ACTUAL)
+                # Diccionario para INGRESO_UPC
+                INGRESO_UPC = {
+                    1: 'Preuniversitario',
+                    2: 'Aspirante regular',
+                    3: 'Perteneciente a cabildo indigena',
+                    4: 'Reintegro',
+                    5: 'ReservaCupo',
+                    6: 'TransExterna',
+                    7: 'TransInterna',
+                    8: 'Otro',
+                    9: 'Deportista destacado'
+                }
+                Std_a.ID_INGRESO_UPC = INGRESO_UPC.get(Std_a.ID_INGRESO_UPC)
+                # Diccionario para INGRESO_OFERTA
+                INGRESO_OFERTA = {
+                    1: 'Sí',
+                    2: 'No'
+                }
+                Std_a.ID_INGRESO_OFERTA= INGRESO_OFERTA.get(Std_a.ID_INGRESO_OFERTA)
+                # Diccionario para MOTIVACION
+                MOTIVACION = {
+                    1: 'Bajo',
+                    2: 'Medio',
+                    3: 'Alto',
+                    4: 'Excelente'
+                }
+                Std_a.ID_MOTIVACION= MOTIVACION.get(Std_a.ID_MOTIVACION)
+                # Diccionario para VALIDO_BACH
+                VALIDO_BACH = {
+                    1: 'Sí',
+                    2: 'No'
+                }
+                Std_a.ID_VALIDO_BACH= VALIDO_BACH.get(Std_a.ID_VALIDO_BACH)
+                # Diccionario para TIPO_COLEGIO
+                TIPO_COLEGIO = {
+                    1: 'Privado',
+                    2: 'Público'
+                }
+                Std_a.ID_TIPO_COLEGIO= TIPO_COLEGIO.get(Std_a.ID_TIPO_COLEGIO)
+                # Diccionario para SEMESTRE_INICIO
+                SEMESTRE_INICIO = {
+                    1: '2012-1',
+                    2: '2013-1',
+                    3: '2013-2',
+                    4: '2014-1',
+                    5: '2014-2',
+                    6: '2015-1',
+                    7: '2015-2',
+                    8: '2016-1',
+                    9: '2016-2',
+                    10: '2017-1',
+                    11: '2017-2',
+                    12: '2018-1',
+                    13: '2018-2',
+                    14: '2019-1',
+                    15: '2019-2',
+                    16: '2020-1',
+                    17: '2020-2',
+                    18: '2021-1',
+                    19: '2021-2',
+                    20: '2022-1',
+                    21: '2022-2',
+                    22: '2023-1',
+                    23: '2012-2',
+                    24: '2010-1',
+                    25: '2010-2',
+                    26: '2011-1',
+                    27: '2011-2'
+                }
+                Std_a.ID_SEMESTRE_INICIO= SEMESTRE_INICIO.get(Std_a.ID_SEMESTRE_INICIO)
+                # Diccionario para REPITIO_ICFES
+                REPITIO_ICFES = {
+                    1: 'Sí',
+                    2: 'No'
+                }
+                Std_a.ID_REPITIO_ICFES= REPITIO_ICFES.get(Std_a.ID_REPITIO_ICFES)
+                # Diccionario para ASIGNATURA_ENCUESTA
+                ASIGNATURA_ENCUESTA = {
+                    0: 'nRegistra',
+                    1: 'Algebra lineal, código MT301B',
+                    2: 'Algoritmos y fundamentos de programación, Código SS407',
+                    3: 'Analisis de señales, código EL431',
+                    4: 'Calculo integral, código MT303B',
+                    5: 'Circuitos en corriente directa, código EL300',
+                    6: 'Circuitos I, código EL401',
+                    7: 'Circuitos II, código EL408',
+                    8: 'Circuitos III, código EL411',
+                    9: 'Comunicaciones I, código EL420',
+                    10: 'Comunicaciones II, código EL425',
+                    11: 'Control I, código EL417',
+                    12: 'Control II, código EL422',
+                    13: 'Digitales I, código EL409',
+                    14: 'Electiva I Procesamiento de señales',
+                    15: 'Electiva II Procesamiento de señales',
+                    16: 'Electiva III Procesamiento de señales',
+                    17: 'Electrónica de potencia, código EL419',
+                    18: 'Electrónica I, código EL402',
+                    19: 'Electrónica II, código EL412',
+                    20: 'Gestion empresarial y emprendimiento, código MB322',
+                    21: 'Herramientas de software, código EL436',
+                    22: 'Instrumentacion, código EL424',
+                    23: 'Introducción a la ingenieria electrónica, código EL435',
+                    24: 'Lógica digital, código EL502',
+                    25: 'Medios de transmisión, código EL445',
+                    26: 'Modelamiento y simulación, código EL432',
+                    27: 'Ondas electrómagneticas, código FS315E',
+                    28: 'Profundización, código EL444',
+                    29: 'Psicometría, código PS505',
+                    30: 'Semillero de investigación, código EL437',
+                    31: 'Semillero de procesamiento de señales TRIAC',
+                    32: 'Seminario de investigación, código EL439',
+                    33: 'Tratamiento de señales, código EL433',
+                    34: 'CATEDRA UPECISTA COD: UPC01',
+                    35: 'HUMANIDADES I COD: HM301',
+                    36: 'CALCULO DIFERENCIAL COD: MT302B',
+                    37: 'TECNICAS DE AUTOAPRENDIZAJE COD: PG312',
+                    38: 'HUMANIDADES II COD: HM302',
+                    39: 'LENGUA EXTRANJERA-GRAMATICA COD: UPC04',
+                    40: 'MECANICA COD: FS314',
+                    41: 'PROGRAMACION DE COMPUTADORES I COD: SS401',
+                    42: 'CALCULO MULTIVARIABLE COD: MT304B',
+                    43: 'ELECTROMAGNETISMO COD: FS311',
+                    44: 'ESTADISTICA DESCRIPTIVA E INFERENCIAL COD: MT307B',
+                    45: 'LENGUA EXTRANJERA-LECTURA COD: UPC05',
+                    46: 'METODOLOGIA DE LA INVESTIGACION COD: EL438',
+                    47: 'ANALISIS NUMERICO COD: MT309B',
+                    48: 'ECUACIONES DIFERENCIALES ORDINARIAS COD: MT305B',
+                    49: 'LENGUA EXTRANJERA-ESCRITURA COD: UPC06',
+                    50: 'ACTIVIDAD DEPORTIVA COD: UPC08',
+                    51: 'FISICA MODERNA Y OPTICA COD: FS328',
+                    52: 'FUNCIONES ESPECIALES Y ECUACIONES DIFERENCIALES COD: MT306B',
+                    53: 'SEMINARIO DE INVESTIGACION COD: EL439',
+                    54: 'ACTIVIDAD CULTURAL COD: UPC09',
+                    55: 'DIGITALES II COD: EL410',
+                    56: 'ELECTRONICA III COD: EL416',
+                    57: 'INGENIERIA ECONOMICA COD: AI420',
+                    58: 'LENGUA EXTRANJERA CONVERSACION COD: UPC07',
+                    59: 'MAQUINAS ELECTRICAS COD: EL440',
+                    60: 'DIGITALES III COD: EL403',
+                    61: 'GERENCIA COD: AE118',
+                    62: 'LABORATORIO DE DISEÑO INTEGRAL COD: EL441',
+                    63: 'FORMULACION Y EVALU DE PROYEC EN INGENIERIA COD: FC407',
+                    64: 'OPTATIVA VIRTUAL COD: EL801',
+                    65: 'TELEMATICA I COD: EL443',
+                    66: 'DISEÑO EXPERIMENTAL COD: FC403',
+                    67: 'PROYECTO I COD: EL447',
+                    68: 'TELEMATICA II COD: EL446',
+                    69: 'COMPETENCIAS PEDAGOGICAS COD: PG013',
+                    70: 'LEGISLACION COD: DR556',
+                    71: 'PROYECTO II COD: EL448'
+                }
+
+                Std_a.ID_ASIGNATURA_ENCUESTA= ASIGNATURA_ENCUESTA.get(Std_a.ID_ASIGNATURA_ENCUESTA)
+                # Diccionario para JORNADA_ACAD
+                JORNADA_ACAD = {
+                    1: 'Diurno',
+                    2: 'Nocturno'
+                }
+                Std_a.ID_JORNADA_ACAD= JORNADA_ACAD.get(Std_a.ID_JORNADA_ACAD)
+                # Diccionario para RENDIMIENTO_ACTUAL
+                RENDIMIENTO_ACTUAL = {
+                    1: 'Bajo',
+                    2: 'Medio',
+                    3: 'Alto',
+                    4: 'Excelente'
+                }
+                Std_a.ID_RENDIMIENTO_ACTUAL= RENDIMIENTO_ACTUAL.get(Std_a.ID_RENDIMIENTO_ACTUAL)
+                # Diccionario para NIVEL_SATISFACION_ASIG
+                NIVEL_SATISFACION_ASIG = {
+                    1: 'Bajo',
+                    2: 'Medio',
+                    3: 'Alto',
+                    4: 'Excelente'
+                }
+                Std_a.ID_NIVEL_SATISFACION_ASIG= NIVEL_SATISFACION_ASIG.get(Std_a.ID_NIVEL_SATISFACION_ASIG)
+
                 data = {  
                     'Std_C' : Std_c,
                     'Std_A' : Std_a,

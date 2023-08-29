@@ -34,7 +34,7 @@
     <div class="container">
         <div class="row">
             <div class="col-md-8 offset-md-2">
-                <h2>Gestión de Curso</h2>
+                <h2 class="text-center">Editar datos del estudiante: {{ Std_C.ID_NOMBRE }}</h2>
                 <div class="card text-white bg-dark mb-3">
                     <div class="card-body">
                         <form id="formularioCurso" action="/api/change/" method="POST">
@@ -43,8 +43,8 @@
                                 <h6>Tipo de Documento</h6>
                                 <select class="form-control custom-select-lg" name="ID_TIPO_DOCUMENTO"
                                     id="ID_TIPO_DOCUMENTO">
-                                    <option value="C">Cedula</option>
-                                    <option value="T">T. de indentidd</option>
+                                    <option value="cedulaCiudadania">Cedula</option>
+                                    <option value="tarjetaIdentidad">T. de indentidd</option>
                                 </select>
                             </div>
 
@@ -90,10 +90,11 @@
                             <div class="form-group m-2">
                                 <h6>Estado Civil</h6>
                                 <select class="form-control custom-select-lg" name="ID_ESTADO_CIVIL" id="ID_ESTADO_CIVIL" required>
-                                    <option value="1" {% if Std_C.ID_ESTADO_CIVIL == 1 %}selected{% endif %}>Soltero</option>
-                                    <option value="2" {% if Std_C.ID_ESTADO_CIVIL == 2 %}selected{% endif %}>Casado</option>
-                                    <option value="3" {% if Std_C.ID_ESTADO_CIVIL == 3 %}selected{% endif %}>Unión libre</option>
-                                    <option value="4" {% if Std_C.ID_ESTADO_CIVIL == 4 %}selected{% endif %}>Viudo(a)</option>
+                                    <option value="1" {% if Std_C.ID_ESTADO_CIVIL == 1 %}selected{% endif %}>Casado</option>
+                                    <option value="2" {% if Std_C.ID_ESTADO_CIVIL == 2 %}selected{% endif %}>Separado</option>
+                                    <option value="3" {% if Std_C.ID_ESTADO_CIVIL == 3 %}selected{% endif %}>Soltero</option>
+                                    <option value="4" {% if Std_C.ID_ESTADO_CIVIL == 4 %}selected{% endif %}>Union Libre</option>
+                                    <option value="5" {% if Std_C.ID_ESTADO_CIVIL == 5 %}selected{% endif %}>Viudo</option>
                                 </select>
                             </div>
                             
@@ -115,8 +116,10 @@
                             <div class="form-group m-2">
                                 <h6>¿Tiene usted alguna discapacidad?</h6>
                                 <select class="form-control custom-select-lg" name="ID_TIPO_DISC" id="ID_TIPO_DISC" required>
-                                    <option value="1" {% if Std_C.ID_TIPO_DISC == 1 %}selected{% endif %}>Si</option>
-                                    <option value="2" {% if Std_C.ID_TIPO_DISC == 2 %}selected{% endif %}>No</option>
+                                    <option value="1" {% if Std_C.ID_TIPO_DISC == 1 %}selected{% endif %}>Movilidad Reducida</option>
+                                    <option value="2" {% if Std_C.ID_TIPO_DISC == 2 %}selected{% endif %}>Ninguna</option>
+                                    <option value="3" {% if Std_C.ID_TIPO_DISC == 3 %}selected{% endif %}>Auditiva</option>
+                                    <option value="4" {% if Std_C.ID_TIPO_DISC == 4 %}selected{% endif %}>Visual</option>
                                 </select>
                             </div>
                             
@@ -124,11 +127,11 @@
                             <div class="form-group m-2">
                                 <h6>Etnia</h6>
                                 <select class="form-control custom-select-lg" name="ID_ETNIA" id="ID_ETNIA" required>
-                                    <option value="1" {% if Std_C.ID_ETNIA == 1 %}selected{% endif %}>Sin distincion racial</option>
-                                    <option value="2" {% if Std_C.ID_ETNIA == 2 %}selected{% endif %}>Negro, mulato, afrodescendiente, afrocolombiano</option>
-                                    <option value="3" {% if Std_C.ID_ETNIA == 3 %}selected{% endif %}>Indígena libre</option>
-                                    <option value="4" {% if Std_C.ID_ETNIA == 4 %}selected{% endif %}>Raizal(a)</option>
-                                    <option value="5" {% if Std_C.ID_ETNIA == 5 %}selected{% endif %}>Palenquero</option>
+                                    <option value="1" {% if Std_C.ID_ETNIA == 1 %}selected{% endif %}>Indígena libre</option>
+                                    <option value="2" {% if Std_C.ID_ETNIA == 2 %}selected{% endif %}>Palenquero</option>
+                                    <option value="3" {% if Std_C.ID_ETNIA == 3 %}selected{% endif %}>Sin distincion racial</option>
+                                    <option value="4" {% if Std_C.ID_ETNIA == 4 %}selected{% endif %}>Negro, mulato, afrodescendiente, afrocolombiano</option>
+                                    <option value="5" {% if Std_C.ID_ETNIA == 5 %}selected{% endif %}>Raizal(a)</option>
                                 </select>
                             </div>
                             
@@ -173,13 +176,13 @@
                             <div class="form-group m-2">
                                 <h6>Ocupación de la madre</h6>
                                 <select class="form-control custom-select-lg" name="ID_OCUP_MADRE" id="ID_OCUP_MADRE" required>
-                                    <option value="1" {% if Std_C.ID_OCUP_MADRE == 1 %}selected{% endif %}>Labora</option>
-                                    <option value="2" {% if Std_C.ID_OCUP_MADRE == 2 %}selected{% endif %}>Ama de casa</option>
-                                    <option value="3" {% if Std_C.ID_OCUP_MADRE == 3 %}selected{% endif %}>Pensionada</option>
-                                    <option value="4" {% if Std_C.ID_OCUP_MADRE == 4 %}selected{% endif %}>Fallecida</option>
-                                    <option value="5" {% if Std_C.ID_OCUP_MADRE == 5 %}selected{% endif %}>Estudiante</option>
-                                    <option value="6" {% if Std_C.ID_OCUP_MADRE == 6 %}selected{% endif %}>Madre cabeza de hogar</option>
-                                    <option value="7" {% if Std_C.ID_OCUP_MADRE == 7 %}selected{% endif %}>No registra</option>
+                                    <option value="1" {% if Std_C.ID_OCUP_MADRE == 1 %}selected{% endif %}>Ama de casa</option>
+                                    <option value="2" {% if Std_C.ID_OCUP_MADRE == 2 %}selected{% endif %}>Estudiante</option>
+                                    <option value="3" {% if Std_C.ID_OCUP_MADRE == 3 %}selected{% endif %}>Fallecida</option>
+                                    <option value="4" {% if Std_C.ID_OCUP_MADRE == 4 %}selected{% endif %}>Independiente</option>
+                                    <option value="5" {% if Std_C.ID_OCUP_MADRE == 5 %}selected{% endif %}>Labora</option>
+                                    <option value="6" {% if Std_C.ID_OCUP_MADRE == 6 %}selected{% endif %}>Madre Cabeza de hogar/option>
+                                    <option value="7" {% if Std_C.ID_OCUP_MADRE == 7 %}selected{% endif %}>Pensionada</option>
                                 </select>
                             </div>
                             
@@ -187,13 +190,12 @@
                             <div class="form-group m-2">
                                 <h6>Ocupación del padre</h6>
                                 <select class="form-control custom-select-lg" name="ID_OCUP_PADRE" id="ID_OCUP_PADRE" required>
-                                    <option value="1" {% if Std_C.ID_OCUP_PADRE == 1 %}selected{% endif %}>Labora</option>
-                                    <option value="2" {% if Std_C.ID_OCUP_PADRE == 2 %}selected{% endif %}>Ama de casa</option>
-                                    <option value="3" {% if Std_C.ID_OCUP_PADRE == 3 %}selected{% endif %}>Pensionado</option>
-                                    <option value="4" {% if Std_C.ID_OCUP_PADRE == 4 %}selected{% endif %}>Fallecido</option>
-                                    <option value="5" {% if Std_C.ID_OCUP_PADRE == 5 %}selected{% endif %}>Estudiante</option>
-                                    <option value="6" {% if Std_C.ID_OCUP_PADRE == 6 %}selected{% endif %}>Padre cabeza de hogar</option>
-                                    <option value="7" {% if Std_C.ID_OCUP_PADRE == 7 %}selected{% endif %}>No registra</option>
+                                    <option value="1" {% if Std_C.ID_OCUP_PADRE == 1 %}selected{% endif %}>Padre cabeza de hogar</option>
+                                    <option value="2" {% if Std_C.ID_OCUP_PADRE == 2 %}selected{% endif %}>Pensionado</option>
+                                    <option value="3" {% if Std_C.ID_OCUP_PADRE == 3 %}selected{% endif %}>Fallecido</option>
+                                    <option value="4" {% if Std_C.ID_OCUP_PADRE == 4 %}selected{% endif %}>Independiente</option>
+                                    <option value="5" {% if Std_C.ID_OCUP_PADRE == 5 %}selected{% endif %}>Labora</option>
+                                    <option value="6" {% if Std_C.ID_OCUP_PADRE == 6 %}selected{% endif %}>Estudiante</option>
                                 </select>
                             </div>
                             
@@ -229,8 +231,19 @@
                             <div class="form-group m-2">
                                 <h6>¿Tiene Talentos?</h6>
                                 <select class="form-control custom-select-lg" name="ID_TALENTO" id="ID_TALENTO" required>
-                                    <option value="1" {% if Std_C.ID_TALENTO == 1 %}selected{% endif %}>Si</option>
-                                    <option value="2" {% if Std_C.ID_TALENTO == 2 %}selected{% endif %}>No</option>
+                                    <option value="0" {% if Std_C.ID_TALENTO == 0 %}selected{% endif %}>No tengo</option>
+                                    <option value="1" {% if Std_C.ID_TALENTO == 1 %}selected{% endif %}>Actor</option>
+                                    <option value="2" {% if Std_C.ID_TALENTO == 2 %}selected{% endif %}>Atletismo</option>
+                                    <option value="3" {% if Std_C.ID_TALENTO == 3 %}selected{% endif %}>Bailarin</option>
+                                    <option value="4" {% if Std_C.ID_TALENTO == 4 %}selected{% endif %}>Baloncesto</option>
+                                    <option value="5" {% if Std_C.ID_TALENTO == 5 %}selected{% endif %}>Futbol</option>
+                                    <option value="6" {% if Std_C.ID_TALENTO == 6 %}selected{% endif %}>Futbol sala</option>
+                                    <option value="7" {% if Std_C.ID_TALENTO == 7 %}selected{% endif %}>Musico</option>
+                                    <option value="8" {% if Std_C.ID_TALENTO == 8 %}selected{% endif %}>Natacion</option>
+                                    <option value="9" {% if Std_C.ID_TALENTO == 9 %}selected{% endif %}>Softbol</option>
+                                    <option value="10" {% if Std_C.ID_TALENTO == 10 %}selected{% endif %}>Taewondo</option>
+                                    <option value="11" {% if Std_C.ID_TALENTO == 11 %}selected{% endif %}>Tenis de mesaa</option>
+                                    <option value="12" {% if Std_C.ID_TALENTO == 12 %}selected{% endif %}>Voleibol</option>
                                 </select>
                             </div>
                             
@@ -281,10 +294,10 @@
                                 <h6> ¿Tipo de vivienda?</h6>
                                 <select class="form-control custom-select-lg" name="ID_TIPO_VIVIENDA"
                                     id="ID_TIPO_VIVIENDA" required>
-                                    <option value="1">Propia</option>
-                                    <option value="2">Arrendada</option>
-                                    <option value="3">Familiar</option>
-                                    <option value="4">Otra</option>
+                                    <option value="1" {% if Std_S.ID_TIPO_VIVIENDA == 1 %}selected{% endif %}>Propia</option>
+                                    <option value="2" {% if Std_S.ID_TIPO_VIVIENDA == 2 %}selected{% endif %}>Arrendada</option>
+                                    <option value="3" {% if Std_S.ID_TIPO_VIVIENDA == 3 %}selected{% endif %}>Familiar</option>
+                                    <option value="4" {% if Std_S.ID_TIPO_VIVIENDA == 4 %}selected{% endif %}>Otra</option>
                                 </select>
                             </div>
 
@@ -311,9 +324,10 @@
                                 <h6>Nivel académico</h6>
                                 <select class="form-control custom-select-lg" name="ID_NIVEL_ACADEMICO" id="ID_NIVEL_ACADEMICO" required>
                                     <option value="1" {% if Std_S.ID_NIVEL_ACADEMICO == 1 %}selected{% endif %}>Bachiller</option>
-                                    <option value="2" {% if Std_S.ID_NIVEL_ACADEMICO == 2 %}selected{% endif %}>Técnico Bachiller</option>
-                                    <option value="3" {% if Std_S.ID_NIVEL_ACADEMICO == 3 %}selected{% endif %}>Universitario</option>
+                                    <option value="2" {% if Std_S.ID_NIVEL_ACADEMICO == 2 %}selected{% endif %}>Técnico</option>
+                                    <option value="3" {% if Std_S.ID_NIVEL_ACADEMICO == 3 %}selected{% endif %}>Técnico Bachiller</option>
                                     <option value="4" {% if Std_S.ID_NIVEL_ACADEMICO == 4 %}selected{% endif %}>Tecnólogo</option>
+                                    <option value="5" {% if Std_S.ID_NIVEL_ACADEMICO == 5 %}selected{% endif %}>Universitario</option>
                                 </select>
                             </div>
                             
@@ -372,27 +386,28 @@
                             <div class="form-group m-2">
                                 <h6>Seleccione la carrera universitaria que está estudiando actualmente</h6>
                                 <select class="form-control custom-select-lg" name="ID_PROGR_ACTUAL" id="ID_PROGR_ACTUAL" required>
-                                    <option value="1" {% if Std_A.ID_PROGR_ACTUAL == 1 %}selected{% endif %}>Administracion de empresas</option>
-                                    <option value="2" {% if Std_A.ID_PROGR_ACTUAL == 2 %}selected{% endif %}>Administracion Turistica</option>
-                                    <option value="3" {% if Std_A.ID_PROGR_ACTUAL == 3 %}selected{% endif %}>Comercio Internacional</option>
+                                    <option value="16" {% if Std_A.ID_PROGR_ACTUAL == 16 %}selected{% endif %}>Administracion de empresas</option>
+                                    <option value="8" {% if Std_A.ID_PROGR_ACTUAL == 8 %}selected{% endif %}>Administracion Turistica</option>
+                                    <option value="12" {% if Std_A.ID_PROGR_ACTUAL == 12 %}selected{% endif %}>Comercio Internacional</option>
                                     <option value="5" {% if Std_A.ID_PROGR_ACTUAL == 5 %}selected{% endif %}>Contaduria publica</option>
                                     <option value="6" {% if Std_A.ID_PROGR_ACTUAL == 6 %}selected{% endif %}>Economia</option>
                                     <option value="7" {% if Std_A.ID_PROGR_ACTUAL == 7 %}selected{% endif %}>Derecho</option>
-                                    <option value="8" {% if Std_A.ID_PROGR_ACTUAL == 8 %}selected{% endif %}>Psicologia</option>
+                                    <option value="3" {% if Std_A.ID_PROGR_ACTUAL == 3 %}selected{% endif %}>Psicologia</option>
                                     <option value="9" {% if Std_A.ID_PROGR_ACTUAL == 9 %}selected{% endif %}>Sociologia</option>
                                     <option value="10" {% if Std_A.ID_PROGR_ACTUAL == 10 %}selected{% endif %}>Enfermeria</option>
                                     <option value="11" {% if Std_A.ID_PROGR_ACTUAL == 11 %}selected{% endif %}>Instrumentacion</option>
-                                    <option value="12" {% if Std_A.ID_PROGR_ACTUAL == 12 %}selected{% endif %}>Microbiologia</option>
+                                    <option value="2" {% if Std_A.ID_PROGR_ACTUAL == 2 %}selected{% endif %}>Microbiologia</option>
                                     <option value="13" {% if Std_A.ID_PROGR_ACTUAL == 13 %}selected{% endif %}>Ing. Agroindustrial</option>
                                     <option value="14" {% if Std_A.ID_PROGR_ACTUAL == 14 %}selected{% endif %}>Ing. Ambiental</option>
                                     <option value="15" {% if Std_A.ID_PROGR_ACTUAL == 15 %}selected{% endif %}>Ing. de Sistemas</option>
-                                    <option value="16" {% if Std_A.ID_PROGR_ACTUAL == 16 %}selected{% endif %}>Ing. Electronica</option>
+                                    <option value="1" {% if Std_A.ID_PROGR_ACTUAL == 1 %}selected{% endif %}>Ing. Electronica</option>
                                     <option value="17" {% if Std_A.ID_PROGR_ACTUAL == 17 %}selected{% endif %}>Lic. Español e ingles</option>
                                     <option value="18" {% if Std_A.ID_PROGR_ACTUAL == 18 %}selected{% endif %}>Lic. en Castellano</option>
                                     <option value="19" {% if Std_A.ID_PROGR_ACTUAL == 19 %}selected{% endif %}>Musica</option>
                                     <option value="20" {% if Std_A.ID_PROGR_ACTUAL == 20 %}selected{% endif %}>Lic. Educacion Fisica</option>
                                     <option value="21" {% if Std_A.ID_PROGR_ACTUAL == 21 %}selected{% endif %}>Lic. Ciencias naturales</option>
                                     <option value="22" {% if Std_A.ID_PROGR_ACTUAL == 22 %}selected{% endif %}>Lic. en Arte</option>
+                                    <option value="4" {% if Std_A.ID_PROGR_ACTUAL == 4 %}selected{% endif %}>No registra</option>
                                 </select>
                             </div>
                             
@@ -407,15 +422,15 @@
                             <div class="form-group m-2">
                                 <h6>Usted ingresó a la Universidad Popular del Cesar por medio de según su oferta académica</h6>
                                 <select class="form-control custom-select-lg" name="ID_INGRESO_UPC" id="ID_INGRESO_UPC" required>
-                                    <option value="1" {% if Std_A.ID_INGRESO_UPC == 1 %}selected{% endif %}>Aspirante Regular</option>
-                                    <option value="2" {% if Std_A.ID_INGRESO_UPC == 2 %}selected{% endif %}>Preuniversitario</option>
-                                    <option value="3" {% if Std_A.ID_INGRESO_UPC == 3 %}selected{% endif %}>Deportista Destacado</option>
-                                    <option value="5" {% if Std_A.ID_INGRESO_UPC == 5 %}selected{% endif %}>Perteneciente a cabildo indigena</option>
-                                    <option value="6" {% if Std_A.ID_INGRESO_UPC == 6 %}selected{% endif %}>Transferencia interna</option>
-                                    <option value="7" {% if Std_A.ID_INGRESO_UPC == 7 %}selected{% endif %}>Transferencia externa</option>
-                                    <option value="8" {% if Std_A.ID_INGRESO_UPC == 8 %}selected{% endif %}>Reintegro</option>
-                                    <option value="9" {% if Std_A.ID_INGRESO_UPC == 9 %}selected{% endif %}>Reserva de cupo</option>
-                                    <option value="10" {% if Std_A.ID_INGRESO_UPC == 10 %}selected{% endif %}>Otro</option>
+                                    <option value="1" {% if Std_A.ID_INGRESO_UPC == 1 %}selected{% endif %}>Preuniversitario</option>
+                                    <option value="2" {% if Std_A.ID_INGRESO_UPC == 2 %}selected{% endif %}>Aspirante Regular</option>
+                                    <option value="3" {% if Std_A.ID_INGRESO_UPC == 3 %}selected{% endif %}>Perteneciente a cabildo indigena</option>
+                                    <option value="5" {% if Std_A.ID_INGRESO_UPC == 4 %}selected{% endif %}>Reintegro</option>
+                                    <option value="5" {% if Std_A.ID_INGRESO_UPC == 5 %}selected{% endif %}>Reserva de cupo</option>
+                                    <option value="6" {% if Std_A.ID_INGRESO_UPC == 6 %}selected{% endif %}>Transferencia externa</option>
+                                    <option value="7" {% if Std_A.ID_INGRESO_UPC == 7 %}selected{% endif %}>Transferencia interna</option>
+                                    <option value="8" {% if Std_A.ID_INGRESO_UPC == 8 %}selected{% endif %}>Otro</option>
+                                    <option value="9" {% if Std_A.ID_INGRESO_UPC == 9 %}selected{% endif %}>Deportista Destacado</option>
                                 </select>
                             </div>
                             
@@ -460,34 +475,34 @@
                             <div class="form-group m-2">
                                 <h6>En qué semestre iniciaste tu carrera profesional en la Universidad Popular del Cesar</h6>
                                 <select class="form-control custom-select-lg" name="ID_SEMESTRE_INICIO" id="ID_SEMESTRE_INICIO" required>
-                                    <option value="1" {% if Std_A.ID_SEMESTRE_INICIO == '1' %}selected{% endif %}>2010-1</option>
-                                    <option value="2" {% if Std_A.ID_SEMESTRE_INICIO == '2' %}selected{% endif %}>2010-2</option>
-                                    <option value="3" {% if Std_A.ID_SEMESTRE_INICIO == '3' %}selected{% endif %}>2011-1</option>
-                                    <option value="5" {% if Std_A.ID_SEMESTRE_INICIO == '5' %}selected{% endif %}>2011-2</option>
-                                    <option value="6" {% if Std_A.ID_SEMESTRE_INICIO == '6' %}selected{% endif %}>2012-1</option>
-                                    <option value="7" {% if Std_A.ID_SEMESTRE_INICIO == '7' %}selected{% endif %}>2012-2</option>
-                                    <option value="8" {% if Std_A.ID_SEMESTRE_INICIO == '8' %}selected{% endif %}>2013-1</option>
-                                    <option value="9" {% if Std_A.ID_SEMESTRE_INICIO == '9' %}selected{% endif %}>2013-2</option>
-                                    <option value="10" {% if Std_A.ID_SEMESTRE_INICIO == '10' %}selected{% endif %}>2014-1</option>
-                                    <option value="11" {% if Std_A.ID_SEMESTRE_INICIO == '11' %}selected{% endif %}>2014-2</option>
-                                    <option value="12" {% if Std_A.ID_SEMESTRE_INICIO == '12' %}selected{% endif %}>2015-1</option>
-                                    <option value="13" {% if Std_A.ID_SEMESTRE_INICIO == '13' %}selected{% endif %}>2015-2</option>
-                                    <option value="14" {% if Std_A.ID_SEMESTRE_INICIO == '14' %}selected{% endif %}>2016-1</option>
-                                    <option value="15" {% if Std_A.ID_SEMESTRE_INICIO == '15' %}selected{% endif %}>2016-2</option>
-                                    <option value="16" {% if Std_A.ID_SEMESTRE_INICIO == '16' %}selected{% endif %}>2017-1</option>
-                                    <option value="17" {% if Std_A.ID_SEMESTRE_INICIO == '17' %}selected{% endif %}>2017-2</option>
-                                    <option value="18" {% if Std_A.ID_SEMESTRE_INICIO == '18' %}selected{% endif %}>2018-1</option>
-                                    <option value="19" {% if Std_A.ID_SEMESTRE_INICIO == '19' %}selected{% endif %}>2018-2</option>
-                                    <option value="20" {% if Std_A.ID_SEMESTRE_INICIO == '20' %}selected{% endif %}>2019-1</option>
-                                    <option value="21" {% if Std_A.ID_SEMESTRE_INICIO == '21' %}selected{% endif %}>2019-2</option>
-                                    <option value="22" {% if Std_A.ID_SEMESTRE_INICIO == '22' %}selected{% endif %}>2020-1</option>
-                                    <option value="23" {% if Std_A.ID_SEMESTRE_INICIO == '23' %}selected{% endif %}>2020-2</option>
-                                    <option value="24" {% if Std_A.ID_SEMESTRE_INICIO == '24' %}selected{% endif %}>2021-1</option>
-                                    <option value="25" {% if Std_A.ID_SEMESTRE_INICIO == '25' %}selected{% endif %}>2021-2</option>
-                                    <option value="26" {% if Std_A.ID_SEMESTRE_INICIO == '26' %}selected{% endif %}>2022-1</option>
-                                    <option value="27" {% if Std_A.ID_SEMESTRE_INICIO == '27' %}selected{% endif %}>2022-2</option>
-                                    <option value="28" {% if Std_A.ID_SEMESTRE_INICIO == '28' %}selected{% endif %}>2023-1</option>
-                                    <option value="29" {% if Std_A.ID_SEMESTRE_INICIO == '29' %}selected{% endif %}>2023-2</option>
+                                    <option value="24" {% if Std_A.ID_SEMESTRE_INICIO == '24' %}selected{% endif %}>2010-1</option>
+                                    <option value="26" {% if Std_A.ID_SEMESTRE_INICIO == '26' %}selected{% endif %}>2010-2</option>
+                                    <option value="25" {% if Std_A.ID_SEMESTRE_INICIO == '25' %}selected{% endif %}>2011-1</option>
+                                    <option value="27" {% if Std_A.ID_SEMESTRE_INICIO == '27' %}selected{% endif %}>2011-2</option>
+                                    <option value="1" {% if Std_A.ID_SEMESTRE_INICIO == '1' %}selected{% endif %}>2012-1</option>
+                                    <option value="23" {% if Std_A.ID_SEMESTRE_INICIO == '23' %}selected{% endif %}>2012-2</option>
+                                    <option value="2" {% if Std_A.ID_SEMESTRE_INICIO == '2' %}selected{% endif %}>2013-1</option>
+                                    <option value="3" {% if Std_A.ID_SEMESTRE_INICIO == '3' %}selected{% endif %}>2013-2</option>
+                                    <option value="4" {% if Std_A.ID_SEMESTRE_INICIO == '4' %}selected{% endif %}>2014-1</option>
+                                    <option value="5" {% if Std_A.ID_SEMESTRE_INICIO == '5' %}selected{% endif %}>2014-2</option>
+                                    <option value="6" {% if Std_A.ID_SEMESTRE_INICIO == '6' %}selected{% endif %}>2015-1</option>
+                                    <option value="7" {% if Std_A.ID_SEMESTRE_INICIO == '7' %}selected{% endif %}>2015-2</option>
+                                    <option value="8" {% if Std_A.ID_SEMESTRE_INICIO == '8' %}selected{% endif %}>2016-1</option>
+                                    <option value="9" {% if Std_A.ID_SEMESTRE_INICIO == '9' %}selected{% endif %}>2016-2</option>
+                                    <option value="10" {% if Std_A.ID_SEMESTRE_INICIO == '10' %}selected{% endif %}>2017-1</option>
+                                    <option value="11" {% if Std_A.ID_SEMESTRE_INICIO == '11' %}selected{% endif %}>2017-2</option>
+                                    <option value="12" {% if Std_A.ID_SEMESTRE_INICIO == '12' %}selected{% endif %}>2018-1</option>
+                                    <option value="13" {% if Std_A.ID_SEMESTRE_INICIO == '13' %}selected{% endif %}>2018-2</option>
+                                    <option value="14" {% if Std_A.ID_SEMESTRE_INICIO == '14' %}selected{% endif %}>2019-1</option>
+                                    <option value="15" {% if Std_A.ID_SEMESTRE_INICIO == '15' %}selected{% endif %}>2019-2</option>
+                                    <option value="16" {% if Std_A.ID_SEMESTRE_INICIO == '16' %}selected{% endif %}>2020-1</option>
+                                    <option value="17" {% if Std_A.ID_SEMESTRE_INICIO == '17' %}selected{% endif %}>2020-2</option>
+                                    <option value="18" {% if Std_A.ID_SEMESTRE_INICIO == '18' %}selected{% endif %}>2021-1</option>
+                                    <option value="19" {% if Std_A.ID_SEMESTRE_INICIO == '19' %}selected{% endif %}>2021-2</option>
+                                    <option value="20" {% if Std_A.ID_SEMESTRE_INICIO == '20' %}selected{% endif %}>2022-1</option>
+                                    <option value="21" {% if Std_A.ID_SEMESTRE_INICIO == '21' %}selected{% endif %}>2022-2</option>
+                                    <option value="22" {% if Std_A.ID_SEMESTRE_INICIO == '22' %}selected{% endif %}>2023-1</option>
+                                    <option value="23" {% if Std_A.ID_SEMESTRE_INICIO == '23' %}selected{% endif %}>2023-2</option>
                                 </select>
                             </div>
                             
@@ -564,13 +579,13 @@
                             
                             <div class="form-group m-2">
                                 <h6>¿Cual es su promedio acumulado actual?</h6>
-                                <input type="number" id="ID_PROMEDIO_ACUMULADO" name="ID_PROMEDIO_ACUMULADO" class="form-control" min="1" max="5"
+                                <input type="number" id="ID_PROMEDIO_ACUMULADO" name="ID_PROMEDIO_ACUMULADO" class="form-control" step="any" min="1" max="5"
                                     placeholder="Promedio acumulado" autofocus required value="{{ Std_A.ID_PROMEDIO_ACUMULADO }}">
                             </div>
                             
                             <div class="form-group m-2">
                                 <h6>¿Cual es su promedio del semestre anterior?</h6>
-                                <input type="number" id="ID_PROMEDIO_SEMESTRE_ANT" name="ID_PROMEDIO_SEMESTRE_ANT" class="form-control" min="1" max="5"
+                                <input type="number" id="ID_PROMEDIO_SEMESTRE_ANT" name="ID_PROMEDIO_SEMESTRE_ANT" class="form-control" step="any" min="1" max="5"
                                     placeholder="Promedio Semestre anterior" autofocus required value="{{ Std_A.ID_PROMEDIO_SEMESTRE_ANT }}">
                             </div>
                             
@@ -596,68 +611,77 @@
                             <div class="form-group m-2">
                                 <h6>Desde qué asignatura está haciendo la encuesta</h6>
                                 <select class="form-control custom-select-lg" name="ID_ASIGNATURA_ENCUESTA" id="ID_ASIGNATURA_ENCUESTA" required>
-                                    <option value="MT301B" {% if Std_A.ID_ASIGNATURA_ENCUESTA == 'MT301B' %}selected{% endif %}>ALGEBRA LINEAL COD: MT301B</option>
-                                    <option value="SS407" {% if Std_A.ID_ASIGNATURA_ENCUESTA == 'SS407' %}selected{% endif %}>ALGORITMOS Y FUNDAMENTOS DE PROGRAMACION COD: SS407</option>
-                                    <option value="MT302B" {% if Std_A.ID_ASIGNATURA_ENCUESTA == 'MT302B' %}selected{% endif %}>CALCULO DIFERENCIAL COD: MT302B</option>
-                                    <option value="UPC01" {% if Std_A.ID_ASIGNATURA_ENCUESTA == 'UPC01' %}selected{% endif %}>CATEDRA UPECISTA COD: UPC01</option>
-                                    <option value="HM301" {% if Std_A.ID_ASIGNATURA_ENCUESTA == 'HM301' %}selected{% endif %}>HUMANIDADES I COD: HM301</option>
-                                    <option value="EL435" {% if Std_A.ID_ASIGNATURA_ENCUESTA == 'EL435' %}selected{% endif %}>INTRODUCCION A LA INGENIERIA ELECTRONICA COD: EL435</option>
-                                    <option value="PG312" {% if Std_A.ID_ASIGNATURA_ENCUESTA == 'PG312' %}selected{% endif %}>TECNICAS DE AUTOAPRENDIZAJE COD: PG312</option>
-                                    <option value="MT303B" {% if Std_A.ID_ASIGNATURA_ENCUESTA == 'MT303B' %}selected{% endif %}>CALCULO INTEGRAL COD: MT303B</option>
-                                    <option value="EL436" {% if Std_A.ID_ASIGNATURA_ENCUESTA == 'EL436' %}selected{% endif %}>HERRAMIENTAS DE SOFTWARE COD: EL436</option>
-                                    <option value="HM302" {% if Std_A.ID_ASIGNATURA_ENCUESTA == 'HM302' %}selected{% endif %}>HUMANIDADES II COD: HM302</option>
-                                    <option value="UPC04" {% if Std_A.ID_ASIGNATURA_ENCUESTA == 'UPC04' %}selected{% endif %}>LENGUA EXTRANJERA-GRAMATICA COD: UPC04</option>
-                                    <option value="S314" {% if Std_A.ID_ASIGNATURA_ENCUESTA == 'S314' %}selected{% endif %}>MECANICA COD: FS314</option>
-                                    <option value="SS401" {% if Std_A.ID_ASIGNATURA_ENCUESTA == 'SS401' %}selected{% endif %}>PROGRAMACION DE COMPUTADORES I COD: SS401</option>
-                                    <option value="EL437" {% if Std_A.ID_ASIGNATURA_ENCUESTA == 'EL437' %}selected{% endif %}>SEMILLERO DE INVESTIGACION COD: EL437</option>
-                                    <option value="MT304B" {% if Std_A.ID_ASIGNATURA_ENCUESTA == 'MT304B' %}selected{% endif %}>CALCULO MULTIVARIABLE COD: MT304B</option>
-                                    <option value="EL401" {% if Std_A.ID_ASIGNATURA_ENCUESTA == 'EL401' %}selected{% endif %}>CIRCUITOS I COD: EL401</option>
-                                    <option value="FS311" {% if Std_A.ID_ASIGNATURA_ENCUESTA == 'FS311' %}selected{% endif %}>ELECTROMAGNETISMO COD: FS311</option>
-                                    <option value="MT307B" {% if Std_A.ID_ASIGNATURA_ENCUESTA == 'MT307B' %}selected{% endif %}>ESTADISTICA DESCRIPTIVA E INFERENCIAL COD: MT307B</option>
-                                    <option value="UPC05" {% if Std_A.ID_ASIGNATURA_ENCUESTA == 'UPC05' %}selected{% endif %}>LENGUA EXTRANJERA-LECTURA COD: UPC05</option>
-                                    <option value="EL438" {% if Std_A.ID_ASIGNATURA_ENCUESTA == 'EL438' %}selected{% endif %}>METODOLOGIA DE LA INVESTIGACION COD: EL438</option>
-                                    <option value="MT309B" {% if Std_A.ID_ASIGNATURA_ENCUESTA == 'MT309B' %}selected{% endif %}>ANALISIS NUMERICO COD: MT309B</option>
-                                    <option value="EL408" {% if Std_A.ID_ASIGNATURA_ENCUESTA == 'EL408' %}selected{% endif %}>CIRCUITOS II COD: EL408</option>
-                                    <option value="MT305B" {% if Std_A.ID_ASIGNATURA_ENCUESTA == 'MT305B' %}selected{% endif %}>ECUACIONES DIFERENCIALES ORDINARIAS COD: MT305B</option>
-                                    <option value="EL402" {% if Std_A.ID_ASIGNATURA_ENCUESTA == 'EL402' %}selected{% endif %}>ELECTRONICA I COD: EL402</option>
-                                    <option value="UPC06" {% if Std_A.ID_ASIGNATURA_ENCUESTA == 'UPC06' %}selected{% endif %}>LENGUA EXTRANJERA-ESCRITURA COD: UPC06</option>
-                                    <option value="FS315E" {% if Std_A.ID_ASIGNATURA_ENCUESTA == 'FS315E' %}selected{% endif %}>ONDAS ELECTROMACNETICAS COD: FS315E</option>
-                                    <option value="UPC08" {% if Std_A.ID_ASIGNATURA_ENCUESTA == 'UPC08' %}selected{% endif %}>ACTIVIDAD DEPORTIVA COD: UPC08</option>
-                                    <option value="EL411" {% if Std_A.ID_ASIGNATURA_ENCUESTA == 'EL411' %}selected{% endif %}>CIRCUITOS III COD: EL411</option>
-                                    <option value="EL409" {% if Std_A.ID_ASIGNATURA_ENCUESTA == 'EL409' %}selected{% endif %}>DIGITALES I COD: EL409</option>
-                                    <option value="EL412" {% if Std_A.ID_ASIGNATURA_ENCUESTA == 'EL412' %}selected{% endif %}>ELECTRONICA II COD: EL412</option>
-                                    <option value="FS328" {% if Std_A.ID_ASIGNATURA_ENCUESTA == 'FS328' %}selected{% endif %}>FISICA MODERNA Y OPTICA COD: FS328</option>
-                                    <option value="MT306B" {% if Std_A.ID_ASIGNATURA_ENCUESTA == 'MT306B' %}selected{% endif %}>FUNCIONES ESPECIALES Y ECUACIONES DIFERENCIALES COD: MT306B</option>
-                                    <option value="EL439" {% if Std_A.ID_ASIGNATURA_ENCUESTA == 'EL439' %}selected{% endif %}>SEMINARIO DE INVESTIGACION COD: EL439</option>
-                                    <option value="UPC09" {% if Std_A.ID_ASIGNATURA_ENCUESTA == 'UPC09' %}selected{% endif %}>ACTIVIDAD CULTURAL COD: UPC09</option>
-                                    <option value="AEL431" {% if Std_A.ID_ASIGNATURA_ENCUESTA == 'AEL431' %}selected{% endif %}>ANALISIS DE SEÑALES COD: EL431</option>
-                                    <option value="EL410" {% if Std_A.ID_ASIGNATURA_ENCUESTA == 'EL410' %}selected{% endif %}>DIGITALES II COD: EL410</option>
-                                    <option value="EL416" {% if Std_A.ID_ASIGNATURA_ENCUESTA == 'EL416' %}selected{% endif %}>ELECTRONICA III COD: EL416</option>
-                                    <option value="AI420" {% if Std_A.ID_ASIGNATURA_ENCUESTA == 'AI420' %}selected{% endif %}>INGENIERIA ECONOMICA COD: AI420</option>
-                                    <option value="UPC07" {% if Std_A.ID_ASIGNATURA_ENCUESTA == 'UPC07' %}selected{% endif %}>LENGUA EXTRANJERA CONVERSACION COD: UPC07</option>
-                                    <option value="EL440" {% if Std_A.ID_ASIGNATURA_ENCUESTA == 'EL440' %}selected{% endif %}>MAQUINAS ELECTRICAS COD: EL440</option>
-                                    <option value="EL432" {% if Std_A.ID_ASIGNATURA_ENCUESTA == 'EL432' %}selected{% endif %}>MODELAMIENTO Y SIMULACION COD: EL432</option>
-                                    <option value="EL417" {% if Std_A.ID_ASIGNATURA_ENCUESTA == 'EL417' %}selected{% endif %}>CONTROL I COD: EL417</option>
-                                    <option value="EL403" {% if Std_A.ID_ASIGNATURA_ENCUESTA == 'EL403' %}selected{% endif %}>DIGITALES III COD: EL403</option>
-                                    <option value="EL419" {% if Std_A.ID_ASIGNATURA_ENCUESTA == 'EL419' %}selected{% endif %}>ELECTRONICA DE POTENCIA COD: EL419</option>
-                                    <option value="AE118" {% if Std_A.ID_ASIGNATURA_ENCUESTA == 'AE118' %}selected{% endif %}>GERENCIA COD: AE118</option>
-                                    <option value="EL441" {% if Std_A.ID_ASIGNATURA_ENCUESTA == 'EL441' %}selected{% endif %}>LABORATORIO DE DISEÑO INTEGRAL COD: EL441</option>
-                                    <option value="EL442" {% if Std_A.ID_ASIGNATURA_ENCUESTA == 'EL442' %}selected{% endif %}>TRATAMIENTO DE SEÑALES COD: EL442</option>
-                                    <option value="EL420" {% if Std_A.ID_ASIGNATURA_ENCUESTA == 'EL420' %}selected{% endif %}>COMUNICACIONES I COD: EL420</option>
-                                    <option value="EL422" {% if Std_A.ID_ASIGNATURA_ENCUESTA == 'EL422' %}selected{% endif %}>CONTROL II COD: EL422</option>
-                                    <option value="FC407" {% if Std_A.ID_ASIGNATURA_ENCUESTA == 'FC407' %}selected{% endif %}>FORMULACION Y EVALU DE PROYEC EN INGENIERIA COD: FC407</option>
-                                    <option value="EL424" {% if Std_A.ID_ASIGNATURA_ENCUESTA == 'EL424' %}selected{% endif %}>INSTRUMENTACION COD: EL424</option>
-                                    <option value="EL801" {% if Std_A.ID_ASIGNATURA_ENCUESTA == 'EL801' %}selected{% endif %}>OPTATIVA VIRTUAL COD: EL801</option>
-                                    <option value="EL444" {% if Std_A.ID_ASIGNATURA_ENCUESTA == 'EL444' %}selected{% endif %}>PROFUNDIZACION COD: EL444</option>
-                                    <option value="L443" {% if Std_A.ID_ASIGNATURA_ENCUESTA == 'L443' %}selected{% endif %}>TELEMATICA I COD: EL443</option>
-                                    <option value="FC403" {% if Std_A.ID_ASIGNATURA_ENCUESTA == 'FC403' %}selected{% endif %}>DISEÑO EXPERIMENTAL COD: FC403</option>
-                                    <option value="EL425" {% if Std_A.ID_ASIGNATURA_ENCUESTA == 'EL425' %}selected{% endif %}>COMUNICACIONES II COD: EL425</option>
-                                    <option value="EL445" {% if Std_A.ID_ASIGNATURA_ENCUESTA == 'EL445' %}selected{% endif %}>MEDIOS DE TRANSMISION COD: EL445</option>
-                                    <option value="EL447" {% if Std_A.ID_ASIGNATURA_ENCUESTA == 'EL447' %}selected{% endif %}>PROYECTO I COD: EL447</option>
-                                    <option value="EL446" {% if Std_A.ID_ASIGNATURA_ENCUESTA == 'EL446' %}selected{% endif %}>TELEMATICA II COD: EL446</option>
-                                    <option value="PG013" {% if Std_A.ID_ASIGNATURA_ENCUESTA == 'PG013' %}selected{% endif %}>COMPETENCIAS PEDAGOGICAS COD: PG013</option>
-                                    <option value="DR556" {% if Std_A.ID_ASIGNATURA_ENCUESTA == 'DR556' %}selected{% endif %}>LEGISLACION COD: DR556</option>
-                                    <option value="EL448" {% if Std_A.ID_ASIGNATURA_ENCUESTA == 'EL448' %}selected{% endif %}>PROYECTO II COD: EL448</option>
+                                    <option value="1" {% if Std_A.ID_ASIGNATURA_ENCUESTA == 1 %}selected{% endif %}>ALGEBRA LINEAL COD: MT301B</option>
+                                    <option value="2" {% if Std_A.ID_ASIGNATURA_ENCUESTA == 2 %}selected{% endif %}>ALGORITMOS Y FUNDAMENTOS DE PROGRAMACION COD: SS407</option>
+                                    <option value="3" {% if Std_A.ID_ASIGNATURA_ENCUESTA == 3 %}selected{% endif %}>ANALISIS DE SEÑALES COD: EL431</option>
+                                    <option value="4" {% if Std_A.ID_ASIGNATURA_ENCUESTA == 4 %}selected{% endif %}>CALCULO INTEGRAL COD: MT303B</option>
+                                    <option value="5" {% if Std_A.ID_ASIGNATURA_ENCUESTA == 5 %}selected{% endif %}>CIRCUITOS EN CORRIENTE DIRECTA, COD: EL300</option>
+                                    <option value="6" {% if Std_A.ID_ASIGNATURA_ENCUESTA == 6 %}selected{% endif %}>CIRCUITOS I COD: EL401</option>
+                                    <option value="7" {% if Std_A.ID_ASIGNATURA_ENCUESTA == 7 %}selected{% endif %}>CIRCUITOS II COD: EL408</option>
+                                    <option value="8" {% if Std_A.ID_ASIGNATURA_ENCUESTA == 8 %}selected{% endif %}>CIRCUITOS III COD: EL411</option>
+                                    <option value="9" {% if Std_A.ID_ASIGNATURA_ENCUESTA == 9 %}selected{% endif %}>COMUNICACIONES I COD: EL420</option>
+                                    <option value="10" {% if Std_A.ID_ASIGNATURA_ENCUESTA == 10 %}selected{% endif %}>COMUNICACIONES II COD: EL425</option>
+                                    <option value="11" {% if Std_A.ID_ASIGNATURA_ENCUESTA == 11 %}selected{% endif %}>CONTROL I COD: EL417</option>
+                                    <option value="12" {% if Std_A.ID_ASIGNATURA_ENCUESTA == 12 %}selected{% endif %}>CONTROL II COD: EL422</option>
+                                    <option value="13" {% if Std_A.ID_ASIGNATURA_ENCUESTA == 13 %}selected{% endif %}>DIGITALES I COD: EL409</option>
+                                    <option value="14" {% if Std_A.ID_ASIGNATURA_ENCUESTA == 14 %}selected{% endif %}>ELECTIVA I PROCESAMIENTO DE SEÑALES</option>
+                                    <option value="15" {% if Std_A.ID_ASIGNATURA_ENCUESTA == 15 %}selected{% endif %}>ELECTIVA II PROCESAMIENTO DE SEÑALES</option>
+                                    <option value="16" {% if Std_A.ID_ASIGNATURA_ENCUESTA == 16 %}selected{% endif %}>ELECTIVA III PROCESAMIENTO DE SEÑALES</option>
+                                    <option value="17" {% if Std_A.ID_ASIGNATURA_ENCUESTA == 17 %}selected{% endif %}>ELECTRONICA DE POTENCIA COD: EL419</option>
+                                    <option value="18" {% if Std_A.ID_ASIGNATURA_ENCUESTA == 18 %}selected{% endif %}>ELECTRONICA I COD: EL402</option>
+                                    <option value="19" {% if Std_A.ID_ASIGNATURA_ENCUESTA == 19 %}selected{% endif %}>ELECTRONICA II COD: EL412</option>
+                                    <option value="20" {% if Std_A.ID_ASIGNATURA_ENCUESTA == 20 %}selected{% endif %}>GESTION EMPRESARIAL Y EMPREDIMIENTO COD: MB322</option>
+                                    <option value="21" {% if Std_A.ID_ASIGNATURA_ENCUESTA == 21 %}selected{% endif %}>HERRAMIENTAS DE SOFTWARE COD: EL436</option>
+                                    <option value="22" {% if Std_A.ID_ASIGNATURA_ENCUESTA == 22 %}selected{% endif %}>INSTRUMENTACION COD: EL424</option>
+                                    <option value="23" {% if Std_A.ID_ASIGNATURA_ENCUESTA == 23 %}selected{% endif %}>INTRODUCCION A LA INGENIERIA ELECTRONICA COD: EL435</option>
+                                    <option value="24" {% if Std_A.ID_ASIGNATURA_ENCUESTA == 24 %}selected{% endif %}>LOGICA DIGITAL COD: EL502</option>
+                                    <option value="25" {% if Std_A.ID_ASIGNATURA_ENCUESTA == 25 %}selected{% endif %}>MEDIOS DE TRANSMISION COD: EL445</option>
+                                    <option value="26" {% if Std_A.ID_ASIGNATURA_ENCUESTA == 26 %}selected{% endif %}>MODELAMIENTO Y SIMULACION COD: EL432</option>
+                                    <option value="27" {% if Std_A.ID_ASIGNATURA_ENCUESTA == 27 %}selected{% endif %}>ONDAS ELECTROMACNETICAS COD: FS315E</option>
+                                    <option value="28" {% if Std_A.ID_ASIGNATURA_ENCUESTA == 28 %}selected{% endif %}>PROFUNDIZACION COD: EL444</option>
+                                    <option value="29" {% if Std_A.ID_ASIGNATURA_ENCUESTA == 29 %}selected{% endif %}>PSICOMETRIA COD: EL444</option>
+                                    <option value="30" {% if Std_A.ID_ASIGNATURA_ENCUESTA == 30 %}selected{% endif %}>SEMILLERO DE INVESTIGACION COD: EL437</option>
+                                    <option value="31" {% if Std_A.ID_ASIGNATURA_ENCUESTA == 31 %}selected{% endif %}>SEMILLERO DE PROCESAMIENTO DE SEÑALES</option>
+                                    <option value="32" {% if Std_A.ID_ASIGNATURA_ENCUESTA == 32 %}selected{% endif %}>SEMILLERO DE INVESTIGACION COD: EL439</option>
+                                    <option value="33" {% if Std_A.ID_ASIGNATURA_ENCUESTA == 33 %}selected{% endif %}>TRATAMIENTO DE SEÑALES COD: EL442</option>
+                                    <option value="34" {% if Std_A.ID_ASIGNATURA_ENCUESTA == 34 %}selected{% endif %}>CATEDRA UPECISTA COD: UPC01</option>
+                                    <option value="35" {% if Std_A.ID_ASIGNATURA_ENCUESTA == 35 %}selected{% endif %}>HUMANIDADES I COD: HM301</option>
+                                    <option value="36" {% if Std_A.ID_ASIGNATURA_ENCUESTA == 36 %}selected{% endif %}>CALCULO DIFERENCIAL COD: MT302B</option>
+                                    <option value="37" {% if Std_A.ID_ASIGNATURA_ENCUESTA == 37 %}selected{% endif %}>TECNICAS DE AUTOAPRENDIZAJE COD: PG312</option>
+                                    <option value="38" {% if Std_A.ID_ASIGNATURA_ENCUESTA == 38 %}selected{% endif %}>HUMANIDADES II COD: HM302</option>
+                                    <option value="39" {% if Std_A.ID_ASIGNATURA_ENCUESTA == 39 %}selected{% endif %}>LENGUA EXTRANJERA-GRAMATICA COD: UPC04</option>
+                                    <option value="40" {% if Std_A.ID_ASIGNATURA_ENCUESTA == 40 %}selected{% endif %}>MECANICA COD: FS314</option>
+                                    <option value="41" {% if Std_A.ID_ASIGNATURA_ENCUESTA == 41 %}selected{% endif %}>PROGRAMACION DE COMPUTADORES I COD: SS401</option>
+                                    <option value="42" {% if Std_A.ID_ASIGNATURA_ENCUESTA == 42 %}selected{% endif %}>CALCULO MULTIVARIABLE COD: MT304B</option>
+                                    <option value="43" {% if Std_A.ID_ASIGNATURA_ENCUESTA == 43 %}selected{% endif %}>ELECTROMAGNETISMO COD: FS311</option>
+                                    <option value="44" {% if Std_A.ID_ASIGNATURA_ENCUESTA == 44 %}selected{% endif %}>ESTADISTICA DESCRIPTIVA E INFERENCIAL COD: MT307B</option>
+                                    <option value="45" {% if Std_A.ID_ASIGNATURA_ENCUESTA == 45 %}selected{% endif %}>LENGUA EXTRANJERA-LECTURA COD: UPC05</option>
+                                    <option value="46" {% if Std_A.ID_ASIGNATURA_ENCUESTA == 46 %}selected{% endif %}>METODOLOGIA DE LA INVESTIGACION COD: EL438</option>
+                                    <option value="47" {% if Std_A.ID_ASIGNATURA_ENCUESTA == 47 %}selected{% endif %}>ANALISIS NUMERICO COD: MT309B</option>
+                                    <option value="48" {% if Std_A.ID_ASIGNATURA_ENCUESTA == 48 %}selected{% endif %}>ECUACIONES DIFERENCIALES ORDINARIAS COD: MT305B</option>
+                                    <option value="49" {% if Std_A.ID_ASIGNATURA_ENCUESTA == 49 %}selected{% endif %}>LENGUA EXTRANJERA-ESCRITURA COD: UPC06</option>
+                                    <option value="50" {% if Std_A.ID_ASIGNATURA_ENCUESTA == 50 %}selected{% endif %}>ACTIVIDAD DEPORTIVA COD: UPC08</option>
+                                    <option value="51" {% if Std_A.ID_ASIGNATURA_ENCUESTA == 51 %}selected{% endif %}>FISICA MODERNA Y OPTICA COD: FS328</option>
+                                    <option value="52" {% if Std_A.ID_ASIGNATURA_ENCUESTA == 52 %}selected{% endif %}>FUNCIONES ESPECIALES Y ECUACIONES DIFERENCIALES COD: MT306B</option>
+                                    <option value="53" {% if Std_A.ID_ASIGNATURA_ENCUESTA == 53 %}selected{% endif %}>SEMINARIO DE INVESTIGACION COD: EL439</option>
+                                    <option value="54" {% if Std_A.ID_ASIGNATURA_ENCUESTA == 54 %}selected{% endif %}>ACTIVIDAD CULTURAL COD: UPC09</option>
+                                    <option value="55" {% if Std_A.ID_ASIGNATURA_ENCUESTA == 55 %}selected{% endif %}>DIGITALES II COD: EL410</option>
+                                    <option value="56" {% if Std_A.ID_ASIGNATURA_ENCUESTA == 56 %}selected{% endif %}>ELECTRONICA III COD: EL416</option>
+                                    <option value="57" {% if Std_A.ID_ASIGNATURA_ENCUESTA == 57 %}selected{% endif %}>INGENIERIA ECONOMICA COD: AI420</option>
+                                    <option value="58" {% if Std_A.ID_ASIGNATURA_ENCUESTA == 58 %}selected{% endif %}>LENGUA EXTRANJERA CONVERSACION COD: UPC07</option>
+                                    <option value="59" {% if Std_A.ID_ASIGNATURA_ENCUESTA == 59 %}selected{% endif %}>MAQUINAS ELECTRICAS COD: EL440</option>
+                                    <option value="60" {% if Std_A.ID_ASIGNATURA_ENCUESTA == 60 %}selected{% endif %}>DIGITALES III COD: EL403</option>
+                                    <option value="61" {% if Std_A.ID_ASIGNATURA_ENCUESTA == 61 %}selected{% endif %}>GERENCIA COD: AE118</option>
+                                    <option value="62" {% if Std_A.ID_ASIGNATURA_ENCUESTA == 62 %}selected{% endif %}>LABORATORIO DE DISEÑO INTEGRAL COD: EL441</option>
+                                    <option value="63" {% if Std_A.ID_ASIGNATURA_ENCUESTA == 63 %}selected{% endif %}>FORMULACION Y EVALU DE PROYEC EN INGENIERIA COD: FC407</option>
+                                    <option value="64" {% if Std_A.ID_ASIGNATURA_ENCUESTA == 64 %}selected{% endif %}>OPTATIVA VIRTUAL COD: EL801</option>
+                                    <option value="65" {% if Std_A.ID_ASIGNATURA_ENCUESTA == 65 %}selected{% endif %}>TELEMATICA I COD: EL443</option>
+                                    <option value="66" {% if Std_A.ID_ASIGNATURA_ENCUESTA == 66 %}selected{% endif %}>DISEÑO EXPERIMENTAL COD: FC403</option>
+                                    <option value="67" {% if Std_A.ID_ASIGNATURA_ENCUESTA == 67 %}selected{% endif %}>PROYECTO I COD: EL447</option>
+                                    <option value="68" {% if Std_A.ID_ASIGNATURA_ENCUESTA == 68 %}selected{% endif %}>TELEMATICA II COD: EL446</option>
+                                    <option value="69" {% if Std_A.ID_ASIGNATURA_ENCUESTA == 69 %}selected{% endif %}>COMPETENCIAS PEDAGOGICAS COD: PG013</option>
+                                    <option value="70" {% if Std_A.ID_ASIGNATURA_ENCUESTA == 70 %}selected{% endif %}>LEGISLACION COD: DR556</option>
+                                    <option value="71" {% if Std_A.ID_ASIGNATURA_ENCUESTA == 71 %}selected{% endif %}>PROYECTO II COD: EL448</option>
                                 </select>
                             </div>
                                
@@ -667,13 +691,13 @@
                                     <option value="1" {% if Std_A.ID_JORNADA_ACAD == 1 %}selected{% endif %}>Diurno</option>
                                     <option value="2" {% if Std_A.ID_JORNADA_ACAD == 2 %}selected{% endif %}>Nocturno</option>
                                     <option value="3" {% if Std_A.ID_JORNADA_ACAD == 3 %}selected{% endif %}>Especial</option>
-                                    <option value="5" {% if Std_A.ID_JORNADA_ACAD == 5 %}selected{% endif %}>Sabatico</option>
+                                    <option value="4" {% if Std_A.ID_JORNADA_ACAD == 4 %}selected{% endif %}>Sabatico</option>
                                 </select>
                             </div>
 
                             <div class="form-group m-2">
                                 <h6> Su nota obtenida actualmente en la asignatura donde está siendo encuestado</h6>
-                                <input type="number" id="ID_NOTA_ACTUAL" name="ID_NOTA_ACTUAL" class="form-control" min="0" max="5"
+                                <input type="number" id="ID_NOTA_ACTUAL" name="ID_NOTA_ACTUAL" class="form-control" step="any" min="0" max="5"
                                     placeholder="Nota actual" autofocus value="{{Std_A.ID_NOTA_ACTUAL}}" required />
                             </div>
                             
@@ -683,7 +707,7 @@
                                     <option value="1" {% if Std_A.ID_RENDIMIENTO_ACTUAL == 1 %}selected{% endif %}>Bajo</option>
                                     <option value="2" {% if Std_A.ID_RENDIMIENTO_ACTUAL == 2 %}selected{% endif %}>Medio</option>
                                     <option value="3" {% if Std_A.ID_RENDIMIENTO_ACTUAL == 3 %}selected{% endif %}>Alto</option>
-                                    <option value="5" {% if Std_A.ID_RENDIMIENTO_ACTUAL == 5 %}selected{% endif %}>Excelente</option>
+                                    <option value="4" {% if Std_A.ID_RENDIMIENTO_ACTUAL == 4 %}selected{% endif %}>Excelente</option>
                                 </select>
                             </div>
 
@@ -693,7 +717,7 @@
                                     <option value="1" {% if Std_A.ID_NIVEL_SATISFACION_ASIG == 1 %}selected{% endif %}>Bajo</option>
                                     <option value="2" {% if Std_A.ID_NIVEL_SATISFACION_ASIG == 2 %}selected{% endif %}>Medio</option>
                                     <option value="3" {% if Std_A.ID_NIVEL_SATISFACION_ASIG == 3 %}selected{% endif %}>Alto</option>
-                                    <option value="5" {% if Std_A.ID_NIVEL_SATISFACION_ASIG == 5 %}selected{% endif %}>Excelente</option>
+                                    <option value="4" {% if Std_A.ID_NIVEL_SATISFACION_ASIG == 4 %}selected{% endif %}>Excelente</option>
                                 </select>
                             </div>
                         </div>

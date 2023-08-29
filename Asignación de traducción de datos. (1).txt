@@ -1,0 +1,263 @@
+Asignación de traducción de datos.
+
+Tabla estudiantes
+
+ID_GENERO (Se traduce) *
+0. Otro
+1. Masculino
+2. Femenino
+
+ID_VIC_CONFLICTO (Se traduce) *
+1. Sí
+2. No
+
+ID_ESTADO_CIVIL (Se traduce) *
+1. Casado
+2. Separado
+3. Soltero
+4. Unión libre
+5. Viudo
+
+ID_TIPO_DISC (Se traduce) *
+1. Movilidad reducida
+2. Ninguna
+3. Auditiva
+4. Visual 
+
+ID_ETNIA (Se traduce) *
+1. Indigena 
+2. Palenquero
+3. Sre
+4. Nmaa
+5. Raizal
+
+ID_MAD_CAB_HOGAR (Se traduce) *
+0. nRegistra
+1. Sí
+2. No
+
+ID_OCUP_MADRE  (Se traduce) *
+0. nRegistra
+1. amaCasa
+2. Estudiante
+3. Fallecida
+4. Independiente
+5. Labora 
+6. MadreCabezaHogar
+7. Pensionada
+
+ID_OCUP_PADRE  (Se traduce) *
+0. nRegistra
+1. PadreCabezaHogar
+2. Pensionado
+3. Fallecido
+4. Independiente
+5. Labora
+
+ID_TALENTO (Se traduce) *
+0. nRegistra
+1. Actor
+2. Atletismo
+3. Bailarin 
+4. Baloncesto
+5. Fútbol
+6. Fútbol sala
+7. Músico
+8. Natación 
+9. Softbol
+10. Taewondo
+11. Tenis de mesa
+12. Voleibol 
+
+ID_EPS (Se traduce) *
+0. nRegistra
+1. Sí
+2. No
+
+ID_LENTES (Se traduce) *
+0. nRegistra
+1. Sí
+2. No
+
+Tabla socioeconomico
+
+ID_OCUPACION (Se traduce) *
+1. Únicamente estudiante
+2. Empleado
+3. Independiente
+4. Tmt
+5. Ttc
+
+ID_ESTRATO (Se traduce) *
+1. 1
+2. 2
+3. 3
+4. 4
+
+ID_TIPO_VIVIENDA (Se traduce) *
+1. Familiar
+2. Propia
+3. Arrendada
+4. Otra
+
+ID_RECIBE_INGRESOS (Se traduce) *
+1. Sí
+2. No
+
+ID_ACUDIENTE (Se traduce) *
+1. Sí
+2. No
+
+ID_NIVEL_ACADEMICO (Se traduce) *
+1. Bachiller
+2. Tecnico
+3. Tecnico Bachiller
+4. Tecnologo
+5. Universitario
+
+ID_TIENE_PC (Se traduce)
+0. nRegistra
+1. Sí
+2. No
+
+ID_TIENE_INTERNET (Se traduce)
+1. Sí
+2. No
+
+ID_CEL_SMART (Se traduce)
+1. Sí
+2. No
+
+ID_PLAN_DATOS (Se traduce)
+1. Sí
+2. No
+
+ID_INGRESO_TRABAJA (Se traduce)
+1. Sí
+2. No
+
+Tabla de información academica 
+
+ID_PROGR_ACTUAL (Se traduce) *
+1. Ingeniería Electrónica
+2. Microbiología 
+3. Psicología
+4. No registra
+
+ID_INGRESO_UPC (Se traduce) *
+1. Preuniversitario
+2. Aspirante regular
+3. Perteneciente a cabildo indigena
+4. Reintegro
+5. ReservaCupo
+6. TransExterna
+7. TransInterna
+8. Otro
+9. Deportista destacado
+
+ID_INGRESO_OFERTA (Se traduce)
+1. Sí
+2. No
+
+ID_MOTIVACION (Se traduce) *
+1. Bajo
+2. Medio
+3. Alto
+4. Excelente
+
+ID_VALIDO_BACH (Se traduce)
+1. Sí
+2. No
+
+ID_TIPO_COLEGIO (Se traduce)
+1. Privado
+2. Público
+
+ID_SEMESTRE_INICIO (Se traduce) *
+1. 2012-1
+2. 2013-1
+3. 2013-2
+4. 2014-1
+5. 2014-2
+6. 2015-1
+7. 2015-2
+8. 2016-1
+9. 2016-2
+10. 2017-1
+11. 2017-2
+12. 2018-1
+13. 2018-2
+14. 2019-1
+15. 2019-2
+16. 2020-1
+17. 2020-2
+18. 2021-1
+19. 2021-2
+20. 2022-1
+21. 2022-2
+22. 2023-1
+23. 2012-2
+24. 2010-1
+25. 2010-2
+26. 2011-1
+27. 2011-2
+
+ID_REPITIO_ICFES (Se traduce)
+1. Sí
+2. No
+
+ID_ASIGNATURA_ENCUESTA (Se traduce)
+0. nRegistra
+1. Algebra lineal, código MT301B
+2. Algoritmos y fundamentos de programación, Código SS407
+3. Analisis de señales, código EL431
+4. Calculo integral, código MT303B
+5. Circuitos en corriente directa, código EL300
+6. Circuitos I, código EL401
+7. Circuitos II, código EL408
+8. Circuitos III, código EL411
+9. Comunicaciones I, código EL420
+10. Comunicaciones II, código EL425
+11. Control I, código EL417
+12. Control II, código EL422
+13. Digitales I, código EL409
+14. Electiva I Procesamiento de señales
+15. Electiva II Procesamiento de señales
+16. Electiva III Procesamiento de señales
+17. Electrónica de potencia, código EL419
+18. Electrónica I, código EL402
+19. Electrónica II, código EL412
+20. Gestion empresarial y emprendimiento, código MB322
+21. Herramientas de software, código EL436
+22. Instrumentacion, código EL424
+23. Introducción a la ingenieria electrónica, código EL435
+24. Lógica digital, código EL502
+25. Medios de transmisión, código EL445
+26. Modelamiento y simulación, código EL432
+27. Ondas electrómagneticas, código FS315E
+28. Profundización, código EL444
+29. Psicometría, código PS505
+30. Semillero de investigación, código EL437
+31. Semillero de procesamiento de señales TRIAC
+32. Seminario de investigación, código EL439
+33. Tratamiento de señales, código EL433
+
+
+ID_JORNADA_ACAD (Se traduce)
+1. Diurno
+2. Nocturno
+
+ID_RENDIMIENTO_ACTUAL (Se traduce)
+1. Bajo
+2. Medio
+3. Alto
+4. Excelente
+
+ID_NIVEL_SATISFACION_ASIG (Se traduce)
+1. Bajo
+2. Medio
+3. Alto
+4. Excelente
+
+ID_CANT_HIJOS
+100. Embarazada
