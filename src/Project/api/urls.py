@@ -12,6 +12,4 @@ urlpatterns = [
     path('home/', EstdListView.as_view(), name='Home'),
     path('registrarCurso/', registrar_Estudiante),
     path('eliminacionstd/<int:id>', eliminar_std)
-    
-    
 ]
