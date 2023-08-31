@@ -751,51 +751,350 @@ def change_std(request):
  
     return redirect('/api/consultas_p/')
 
-def get_chart(_request):
-   # cursos_listados = Curso.objects.all()
-    nombres = []
-    creditos = []
+def dashboard(request):
+    Total=Estudiante.objects.count()
+    context = {'total_estudiantes': Total}
+    print(context)
+    return render(request, "fp.html",context)
 
-# Itera a través de las instancias y agrega los valores a los arrays
-    
-    #for item in cursos_listados:
-    #   nombres.append(item.nombre)
-     #   creditos.append(item.creditos)
-        
-    colors = ['blue', 'orange', 'red', 'black', 'yellow', 'green', 'magenta', 'lightblue', 'purple', 'brown']
-    random_color = colors[randrange(0, (len(colors)-1))]
-
+         
+def get_chart(_request):  
     chart = {
-        'backgroundColor': '#000000',
-        'tooltip' : {
-        'trigger': 'axis',
-        'axisPointer': {
-          'type': 'cross'
-            },
+       'title': {
+            'text': 'Cantidad de estudiantes \n segun su genero',
+            'left': 'center'
+         },
+        'tooltip': {
+            'trigger': 'item',
+            'formatter': '{b}: {c} ({d}%)'
         },
-        'xAxis': {
-            'type': 'category',
-            'data': nombres,
-            'axisLabel': {
-                'interval': 0  
+        'legend': {
+            'right': '0%',
+            'top': '30%',
+            'orient': 'vertical'
+        },
+        'series': [
+        {
+            'type': 'pie',
+            'radius': ['40%', '70%'],
+            'avoidLabelOverlap': 'false',
+            'left': '-30%',
+            'top': '40',
+            'label': {
+                'show': 'false',
+                'formatter': '({d}%)'
             },
+        'emphasis': {
+                'label': {
+                'show': 'false',
+                'fontSize': 10,
+                'fontWeight': 'bold',
+                
+                }
+            },
+            'labelLine': {
+                'show': 'false'
+            },
+            'data': [
+                { 'itemStyle': {'color': "rgb(101, 197, 189)"},'value': len(Estudiante.objects.filter(ID_GENERO=2)),'name': 'Mujeres' },
+                { 'itemStyle': {'color': "rgb(147,112,219)"},'value': len(Estudiante.objects.filter(ID_GENERO=1)), 'name': 'Hombres' },
+                { 'itemStyle': {'color': "rgba(255, 251, 13, 1)"},'value': len(Estudiante.objects.filter(ID_GENERO=0)),'name': 'Otro Genero' }
+                
+            ]
+            }
+        ]
+    }
+    
+    return JsonResponse(chart)
+
+def get_chart_2(_request): 
+    sixy = Estudiante.objects.filter(ID_GENERO=2)
+    A = InfoAcademica.objects.filter(ID_ESTUDIANTE__in=[estudiante.ID_DOCUMENTO for estudiante in sixy])
+    A = A.filter(ID_SEMESTRE_INICIO__lte=12)      
+    sixy_m = Estudiante.objects.filter(ID_GENERO=1)
+    B = InfoAcademica.objects.filter(ID_ESTUDIANTE__in=[estudiante.ID_DOCUMENTO for estudiante in sixy_m])
+    B = B.filter(ID_SEMESTRE_INICIO__lte=12) 
+    chart_2 = {
+        'title': {
+            'text': 'Estudiantes con mas de 6 años',
+            'right': '25%',
+            'top' : '5%'
+         },
+        'tooltip': {
+            'trigger': 'item',
+            'formatter': '{b}: {c}'
+        },
+        'legend': {
+            'data': ['Mujeres', 'Hombres']
+        },
+       'xAxis': {
+            'type': 'category',
+            'data': ['Mujeres', 'Hombres']
         },
         'yAxis': {
             'type': 'value'
         },
         'series': [
             {
-            'data': creditos,
+            'data': [{'itemStyle': {'color': "rgb(101, 197, 189)"},'value':len(A)},
+                     {'itemStyle': {'color': "rgb(147,112,219)"},'value':len(B)},],
             'type': 'bar',
-            'itemStyle': {
-                    'color': random_color
-            },
+            'top' : '0%',
             'showBackground': 'true',
             'backgroundStyle': {
                 'color': 'rgba(180, 180, 180, 0.2)'
             }
             }
-        ]    
-    }
+  ]
+}
+    return JsonResponse(chart_2)
 
-    return JsonResponse(chart)
+def get_chart_3(_request): 
+    sixy = Estudiante.objects.filter(ID_GENERO=2,ID_CANT_HIJOS__gt=0)  
+    sixy_m = Estudiante.objects.filter(ID_GENERO=1,ID_CANT_HIJOS__gt=0)
+    chart_3 = {
+       'title': {
+            'text': 'Estudiantes con hijos',
+            'left': 'center',
+            'top': '0%'
+         },
+        'tooltip': {
+            'trigger': 'item',
+            'formatter': '{b}: {c} ({d}%)'
+        },
+        'legend': {
+            'right': '0%',
+            'top': '30%',
+            'orient': 'vertical'
+        },
+        'series': [
+        {
+            'type': 'pie',
+            'radius': ['40%', '70%'],
+            'avoidLabelOverlap': 'false',
+            'left': '-30%',
+            'top': '25',
+            'label': {
+                'show': 'false',
+                'formatter': '({d}%)'
+            },
+        'emphasis': {
+                'label': {
+                'show': 'false',
+                'fontSize': 10,
+                'fontWeight': 'bold',
+                
+                }
+            },
+            'labelLine': {
+                'show': 'false'
+            },
+            'data': [
+                { 'itemStyle': {'color': "rgb(101, 197, 189)"},'value': len(sixy),'name': 'Mujeres' },
+                { 'itemStyle': {'color': "rgb(147,112,219)"},'value': len(sixy_m), 'name': 'Hombres' },
+
+                
+            ]
+            }
+        ]
+    }
+    return JsonResponse(chart_3)
+
+def get_chart_4(_request): 
+    sixy = Estudiante.objects.filter(ID_GENERO=2)
+    A = SocioEconomica.objects.filter(ID_ESTUDIANTE__in=[estudiante.ID_DOCUMENTO for estudiante in sixy])
+    A = A.exclude(ID_OCUPACION=1)      
+    sixy_m = Estudiante.objects.filter(ID_GENERO=1)
+    B = SocioEconomica.objects.filter(ID_ESTUDIANTE__in=[estudiante.ID_DOCUMENTO for estudiante in sixy_m])
+    B = B.exclude(ID_OCUPACION=1)
+    sixy_o = Estudiante.objects.filter(ID_GENERO=0)
+    C = SocioEconomica.objects.filter(ID_ESTUDIANTE__in=[estudiante.ID_DOCUMENTO for estudiante in sixy_o])
+    C = C.exclude(ID_OCUPACION=1)  
+    chart_4 = {
+       'title': {
+            'text': 'Estudiantes que trabajan',
+            'left': 'center',
+            'top': '0%'
+         },
+        'tooltip': {
+            'trigger': 'item',
+            'formatter': '{b}: {c} ({d}%)'
+        },
+        'legend': {
+            'right': '0%',
+            'top': '30%',
+            'orient': 'vertical'
+        },
+        'series': [
+        {
+            'type': 'pie',
+            'radius': ['40%', '70%'],
+            'avoidLabelOverlap': 'false',
+            'left': '-30%',
+            'top': '25',
+            'label': {
+                'show': 'false',
+                'formatter': '({d}%)'
+            },
+        'emphasis': {
+                'label': {
+                'show': 'false',
+                'fontSize': 10,
+                'fontWeight': 'bold',
+                
+                }
+            },
+            'labelLine': {
+                'show': 'false'
+            },
+            'data': [
+                { 'itemStyle': {'color': "rgb(101, 197, 189)"},'value': len(A),'name': 'Mujeres' },
+                { 'itemStyle': {'color': "rgb(147,112,219)"},'value': len(B), 'name': 'Hombres' },
+                { 'itemStyle': {'color': "rgb(255, 251, 13, 1)"},'value': len(C), 'name': 'Otros' },
+
+                
+            ]
+            }
+        ]
+    }
+    return JsonResponse(chart_4)
+
+def get_chart_5(_request): 
+    #Extraigo los estudiantes con motivaciones bajo,medio,alto,exc
+    Bajo = InfoAcademica.objects.filter(ID_MOTIVACION=1) 
+    Medio = InfoAcademica.objects.filter(ID_MOTIVACION=2) 
+    Alto = InfoAcademica.objects.filter(ID_MOTIVACION=3) 
+    Excelente = InfoAcademica.objects.filter(ID_MOTIVACION=4)
+    #Relaciono los estudiantes con motivaciones de la tabla academica con la tabla estudiante
+    
+    A = Estudiante.objects.filter(ID_DOCUMENTO__in=[estudiante.pk for estudiante in Bajo])
+    B = Estudiante.objects.filter(ID_DOCUMENTO__in=[estudiante.pk for estudiante in Medio])
+    C = Estudiante.objects.filter(ID_DOCUMENTO__in=[estudiante.pk for estudiante in Alto])
+    D = Estudiante.objects.filter(ID_DOCUMENTO__in=[estudiante.pk for estudiante in Excelente])
+    #Filtro por genero cada motivacion
+    #Bajo
+    A1 = A.filter(ID_GENERO=1)
+    A2 = A.filter(ID_GENERO=2)
+    A3 = A.filter(ID_GENERO=0)
+    #Medio
+    B1 = B.filter(ID_GENERO=1)
+    B2 = B.filter(ID_GENERO=2)
+    B3 = B.filter(ID_GENERO=0)
+    #Alto
+    C1 = C.filter(ID_GENERO=1)
+    C2 = C.filter(ID_GENERO=2)
+    C3 = C.filter(ID_GENERO=0)
+    #EXC
+    D1 = D.filter(ID_GENERO=1)
+    D2 = D.filter(ID_GENERO=2)
+    D3 = D.filter(ID_GENERO=0)
+
+    
+    chart_5 = {
+    'color': ["rgb(147,112,219)","rgb(101, 197, 189)","rgb(255, 251, 13, 1)"],
+    'title': {
+    'text': 'Grado de motivaciion de los estudiantes',
+    'right': '10%',
+    'top' : '5%'
+
+    },
+    'legend': {
+            'right': '0%',
+            'top': '30%',
+            'orient': 'vertical'
+    },
+
+    'tooltip': {
+      'trigger': 'axis',
+      'axisPointer': {
+        'type': 'shadow'
+      }
+    },
+    
+    'yAxis': {
+      'splitLine': '{' 'show'':' 'false' '}',
+      'axisLabel': '{' 'show'':' 'false' '}',
+      'axisTick': '{' 'show'':' 'false' '}',
+      'axisLine': '{' 'show'':' 'false' '}'
+      
+
+      },
+      'xAxis': {
+      'data': ['Bajo', 'Medio', 'Alto', 'Exc'],
+    }, 
+      'series': [
+          {
+            'name': 'Hombres',
+            'type': 'bar',
+            'barWidth': '20%',
+            'bargap': '30%', 
+            'label':{
+                'show': 'true',
+                'position': 'top',
+                'fontSize': '16'
+                },
+            'data': [
+                {   
+                    'value': len(A1),  
+                },
+                {
+                    'value': len(B1), 
+                } ,
+                    {
+                    'value': len(C1),
+                },
+                    {
+                    'value': len(D1), 
+                }             
+                ]
+          },
+          {
+            'name': 'Mujeres',
+            'type': 'bar',
+            'barWidth': '20%',
+            'bargap': '30%', 
+            'label':{
+                'show': 'true',
+                'position': 'top',
+                'fontSize': '16'
+                },
+            'data': [
+                {
+                    'value': len(A2), 
+                },
+                {
+                    'value': len(B2),
+                } ,
+                    {
+                    'value': len(C2),
+                },
+                    {   
+                    'value': len(D2),
+                }             
+                ]
+          },
+          
+          {
+            'name': 'Otros',
+            'type': 'bar',
+            'barWidth': '20%',
+            'bargap': '30%', 
+            'label':{
+                'show': 'true',
+                'position': 'top',
+                'fontSize': '16'
+                },
+            'data': [
+                {},
+                {},
+                {
+                    'value': len(C3), 
+                },
+                {}             
+                ]
+          }    
+      ]           
+    }
+    
+    
+    return JsonResponse(chart_5)
