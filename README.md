@@ -17,8 +17,8 @@ Instalar paquetes
 - python manage.py collectstatic -- esto solo se hace una vez
 
 Base de datos
-Para configurar la base de datos llenar los campos con sus datos
-IMPORTANTE TENER SOLAMENTE POSGREST 15.4
+- Para configurar la base de datos llenar los campos con sus datos
+- IMPORTANTE TENER SOLAMENTE POSGREST 15.4
    - 'ENGINE': 'django.db.backends.postgresql_psycopg2'
    - 'NAME': 'ADI' <-- nombre de la base de datos
    - 'USER':'postgres'
@@ -28,7 +28,7 @@ IMPORTANTE TENER SOLAMENTE POSGREST 15.4
 
 
 Servidor
--El servidor se lanza desde la carpeta Project
+- El servidor se lanza desde la carpeta Project
 - cd src/Project
   - py .\manage.py migrate
   - py .\manage.py makemigrations
