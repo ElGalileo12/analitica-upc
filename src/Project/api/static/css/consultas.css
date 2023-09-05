@@ -1,0 +1,11 @@
+
+.table-head-dark-green {
+    background-color: #000000; /* Cambia este valor al color verde oscuro que desees */
+    color: white; /* Color del texto */
+}
+body{
+    background: #9370db;  /* fallback for old browsers */
+    background: -webkit-linear-gradient(to right, #7c44ec, #9370db);  /* Chrome 10-25, Safari 5.1-6 */
+    background: linear-gradient(to right, #7c44ec, #9370db); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+    
+}
