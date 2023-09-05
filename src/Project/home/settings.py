@@ -55,7 +55,7 @@ ROOT_URLCONF = 'home.urls'
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': ['C:/Users/naru-/OneDrive/Escritorio/Prueba/analitica-upc/src/Project/api/template'],
+        'DIRS': [BASE_DIR / "api/template"],
         'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [
