@@ -21,16 +21,17 @@ Para configurar la base de datos llenar los campos con sus datos
 IMPORTANTE TENER SOLAMENTE POSGREST 15.4
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.postgresql_psycopg2',
-        'NAME': 'ADI', <-- nombre de la base de datos
-        'USER':'postgres',
-        'PASSWORD': 'root', <--- contraseña que pusieron lo mas probable 123a456c o root en mi caso
-        'HOST': '127.0.0.1', 
+        'ENGINE': 'django.db.backends.postgresql_psycopg2'
+        'NAME': 'ADI' <-- nombre de la base de datos
+        'USER':'postgres'
+        'PASSWORD': 'root' <--- contraseña que pusieron lo mas probable 123a456c o root en mi caso
+        'HOST': '127.0.0.1'
         'DATABASE_PORT': '5432' <----- puerto que usaron
     }
 }
 
 Servidor
+
 El servidor se lanza desde la carpeta Project
 - cd src/Project
   - py .\manage.py migrate
