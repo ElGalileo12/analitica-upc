@@ -1,55 +1,67 @@
 .chart {
-    top: 25px;
-    width: 100%;
-    min-height: 250px;
+	top: 25px;
+	width: 100%;
+	min-height: 250px;
 }
 
 .chart2 {
-    top: 0%;
-    min-width: 300px;
-    height: 300px;
-    left: 00px;
+	top: 0%;
+	min-width: 300px;
+	height: 300px;
+	left: 00px;
 }
-body{
-background: #9370db;  /* fallback for old browsers */
-background: -webkit-linear-gradient(to right, #7c44ec, #9370db);  /* Chrome 10-25, Safari 5.1-6 */
-background: linear-gradient(to right, #7c44ec, #9370db); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
 
+body {
+	background: #9370db; /* fallback for old browsers */
+	background: -webkit-linear-gradient(
+		to right,
+		#7c44ec,
+		#9370db
+	); /* Chrome 10-25, Safari 5.1-6 */
+	background: linear-gradient(
+		to right,
+		#7c44ec,
+		#9370db
+	); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
 }
 
 .rounded-square {
-    width: 310px;
-    height: 280px;
-    background-color: #ffffff;
-    border-radius: 50px;
-    position: relative;
-    overflow: hidden;
-  }
-  .square2 {
-    width: 500px;
-    height: 280px;
-    background-color: #ffffff;
-    border-radius: 50px;
-    position: relative;
-    overflow: hidden;
-    ;left: 50px;
-    }
-
+	width: 310px;
+	height: 280px;
+	background-color: #ffffff;
+	border-radius: 50px;
+	position: relative;
+	overflow: hidden;
+}
+.square2 {
+	width: 500px;
+	height: 280px;
+	background-color: #ffffff;
+	border-radius: 50px;
+	position: relative;
+	overflow: hidden;
+	left: 50px;
+}
 
 .text-1 {
-    font-size: 75px; /* Cambiar el tamaño de la fuente */
-    font-family: Arial, Helvetica, sans-serif; /* Cambiar la fuente */
-    font: bold;
-    margin: 0;
-    margin-top: 60px;
-
-    
+	font-size: 75px; /* Cambiar el tamaño de la fuente */
+	font-family: Arial, Helvetica, sans-serif; /* Cambiar la fuente */
+	font: bold;
+	margin: 0;
+	margin-top: 60px;
 }
 .text-2 {
-    color: #999;
-    font-family: Arial, Helvetica, sans-serif; /* Cambiar la fuente */
+	color: #999;
+	font-family: Arial, Helvetica, sans-serif; /* Cambiar la fuente */
 }
 
-.text-1 +.text-2 {
-    margin-top: -25px;
+.text-1 + .text-2 {
+	margin-top: -25px;
+}
+
+select {
+	appearance: none;
+	-webkit-appearance: none;
+	-moz-appearance: none;
+	background-image: none; /* Elimina cualquier imagen de fondo */
 }

@@ -10,735 +10,822 @@
         integrity="sha384-rbsA2VBKQhggwzxH7pPCaAqO46MgnOM80zW1RWuH61DGLwZJEdK2Kadq2F9CUG65" crossorigin="anonymous">
 
     <link rel="stylesheet" href="{% static 'css/chart.css' %}">
-
+    <link rel="stylesheet" href="{% static 'css/home-ui.css' %}"/>
 </head>
 
 <body>
-    <nav class="navbar navbar-expand-lg navbar-dark " style="background-color: #000000;">
-        <a class="navbar-brand pl-4" href="#">Proyecto</a>
-        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav"
-            aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
-            <span class="navbar-toggler-icon"></span>
-        </button>
-        <div class="collapse navbar-collapse" id="navbarNav">
-            <ul class="navbar-nav">
-                <li class="nav-item active">
-                    <a class="nav-link" href="/api/home">Home</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="/api/consultas_p">Consulta</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="/api/grafico">DashBoards</a>
-                </li>
-            </ul>
-        </div>
-    </nav>
-    <div class="container">
-        <div class="row">
-            <div class="col-md-8 offset-md-2">
-                <h2 class="text-center">Inscripcion de estudiante</h2>
-                <div class="card text-white bg-dark">
-                    <h5 class="card-header bg-dark text-center">Información personal</h5>
-                    <div class="card-body">
-                        <form id="formularioCurso" action="/api/registrarCurso/" method="POST">
-                            {% csrf_token %}
-                            <div class="form-group m-2">
-                                <h6>Tipo de Documento</h6>
-                                <select class="form-control custom-select-lg" name="ID_TIPO_DOCUMENTO"
-                                    id="ID_TIPO_DOCUMENTO">
-                                    <option value="cedulaCiudadania">Cedula</option>
-                                    <option value="tarjetaIdentidad">T. de indentidd</option>
-                                </select>
-                            </div>
-
-                            <div class="form-group m-2">
-                                <h6> Documento</h6>
-                                <input type="number" id="ID_DOCUMENTO" name="ID_DOCUMENTO" class="form-control"
-                                    max=9999999999 placeholder="Documento" autofocus required />
-                            </div>
-
-                            <div class="form-group m-2">
-                                <h6> Nombre</h6>
-                                <input type="text" id="ID_NOMBRE" name="ID_NOMBRE" class="form-control" minlength="5"
-                                    maxlength="30" placeholder="Nombre" required>
-                            </div>
-
-                            <div class="form-group m-2">
-                                <h6> Edad</h6>
-                                <input type="number" id="ID_EDAD" name="ID_EDAD" class="form-control" min=15 max=80
-                                    placeholder="Edad" autofocus required />
-                            </div>
-
-                            <div class="form-group m-2">
-                                <h6> Telefono</h6>
-                                <input type="text" id="ID_NUM_CONTACTO" name="ID_NUM_CONTACTO" class="form-control"
-                                    minlength="7" maxlength="10" placeholder="Telefono" required>
-                            </div>
-
-                            <div class="form-group m-2">
-                                <h6> Email</h6>
-                                <input type="text" id="ID_EMAIL" name="ID_EMAIL" class="form-control" minlength="10"
-                                    maxlength="30" placeholder="Email" required>
-                            </div>
-
-                            <div class="form-group m-2">
-                                <h6> Genero </h6>
-                                <select class="form-control custom-select-lg" name="ID_GENERO" id="ID_GENERO" required>
-                                    <option value="1">Masculino</option>
-                                    <option value="2">Femenino</option>
-                                </select>
-                            </div>
-
-                            <div class="form-group m-2">
-                                <h6> Estado Civil </h6>
-                                <select class="form-control custom-select-lg" name="ID_ESTADO_CIVIL"
-                                    id="ID_ESTADO_CIVIL" required>
-                                    <option value="1">Casado</option>
-                                    <option value="3">Soltero</option>
-                                    <option value="2">Separado</option>
-                                    <option value="4">Union libre</option>
-                                    <option value="5">Viudo(a)</option>
-                                </select>
-                            </div>
-
-                            <div class="form-group m-2">
-                                <h6> Departamento</h6>
-                                <input type="text" id="ID_DPTO_NAC" name="ID_DPTO_NAC" class="form-control"
-                                    minlength="3" maxlength="30" placeholder="Departamento" required>
-                            </div>
-
-                            <div class="form-group m-2">
-                                <h6> Municipio</h6>
-                                <input type="text" id="ID_MUN_NAC" name="ID_MUN_NAC" class="form-control" minlength="3"
-                                    maxlength="30" placeholder="Municipio" required>
-                            </div>
-
-                            <div class="form-group m-2">
-                                <h6> Tiene usted alguna dicapacidad? </h6>
-                                <select class="form-control custom-select-lg" name="ID_TIPO_DISC" id="ID_TIPO_DISC"
-                                    required>
-                                    <option value="1">Movilidad Reducida</option>
-                                    <option value="2">Ninguna</option>
-                                    <option value="3">Auditiva</option>
-                                    <option value="4">Visual</option>
-                                </select>
-                            </div>
-
-                            <div class="form-group m-2">
-                                <h6> Etnia </h6>
-                                <select class="form-control custom-select-lg" name="ID_ETNIA" id="ID_ETNIA" required>
-                                    <option value="3">Sin distincion racial</option>
-                                    <option value="4">Negro, mulato, afrodescendiente, afrocolombiano</option>
-                                    <option value="1">Indígena libre</option>
-                                    <option value="5">Raizal(a)</option>
-                                    <option value="2">Palenquero</option>
-                                </select>
-                            </div>
-
-                            <div class="form-group m-2">
-                                <h6> ¿Hace parte usted de la población victima del conflicto?</h6>
-                                <select class="form-control custom-select-lg" name="ID_VIC_CONFLICTO"
-                                    id="ID_VIC_CONFLICTO" required>
-                                    <option value="1">Si</option>
-                                    <option value="2">No</option>
-                                </select>
-                            </div>
-
-                            <div class="form-group m-2">
-                                <h6> ¿Es Madre o Padre Cabeza de hogar?</h6>
-                                <select class="form-control custom-select-lg" name="ID_MAD_CAB_HOGAR"
-                                    id="ID_MAD_CAB_HOGAR" required>
-                                    <option value="1">Si</option>
-                                    <option value="2">No</option>
-                                </select>
-                            </div>
-
-                            <div class="form-group m-2">
-                                <h6> Edad de su hijo mayor</h6>
-                                <input type="number" id="ID_EDAD_MAYOR" name="ID_EDAD_MAYOR" class="form-control" min=0
-                                    max=20 placeholder="Edad del hijo mayor" autofocus required />
-                            </div>
-                            <div class="form-group m-2">
-                                <h6> Edad de su hijo menor</h6>
-                                <input type="number" id="ID_EDAD_MENOR" name="ID_EDAD_MENOR" class="form-control" min=0
-                                    max=20 placeholder="Edad del hijo menor" autofocus required />
-                            </div>
-                            <div class="form-group m-2">
-                                <h6> Cuantos hijos tiene?</h6>
-                                <input type="number" id="ID_CANT_HIJOS" name="ID_CANT_HIJOS" class="form-control" min=0
-                                    max=20 placeholder="# de hijos" autofocus required />
-                            </div>
-
-                            <div class="form-group m-2">
-                                <h6> Ocupacion de la madre </h6>
-                                <select class="form-control custom-select-lg" name="ID_OCUP_MADRE" id="ID_OCUP_MADRE"
-                                    required>
-                                    <option value="5">Labora</option>
-                                    <option value="1">Ama de casa</option>
-                                    <option value="7">Pensionada</option>
-                                    <option value="4">Independiente</option>
-                                    <option value="3">Fallecida</option>
-                                    <option value="2">Estudiante</option>
-                                    <option value="6">Madre cabeza de hogar</option>
-                                    <option value="0">No registra</option>
-                                </select>
-                            </div>
-
-                            <div class="form-group m-2">
-                                <h6> Ocupacion del padre </h6>
-                                <select class="form-control custom-select-lg" name="ID_OCUP_PADRE" id="ID_OCUP_PADRE"
-                                    required>
-                                    <option value="5">Labora</option>
-                                    <option value="4">Independiente</option>
-                                    <option value="2">Pensionado</option>
-                                    <option value="3">Fallecido</option>
-                                    <option value="6">Estudiante</option>
-                                    <option value="1">Padre cabeza de hogar</option>
-                                    <option value="0">No registra</option>
-                                </select>
-                            </div>
-
-                            <div class="form-group m-2">
-                                <h6> Cuantos hermanos tiene?</h6>
-                                <input type="number" id="ID_CANT_HERMANOS" name="ID_CANT_HERMANOS" class="form-control"
-                                    min=0 max=20 placeholder="Cantidad de hermanos" autofocus required />
-                            </div>
-
-                            <div class="form-group m-2">
-                                <h6> En que posicion de hermano se encuentra</h6>
-                                <input type="number" id="ID_POS_HERMANO" name="ID_POS_HERMANO" class="form-control"
-                                    min=0 max=20 placeholder="Posicion de hermanos" autofocus required />
-                            </div>
-
-                            <div class="form-group m-2">
-                                <h6> Número de integrantes de su núcleo familiar</h6>
-                                <input type="number" id="ID_INTEGRANTES" name="ID_INTEGRANTES" class="form-control"
-                                    min=0 max=20 placeholder="# de personas en nucleo familiar" autofocus required />
-                            </div>
-
-                            <div class="form-group m-2">
-                                <h6> Nivel del sisben</h6>
-                                <input type="text" id="ID_SISBEN" name="ID_SISBEN" class="form-control" minlength="2"
-                                    maxlength="3" placeholder="Sisben" required>
-                            </div>
-
-                            <div class="form-group m-2">
-                                <h6> ¿Tiene Talentos?</h6>
-                                <select class="form-control custom-select-lg" name="ID_TALENTO" id="ID_TALENTO"
-                                    required>
-                                    <option value="0">No tengo</option>
-                                    <option value="1">Actor</option>
-                                    <option value="2">Atletismo</option>
-                                    <option value="3">Bailarin</option>
-                                    <option value="4">Baloncesto</option>
-                                    <option value="5">Futbol</option>
-                                    <option value="6">Futbol sala</option>
-                                    <option value="7">Musico</option>
-                                    <option value="8">Natacion</option>
-                                    <option value="9">Softbol</option>
-                                    <option value="10">Taewondo</option>
-                                    <option value="11">Tenis de mesaa</option>
-                                    <option value="12">Voleibol</option>
-                                </select>
-                            </div>
-
-                            <div class="form-group m-2">
-                                <h6> ¿Tiene EPS?</h6>
-                                <select class="form-control custom-select-lg" name="ID_EPS" id="ID_EPS" required>
-                                    <option value="1">Si</option>
-                                    <option value="2">No</option>
-                                </select>
-                            </div>
-
-                            <div class="form-group m-2">
-                                <h6> ¿Usa lentes?</h6>
-                                <select class="form-control custom-select-lg" name="ID_LENTES" id="ID_LENTES" required>
-                                    <option value="1">Si</option>
-                                    <option value="2">No</option>
-                                </select>
-                            </div>
-                            <!-- Informacion socio economica-->
-                            <h5 class="card-header bg-dark text-center">Información Socioeconomica</h5>
-                            <div class="form-group m-2">
-                                <h6> ¿Tiene usted alguna ocupación?</h6>
-                                <select class="form-control custom-select-lg" name="ID_OCUPACION" id="ID_OCUPACION"
-                                    required>
-                                    <option value="1">Estudiante</option>
-                                    <option value="2">Empleado</option>
-                                    <option value="3">Independiente</option>
-                                    <option value="4">Pensionado</option>
-                                </select>
-                            </div>
-
-                            <div class="form-group m-2">
-                                <h6> ¿Estrato socioeconómico?</h6>
-                                <select class="form-control custom-select-lg" name="ID_ESTRATO" id="ID_ESTRATO"
-                                    required>
-                                    <option value="1">1</option>
-                                    <option value="2">2</option>
-                                    <option value="3">3</option>
-                                    <option value="4">4</option>
-                                    <option value="5">5</option>
-                                </select>
-                            </div>
-
-                            <div class="form-group m-2">
-                                <h6> ¿Tipo de vivienda?</h6>
-                                <select class="form-control custom-select-lg" name="ID_TIPO_VIVIENDA"
-                                    id="ID_TIPO_VIVIENDA" required>
-                                    <option value="2">Propia</option>
-                                    <option value="3">Arrendada</option>
-                                    <option value="1">Familiar</option>
-                                    <option value="4">Otra</option>
-                                </select>
-                            </div>
-
-                            <div class="form-group m-2">
-                                <h6> ¿Recibe usted ingresos mensualmente?</h6>
-                                <select class="form-control custom-select-lg" name="ID_RECIBE_INGRESOS"
-                                    id="ID_RECIBE_INGRESOS" required>
-                                    <option value="1">Si</option>
-                                    <option value="2">No</option>
-                                </select>
-                            </div>
-
-                            <div class="form-group m-2">
-                                <h6> ¿Alguien lo representa legalmente?</h6>
-                                <select class="form-control custom-select-lg" name="ID_ACUDIENTE" id="ID_ACUDIENTE"
-                                    required>
-                                    <option value="1">Si</option>
-                                    <option value="2">No</option>
-                                </select>
-                            </div>
-
-                            <div class="form-group m-2">
-                                <h6> Nivel académico</h6>
-                                <select class="form-control custom-select-lg" name="ID_NIVEL_ACADEMICO"
-                                    id="ID_NIVEL_ACADEMICO" required>
-                                    <option value="1">Bachiller</option>
-                                    <option value="2">Tecnico</option>
-                                    <option value="3">Tecnico Bachiller</option>
-                                    <option value="5">Universitario</option>
-                                    <option value="4">Tecnologo</option>
-                                </select>
-                            </div>
-
-                            <div class="form-group m-2">
-                                <h6> ¿Cuánto es el ingreso familiar?</h6>
-                                <input type="number" id="ID_INGRESO_FAMILIAR" name="ID_INGRESO_FAMILIAR"
-                                    class="form-control" min=0 max=999999999 placeholder="Ingreso" autofocus required />
-                            </div>
-
-                            <div class="form-group m-2">
-                                <h6> ¿Posee usted computador?</h6>
-                                <select class="form-control custom-select-lg" name="ID_TIENE_PC" id="ID_TIENE_PC"
-                                    required>
-                                    <option value="1">Si</option>
-                                    <option value="2">No</option>
-                                </select>
-                            </div>
-
-                            <div class="form-group m-2">
-                                <h6> ¿Tiene acceso a Internet?</h6>
-                                <select class="form-control custom-select-lg" name="ID_TIENE_INTERNET"
-                                    id="ID_TIENE_INTERNET" required>
-                                    <option value="1">Si</option>
-                                    <option value="2">No</option>
-                                </select>
-                            </div>
-                            <div class="form-group m-2">
-                                <h6> ¿Posee usted un celular inteligente?</h6>
-                                <select class="form-control custom-select-lg" name="ID_CEL_SMART" id="ID_CEL_SMART"
-                                    required>
-                                    <option value="1">Si</option>
-                                    <option value="2">No</option>
-                                </select>
-                            </div>
-
-                            <div class="form-group m-2">
-                                <h6> ¿Posee usted un plan de datos</h6>
-                                <select class="form-control custom-select-lg" name="ID_PLAN_DATOS" id="ID_PLAN_DATOS"
-                                    required>
-                                    <option value="1">Si</option>
-                                    <option value="2">No</option>
-                                </select>
-                            </div>
-
-                            <div class="form-group m-2">
-                                <h6> ¿Al momento de entrar a la universidad usted trabajaba?</h6>
-                                <select class="form-control custom-select-lg" name="ID_INGRESO_TRABAJA"
-                                    id="ID_INGRESO_TRABAJA" required>
-                                    <option value="1">Si</option>
-                                    <option value="2">No</option>
-                                </select>
-                            </div>
-                            <h5 class="card-header bg-dark text-center">Información Academica</h5>
-                            <div class="form-group m-2">
-                                <h6> Seleccione la carrera universitaria que está estudiando actualmente</h6>
-                                <select class="form-control custom-select-lg" name="ID_PROGR_ACTUAL"
-                                    id="ID_PROGR_ACTUAL" required>
-                                    <option value="16">Administracion de empresas</option>
-                                    <option value="8">Administracion Turistica</option>
-                                    <option value="12">Comercio Internacional</option>
-                                    <option value="5">Contaduria publica</option>
-                                    <option value="6">Economia</option>
-                                    <option value="7">Derecho</option>
-                                    <option value="3">Psicologia</option>
-                                    <option value="9">Sociologia</option>
-                                    <option value="10">Enfermeria</option>
-                                    <option value="11">Instrumentacion</option>
-                                    <option value="2">Microbiologia</option>
-                                    <option value="13">Ing. Agroindustrial</option>
-                                    <option value="14">Ing. Ambiental</option>
-                                    <option value="15">Ing. de Sistemnas</option>
-                                    <option value="1">Ing. Electronica</option>
-                                    <option value="17">Lic. Español e ingles</option>
-                                    <option value="18">Lic. en Castellano</option>
-                                    <option value="19">Musica</option>
-                                    <option value="20">Lic. Educacion Fisica</option>
-                                    <option value="21">Lic. Ciencias naturales</option>
-                                    <option value="22">Lic. en Arte</option>
-                                    <option value="4">No registra</option>
-                                </select>
-                            </div>
-
-                            <div class="form-group m-2">
-                                <h6> ¿Tiene hermanos estudiando actualmente en alguna IES?</h6>
-                                <input type="number" id="ID_HERMANOS_IES" name="ID_HERMANOS_IES" class="form-control"
-                                    min=0 max=20 placeholder="# de hermanos en IES" autofocus required />
-                            </div>
-
-                            <div class="form-group m-2">
-                                <h6> Usted ingresó a la Universidad Popular del Cesar por medio de según su oferta
-                                    acamédica</h6>
-                                <select class="form-control custom-select-lg" name="ID_INGRESO_UPC" id="ID_INGRESO_UPC"
-                                    required>
-                                    <option value="2">Aspirante Regular</option>
-                                    <option value="1">Preuniversitario</option>
-                                    <option value="9">Deportista Destacado</option>
-                                    <option value="3">Perteneciente a cabildo indigena</option>
-                                    <option value="7">Transferencia interna</option>
-                                    <option value="6">Transferencia externa</option>
-                                    <option value="4">Reintegro</option>
-                                    <option value="5">Reserva de cupo</option>
-                                    <option value="8">otro</option>
-                                </select>
-                            </div>
-
-                            <div class="form-group m-2">
-                                <h6> Ingresó a la universidad por (Mejor bachiller, preuniversitario o deportista)</h6>
-                                <select class="form-control custom-select-lg" name="ID_INGRESO_OFERTA"
-                                    id="ID_INGRESO_OFERTA" required>
-                                    <option value="1">Si</option>
-                                    <option value="2">No</option>
-                                </select>
-                            </div>
-
-                            <div class="form-group m-2">
-                                <h6> Qué tan motivado te sentías al momento de ingresar a estudiar su carrera
-                                    profesional</h6>
-                                <select class="form-control custom-select-lg" name="ID_MOTIVACION" id="ID_MOTIVACION"
-                                    required>
-                                    <option value="1">Bajo</option>
-                                    <option value="2">Medio</option>
-                                    <option value="3">Alto</option>
-                                    <option value="4">Excelente</option>
-                                </select>
-                            </div>
-
-                            <div class="form-group m-2">
-                                <h6> Validó el bachillerato</h6>
-                                <select class="form-control custom-select-lg" name="ID_VALIDO_BACH" id="ID_VALIDO_BACH"
-                                    required>
-                                    <option value="1">Si</option>
-                                    <option value="2">No</option>
-                                </select>
-                            </div>
-
-                            <div class="form-group m-2">
-                                <h6> Tipo de colegio en el que estudio</h6>
-                                <select class="form-control custom-select-lg" name="ID_TIPO_COLEGIO"
-                                    id="ID_TIPO_COLEGIO" required>
-                                    <option value="1">Publico</option>
-                                    <option value="2">Privado</option>
-                                    <option value="3">No Registra</option>
-                                </select>
-                            </div>
-
-                            <div class="form-group m-2">
-                                <h6> En qué semestre iniciaste tu carrera profesional en la Universidad Popular del
-                                    Cesar</h6>
-                                <select class="form-control custom-select-lg" name="ID_SEMESTRE_INICIO"
-                                    id="ID_SEMESTRE_INICIO" required>
-                                    <option value="24">2010-1</option>
-                                    <option value="25">2010-2</option>
-                                    <option value="26">2011-1</option>
-                                    <option value="27">2011-2</option>
-                                    <option value="1">2012-1</option>
-                                    <option value="23">2012-2</option>
-                                    <option value="2">2013-1</option>
-                                    <option value="3">2013-2</option>
-                                    <option value="4">2014-1</option>
-                                    <option value="5">2014-2</option>
-                                    <option value="6">2015-1</option>
-                                    <option value="7">2015-2</option>
-                                    <option value="8">2016-1</option>
-                                    <option value="9">2016-2</option>
-                                    <option value="10">2017-1</option>
-                                    <option value="11">2017-2</option>
-                                    <option value="12">2018-1</option>
-                                    <option value="13">2018-2</option>
-                                    <option value="14">2019-1</option>
-                                    <option value="15">2019-2</option>
-                                    <option value="16">2020-1</option>
-                                    <option value="17">2020-2</option>
-                                    <option value="18">2021-1</option>
-                                    <option value="19">2021-2</option>
-                                    <option value="20">2022-1</option>
-                                    <option value="21">2022-2</option>
-                                    <option value="22">2023-1</option>
-                                    <option value="23">2023-2</option>
-                                </select>
-                            </div>
-
-                            <div class="form-group m-2">
-                                <h6> Repitió usted las pruebas saber 11° ICFES</h6>
-                                <select class="form-control custom-select-lg" name="ID_REPITIO_ICFES"
-                                    id="ID_REPITIO_ICFES" required>
-                                    <option value="1">Si</option>
-                                    <option value="2">No</option>
-                                </select>
-                            </div>
-
-
-                            <div class="form-group m-2">
-                                <h6> PUNTAJE de las pruebas saber 11° ICFES</h6>
-                                <input type="number" id="ID_PUNTAJE_ICFES" name="ID_PUNTAJE_ICFES" class="form-control"
-                                    min=0 max=500 placeholder="Puntaje ICFES" autofocus required />
-                            </div>
-
-                            <div class="form-group m-2">
-                                <h6> PERCENTIL de las pruebas saber 11° ICFES</h6>
-                                <input type="number" id="ID_PUESTO_ICFES" name="ID_PUESTO_ICFES" class="form-control"
-                                    min=0 max=100 placeholder="Puntaje ICFES" autofocus required />
-                            </div>
-
-                            <div class="form-group m-2">
-                                <h6> Puntaje de lectura critica</h6>
-                                <input type="number" id="ID_LECTURA_CRITICA" name="ID_LECTURA_CRITICA" class="form-control" min=0
-                                    max=100 placeholder="Puntaje ICFES" autofocus required />
-                            </div>
-                            
-                            <div class="form-group m-2">
-                                <h6> Puntaje de matematicas</h6>
-                                <input type="number" id="ID_MATEMATICA" name="ID_MATEMATICA" class="form-control" min=0
-                                    max=100 placeholder="Puntaje ICFES" autofocus required />
-                            </div>
-
-                            <div class="form-group m-2">
-                                <h6> Puntaje de sociales y ciudadanas</h6>
-                                <input type="number" id="ID_CIUDADANOS" name="ID_CIUDADANOS" class="form-control" min=0
-                                    max=100 placeholder="Puntaje ICFES" autofocus required />
-                            </div>
-
-                            <div class="form-group m-2">
-                                <h6> Puntaje de ciencias naturales </h6>
-                                <input type="number" id="ID_CIENCIAS" name="ID_CIENCIAS" class="form-control" min=0
-                                    max=100 placeholder="Puntaje ICFES" autofocus required />
-                            </div>
-
-                            <div class="form-group m-2">
-                                <h6> Puntaje de ingles</h6>
-                                <input type="number" id="ID_INGLES" name="ID_INGLES" class="form-control" min=0 max=100
-                                    placeholder="Puntaje ICFES" autofocus required />
-                            </div>
-
-                            <div class="form-group m-2">
-                                <h6> ¿Cuántos semestres ha cursado usted actualmente ?</h6>
-                                <input type="number" id="ID_SEMESTRES_CURSADOS" name="ID_SEMESTRES_CURSADOS"
-                                    class="form-control" min=0 max=30 placeholder="Semestres Cursados" autofocus
-                                    required />
-                            </div>
-
-                            <div class="form-group m-2">
-                                <h6> Su ubicación semestral según el vortal</h6>
-                                <input type="number" id="ID_UBICACION_SEMESTRE" name="ID_UBICACION_SEMESTRE"
-                                    class="form-control" min=0 max=10 placeholder="Semestres actual" autofocus
-                                    required />
-                            </div>
-
-                            <div class="form-group m-2">
-                                <h6> Créditos aprobados hasta el 2023-1</h6>
-                                <input type="number" id="ID_CREDITOS_APROBADOS" name="ID_CREDITOS_APROBADOS"
-                                    class="form-control" min=0 max=200 placeholder="Creditos aprobados" autofocus
-                                    required />
-                            </div>
-
-                            <div class="form-group m-2">
-                                <h6> ¿Cual es su promedio acumulado actual?</h6>
-                                <input type="number" id="ID_PROMEDIO_ACUMULADO" name="ID_PROMEDIO_ACUMULADO"
-                                    class="form-control" step="any" min=1 max=5 placeholder="Promedio acumulado" autofocus
-                                    required />
-                            </div>
-
-                            <div class="form-group m-2">
-                                <h6> ¿Cual es su promedio del semestre anterior?</h6>
-                                <input type="number" id="ID_PROMEDIO_SEMESTRE_ANT" name="ID_PROMEDIO_SEMESTRE_ANT"
-                                    class="form-control" step="any" min=1 max=5 placeholder="Promedio Semestre anterior" autofocus
-                                    required />
-                            </div>
-
-                            <div class="form-group m-2">
-                                <h6> Cuantos créditos no aprobados?</h6>
-                                <input type="number" id="ID_CREDITOS_NO_APROBADOS" name="ID_CREDITOS_NO_APROBADOS"
-                                    class="form-control" min=0 max=25 placeholder="Creditos no aprobados" autofocus
-                                    required />
-                            </div>
-
-                            <div class="form-group m-2">
-                                <h6> Créditos matriculados este semestre 2023-1</h6>
-                                <input type="number" id="ID_CREDITOS_MATRIC" name="ID_CREDITOS_MATRIC"
-                                    class="form-control" min=0 max=25 placeholder="Creditos Matriculados" autofocus
-                                    required />
-                            </div>
-
-                            <div class="form-group m-2">
-                                <h6> ¿Ha cancelado alguna asignatura este semestre 2023-1?</h6>
-                                <input type="number" id="ID_MATERIAS_CANCELADAS" name="ID_MATERIAS_CANCELADAS"
-                                    class="form-control" min=0 max=25 placeholder="Creditos Cancelados" autofocus
-                                    required />
-                            </div>
-
-                            <div class="form-group m-2">
-                                <h6> Desde que asignatura esta haciendo la encuesta</h6>
-                                <select class="form-control custom-select-lg" name="ID_ASIGNATURA_ENCUESTA"
-                                    id="ID_ASIGNATURA_ENCUESTA" required>
-                                    <option value="1">ALGEBRA LINEAL COD: MT301B</option>
-                                    <option value="2">ALGORITMOS Y FUNDAMENTOS DE PROGRAMACION COD: SS407</option>
-                                    <option value="3">ANALISIS DE SEÑALES COD: EL431 </option>
-                                    <option value="4">CALCULO INTEGRAL COD: MT303B</option>
-                                    <option value="5">CIRCUITOS EN CORRIENTE DIRECTA, COD: EL300</option>
-                                    <option value="6">CIRCUITOS I COD: EL401</option>
-                                    <option value="7">CIRCUITOS II COD: EL408</option>
-                                    <option value="8">CIRCUITOS III COD: EL411</option>
-                                    <option value="9">COMUNICACIONES I COD: EL420</option>
-                                    <option value="10">COMUNICACIONES II COD: EL425</option>
-                                    <option value="11">CONTROL I COD: EL417</option>
-                                    <option value="12">CONTROL II COD: EL422</option>
-                                    <option value="13">DIGITALES I COD: EL409</option>
-                                    <option value="14">ELECTIVA I PROCESAMIENTO DE SEÑALES</option>
-                                    <option value="15">ELECTIVA II PROCESAMIENTO DE SEÑALES</option>
-                                    <option value="16">ELECTIVA III PROCESAMIENTO DE SEÑALES</option>
-                                    <option value="17">ELECTRONICA DE POTENCIA COD: EL419</option>
-                                    <option value="18">ELECTRONICA I COD: EL402</option>
-                                    <option value="19">ELECTRONICA II COD: EL412</option>
-                                    <option value="20">GESTION EMPRESARIAL Y EMPREDIMIENTO COD: MB322</option>
-                                    <option value="21">HERRAMIENTAS DE SOFTWARE COD: EL436</option>
-                                    <option value="22">INSTRUMENTACION COD: EL424</option>
-                                    <option value="23">INTRODUCCION A LA INGENIERIA ELECTRONICA COD: EL435</option>
-                                    <option value="24">LOGICA DIGITAL COD: EL502</option>
-                                    <option value="25">MEDIOS DE TRANSMISION COD: EL445</option>
-                                    <option value="26">MODELAMIENTO Y SIMULACION COD: EL432</option>
-                                    <option value="27">ONDAS ELECTROMACNETICAS COD: FS315E</option>
-                                    <option value="28">PROFUNDIZACION COD: EL444</option>
-                                    <option value="29">PSICOMETRIA COD: EL444</option>
-                                    <option value="30">SEMILLERO DE INVESTIGACION COD: EL437</option>
-                                    <option value="31">SEMILLERO DE PROCESAMIENTO DE SEÑALES</option>
-                                    <option value="32">SEMILLERO DE INVESTIGACION COD: EL439</option>
-                                    <option value="33">TRATAMIENTO DE SEÑALES COD: EL442 </option>
-                                    <option value="34">CATEDRA UPECISTA COD: UPC01</option>
-                                    <option value="35">HUMANIDADES I COD: HM301</option>
-                                    <option value="36">CALCULO DIFERENCIAL COD: MT302B</option>
-                                    <option value="37">TECNICAS DE AUTOAPRENDIZAJE COD: PG312</option>
-                                    <option value="38">HUMANIDADES II COD: HM302</option>
-                                    <option value="39">LENGUA EXTRANJERA-GRAMATICA COD: UPC04</option>
-                                    <option value="40">MECANICA COD: FS314</option>
-                                    <option value="41">PROGRAMACION DE COMPUTADORES I COD: SS401</option>
-                                    <option value="42">CALCULO MULTIVARIABLE COD: MT304B</option>
-                                    <option value="43">ELECTROMAGNETISMO COD: FS311</option>
-                                    <option value="44">ESTADISTICA DESCRIPTIVA E INFERENCIAL COD: MT307B</option>
-                                    <option value="45">LENGUA EXTRANJERA-LECTURA COD: UPC05</option>
-                                    <option value="46">METODOLOGIA DE LA INVESTIGACION COD: EL438</option>
-                                    <option value="47">ANALISIS NUMERICO COD: MT309B</option>
-                                    <option value="48">ECUACIONES DIFERENCIALES ORDINARIAS COD: MT305B</option>
-                                    <option value="49">LENGUA EXTRANJERA-ESCRITURA COD: UPC06</option>
-                                    <option value="50">ACTIVIDAD DEPORTIVA COD: UPC08 </option>
-                                    <option value="51">FISICA MODERNA Y OPTICA COD: FS328</option>
-                                    <option value="52"> FUNCIONES ESPECIALES Y ECUACIONES DIFERENCIALES COD: MT306B</option>
-                                    <option value="53">SEMINARIO DE INVESTIGACION COD: EL439</option>
-                                    <option value="54">ACTIVIDAD CULTURAL COD: UPC09</option>
-                                    <option value="55">DIGITALES II COD: EL410</option>
-                                    <option value="56">ELECTRONICA III COD: EL416</option>
-                                    <option value="57">INGENIERIA ECONOMICA COD: AI420 </option>
-                                    <option value="58">LENGUA EXTRANJERA CONVERSACION COD: UPC07</option>
-                                    <option value="59">MAQUINAS ELECTRICAS COD: EL440 </option>
-                                    <option value="60">DIGITALES III COD: EL403</option>
-                                    <option value="61">GERENCIA COD: AE118</option>
-                                    <option value="62">LABORATORIO DE DISEÑO INTEGRAL COD: EL441</option>
-                                    <option value="63">FORMULACION Y EVALU DE PROYEC EN INGENIERIA COD: FC407</option>
-                                    <option value="64">OPTATIVA VIRTUAL COD: EL801</option>
-                                    <option value="65">TELEMATICA I COD: EL443</option>
-                                    <option value="66">DISEÑO EXPERIMENTAL COD: FC403 </option>
-                                    <option value="67">PROYECTO I COD: EL447</option>
-                                    <option value="68">TELEMATICA II COD: EL446</option>
-                                    <option value="69">COMPETENCIAS PEDAGOGICAS COD: PG013</option>
-                                    <option value="70">LEGISLACION COD: DR556</option>
-                                    <option value="71">PROYECTO II COD: EL448</option>
-                                </select>
-                            </div>
-
-                            <div class="form-group m-2">
-                                <h6> Jornada académica</h6>
-                                <select class="form-control custom-select-lg" name="ID_JORNADA_ACAD"
-                                    id="ID_JORNADA_ACAD" required>
-                                    <option value="1">Diurno</option>
-                                    <option value="2">Nocturno</option>
-                                    <option value="3">Especial</option>
-                                    <option value="4">Sabatico</option>
-                                </select>
-                            </div>
-
-                            <div class="form-group m-2">
-                                <h6> Su nota obtenida actualmente en la asignatura donde esta siendo encuestado</h6>
-                                <input type="number" id="ID_NOTA_ACTUAL" name="ID_NOTA_ACTUAL"
-                                    class="form-control" step="any" min=0 max=5 placeholder="Nota actual" autofocus
-                                    required />
-                            </div>
-
-                            <div class="form-group m-2">
-                                <h6> Actual rendimiento académico en la asignatura</h6>
-                                <select class="form-control custom-select-lg" name="ID_RENDIMIENTO_ACTUAL" id="ID_RENDIMIENTO_ACTUAL"
-                                    required>
-                                    <option value="1">Bajo</option>
-                                    <option value="2">Medio</option>
-                                    <option value="3">Alto</option>
-                                    <option value="4">Excelente</option>
-                                </select>
-                            </div>
-
-                            <div class="form-group m-2">
-                                <h6> Nivel de satisfacción con la asignatura</h6>
-                                <select class="form-control custom-select-lg" name="ID_NIVEL_SATISFACION_ASIG" id="ID_NIVEL_SATISFACION_ASIG"
-                                    required>
-                                    <option value="1">Bajo</option>
-                                    <option value="2">Medio</option>
-                                    <option value="3">Alto</option>
-                                    <option value="4">Excelente</option>
-                                </select>
-                            </div>
-                            <div class="text-center">
-                                <button type="submit" class="btn btn-success btn-block  text-white"><i class="far fa-save"></i> Guardar</button>
-                            </div>
-                            
-                        </form>
-                    </div>
-                </div>
-
-
-
+    
+    <nav>
+        <div class="flex flex-row justify-between ">
+            <a href="/api/home" class="flex items-center">
+                <img src="{% static 'assets/Nuevo-logo.jpg' %}" class="w-auto h-20" alt="Logo Upc" />
+            </a>
+            <div class="w-full"  id="navbar-default">
+                <ul class="flex h-20 font-medium flex-col py-3 md:px-14 md:flex-row md:justify-end md:space-x-8 md:mt-0 md:border-0 md:bg-gray-50">
+                    <li>
+                        <a href="/api/home" class="md:hover:text-red-500 font-bold text-xl block py-2 pl-3 pr-4 text-black rounded md:bg-transparent" aria-current="page">Home</a>
+                    </li>
+                    <li>
+                     <a href="/api/consultas_p" class="hover:text-gray-50 text-xl block py-2 pl-3 pr-4 text-black rounded md:hover:bg-transparent md:border-0">Consulta</a>
+                    </li>
+                    <li>
+                     <a href="/api/grafico" class="hover:text-gray-50 text-xl block py-2 pl-3 pr-4 text-black rounded md:hover:bg-transparent md:border-0">DashBoards</a>
+                    </li>
+                </ul>
             </div>
         </div>
+    </nav>
+
+    <section>
+         <h1 class="p-8 text-2xl text-white font-bold">Inscripcion de estudiante</h1>
+         <div class="bg-gray-200 mx-10 p-4 rounded-lg shadow-lg">
+             <h3 class="text-black font-bold text-xl">Información personal</h3>
+             <form id="formularioCurso" action="/api/registrarCurso/" method="POST">
+                 {% csrf_token %}
+
+                <div class="grid md:grid-cols-2 md:gap-6 p-4">
+                   <!--  <div class="relative z-0 w-full mb-6 group">
+                        <input type="tel" pattern="[0-9]{3}-[0-9]{3}-[0-9]{4}" name="floating_phone" id="floating_phone" class="block py-2.5 px-0 w-full text-sm text-gray-900 bg-transparent border-0 border-b-2 border-gray-300 appearance-none dark:text-white dark:border-gray-600 dark:focus:border-blue-500 focus:outline-none focus:ring-0 focus:border-blue-600 peer" placeholder=" " required />
+                        <label for="floating_phone" class="peer-focus:font-medium absolute text-sm text-gray-500 dark:text-gray-400 duration-300 transform -translate-y-6 scale-75 top-3 -z-10 origin-[0] peer-focus:left-0 peer-focus:text-blue-600 peer-focus:dark:text-blue-500 peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-focus:scale-75 peer-focus:-translate-y-6">Phone number (123-456-7890)</label>
+                    </div>
+
+                    <div class="relative z-0 w-full mb-6 group">
+                       <input type="text" name="floating_company" id="floating_company" class="block py-2 px-0 w-full text-sm text-gray-900 bg-transparent border-0 border-b-2 border-gray-300 appearance-none dark:text-white dark:border-gray-600 dark:focus:border-blue-500 focus:outline-none focus:ring-0 focus:border-blue-600 peer" placeholder=" " required />
+                       <label for="floating_company" class="peer-focus:font-medium absolute text-sm text-gray-500 dark:text-gray-400 duration-300 transform -translate-y-6 scale-75 top-3 -z-10 origin-[0] peer-focus:left-0 peer-focus:text-blue-600 peer-focus:dark:text-blue-500 peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-focus:scale-75 peer-focus:-translate-y-6">Company (Ex. Google)</label>
+                    </div> -->
+
+                    <div class="relative z-0 w-full group">
+                        <label class="block ml-2 font-semibold text-lg py-1 px-0 w-full text-gray-900 bg-transparent border-0 border-b-2 border-gray-300 appearance-none focus:outline-none focus:ring-0 focus:border-blue-600 peer" required>Tipo de Documento</label>
+                        <select id="countries" class="mt-1 block w-3/5 rounded-md border border-gray-300 bg-white py-2 px-3 shadow-sm focus:border-sky-500 focus:outline-none focus:ring-sky-500 sm:text-sm">
+                            <option value="" disabled selected></option>
+                            <option class="text-base py-2" value="cedulaCiudadania">Cedula</option>
+                            <option class="text-base py-2" value="tarjetaIdentidad">T. de indentidd</option>
+                        </select>
+                    </div>
+
+                    <div class="form-group">
+                        <label class="block ml-2 font-semibold text-lg py-1 px-0  text-gray-900 bg-transparent border-0 border-b-2 border-gray-300 appearance-none focus:outline-none focus:ring-0 focus:border-blue-600 peer">Documento</label>
+                        <input type="number" id="ID_DOCUMENTO" name="ID_DOCUMENTO" class="form-control w-3/5" maxlength="10" placeholder="Documento" autofocus required />
+                    </div>
+
+                    <div class="form-group">
+                        <label class="block ml-2 font-semibold text-lg py-1 px-0  text-gray-900 bg-transparent border-0 border-b-2 border-gray-300 appearance-none focus:outline-none focus:ring-0 focus:border-blue-600 peer">Nombre</label>
+                        <input type="text" id="ID_NOMBRE" name="ID_NOMBRE" class="form-control w-3/5" minlength="5"
+                        maxlength="30" placeholder="Nombre" required>
+                    </div>
+
+                    <div class="form-group">
+                        <label class="block ml-2 font-semibold text-lg py-1 px-0  text-gray-900 bg-transparent border-0 border-b-2 border-gray-300 appearance-none focus:outline-none focus:ring-0 focus:border-blue-600 peer">Edad</label>
+                        <input  type="number" id="ID_EDAD" name="ID_EDAD" class="form-control w-3/5" minlength="5"
+                        maxlength="30" placeholder="Nombre" required>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label class="block ml-2 font-semibold text-lg py-1 px-0  text-gray-900 bg-transparent border-0 border-b-2 border-gray-300 appearance-none focus:outline-none focus:ring-0 focus:border-blue-600 peer">Telefono</label>
+                        <input  type="phone" id="ID_NUM_CONTACTO" name="ID_NUM_CONTACTO"  class="form-control w-3/5" minlength="5"
+                        maxlength="30" placeholder="Telefono" required>
+                    </div>
+
+                    <div class="form-group">
+                        <label class="block ml-2 font-semibold text-lg py-1 px-0  text-gray-900 bg-transparent border-0 border-b-2 border-gray-300 appearance-none focus:outline-none focus:ring-0 focus:border-blue-600 peer">Email</label>
+                        <input  type="mail" id="ID_EMAIL" name="ID_EMAIL"  class="form-control w-3/5" minlength="5"
+                        maxlength="30" placeholder="Email" required>
+                    </div>
+
+                    <div class="relative z-0 w-full group">
+                        <label class="block ml-2 font-semibold text-lg py-1 px-0 w-full text-gray-900 bg-transparent border-0 border-b-2 border-gray-300 appearance-none focus:outline-none focus:ring-0 focus:border-blue-600 peer" required>Genero</label>
+                        <select name="ID_GENERO" id="ID_GENERO" require class="mt-1 block w-3/5 rounded-md border border-gray-300 bg-white py-2 px-3 shadow-sm focus:border-sky-500 focus:outline-none focus:ring-sky-500 sm:text-sm">
+                            <option value="" disabled selected></option>
+                            <option class="text-base py-2" value="1">Masculino</option>
+                            <option class="text-base py-2" value="2">Femenino</option>
+                        </select>
+                    </div>
+
+                    <div class="relative z-0 w-full group">
+                        <label class="block ml-2 font-semibold text-lg py-1 px-0 w-full text-gray-900 bg-transparent border-0 border-b-2 border-gray-300 appearance-none focus:outline-none focus:ring-0 focus:border-blue-600 peer" required>Estado Civil</label>
+                        <select name="ID_ESTADO_CIVIL" id="ID_ESTADO_CIVIL" require class="mt-1 block w-3/5 rounded-md border border-gray-300 bg-white py-2 px-3 shadow-sm focus:border-sky-500 focus:outline-none focus:ring-sky-500 sm:text-sm">
+                            <option value="" disabled selected></option>
+                            <option class="text-base py-2" value="1">Casado</option>
+                            <option class="text-base py-2" value="3">Soltero</option>
+                            <option class="text-base py-2" value="2">Separado</option>
+                            <option class="text-base py-2" value="4">Union libre</option>
+                            <option class="text-base py-2" value="5">Viudo(a)</option>
+                        </select>
+                    </div>
+
+                    <div class="form-group">
+                        <label class="block ml-2 font-semibold text-lg py-1 px-0  text-gray-900 bg-transparent border-0 border-b-2 border-gray-300 appearance-none focus:outline-none focus:ring-0 focus:border-blue-600 peer">Departamento</label>
+                        <input  type="text" id="ID_DPTO_NAC" name="ID_DPTO_NAC" class="form-control w-3/5" minlength="5"
+                        maxlength="30" placeholder="Departamento" required>
+                    </div>
+
+                    <div class="form-group">
+                        <label class="block ml-2 font-semibold text-lg py-1 px-0  text-gray-900 bg-transparent border-0 border-b-2 border-gray-300 appearance-none focus:outline-none focus:ring-0 focus:border-blue-600 peer">Municipio</label>
+                        <input  type="text" id="ID_MUN_NAC" name="ID_MUN_NAC" class="form-control w-3/5" minlength="5"
+                        maxlength="30" placeholder="Municipio" required>
+                    </div>
+
+                    <div class="relative z-0 w-full group">
+                        <label class="block ml-2 font-semibold text-lg py-1 px-0 w-full text-gray-900 bg-transparent border-0 border-b-2 border-gray-300 appearance-none focus:outline-none focus:ring-0 focus:border-blue-600 peer" required> Tiene usted alguna dicapacidad?</label>
+                        <select name="ID_TIPO_DISC" id="ID_TIPO_DISC" require class="mt-1 block w-3/5 rounded-md border border-gray-300 bg-white py-2 px-3 shadow-sm focus:border-sky-500 focus:outline-none focus:ring-sky-500 sm:text-sm">
+                            <option value="" disabled selected></option>
+                            <option class="text-base py-2" value="1">Movilidad Reducida</option>
+                            <option class="text-base py-2" value="2">Ninguna</option>
+                            <option class="text-base py-2" value="3">Auditiva</option>
+                            <option class="text-base py-2" value="4">Visual</option>
+                        </select>
+                    </div>
+
+                    <div class="relative z-0 w-full group">
+                        <label class="block ml-2 font-semibold text-lg py-1 px-0 w-full text-gray-900 bg-transparent border-0 border-b-2 border-gray-300 appearance-none focus:outline-none focus:ring-0 focus:border-blue-600 peer" required>Etnia</label>
+                        <select name="ID_ETNIA" id="ID_ETNIA" require class="mt-1 block w-3/5 rounded-md border border-gray-300 bg-white py-2 px-3 shadow-sm focus:border-sky-500 focus:outline-none focus:ring-sky-500 sm:text-sm">
+                            <option value="" disabled selected></option>
+                            <option class="text-base py-2" value="3">Sin distincion racial</option>
+                            <option class="text-base py-2" value="4">Negro, mulato, afrodescendiente, afrocolombiano</option>
+                            <option class="text-base py-2" value="1">Indígena libre</option>
+                            <option class="text-base py-2" value="5">Raizal(a)</option>
+                            <option class="text-base py-2" value="2">Palenquero</option>
+                        </select>
+                    </div>
+
+                    <div class="relative z-0 w-full group">
+                        <label class="block ml-2 font-semibold text-lg py-1 px-0 w-full text-gray-900 bg-transparent border-0 border-b-2 border-gray-300 appearance-none focus:outline-none focus:ring-0 focus:border-blue-600 peer" required>¿Hace parte usted de la población victima del conflicto?</label>
+                        <select name="ID_VIC_CONFLICTO" id="ID_VIC_CONFLICTO" require class="mt-1 block w-3/5 rounded-md border border-gray-300 bg-white py-2 px-3 shadow-sm focus:border-sky-500 focus:outline-none focus:ring-sky-500 sm:text-sm">
+                            <option value="" disabled selected></option>
+                            <option class="text-base py-2" value="1">Si</option>
+                            <option class="text-base py-2" value="2">No</option>
+                        </select>
+                    </div>
+
+                    <div class="relative z-0 w-full group">
+                        <label class="block ml-2 font-semibold text-lg py-1 px-0 w-full text-gray-900 bg-transparent border-0 border-b-2 border-gray-300 appearance-none focus:outline-none focus:ring-0 focus:border-blue-600 peer" required>¿Es Madre o Padre Cabeza de hogar?</label>
+                        <select name="ID_MAD_CAB_HOGAR" id="ID_MAD_CAB_HOGAR" require class="mt-1 block w-3/5 rounded-md border border-gray-300 bg-white py-2 px-3 shadow-sm focus:border-sky-500 focus:outline-none focus:ring-sky-500 sm:text-sm">
+                            <option value="" disabled selected></option>
+                            <option class="text-base py-2" value="1">Si</option>
+                            <option class="text-base py-2" value="2">No</option>
+                        </select>
+                    </div>
+
+                    <div class="form-group">
+                        <label class="block ml-2 font-semibold text-lg py-1 px-0  text-gray-900 bg-transparent border-0 border-b-2 border-gray-300 appearance-none focus:outline-none focus:ring-0 focus:border-blue-600 peer">¿Cuántos hijos tiene?</label>
+                        <input  type="text" id="ID_CANT_HIJOS" name="ID_CANT_HIJOS" class="form-control w-3/5" minlength="5"
+                        maxlength="30"placeholder="Número de hijos" required>
+                    </div>
+
+                    <div class="form-group">
+                        <label class="block ml-2 font-semibold text-lg py-1 px-0  text-gray-900 bg-transparent border-0 border-b-2 border-gray-300 appearance-none focus:outline-none focus:ring-0 focus:border-blue-600 peer">Edad de su hijo mayor</label>
+                        <input  type="text" id="ID_EDAD_MAYOR" name="ID_EDAD_MAYOR" class="form-control w-3/5" minlength="5"
+                        maxlength="30" placeholder="Edad del hijo mayor" required>
+                    </div>
+
+                    <div class="form-group">
+                        <label class="block ml-2 font-semibold text-lg py-1 px-0  text-gray-900 bg-transparent border-0 border-b-2 border-gray-300 appearance-none focus:outline-none focus:ring-0 focus:border-blue-600 peer">Edad de su hijo menor</label>
+                        <input  type="text" id="ID_EDAD_MAYOR" name="ID_EDAD_MAYOR" class="form-control w-3/5" minlength="5"
+                        maxlength="30" placeholder="Edad del hijo menor" required>
+                    </div>
+
+                    <div class="relative z-0 w-full group">
+                        <label class="block ml-2 font-semibold text-lg py-1 px-0 w-full text-gray-900 bg-transparent border-0 border-b-2 border-gray-300 appearance-none focus:outline-none focus:ring-0 focus:border-blue-600 peer" required>Ocupacion de la madre</label>
+                        <select name="ID_OCUP_MADRE" id="ID_OCUP_MADRE" require class="mt-1 block w-3/5 rounded-md border border-gray-300 bg-white py-2 px-3 shadow-sm focus:border-sky-500 focus:outline-none focus:ring-sky-500 sm:text-sm">
+                            <option value="" disabled selected></option>
+                            <option class="text-base py-2" value="5">Labora</option>
+                            <option class="text-base py-2" value="1">Ama de casa</option>
+                            <option class="text-base py-2" value="7">Pensionada</option>
+                            <option class="text-base py-2" value="4">Independiente</option>
+                            <option class="text-base py-2" value="3">Fallecida</option>
+                            <option class="text-base py-2" value="2">Estudiante</option>
+                            <option class="text-base py-2" value="6">Madre cabeza de hogar</option>
+                            <option class="text-base py-2" value="0">No registra</option>
+                        </select>
+                    </div>
+
+                    <div class="relative z-0 w-full group">
+                        <label class="font-semibold text-lg py-1 px-0 w-full text-gray-900 bg-transparent border-0 border-b-2 border-gray-300 appearance-none focus:outline-none focus:ring-0 focus:border-blue-600 peer" required>Ocupacion del padre</label>
+                        <select name="ID_OCUP_PADRE" id="ID_OCUP_PADRE" require class="mt-1 block w-3/5 rounded-md border border-gray-300 bg-white py-2 px-3 shadow-sm focus:border-sky-500 focus:outline-none focus:ring-sky-500 sm:text-sm">
+                            <option value="" disabled selected></option>
+                            <option class="text-base py-2" value="5">Labora</option>
+                            <option class="text-base py-2" value="4">Independiente</option>
+                            <option class="text-base py-2" value="2">Pensionado</option>
+                            <option class="text-base py-2" value="3">Fallecido</option>
+                            <option class="text-base py-2" value="6">Estudiante</option>
+                            <option class="text-base py-2" value="1">Padre cabeza de hogar</option>
+                            <option class="text-base py-2" value="0">No registra</option>
+                        </select>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label class="block mr-40 font-semibold text-lg py-1 px-0 text-gray-900 bg-transparent border-0 border-b-2 border-gray-300 appearance-none focus:outline-none focus:ring-0 focus:border-blue-600 peer">¿Cuántos hermanos tiene?</label>
+                        <input type="number" id="ID_CANT_HERMANOS" name="ID_CANT_HERMANOS" class="form-control w-3/5" minlength="5" maxlength="30" placeholder="Cantidad de hermanos" required>
+                    </div>
+
+                    <div class="form-group">
+                        <label class="block mr-40 font-semibold text-lg py-1 px-0 text-gray-900 bg-transparent border-0 border-b-2 border-gray-300 appearance-none focus:outline-none focus:ring-0 focus:border-blue-600 peer">En que posicion de hermano se encuentra</label>
+                        <input type="number" id="ID_POS_HERMANO" name="ID_POS_HERMANO" class="form-control w-3/5" minlength="5" maxlength="30" placeholder="Posicion de hermanos" required>
+                    </div>
+
+                    <div class="form-group">
+                        <label class="block mr-40 font-semibold text-lg py-1 px-0 text-gray-900 bg-transparent border-0 border-b-2 border-gray-300 appearance-none focus:outline-none focus:ring-0 focus:border-blue-600 peer">Número de integrantes de su núcleo familiar</label>
+                        <input type="number" id="ID_INTEGRANTES" name="ID_INTEGRANTES" class="form-control w-3/5" minlength="5" maxlength="30" placeholder="Número de personas en nucleo familiar" required>
+                    </div>
+
+                    <div class="form-group">
+                        <label class="block mr-40 font-semibold text-lg py-1 px-0 text-gray-900 bg-transparent border-0 border-b-2 border-gray-300 appearance-none focus:outline-none focus:ring-0 focus:border-blue-600 peer">Nivel del sisben</label>
+                        <input type="number" id="ID_SISBEN" name="ID_SISBEN" class="form-control w-3/5" minlength="5" maxlength="30" placeholder="Sisben" required>
+                    </div>
+
+                    <div class="relative z-0 w-full group">
+                        <label class="font-semibold text-lg py-1 px-0 w-full text-gray-900 bg-transparent border-0 border-b-2 border-gray-300 appearance-none focus:outline-none focus:ring-0 focus:border-blue-600 peer" required>¿Tiene Talentos?</label>
+                        <select name="ID_TALENTO" id="ID_TALENTO" require class="mt-1 block w-3/5 rounded-md border border-gray-300 bg-white py-2 px-3 shadow-sm focus:border-sky-500 focus:outline-none focus:ring-sky-500 sm:text-sm">
+                            <option value="" disabled selected></option>
+                            <option class="text-base py-2" value="0">No tengo</option>
+                            <option class="text-base py-2" value="1">Actor</option>
+                            <option class="text-base py-2" value="2">Atletismo</option>
+                            <option class="text-base py-2" value="3">Bailarin</option>
+                            <option class="text-base py-2" value="4">Baloncesto</option>
+                            <option class="text-base py-2" value="5">Futbol</option>
+                            <option class="text-base py-2" value="6">Futbol sala</option>
+                            <option class="text-base py-2" value="7">Musico</option>
+                            <option class="text-base py-2" value="8">Natacion</option>
+                            <option class="text-base py-2" value="9">Softbol</option>
+                            <option class="text-base py-2" value="10">Taewondo</option>
+                            <option class="text-base py-2" value="11">Tenis de mesaa</option>
+                            <option class="text-base py-2" value="12">Voleibol</option>
+                        </select>
+                    </div>
+
+                    <div class="relative z-0 w-full group">
+                        <label class="font-semibold text-lg py-1 px-0 w-full text-gray-900 bg-transparent border-0 border-b-2 border-gray-300 appearance-none focus:outline-none focus:ring-0 focus:border-blue-600 peer" required>¿Tiene EPS?</label>
+                        <select name="ID_EPS" id="ID_EPS" require class="mt-1 block w-3/5 rounded-md border border-gray-300 bg-white py-2 px-3 shadow-sm focus:border-sky-500 focus:outline-none focus:ring-sky-500 sm:text-sm">
+                            <option value="" disabled selected></option>
+                            <option class="text-base py-2" value="1">Si</option>
+                            <option class="text-base py-2" value="2">No</option>
+                        </select>
+                    </div>
+
+                    <div class="relative z-0 w-full group">
+                        <label class="font-semibold text-lg py-1 px-0 w-full text-gray-900 bg-transparent border-0 border-b-2 border-gray-300 appearance-none focus:outline-none focus:ring-0 focus:border-blue-600 peer" required>¿Usa lentes?</label>
+                        <select name="ID_LENTES" id="ID_LENTES" require class="mt-1 block w-3/5 rounded-md border border-gray-300 bg-white py-2 px-3 shadow-sm focus:border-sky-500 focus:outline-none focus:ring-sky-500 sm:text-sm">
+                            <option value="" disabled selected></option>
+                            <option class="text-base py-2" value="1">Si</option>
+                            <option class="text-base py-2" value="2">No</option>
+                        </select>
+                    </div>
+
+                </div> 
+             </form>
+         </div>
+    </section>
+    <!-- Informacion socio economica-->
+    <section class="mt-14">
+        <div class="bg-gray-200 mx-10 p-4 rounded-lg shadow-lg">
+            <h3 class="text-black font-bold text-xl">Información Socioeconomica</h3>
+            <form id="formularioCurso" action="/api/registrarCurso/" method="POST">
+                {% csrf_token %}
+
+            <div class="grid md:grid-cols-2 md:gap-6 p-4">
+                <div class="relative z-0 w-full group">
+                    <label class="block ml-2 font-semibold text-lg py-1 px-0 w-full text-gray-900 bg-transparent border-0 border-b-2 border-gray-300 appearance-none focus:outline-none focus:ring-0 focus:border-blue-600 peer" required>¿Tiene usted alguna ocupación?</label>
+                    <select name="ID_OCUPACION" id="ID_OCUPACION" require class="mt-1 block w-3/5 rounded-md border border-gray-300 bg-white py-2 px-3 shadow-sm focus:border-sky-500 focus:outline-none focus:ring-sky-500 sm:text-sm">
+                        <option value="" disabled selected></option>
+                        <option class="text-base py-2" value="1">Estudiante</option>
+                        <option class="text-base py-2" value="2">Empleado</option>
+                        <option class="text-base py-2" value="3">Independiente</option>
+                        <option class="text-base py-2" value="4">Pensionado</option>
+                    </select>
+                </div>
+
+                <div class="relative z-0 w-full group">
+                    <label class="block ml-2 font-semibold text-lg py-1 px-0 w-full text-gray-900 bg-transparent border-0 border-b-2 border-gray-300 appearance-none focus:outline-none focus:ring-0 focus:border-blue-600 peer" required>¿Estrato socioeconómico?</label>
+                    <select name="ID_ESTRATO" id="ID_ESTRATO" require class="mt-1 block w-3/5 rounded-md border border-gray-300 bg-white py-2 px-3 shadow-sm focus:border-sky-500 focus:outline-none focus:ring-sky-500 sm:text-sm">
+                        <option value="" disabled selected></option>
+                        <option class="text-base py-2" value="1">1</option>
+                        <option class="text-base py-2" value="2">2</option>
+                        <option class="text-base py-2" value="3">3</option>
+                        <option class="text-base py-2" value="4">4</option>
+                        <option class="text-base py-2" value="5">5</option>
+                    </select>
+                </div>
+
+                <div class="relative z-0 w-full group">
+                    <label class="block ml-2 font-semibold text-lg py-1 px-0 w-full text-gray-900 bg-transparent border-0 border-b-2 border-gray-300 appearance-none focus:outline-none focus:ring-0 focus:border-blue-600 peer" required>¿Estrato socioeconómico?</label>
+                    <select name="ID_TIPO_VIVIENDA" id="ID_TIPO_VIVIENDA" require class="mt-1 block w-3/5 rounded-md border border-gray-300 bg-white py-2 px-3 shadow-sm focus:border-sky-500 focus:outline-none focus:ring-sky-500 sm:text-sm">
+                        <option value="" disabled selected></option>
+                        <option class="text-base py-2" value="1">1</option>
+                        <option class="text-base py-2" value="2">Propia</option>
+                        <option class="text-base py-2" value="3">Arrendada</option>
+                        <option class="text-base py-2" value="1">Familiar</option>
+                        <option class="text-base py-2" value="4">Otra</option>
+                    </select>
+                </div>
+
+                <div class="relative z-0 w-full group">
+                    <label class="font-semibold text-lg py-1 px-0 w-full text-gray-900 bg-transparent border-0 border-b-2 border-gray-300 appearance-none focus:outline-none focus:ring-0 focus:border-blue-600 peer" required>¿Recibe usted ingresos mensualmente?</label>
+                    <select name="ID_RECIBE_INGRESOS" id="ID_RECIBE_INGRESOS" required class="mt-1 block w-3/5 rounded-md border border-gray-300 bg-white py-2 px-3 shadow-sm focus:border-sky-500 focus:outline-none focus:ring-sky-500 sm:text-sm">
+                        <option value="" disabled selected></option>
+                        <option class="text-base py-2" value="1">Si</option>
+                        <option class="text-base py-2" value="2">No</option>
+                    </select>
+                </div>
+
+                <div class="relative z-0 w-full group">
+                    <label class="font-semibold text-lg py-1 px-0 w-full text-gray-900 bg-transparent border-0 border-b-2 border-gray-300 appearance-none focus:outline-none focus:ring-0 focus:border-blue-600 peer" required>¿Alguien lo representa legalmente?</label>
+                    <select name="ID_ACUDIENTE" id="ID_ACUDIENTE" required class="mt-1 block w-3/5 rounded-md border border-gray-300 bg-white py-2 px-3 shadow-sm focus:border-sky-500 focus:outline-none focus:ring-sky-500 sm:text-sm">
+                        <option value="" disabled selected></option>
+                        <option class="text-base py-2" value="1">Si</option>
+                        <option class="text-base py-2" value="2">No</option>
+                    </select>
+                </div>
+
+                <div class="relative z-0 w-full group">
+                    <label class="font-semibold text-lg py-1 px-0 w-full text-gray-900 bg-transparent border-0 border-b-2 border-gray-300 appearance-none focus:outline-none focus:ring-0 focus:border-blue-600 peer" required>¿Alguien lo representa legalmente?</label>
+                    <select name="ID_NIVEL_ACADEMICO" id="ID_NIVEL_ACADEMICO" required class="mt-1 block w-3/5 rounded-md border border-gray-300 bg-white py-2 px-3 shadow-sm focus:border-sky-500 focus:outline-none focus:ring-sky-500 sm:text-sm">
+                        <option value="" disabled selected></option>
+                        <option class="text-base py-2" value="1">Bachiller</option>
+                        <option class="text-base py-2" value="2">Tecnico</option>
+                        <option class="text-base py-2" value="3">Tecnico Bachiller</option>
+                        <option class="text-base py-2" value="5">Universitario</option>
+                        <option class="text-base py-2" value="4">Tecnologo</option>
+                    </select>
+                </div>
+
+                <div class="form-group">
+                    <label class="block ml-2 font-semibold text-lg py-1 px-0  text-gray-900 bg-transparent border-0 border-b-2 border-gray-300 appearance-none focus:outline-none focus:ring-0 focus:border-blue-600 peer">
+                        ¿Cuánto es el ingreso familiar?
+                    </label>
+                    <input type="number" id="ID_INGRESO_FAMILIAR" name="ID_INGRESO_FAMILIAR" class="form-control w-3/5"
+                     maxlength="10" placeholder="Ingreso" autofocus required />
+                </div>
+
+                <div class="relative z-0 w-full group">
+                    <label class="font-semibold text-lg py-1 px-0 w-full text-gray-900 bg-transparent border-0 border-b-2 border-gray-300 appearance-none focus:outline-none focus:ring-0 focus:border-blue-600 peer" required>
+                        ¿Posee usted computador?
+                    </label>
+                    <select name="ID_TIENE_PC" id="ID_TIENE_PC" required class="mt-1 block w-3/5 rounded-md border border-gray-300 bg-white py-2 px-3 shadow-sm focus:border-sky-500 focus:outline-none focus:ring-sky-500 sm:text-sm">
+                        <option value="" disabled selected></option>
+                        <option class="text-base py-2" value="1">Si</option>
+                        <option class="text-base py-2" value="2">No</option>
+                    </select>
+                </div>
+
+                <div class="relative z-0 w-full group">
+                    <label class="font-semibold text-lg py-1 px-0 w-full text-gray-900 bg-transparent border-0 border-b-2 border-gray-300 appearance-none focus:outline-none focus:ring-0 focus:border-blue-600 peer" required>
+                        ¿Tiene acceso a Internet?
+                    </label>
+                    <select name="ID_TIENE_INTERNET" id="ID_TIENE_INTERNET" required class="mt-1 block w-3/5 rounded-md border border-gray-300 bg-white py-2 px-3 shadow-sm focus:border-sky-500 focus:outline-none focus:ring-sky-500 sm:text-sm">
+                        <option value="" disabled selected></option>
+                        <option class="text-base py-2" value="1">Si</option>
+                        <option class="text-base py-2" value="2">No</option>
+                    </select>
+                </div>
+
+                <div class="relative z-0 w-full group">
+                    <label class="font-semibold text-lg py-1 px-0 w-full text-gray-900 bg-transparent border-0 border-b-2 border-gray-300 appearance-none focus:outline-none focus:ring-0 focus:border-blue-600 peer" required>
+                        ¿Posee usted un celular inteligente?
+                    </label>
+                    <select name="ID_CEL_SMART" id="ID_CEL_SMART" required class="mt-1 block w-3/5 rounded-md border border-gray-300 bg-white py-2 px-3 shadow-sm focus:border-sky-500 focus:outline-none focus:ring-sky-500 sm:text-sm">
+                        <option value="" disabled selected></option>
+                        <option class="text-base py-2" value="1">Si</option>
+                        <option class="text-base py-2" value="2">No</option>
+                    </select>
+                </div>
+
+                <div class="relative z-0 w-full group">
+                    <label class="font-semibold text-lg py-1 px-0 w-full text-gray-900 bg-transparent border-0 border-b-2 border-gray-300 appearance-none focus:outline-none focus:ring-0 focus:border-blue-600 peer" required>
+                        ¿Posee usted un plan de datos
+                    </label>
+                    <select name="ID_PLAN_DATOS" id="ID_PLAN_DATOS" required class="mt-1 block w-3/5 rounded-md border border-gray-300 bg-white py-2 px-3 shadow-sm focus:border-sky-500 focus:outline-none focus:ring-sky-500 sm:text-sm">
+                        <option value="" disabled selected></option>
+                        <option class="text-base py-2" value="1">Si</option>
+                        <option class="text-base py-2" value="2">No</option>
+                    </select>
+                </div>
+
+                <div class="relative z-0 w-full group">
+                    <label class="font-semibold text-lg py-1 px-0 w-full text-gray-900 bg-transparent border-0 border-b-2 border-gray-300 appearance-none focus:outline-none focus:ring-0 focus:border-blue-600 peer" required>
+                        ¿Al momento de entrar a la universidad usted trabajaba?
+                    </label>
+                    <select name="ID_INGRESO_TRABAJA" id="ID_INGRESO_TRABAJA" required class="mt-1 block w-3/5 rounded-md border border-gray-300 bg-white py-2 px-3 shadow-sm focus:border-sky-500 focus:outline-none focus:ring-sky-500 sm:text-sm">
+                        <option value="" disabled selected></option>
+                        <option class="text-base py-2" value="1">Si</option>
+                        <option class="text-base py-2" value="2">No</option>
+                    </select>
+                </div>
+            </form>
+        </div>
+    </section>
+ <!-- Información Academica-->
+    <section class="mt-14">
+        <div class="bg-gray-200 mx-10 p-4 rounded-lg shadow-lg">
+            <h3 class="text-black font-bold text-xl">Información Academica</h3>
+            <form id="formularioCurso" action="/api/registrarCurso/" method="POST">
+                {% csrf_token %}
+                <div class="grid md:grid-cols-2 md:gap-6 p-4">
+                    <div class="relative z-0 w-full group">
+                        <label class="font-semibold text-lg py-1 px-0 w-full text-gray-900 bg-transparent border-0 border-b-2 border-gray-300 appearance-none focus:outline-none focus:ring-0 focus:border-blue-600 peer" required>
+                            Seleccione la carrera universitaria que está estudiando actualmente
+                        </label>
+                        <select name="ID_PROGR_ACTUAL" id="ID_PROGR_ACTUAL" required class="mt-1 block w-3/5 rounded-md border border-gray-300 bg-white py-2 px-3 shadow-sm focus:border-sky-500 focus:outline-none focus:ring-sky-500 sm:text-sm">
+                            <option value="" disabled selected></option>
+                            <option class="text-base py-2" value="16">Administracion de empresas</option>
+                            <option class="text-base py-2" value="8">Administracion Turistica</option>
+                            <option class="text-base py-2" value="12">Comercio Internacional</option>
+                            <option class="text-base py-2" value="5">Contaduria publica</option>
+                            <option class="text-base py-2" value="6">Economia</option>
+                            <option class="text-base py-2" value="7">Derecho</option>
+                            <option class="text-base py-2" value="3">Psicologia</option>
+                            <option class="text-base py-2" value="9">Sociologia</option>
+                            <option class="text-base py-2" value="10">Enfermeria</option>
+                            <option class="text-base py-2" value="11">Instrumentacion</option>
+                            <option class="text-base py-2" value="2">Microbiologia</option>
+                            <option class="text-base py-2" value="13">Ing. Agroindustrial</option>
+                            <option class="text-base py-2" value="14">Ing. Ambiental</option>
+                            <option class="text-base py-2" value="15">Ing. de Sistemnas</option>
+                            <option class="text-base py-2" value="1">Ing. Electronica</option>
+                            <option class="text-base py-2" value="17">Lic. Español e ingles</option>
+                            <option class="text-base py-2" value="18">Lic. en Castellano</option>
+                            <option class="text-base py-2" value="19">Musica</option>
+                            <option class="text-base py-2" value="20">Lic. Educacion Fisica</option>
+                            <option class="text-base py-2" value="21">Lic. Ciencias naturales</option>
+                            <option class="text-base py-2" value="22">Lic. en Arte</option>
+                            <option class="text-base py-2" value="4">No registra</option>
+                        </select>
+                    </div>
+            
+                    <div class="form-group">
+                        <label class="block ml-2 font-semibold text-lg py-1 px-0  text-gray-900 bg-transparent border-0 border-b-2 border-gray-300 appearance-none focus:outline-none focus:ring-0 focus:border-blue-600 peer">
+                            ¿Tiene hermanos estudiando actualmente en alguna IES?
+                        </label>
+                        <input type="number" id="ID_HERMANOS_IES" name="ID_HERMANOS_IES" class="form-control w-3/5"
+                        maxlength="10" placeholder="Ingreso" autofocus required />
+                    </div>
+
+                    <div class="relative z-0 w-full group">
+                        <label class="font-semibold text-lg py-1 px-0 w-full text-gray-900 bg-transparent border-0 border-b-2 border-gray-300 appearance-none focus:outline-none focus:ring-0 focus:border-blue-600 peer" required>
+                            Usted ingresó a la Universidad Popular del Cesar por medio de según su oferta
+                            acamédica
+                        </label>
+                        <select name="ID_INGRESO_UPC" id="ID_INGRESO_UPC" required class="mt-1 block w-3/5 rounded-md border border-gray-300 bg-white py-2 px-3 shadow-sm focus:border-sky-500 focus:outline-none focus:ring-sky-500 sm:text-sm">
+                            <option value="" disabled selected></option>
+                            <option class="text-base py-2" value="2">Aspirante Regular</option>
+                            <option class="text-base py-2" value="1">Preuniversitario</option>
+                            <option class="text-base py-2" value="9">Deportista Destacado</option>
+                            <option class="text-base py-2" value="3">Perteneciente a cabildo indigena</option>
+                            <option class="text-base py-2" value="7">Transferencia interna</option>
+                            <option class="text-base py-2" value="6">Transferencia externa</option>
+                            <option class="text-base py-2" value="4">Reintegro</option>
+                            <option class="text-base py-2" value="5">Reserva de cupo</option>
+                            <option class="text-base py-2" value="8">otro</option>
+                        </select>
+                    </div>
+
+                    <div class="relative z-0 w-full group">
+                        <label class="font-semibold text-lg py-1 px-0 w-full text-gray-900 bg-transparent border-0 border-b-2 border-gray-300 appearance-none focus:outline-none focus:ring-0 focus:border-blue-600 peer" required>
+                            Ingresó a la universidad por (Mejor bachiller, preuniversitario o deportista)
+                        </label>
+                        <select name="ID_INGRESO_OFERTA" id="ID_INGRESO_OFERTA" required class="mt-1 block w-3/5 rounded-md border border-gray-300 bg-white py-2 px-3 shadow-sm focus:border-sky-500 focus:outline-none focus:ring-sky-500 sm:text-sm">
+                            <option value="" disabled selected></option>
+                            <option class="text-base py-2" value="1">Si</option>
+                            <option class="text-base py-2" value="2">No</option>
+                        </select>
+                    </div>
+
+                    <div class="relative z-0 w-full group">
+                        <label class="font-semibold text-lg py-1 px-0 w-full text-gray-900 bg-transparent border-0 border-b-2 border-gray-300 appearance-none focus:outline-none focus:ring-0 focus:border-blue-600 peer" required>
+                            Qué tan motivado te sentías al momento de ingresar a estudiar su carrera
+                            profesional
+                        </label>
+                        <select name="ID_MOTIVACION" id="ID_MOTIVACION" required class="mt-1 block w-3/5 rounded-md border border-gray-300 bg-white py-2 px-3 shadow-sm focus:border-sky-500 focus:outline-none focus:ring-sky-500 sm:text-sm">
+                            <option value="" disabled selected></option>
+                            <option class="text-base py-2" value="1">Bajo</option>
+                            <option class="text-base py-2" value="2">Medio</option>
+                            <option class="text-base py-2" value="3">Alto</option>
+                            <option class="text-base py-2" value="4">Excelente</option>
+                        </select>
+                    </div>
+                    
+                    <div class="relative z-0 w-full group">
+                        <label class="font-semibold text-lg py-1 px-0 w-full text-gray-900 bg-transparent border-0 border-b-2 border-gray-300 appearance-none focus:outline-none focus:ring-0 focus:border-blue-600 peer" required>
+                            Validó el bachillerato
+                        <select name="ID_VALIDO_BACH" id="ID_VALIDO_BACH" required class="mt-1 block w-3/5 rounded-md border border-gray-300 bg-white py-2 px-3 shadow-sm focus:border-sky-500 focus:outline-none focus:ring-sky-500 sm:text-sm">
+                            <option value="" disabled selected></option>
+                            <option class="text-base py-2" value="1">Si</option>
+                            <option class="text-base py-2" value="2">No</option>
+                        </select>
+                    </div>
+
+                    <div class="relative z-0 w-full group">
+                        <label class="font-semibold text-lg py-1 px-0 w-full text-gray-900 bg-transparent border-0 border-b-2 border-gray-300 appearance-none focus:outline-none focus:ring-0 focus:border-blue-600 peer" required>
+                            Tipo de colegio en el que estudio
+                        </label>
+                        <select name="ID_TIPO_COLEGIO" id="ID_TIPO_COLEGIO" required class="mt-1 block w-3/5 rounded-md border border-gray-300 bg-white py-2 px-3 shadow-sm focus:border-sky-500 focus:outline-none focus:ring-sky-500 sm:text-sm">
+                            <option value="" disabled selected></option>
+                            <option class="text-base py-2" value="1">Publico</option>
+                            <option class="text-base py-2" value="2">Privado</option>
+                            <option class="text-base py-2" value="3">No Registra</option>
+                        </select>
+                    </div>
+
+                    <div class="relative z-0 w-full group">
+                        <label class="font-semibold text-lg py-1 px-0 w-full text-gray-900 bg-transparent border-0 border-b-2 border-gray-300 appearance-none focus:outline-none focus:ring-0 focus:border-blue-600 peer" required>
+                            En qué semestre iniciaste tu carrera profesional en la Universidad Popular del
+                            Cesar
+                        </label>
+                        <select name="ID_SEMESTRE_INICIO" id="ID_SEMESTRE_INICIO" required class="mt-1 block w-3/5 rounded-md border border-gray-300 bg-white py-2 px-3 shadow-sm focus:border-sky-500 focus:outline-none focus:ring-sky-500 sm:text-sm">
+                            <option value="" disabled selected></option>
+                            <option class="text-base py-2" value="24">2010-1</option>
+                            <option class="text-base py-2" value="25">2010-2</option>
+                            <option class="text-base py-2" value="26">2011-1</option>
+                            <option class="text-base py-2" value="27">2011-2</option>
+                            <option class="text-base py-2" value="1">2012-1</option>
+                            <option class="text-base py-2" value="23">2012-2</option>
+                            <option class="text-base py-2" value="2">2013-1</option>
+                            <option class="text-base py-2" value="3">2013-2</option>
+                            <option class="text-base py-2" value="4">2014-1</option>
+                            <option class="text-base py-2" value="5">2014-2</option>
+                            <option class="text-base py-2" value="6">2015-1</option>
+                            <option class="text-base py-2" value="7">2015-2</option>
+                            <option class="text-base py-2" value="8">2016-1</option>
+                            <option class="text-base py-2" value="9">2016-2</option>
+                            <option class="text-base py-2" value="10">2017-1</option>
+                            <option class="text-base py-2" value="11">2017-2</option>
+                            <option class="text-base py-2" value="12">2018-1</option>
+                            <option class="text-base py-2" value="13">2018-2</option>
+                            <option class="text-base py-2" value="14">2019-1</option>
+                            <option class="text-base py-2" value="15">2019-2</option>
+                            <option class="text-base py-2" value="16">2020-1</option>
+                            <option class="text-base py-2" value="17">2020-2</option>
+                            <option class="text-base py-2" value="18">2021-1</option>
+                            <option class="text-base py-2" value="19">2021-2</option>
+                            <option class="text-base py-2" value="20">2022-1</option>
+                            <option class="text-base py-2" value="21">2022-2</option>
+                            <option class="text-base py-2" value="22">2023-1</option>
+                            <option class="text-base py-2" value="23">2023-2</option>
+                        </select>
+                    </div>
+
+                    <div class="relative z-0 w-full group">
+                        <label class="font-semibold text-lg py-1 px-0 w-full text-gray-900 bg-transparent border-0 border-b-2 border-gray-300 appearance-none focus:outline-none focus:ring-0 focus:border-blue-600 peer" required>
+                            Repitió usted las pruebas saber 11° ICFES
+                        <select name="ID_REPITIO_ICFES" id="ID_REPITIO_ICFES" required class="mt-1 block w-3/5 rounded-md border border-gray-300 bg-white py-2 px-3 shadow-sm focus:border-sky-500 focus:outline-none focus:ring-sky-500 sm:text-sm">
+                            <option value="" disabled selected></option>
+                            <option class="text-base py-2" value="1">Si</option>
+                            <option class="text-base py-2" value="2">No</option>
+                        </select>
+                    </div>
+
+                    <div class="form-group">
+                        <label class="block ml-2 font-semibold text-lg py-1 px-0  text-gray-900 bg-transparent border-0 border-b-2 border-gray-300 appearance-none focus:outline-none focus:ring-0 focus:border-blue-600 peer">
+                            PUNTAJE de las pruebas saber 11° ICFES
+                        </label>
+                        <input type="number" id="ID_PUNTAJE_ICFES" name="ID_PUNTAJE_ICFES" class="form-control w-3/5"
+                        maxlength="10" placeholder="Puntaje ICFES" autofocus required />
+                    </div>
+
+                    <div class="form-group">
+                        <label class="block ml-2 font-semibold text-lg py-1 px-0  text-gray-900 bg-transparent border-0 border-b-2 border-gray-300 appearance-none focus:outline-none focus:ring-0 focus:border-blue-600 peer">
+                            PERCENTIL de las pruebas saber 11° ICFES
+                        </label>
+                        <input type="number" id="ID_PUESTO_ICFES" name="ID_PUESTO_ICFES" class="form-control w-3/5"
+                        maxlength="10" placeholder="Puntaje ICFES" autofocus required />
+                    </div>
+
+                    <div class="form-group">
+                        <label class="block ml-2 font-semibold text-lg py-1 px-0  text-gray-900 bg-transparent border-0 border-b-2 border-gray-300 appearance-none focus:outline-none focus:ring-0 focus:border-blue-600 peer">
+                            Puntaje de lectura critica
+                        </label>
+                        <input type="number" id="ID_LECTURA_CRITICA" name="ID_LECTURA_CRITICA" class="form-control w-3/5"
+                        maxlength="10" placeholder="Puntaje ICFES" autofocus required />
+                    </div>
+
+                    <div class="form-group">
+                        <label class="block ml-2 font-semibold text-lg py-1 px-0  text-gray-900 bg-transparent border-0 border-b-2 border-gray-300 appearance-none focus:outline-none focus:ring-0 focus:border-blue-600 peer">
+                            Puntaje de matematicas
+                        </label>
+                        <input type="number" id="ID_MATEMATICA" name="ID_MATEMATICA" class="form-control w-3/5"
+                        maxlength="10" placeholder="Puntaje ICFES" autofocus required />
+                    </div>
+
+                    <div class="form-group">
+                        <label class="block ml-2 font-semibold text-lg py-1 px-0  text-gray-900 bg-transparent border-0 border-b-2 border-gray-300 appearance-none focus:outline-none focus:ring-0 focus:border-blue-600 peer">
+                            Puntaje de sociales y ciudadanas
+                        </label>
+                        <input type="number" id="ID_CIUDADANOS" name="ID_CIUDADANOS" class="form-control w-3/5"
+                        maxlength="10" placeholder="Puntaje ICFES" autofocus required />
+                    </div>
+
+                    <div class="form-group">
+                        <label class="block ml-2 font-semibold text-lg py-1 px-0  text-gray-900 bg-transparent border-0 border-b-2 border-gray-300 appearance-none focus:outline-none focus:ring-0 focus:border-blue-600 peer">
+                            Puntaje de ciencias naturales
+                        </label>
+                        <input type="number" id="ID_CIENCIAS" name="ID_CIENCIAS" class="form-control w-3/5"
+                        maxlength="10" placeholder="Puntaje ICFES" autofocus required />
+                    </div>
+
+                    <div class="form-group">
+                        <label class="block ml-2 font-semibold text-lg py-1 px-0  text-gray-900 bg-transparent border-0 border-b-2 border-gray-300 appearance-none focus:outline-none focus:ring-0 focus:border-blue-600 peer">
+                            Puntaje de ingles
+                        </label>
+                        <input type="number" id="ID_INGLES" name="ID_INGLES" class="form-control w-3/5"
+                        maxlength="10" placeholder="Puntaje ICFES" autofocus required />
+                    </div>
+
+                    <div class="form-group">
+                        <label class="block ml-2 font-semibold text-lg py-1 px-0  text-gray-900 bg-transparent border-0 border-b-2 border-gray-300 appearance-none focus:outline-none focus:ring-0 focus:border-blue-600 peer">
+                            ¿Cuántos semestres ha cursado usted actualmente?
+                        </label>
+                        <input type="number" id="ID_SEMESTRES_CURSADOS" name="ID_SEMESTRES_CURSADOS" class="form-control w-3/5"
+                        maxlength="10" placeholder="Semestres Cursados" autofocus required />
+                    </div>
+
+                    <div class="form-group">
+                        <label class="block ml-2 font-semibold text-lg py-1 px-0  text-gray-900 bg-transparent border-0 border-b-2 border-gray-300 appearance-none focus:outline-none focus:ring-0 focus:border-blue-600 peer">
+                            Su ubicación semestral según el vortal
+                        </label>
+                        <input type="number" id="ID_UBICACION_SEMESTRE" name="ID_UBICACION_SEMESTRE" class="form-control w-3/5"
+                        maxlength="10" placeholder="Semestres actual" autofocus required />
+                    </div>
+
+                    <div class="form-group">
+                        <label class="block ml-2 font-semibold text-lg py-1 px-0  text-gray-900 bg-transparent border-0 border-b-2 border-gray-300 appearance-none focus:outline-none focus:ring-0 focus:border-blue-600 peer">
+                            Créditos aprobados hasta el 2023-1
+                        </label>
+                        <input type="number" id="ID_CREDITOS_APROBADOS" name="ID_CREDITOS_APROBADOS" class="form-control w-3/5"
+                        maxlength="10" placeholder="Creditos aprobados" autofocus required />
+                    </div>
+
+                    <div class="form-group">
+                        <label class="block ml-2 font-semibold text-lg py-1 px-0  text-gray-900 bg-transparent border-0 border-b-2 border-gray-300 appearance-none focus:outline-none focus:ring-0 focus:border-blue-600 peer">
+                            ¿Cual es su promedio acumulado actual?
+                        </label>
+                        <input type="number" id="ID_PROMEDIO_ACUMULADO" name="ID_PROMEDIO_ACUMULADO" class="form-control w-3/5"
+                        maxlength="10" placeholder="Promedio acumulado" autofocus required />
+                    </div>
+
+                    <div class="form-group">
+                        <label class="block ml-2 font-semibold text-lg py-1 px-0  text-gray-900 bg-transparent border-0 border-b-2 border-gray-300 appearance-none focus:outline-none focus:ring-0 focus:border-blue-600 peer">
+                            ¿Cual es su promedio del semestre anterior?
+                        </label>
+                        <input type="number" id="ID_PROMEDIO_SEMESTRE_ANT" name="ID_PROMEDIO_SEMESTRE_ANT" class="form-control w-3/5"
+                        maxlength="10" placeholder="Promedio Semestre anterior" autofocus required />
+                    </div>
+
+                    <div class="form-group">
+                        <label class="block ml-2 font-semibold text-lg py-1 px-0  text-gray-900 bg-transparent border-0 border-b-2 border-gray-300 appearance-none focus:outline-none focus:ring-0 focus:border-blue-600 peer">
+                            ¿Cuántos créditos no aprobados?
+                        </label>
+                        <input type="number" id="ID_CREDITOS_NO_APROBADOS" name="ID_CREDITOS_NO_APROBADOS" class="form-control w-3/5"
+                        maxlength="10" placeholder="Creditos no aprobados" autofocus required />
+                    </div>
+
+                    <div class="form-group">
+                        <label class="block ml-2 font-semibold text-lg py-1 px-0  text-gray-900 bg-transparent border-0 border-b-2 border-gray-300 appearance-none focus:outline-none focus:ring-0 focus:border-blue-600 peer">
+                            Créditos matriculados este semestre 2023-1
+                        </label>
+                        <input type="number" id="ID_CREDITOS_MATRIC" name="ID_CREDITOS_MATRIC" class="form-control w-3/5"
+                        maxlength="10" placeholder="Creditos Matriculados" autofocus required />
+                    </div>
+
+                    <div class="form-group">
+                        <label class="block ml-2 font-semibold text-lg py-1 px-0  text-gray-900 bg-transparent border-0 border-b-2 border-gray-300 appearance-none focus:outline-none focus:ring-0 focus:border-blue-600 peer">
+                            ¿Ha cancelado alguna asignatura este semestre 2023-1?
+                        </label>
+                        <input type="number" id="ID_MATERIAS_CANCELADAS" name="ID_MATERIAS_CANCELADAS" class="form-control w-3/5"
+                        maxlength="10" placeholder="Creditos Cancelados" autofocus required />
+                    </div>
+
+                    <div class="relative z-0 w-full group">
+                        <label class="font-semibold text-lg py-1 px-0 w-full text-gray-900 bg-transparent border-0 border-b-2 border-gray-300 appearance-none focus:outline-none focus:ring-0 focus:border-blue-600 peer" required>
+                            Desde que asignatura esta haciendo la encuesta
+                        </label>
+                        <select name="ID_ASIGNATURA_ENCUESTA" id="ID_ASIGNATURA_ENCUESTA" required class="mt-1 block w-3/5 rounded-md border border-gray-300 bg-white py-2 px-3 shadow-sm focus:border-sky-500 focus:outline-none focus:ring-sky-500 sm:text-sm">
+                            <option value="" disabled selected></option>
+                            <option class="text-base py-2" value="1">ALGEBRA LINEAL COD: MT301B</option>
+                            <option class="text-base py-2" value="2">ALGORITMOS Y FUNDAMENTOS DE PROGRAMACION COD: SS407</option>
+                            <option class="text-base py-2" value="3">ANALISIS DE SEÑALES COD: EL431 </option>
+                            <option class="text-base py-2" value="4">CALCULO INTEGRAL COD: MT303B</option>
+                            <option class="text-base py-2" value="5">CIRCUITOS EN CORRIENTE DIRECTA, COD: EL300</option>
+                            <option class="text-base py-2" value="6">CIRCUITOS I COD: EL401</option>
+                            <option class="text-base py-2" value="7">CIRCUITOS II COD: EL408</option>
+                            <option class="text-base py-2" value="8">CIRCUITOS III COD: EL411</option>
+                            <option class="text-base py-2" value="9">COMUNICACIONES I COD: EL420</option>
+                            <option class="text-base py-2" value="10">COMUNICACIONES II COD: EL425</option>
+                            <option class="text-base py-2" value="11">CONTROL I COD: EL417</option>
+                            <option class="text-base py-2" value="12">CONTROL II COD: EL422</option>
+                            <option class="text-base py-2" value="13">DIGITALES I COD: EL409</option>
+                            <option class="text-base py-2" value="14">ELECTIVA I PROCESAMIENTO DE SEÑALES</option>
+                            <option class="text-base py-2" value="15">ELECTIVA II PROCESAMIENTO DE SEÑALES</option>
+                            <option class="text-base py-2" value="16">ELECTIVA III PROCESAMIENTO DE SEÑALES</option>
+                            <option class="text-base py-2" value="17">ELECTRONICA DE POTENCIA COD: EL419</option>
+                            <option class="text-base py-2" value="18">ELECTRONICA I COD: EL402</option>
+                            <option class="text-base py-2" value="19">ELECTRONICA II COD: EL412</option>
+                            <option class="text-base py-2" value="20">GESTION EMPRESARIAL Y EMPREDIMIENTO COD: MB322</option>
+                            <option class="text-base py-2" value="21">HERRAMIENTAS DE SOFTWARE COD: EL436</option>
+                            <option class="text-base py-2" value="22">INSTRUMENTACION COD: EL424</option>
+                            <option class="text-base py-2" value="23">INTRODUCCION A LA INGENIERIA ELECTRONICA COD: EL435</option>
+                            <option class="text-base py-2" value="24">LOGICA DIGITAL COD: EL502</option>
+                            <option class="text-base py-2" value="25">MEDIOS DE TRANSMISION COD: EL445</option>
+                            <option class="text-base py-2" value="26">MODELAMIENTO Y SIMULACION COD: EL432</option>
+                            <option class="text-base py-2" value="27">ONDAS ELECTROMACNETICAS COD: FS315E</option>
+                            <option class="text-base py-2" value="28">PROFUNDIZACION COD: EL444</option>
+                            <option class="text-base py-2" value="29">PSICOMETRIA COD: EL444</option>
+                            <option class="text-base py-2" value="30">SEMILLERO DE INVESTIGACION COD: EL437</option>
+                            <option class="text-base py-2" value="31">SEMILLERO DE PROCESAMIENTO DE SEÑALES</option>
+                            <option class="text-base py-2" value="32">SEMILLERO DE INVESTIGACION COD: EL439</option>
+                            <option class="text-base py-2" value="33">TRATAMIENTO DE SEÑALES COD: EL442 </option>
+                            <option class="text-base py-2" value="34">CATEDRA UPECISTA COD: UPC01</option>
+                            <option class="text-base py-2" value="35">HUMANIDADES I COD: HM301</option>
+                            <option class="text-base py-2" value="36">CALCULO DIFERENCIAL COD: MT302B</option>
+                            <option class="text-base py-2" value="37">TECNICAS DE AUTOAPRENDIZAJE COD: PG312</option>
+                            <option class="text-base py-2" value="38">HUMANIDADES II COD: HM302</option>
+                            <option class="text-base py-2" value="39">LENGUA EXTRANJERA-GRAMATICA COD: UPC04</option>
+                            <option class="text-base py-2" value="41">PROGRAMACION DE COMPUTADORES I COD: SS401</option>
+                            <option class="text-base py-2" value="42">CALCULO MULTIVARIABLE COD: MT304B</option>
+                            <option class="text-base py-2" value="43">ELECTROMAGNETISMO COD: FS311</option>
+                            <option class="text-base py-2" value="44">ESTADISTICA DESCRIPTIVA E INFERENCIAL COD: MT307B</option>
+                            <option class="text-base py-2" value="45">LENGUA EXTRANJERA-LECTURA COD: UPC05</option>
+                            <option class="text-base py-2" value="46">METODOLOGIA DE LA INVESTIGACION COD: EL438</option>
+                            <option class="text-base py-2" value="47">ANALISIS NUMERICO COD: MT309B</option>
+                            <option class="text-base py-2" value="48">ECUACIONES DIFERENCIALES ORDINARIAS COD: MT305B</option>
+                            <option class="text-base py-2" value="49">LENGUA EXTRANJERA-ESCRITURA COD: UPC06</option>
+                            <option class="text-base py-2" value="50">ACTIVIDAD DEPORTIVA COD: UPC08 </option>
+                            <option class="text-base py-2" value="51">FISICA MODERNA Y OPTICA COD: FS328</option>
+                            <option class="text-base py-2" value="52"> FUNCIONES ESPECIALES Y ECUACIONES DIFERENCIALES COD: MT306B</option>
+                            <option class="text-base py-2" value="53">SEMINARIO DE INVESTIGACION COD: EL439</option>
+                            <option class="text-base py-2" value="54">ACTIVIDAD CULTURAL COD: UPC09</option>
+                            <option class="text-base py-2" value="55">DIGITALES II COD: EL410</option>
+                            <option class="text-base py-2" value="56">ELECTRONICA III COD: EL416</option>
+                            <option class="text-base py-2" value="57">INGENIERIA ECONOMICA COD: AI420 </option>
+                            <option class="text-base py-2" value="58">LENGUA EXTRANJERA CONVERSACION COD: UPC07</option>
+                            <option class="text-base py-2" value="59">MAQUINAS ELECTRICAS COD: EL440 </option>
+                            <option class="text-base py-2" value="60">DIGITALES III COD: EL403</option>
+                            <option class="text-base py-2" value="61">GERENCIA COD: AE118</option>
+                            <option class="text-base py-2" value="62">LABORATORIO DE DISEÑO INTEGRAL COD: EL441</option>
+                            <option class="text-base py-2" value="63">FORMULACION Y EVALU DE PROYEC EN INGENIERIA COD: FC407</option>
+                            <option class="text-base py-2" value="64">OPTATIVA VIRTUAL COD: EL801</option>
+                            <option class="text-base py-2" value="65">TELEMATICA I COD: EL443</option>
+                            <option class="text-base py-2" value="66">DISEÑO EXPERIMENTAL COD: FC403 </option>
+                            <option class="text-base py-2" value="67">PROYECTO I COD: EL447</option>
+                            <option class="text-base py-2" value="68">TELEMATICA II COD: EL446</option>
+                            <option class="text-base py-2" value="69">COMPETENCIAS PEDAGOGICAS COD: PG013</option>
+                            <option class="text-base py-2" value="70">LEGISLACION COD: DR556</option>
+                            <option class="text-base py-2" value="71">PROYECTO II COD: EL448</option>
+                        </select>
+                    </div>
+                    
+                    <div class="relative z-0 w-full group">
+                        <label class="font-semibold text-lg py-1 px-0 w-full text-gray-900 bg-transparent border-0 border-b-2 border-gray-300 appearance-none focus:outline-none focus:ring-0 focus:border-blue-600 peer" required>
+                            Jornada académica
+                        <select name="ID_JORNADA_ACAD" id="ID_JORNADA_ACAD" required class="mt-1 block w-3/5 rounded-md border border-gray-300 bg-white py-2 px-3 shadow-sm focus:border-sky-500 focus:outline-none focus:ring-sky-500 sm:text-sm">
+                            <option value="" disabled selected></option>
+                            <option class="text-base py-2" value="1">Diurno</option>
+                            <option class="text-base py-2" value="2">Nocturno</option>
+                            <option class="text-base py-2" value="3">Especial</option>
+                            <option class="text-base py-2" value="4">Sabatico</option>
+                        </select>
+                    </div>
+
+                    <div class="form-group">
+                        <label class="block ml-2 font-semibold text-lg py-1 px-0  text-gray-900 bg-transparent border-0 border-b-2 border-gray-300 appearance-none focus:outline-none focus:ring-0 focus:border-blue-600 peer">
+                            Su nota obtenida actualmente en la asignatura donde esta siendo encuestado
+                        </label>
+                        <input type="number" id="ID_NOTA_ACTUAL" name="ID_NOTA_ACTUAL" class="form-control w-3/5"
+                        maxlength="10" placeholder="Nota actual" autofocus required />
+                    </div>
+
+                    <div class="relative z-0 w-full group">
+                        <label class="font-semibold text-lg py-1 px-0 w-full text-gray-900 bg-transparent border-0 border-b-2 border-gray-300 appearance-none focus:outline-none focus:ring-0 focus:border-blue-600 peer" required>
+                            Actual rendimiento académico en la asignatura
+                        <select name="ID_RENDIMIENTO_ACTUAL" id="ID_RENDIMIENTO_ACTUAL" required class="mt-1 block w-3/5 rounded-md border border-gray-300 bg-white py-2 px-3 shadow-sm focus:border-sky-500 focus:outline-none focus:ring-sky-500 sm:text-sm">
+                            <option value="" disabled selected></option>
+                            <option class="text-base py-2" value="1">Diurno</option>
+                            <option class="text-base py-2" value="1">Bajo</option>
+                            <option class="text-base py-2" value="2">Medio</option>
+                            <option class="text-base py-2" value="3">Alto</option>
+                            <option class="text-base py-2" value="4">Excelente</option>
+                        </select>
+                    </div>
+
+                    <div class="relative z-0 w-full group">
+                        <label class="font-semibold text-lg py-1 px-0 w-full text-gray-900 bg-transparent border-0 border-b-2 border-gray-300 appearance-none focus:outline-none focus:ring-0 focus:border-blue-600 peer" required>
+                            Nivel de satisfacción con la asignatura
+                        <select name="ID_NIVEL_SATISFACION_ASIG" id="ID_NIVEL_SATISFACION_ASIG"required class="mt-1 block w-3/5 rounded-md border border-gray-300 bg-white py-2 px-3 shadow-sm focus:border-sky-500 focus:outline-none focus:ring-sky-500 sm:text-sm">
+                            <option value="" disabled selected></option>
+                            <option class="text-base py-2" value="1">Bajo</option>
+                            <option class="text-base py-2" value="2">Medio</option>
+                            <option class="text-base py-2" value="3">Alto</option>
+                            <option class="text-base py-2" value="4">Excelente</option>
+                        </select>
+                    </div>
+
+                </div>
+            </form>
+        </div>
+
+        <div class="text-center">
+            <button type="submit" class="btn btn-success btn-block  text-white"><i class="far fa-save"></i> Guardar</button>
+        </div>
+    </section>
+
     </div>
 
     <!-- Boostrap -->
@@ -752,7 +839,7 @@
         integrity="sha384-w1Q4orYjBQndcko6MimVbzY0tgp4pWB4lZ7lr30WKz0vr/aWKhXdBNmNb5D92v7s"
         crossorigin="anonymous"></script>
     <script src=https://cdnjs.cloudflare.com/ajax/libs/echarts/5.4.3/echarts.min.js></script>
-
+    <!-- Tailwind -->
 </body>
 
 </html>
