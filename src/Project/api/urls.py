@@ -1,8 +1,14 @@
-from django.urls import path
+from django.urls import path, include
+from rest_framework import routers
 from . import views
 #from .views import CursoListView, homelist, registrar_curso, eliminar_curso, change_curso, edicion_curso
 from .views import EstdListView, registrar_Estudiante, consultastd, consultas_p, eliminar_std, edicion_std , change_std,dashboard
+
+router = routers.DefaultRouter()
+router.register(r'Estudiante', views.studentViewSet)
+
 urlpatterns = [
+    path('', include(router.urls)),
     path('change/', change_std),
     path('edicionstd/<int:id>', edicion_std),
     path('grafico/', dashboard, name='fp'),
@@ -15,7 +21,5 @@ urlpatterns = [
     path('get_chart_5/', views.get_chart_5, name='get_chart_5'),
     path('home/', EstdListView.as_view(), name='Home'),
     path('registrarCurso/', registrar_Estudiante),
-    path('eliminacionstd/<int:id>', eliminar_std)
-    
-    
+    path('eliminacionstd/<int:id>', eliminar_std)  
 ]
