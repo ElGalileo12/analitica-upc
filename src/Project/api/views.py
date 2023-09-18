@@ -3,8 +3,15 @@ from django.shortcuts import render, redirect
 from .models import Estudiante , SocioEconomica, InfoAcademica
 from django.views.generic import ListView
 from random import randrange
+
+from rest_framework import viewsets
+from .serializer import EstudianteAgrupadoSerializer
+
 # Create your views here.
 
+class studentViewSet(viewsets.ModelViewSet):
+    queryset = Estudiante.objects.select_related('socioeconomica', 'infoacademica').all()
+    serializer_class = EstudianteAgrupadoSerializer
 
 class EstdListView(ListView):
     model = Estudiante
@@ -332,7 +339,7 @@ def consultastd(request):
                 Std_s.ID_NIVEL_ACADEMICO = NIVEL_ACADEMICO.get(Std_s.ID_NIVEL_ACADEMICO)
                 # Diccionario para TIENE_PC
                 TIENE_PC = {
-                    0: 'nRegistra',
+                    0: 'No Registra',
                     1: 'Sí',
                     2: 'No'
                 }   

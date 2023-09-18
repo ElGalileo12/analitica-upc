@@ -31,7 +31,25 @@ Servidor
 - El servidor se lanza desde la carpeta Project
 - cd src/Project
   - py .\manage.py migrate
+      - Si aparece un error, instlar lo siguiente: 
+         - pip install django
+         - pip install psycopg2-binary
+         - pip install psycopg
   - py .\manage.py makemigrations
   - py .\manage.py runserver
 
+Nuevos comando
 
+Para solucionar problema con la base de datos
+   - pip install --force-reinstall -v "openpyxl==3.1.0"
+
+Para problema de cors
+   - pip install django-cors-headers
+
+Framework api rest
+   - pip install djangorestframework
+   - pip install coreapi
+
+Para desplegar el frontend
+   - cd frontend-upc
+   - npm run dev
