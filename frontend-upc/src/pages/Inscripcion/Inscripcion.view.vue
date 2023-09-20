@@ -6,7 +6,6 @@ import Separador from "../../components/things/separador.things.vue";
 <template>
   <section>
     <div class="m-8">
-      <h1 class="text-xl font-bold">Información personal</h1>
       <PersonalForm></PersonalForm>
       <Separador></Separador>
     </div>
