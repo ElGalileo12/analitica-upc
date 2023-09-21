@@ -54,20 +54,20 @@ const activateButton = (buttonName) => {
           <button
             @click.prevent="searchConsult(identifications)"
             type="submit"
-            class="w-28 text-lg text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg px-5 py-1.5 text-center"
+            class="w-28 text-lg text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg  py-1.5 text-center"
           >
             Buscar
           </button>
           <button
             @click.prevent="changeId"
             type="submit"
-            class="text-white w-28 text-lg bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg px-5 py-1.5 text-center"
+            class="text-white w-28 text-lg bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg  py-1.5 text-center"
           >
             Editar
           </button>
           <button
             type="submit"
-            class="text-white text-lg w-28 bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg px-5 py-1.5 text-center"
+            class="text-white text-lg w-28 bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg  text-center"
           >
             Eliminar
           </button>

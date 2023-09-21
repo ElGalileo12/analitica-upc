@@ -210,4 +210,5 @@ background: linear-gradient(to right, #7c44ec, #9370db); /* W3C, IE 10+/ Edge, F
 .text-1 +.text-2 {
     margin-top: -25px;
 }
+
   </style>
