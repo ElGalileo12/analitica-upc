@@ -9,16 +9,18 @@ router.register(r'Estudiante', views.studentViewSet)
 
 urlpatterns = [
     path('', include(router.urls)),
-    path('change/', change_std),
-    path('edicionstd/<int:id>', edicion_std),
-    path('grafico/', dashboard, name='fp'),
-    path('consultas_p/',views.consultas_p),
-    path('consultastd/',consultastd,name='Consultas'),
+    #rutas de graficas
     path('get_chart/', views.get_chart, name='get_chart'),
     path('get_chart_2/', views.get_chart_2, name='get_chart_2'),
     path('get_chart_3/', views.get_chart_3, name='get_chart_3'),
     path('get_chart_4/', views.get_chart_4, name='get_chart_4'),
     path('get_chart_5/', views.get_chart_5, name='get_chart_5'),
+    #---------------------#
+    path('change/', change_std),
+    path('edicionstd/<int:id>', edicion_std),
+    path('grafico/', dashboard, name='fp'),
+    path('consultas_p/',views.consultas_p),
+    path('consultastd/',consultastd,name='Consultas'),
     path('home/', EstdListView.as_view(), name='Home'),
     path('registrarCurso/', registrar_Estudiante),
     path('eliminacionstd/<int:id>', eliminar_std)  

@@ -2,111 +2,85 @@
 import { ref, reactive } from "vue";
 
 const dataInscri = reactive({
-  "Tipo de documento": {
-    options: ["Cédula", "Tarjeta de identidad"],
-  },
-  Documento: "",
-  Nombre: "",
-  Edad: "",
-  Telefono: "",
-  Email: "",
-  Genero: {
-    options: { 0:'otro',1:'Masculino',2:'Femenino'},
-  },
-  "Estado Cívil": {
-    options: {      
-      1: 'Casado',
-      2: 'Separado',
-      3: 'Soltero',
-      4: 'Unión libre',
-      5: 'Viudo'  
-    }
-  },
-  Departamento: "",
-  Municipio: "",
-  "¿Tiene alguna discapacidad?": {
+  "¿Tiene usted alguna ocupación?": {
     options: {
-                    1: 'Movilidad reducida',
-                    2: 'Ninguna',
-                    3: 'Auditiva',
-                    4: 'Visual'
+                    1: 'Únicamente estudiante',
+                    2: 'Empleado',
+                    3: 'Independiente',
+                    4: 'Trabaja medio tiempo',
+                    5: 'Trabaja tiempo completo'
                 },
   },
-  Etnia: {
-    options: {
-                    1: 'Indigena',
-                    2: 'Palenquero',
-                    3: 'Sin distincion racial',
-                    4: 'Negro, mulato, afrodescendiente, afrocolombiano',
-                    5: 'Raizal'
+  "¿Estrato socioeconómico?":{
+   options:  {
+                    1: '1',
+                    2: '2',
+                    3: '3',
+                    4: '4',
+                    5: '5'
                 },
   },
-  "¿Es victima del conflicto?": {
-    options: {
-                    0: 'nRegistra',
+  "¿Tipo de vivienda?":{
+   options:  {
+                    1: 'Familiar',
+                    2: 'Propia',
+                    3: 'Arrendada',
+                    4: 'Otra'
+                }
+  },
+  "¿Recibe usted ingresos mensualmente?":{
+   options:  {
                     1: 'Sí',
                     2: 'No'
-                },
+                }
   },
-  "Edad de su hijo mayor": "",
-  "Edad de su hijo menor": "",
-  "Cuantos hijos tiene?": "",
-  "¿Cuantos hermanos tiene?": "",
-  "¿Posicion de hijo?": "",
-  "Número de miembros en la familia": "",
-  "Ocupacion de la madre": {
-    options: {
-      0: "Ninguna",
-      1: "Ama de  casa",
-      2: "Estudiante",
-      3: "Fallecida",
-      4: "Independiente",
-      5: "Labora",
-      6: "Madre cabeza hogar",
-      7: "Pensionada",
-    },
+  "¿Alguien lo representa legalmente?":{
+   options:  {
+                    1: 'Sí',
+                    2: 'No'
+                }
   },
-  "Ocupacion del padre": {
-    options: {
-      0: "Ninguna",
-      1: "Padre cabeza hogar",
-      2: "Pensionado",
-      3: "Fallecido",
-      4: "Independiente",
-      5: "Labora",
-    },
+  "Nivel académico":{
+   options:  {
+                    1: 'Bachiller',
+                    2: 'Tecnico',
+                    3: 'Tecnico Bachiller',
+                    4: 'Tecnologo',
+                    5: 'Universitario'
+                }
   },
-  "Nivel del sisben": "",
-  "Talento": {
-    options: {
-      0: "Ninguna",
-      1: "Actor",
-      2: "Atletismo",
-      3: "Bailarin",
-      4: "Baloncesto",
-      5: "Fútbol",
-      6: "Fútbol sala",
-      7: "Músico",
-      8: "Natación",
-      9: "Softbol",
-      10: "Taewondo",
-      11: "Tenis de mesa",
-      12: "Voleibol",
-    },
+  "¿Cuánto es el ingreso familiar?": "",
+  "¿Posee usted computador?":{
+   options:  {
+                    1: 'Sí',
+                    2: 'No'
+                }
   },
-  "¿Tiene EPS?": {
-    options: {
-      0: "Ninguna",
-      1: "Sí",
-      2: "No",
-    },
+  "¿Tiene acceso a Internet?":{
+   options:  {
+                    1: 'Sí',
+                    2: 'No'
+                }
   },
-  "¿Usa lentes?": {
-    options: {
-      1: "Sí",
-      2: "No",
-    },
+  "¿Posee usted un celular inteligente?":{
+   options:  {
+                    1: 'Sí',
+                    2: 'No'
+                }
   },
+  "¿Posee usted un plan de datos?":{
+   options:  {
+                    1: 'Sí',
+                    2: 'No'
+                }
+  },
+  "¿Al momento de entrar a la universidad usted trabajaba?":{
+   options:  {
+                    1: 'Sí',
+                    2: 'No'
+                }
+  },
+
 });
 
 const selectedOption = reactive({}); 
