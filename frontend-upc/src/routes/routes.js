@@ -18,6 +18,11 @@ const routes = [
         name: "inscripcion",
         component: () => import("../pages/Inscripcion/Inscripcion.view.vue"),
       },
+      {
+        path: "/dash",
+        name: "dashboard",
+        component: () => import("../pages/Dashboard/dash_1.vue"),
+      },
     ],
   },
 

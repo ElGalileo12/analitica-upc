@@ -1,5 +1,5 @@
 import { storeToRefs } from "pinia";
-import { useConsultaStore } from "../store/consulta";
+import { useConsultaStore} from "../store/consulta";
 
 export const useConsulta = () => {
   const useConsultaApi = useConsultaStore(); //Se crea una instancia
