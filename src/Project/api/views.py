@@ -3,10 +3,10 @@ from django.shortcuts import render, redirect
 from .models import Estudiante , SocioEconomica, InfoAcademica
 from django.views.generic import ListView
 from random import randrange
-
+from rest_framework.response import Response
+from rest_framework.decorators import api_view
 from rest_framework import viewsets
 from .serializer import EstudianteAgrupadoSerializer
-
 # Create your views here.
 
 class studentViewSet(viewsets.ModelViewSet):
@@ -764,56 +764,65 @@ def dashboard(request):
     print(context)
     return render(request, "fp.html",context)
 
-         
+@api_view(['GET'])         
+#def get_chart(_request):  
+   # chart = {
+       #'title': {
+           # 'text': 'Cantidad de estudiantes \n segun su genero',
+          #  'left': 'center'
+       #  },
+       # 'tooltip': {
+       #     'trigger': 'item',
+       #     'formatter': '{b}: {c} ({d}%)'
+      #  },
+       # 'legend': {
+        #    'right': '0%',
+        #    'top': '30%',
+        #    'orient': 'vertical'
+      #  },
+       # 'series': [
+      #  {
+       #     'type': 'pie',
+        #    'radius': ['40%', '70%'],
+        #    'avoidLabelOverlap': 'false',
+        #    'left': '-30%',
+        #    'top': '40',
+         #   'label': {
+          #      'show': 'false',
+          #      'formatter': '({d}%)'
+          #  },
+       # 'emphasis': {
+          #      'label': {
+          #      'show': 'false',
+          #      'fontSize': 10,
+           #     'fontWeight': 'bold',
+                
+         #       }
+         #   },
+         #   'labelLine': {
+          #      'show': 'false'
+          #  },
+          #  'data': [
+          #      { 'itemStyle': {'color': "rgb(101, 197, 189)"},'value': len(Estudiante.objects.filter(ID_GENERO=2)),'name': 'Mujeres' },
+          #      { 'itemStyle': {'color': "rgb(147,112,219)"},'value': len(Estudiante.objects.filter(ID_GENERO=1)), 'name': 'Hombres' },
+          #      { 'itemStyle': {'color': "rgba(255, 251, 13, 1)"},'value': len(Estudiante.objects.filter(ID_GENERO=0)),'name': 'Otro Genero' }
+                
+         #   ]
+        #    }
+      #  ]
+  #  } ##
 def get_chart(_request):  
-    chart = {
-       'title': {
-            'text': 'Cantidad de estudiantes \n segun su genero',
-            'left': 'center'
-         },
-        'tooltip': {
-            'trigger': 'item',
-            'formatter': '{b}: {c} ({d}%)'
-        },
-        'legend': {
-            'right': '0%',
-            'top': '30%',
-            'orient': 'vertical'
-        },
-        'series': [
-        {
-            'type': 'pie',
-            'radius': ['40%', '70%'],
-            'avoidLabelOverlap': 'false',
-            'left': '-30%',
-            'top': '40',
-            'label': {
-                'show': 'false',
-                'formatter': '({d}%)'
-            },
-        'emphasis': {
-                'label': {
-                'show': 'false',
-                'fontSize': 10,
-                'fontWeight': 'bold',
-                
-                }
-            },
-            'labelLine': {
-                'show': 'false'
-            },
-            'data': [
-                { 'itemStyle': {'color': "rgb(101, 197, 189)"},'value': len(Estudiante.objects.filter(ID_GENERO=2)),'name': 'Mujeres' },
-                { 'itemStyle': {'color': "rgb(147,112,219)"},'value': len(Estudiante.objects.filter(ID_GENERO=1)), 'name': 'Hombres' },
-                { 'itemStyle': {'color': "rgba(255, 251, 13, 1)"},'value': len(Estudiante.objects.filter(ID_GENERO=0)),'name': 'Otro Genero' }
-                
-            ]
-            }
-        ]
-    }
+        A=len(Estudiante.objects.filter(ID_GENERO=2))
+        B=len(Estudiante.objects.filter(ID_GENERO=1))
+        C=len(Estudiante.objects.filter(ID_GENERO=0))
+        chart = {
+            'a' : A,
+            'b' : B,
+            'c' : C
+        }
+        return Response(chart)
     
-    return JsonResponse(chart)
-
+@api_view(['GET'])
 def get_chart_2(_request): 
     sixy = Estudiante.objects.filter(ID_GENERO=2)
     A = InfoAcademica.objects.filter(ID_ESTUDIANTE__in=[estudiante.ID_DOCUMENTO for estudiante in sixy])
@@ -854,8 +863,8 @@ def get_chart_2(_request):
             }
   ]
 }
-    return JsonResponse(chart_2)
-
+    return Response(chart_2)
+@api_view(['GET'])
 def get_chart_3(_request): 
     sixy = Estudiante.objects.filter(ID_GENERO=2,ID_CANT_HIJOS__gt=0)  
     sixy_m = Estudiante.objects.filter(ID_GENERO=1,ID_CANT_HIJOS__gt=0)
@@ -905,8 +914,8 @@ def get_chart_3(_request):
             }
         ]
     }
-    return JsonResponse(chart_3)
-
+    return Response(chart_3)
+@api_view(['GET'])
 def get_chart_4(_request): 
     sixy = Estudiante.objects.filter(ID_GENERO=2)
     A = SocioEconomica.objects.filter(ID_ESTUDIANTE__in=[estudiante.ID_DOCUMENTO for estudiante in sixy])
@@ -964,8 +973,9 @@ def get_chart_4(_request):
             }
         ]
     }
-    return JsonResponse(chart_4)
+    return Response(chart_4)
 
+@api_view(['GET'])
 def get_chart_5(_request): 
     #Extraigo los estudiantes con motivaciones bajo,medio,alto,exc
     Bajo = InfoAcademica.objects.filter(ID_MOTIVACION=1) 
@@ -1104,4 +1114,4 @@ def get_chart_5(_request):
     }
     
     
-    return JsonResponse(chart_5)
+    return Response(chart_5)

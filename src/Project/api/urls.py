@@ -18,7 +18,7 @@ urlpatterns = [
     path('get_chart_2/', views.get_chart_2, name='get_chart_2'),
     path('get_chart_3/', views.get_chart_3, name='get_chart_3'),
     path('get_chart_4/', views.get_chart_4, name='get_chart_4'),
-    path('get_chart_5/', views.get_chart_5, name='get_chart_5'),
+    #path('get_chart_5/', views.get_chart_5, name='get_chart_5'),
     path('home/', EstdListView.as_view(), name='Home'),
     path('registrarCurso/', registrar_Estudiante),
     path('eliminacionstd/<int:id>', eliminar_std)  
