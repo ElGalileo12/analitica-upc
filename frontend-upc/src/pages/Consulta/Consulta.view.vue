@@ -1,14 +1,19 @@
 <script setup>
 import { ref, toRaw } from "vue";
-import { useConsulta } from "@/composable/useConsulta";
+import { useConsulta, useDeleteConsulta} from "@/composable/useConsulta";
 import { changeId } from "./validation/funtions";
 
 const { consultaByApi, rqConsult } = useConsulta();
+const { deleteByApi } = useDeleteConsulta();
 
 var identifications = ref("");
 var consultValidation = ref({});
 
 const activeButton = ref("");
+
+async function deleteConsult(idDoc){
+  await deleteByApi(idDoc);
+}
 
 async function searchConsult(idDoc) {
   await consultaByApi(idDoc);
@@ -25,6 +30,16 @@ const activateButton = (buttonName) => {
     activeButton.value = "datasAcad";
   }
 };
+
+function confirmacion(idDoc){
+  var respuesta = confirm("Desea eliminar el estduiantes con cedula: ");
+  if (respuesta == true){
+    return deleteConsult(idDoc)
+  }else{
+    return false
+  }
+
+}
 </script>
 
 <template>
@@ -66,6 +81,7 @@ const activateButton = (buttonName) => {
             Editar
           </button>
           <button
+            @click.prevent="confirmacion(identifications)"            
             type="submit"
             class="text-white text-lg w-28 bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg  text-center"
           >
