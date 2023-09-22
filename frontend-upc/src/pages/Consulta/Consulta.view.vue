@@ -2,7 +2,8 @@
 import { ref, toRaw } from "vue";
 import { useConsulta, useDeleteConsulta} from "@/composable/useConsulta";
 import { changeId } from "./validation/funtions";
-
+import Swal from 'sweetalert2'
+import Separador from "../../components/things/separador.things.vue";
 const { consultaByApi, rqConsult } = useConsulta();
 const { deleteByApi } = useDeleteConsulta();
 
@@ -32,13 +33,27 @@ const activateButton = (buttonName) => {
 };
 
 function confirmacion(idDoc){
-  var respuesta = confirm("Desea eliminar el estduiantes con cedula: ");
-  if (respuesta == true){
-    return deleteConsult(idDoc)
-  }else{
-    return false
+  var document = idDoc;
+  Swal.fire({
+  title: `Estas seguro que quieres eliminar al estudiantes con documento ${document}`,
+  text: "No podras revertir este cambio!",
+  icon: 'warning',
+  showCancelButton: true,
+  confirmButtonColor: '#3085d6',
+  cancelButtonColor: '#d33',
+  confirmButtonText: 'Si, eliminarlo!'
+}).then((result) => {
+  if (result.isConfirmed) {
+    deleteConsult(idDoc);
+    Swal.fire({
+      title: 'Eliminado!',
+      text: 'Tu eliminacion ha sido exitosa.',
+      icon: 'success',
+      confirmButtonColor: '#3085d6'
+    }
+    )
   }
-
+})
 }
 </script>
 
@@ -212,5 +227,6 @@ function confirmacion(idDoc){
         </div>
       </div>
     </div>
+    <Separador></Separador>
   </section>
 </template>
