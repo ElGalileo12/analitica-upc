@@ -112,11 +112,6 @@ const option_5 = config_5
 //
 </script>
 <template>
-    <head>
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css" rel="stylesheet"
-        integrity="sha384-rbsA2VBKQhggwzxH7pPCaAqO46MgnOM80zW1RWuH61DGLwZJEdK2Kadq2F9CUG65" crossorigin="anonymous">
-    </head>
-
 <body>
     <div class="container">
         <div class="row">
@@ -158,7 +153,7 @@ const option_5 = config_5
 </body>
 </template>
   
-  <style scoped>
+<style scoped>
  .chart {
     top: 25px;
     width: 100%;
@@ -172,10 +167,9 @@ const option_5 = config_5
     left: 00px;
 }
 body{
-background: #9370db;  /* fallback for old browsers */
-background: -webkit-linear-gradient(to right, #7c44ec, #9370db);  /* Chrome 10-25, Safari 5.1-6 */
-background: linear-gradient(to right, #7c44ec, #9370db); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
-
+background: url(../../assets/cool-background.jpg) center no-repeat;
+background-attachment: fixed;
+background-size: cover;
 }
 
 .rounded-square {

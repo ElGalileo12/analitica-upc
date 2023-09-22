@@ -1,14 +1,20 @@
 <script setup>
 import { ref, toRaw } from "vue";
-import { useConsulta } from "@/composable/useConsulta";
+import { useConsulta, useDeleteConsulta} from "@/composable/useConsulta";
 import { changeId } from "./validation/funtions";
-
+import Swal from 'sweetalert2'
+import Separador from "../../components/things/separador.things.vue";
 const { consultaByApi, rqConsult } = useConsulta();
+const { deleteByApi } = useDeleteConsulta();
 
 var identifications = ref("");
 var consultValidation = ref({});
 
 const activeButton = ref("");
+
+async function deleteConsult(idDoc){
+  await deleteByApi(idDoc);
+}
 
 async function searchConsult(idDoc) {
   await consultaByApi(idDoc);
@@ -25,6 +31,30 @@ const activateButton = (buttonName) => {
     activeButton.value = "datasAcad";
   }
 };
+
+function confirmacion(idDoc){
+  var document = idDoc;
+  Swal.fire({
+  title: `Estas seguro que quieres eliminar al estudiantes con documento ${document}`,
+  text: "No podras revertir este cambio!",
+  icon: 'warning',
+  showCancelButton: true,
+  confirmButtonColor: '#3085d6',
+  cancelButtonColor: '#d33',
+  confirmButtonText: 'Si, eliminarlo!'
+}).then((result) => {
+  if (result.isConfirmed) {
+    deleteConsult(idDoc);
+    Swal.fire({
+      title: 'Eliminado!',
+      text: 'Tu eliminacion ha sido exitosa.',
+      icon: 'success',
+      confirmButtonColor: '#3085d6'
+    }
+    )
+  }
+})
+}
 </script>
 
 <template>
@@ -66,6 +96,7 @@ const activateButton = (buttonName) => {
             Editar
           </button>
           <button
+            @click.prevent="confirmacion(identifications)"            
             type="submit"
             class="text-white text-lg w-28 bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg  text-center"
           >
@@ -196,5 +227,6 @@ const activateButton = (buttonName) => {
         </div>
       </div>
     </div>
+    <Separador></Separador>
   </section>
 </template>
