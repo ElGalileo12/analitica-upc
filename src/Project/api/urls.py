@@ -6,6 +6,7 @@ from .views import EstdListView, registrar_Estudiante, consultastd, consultas_p,
 
 router = routers.DefaultRouter()
 router.register(r'Estudiante', views.studentViewSet)
+router.register(r'Egresados', views.EgresadoViewSet)
 
 urlpatterns = [
     path('', include(router.urls)),

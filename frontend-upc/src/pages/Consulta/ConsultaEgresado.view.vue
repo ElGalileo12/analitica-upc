@@ -1,10 +1,10 @@
 <script setup>
 import { ref, toRaw } from "vue";
-import { useConsulta} from "@/composable/useConsulta";
+import {EgreuseConsulta} from "@/composable/useConsulta";
 import { changeId } from "./validation/funtions";
 import Swal from 'sweetalert2'
 import Separador from "../../components/things/separador.things.vue";
-const { deleteByApi, consultaByApi, rqConsult } = useConsulta();
+const { EgreconsultaByApi,EgredeleteByApi, rqConsult } = EgreuseConsulta();
 
 
 
@@ -14,29 +14,31 @@ var consultValidation = ref({});
 const activeButton = ref("");
 
 async function deleteConsult(idDoc){
-  await deleteByApi(idDoc);
+  await EgredeleteByApi(idDoc);
 }
 
 async function searchConsult(idDoc) {
-  await consultaByApi(idDoc);
-  consultValidation.value = changeId(toRaw(rqConsult.value));
+  await EgreconsultaByApi(idDoc);
+  consultValidation.value = rqConsult.value;
   activateButton("datasPerson");
 }
 
 const activateButton = (buttonName) => {
   if (buttonName == "datasPerson") {
     activeButton.value = "datasPerson";
-  } else if (buttonName == "datasSoci") {
-    activeButton.value = "datasSoci";
-  } else {
+  } else if (buttonName == "datasAcad") {
     activeButton.value = "datasAcad";
+  } else if (buttonName == "datasLab") {
+    activeButton.value = "datasLab";
+  } else {
+    activeButton.value = "datasMot";
   }
 };
 
 function confirmacion(idDoc){
   var document = idDoc;
   Swal.fire({
-  title: `Estas seguro que quieres eliminar al estudiantes con documento ${document}`,
+  title: `Estas seguro que quieres eliminar a la persona con documento ${document}`,
   text: "No podras revertir este cambio!",
   icon: 'warning',
   showCancelButton: true,
@@ -61,7 +63,7 @@ function confirmacion(idDoc){
 <template>
   <section class="bg-gray-50">
     <div class="h-full flex flex-col items-center justify-center">
-      <h1 class="mt-10 font-bold text-xl">Consulta de estudiantes</h1>
+      <h1 class="mt-10 font-bold text-xl">Consulta de Egresados</h1>
       <form
         class="block h-48 mt-6 w-1/3 p-6 bg-white border border-gray-200 rounded-lg shadow"
       >
@@ -121,26 +123,37 @@ function confirmacion(idDoc){
           Datos personales
         </button>
         <button
-          @click="activateButton('datasSoci')"
-          :class="{
-            'bg-gray-900 hover:bg-gray-900 font-bold text-white':
-              activeButton === 'datasSoci',
-          }"
-          type="button"
-          class="text-white w-1/3 bg-gray-600 hover:bg-gray-900 focus:outline-none text-sm px-5 py-2.5"
-        >
-          Datos socioeconomicos
-        </button>
-        <button
           @click="activateButton('datasAcad')"
           :class="{
             'bg-gray-900 hover:bg-gray-900 font-bold text-white':
               activeButton === 'datasAcad',
           }"
           type="button"
-          class="text-white w-1/3 bg-gray-600 hover:bg-gray-900 focus:outline-none rounded-tr-lg text-sm px-5 py-2.5"
+          class="text-white w-1/3 bg-gray-600 hover:bg-gray-900 focus:outline-none text-sm px-5 py-2.5"
         >
           Datos academicos
+        </button>
+        <button
+          @click="activateButton('datasLab')"
+          :class="{
+            'bg-gray-900 hover:bg-gray-900 font-bold text-white':
+              activeButton === 'datasLab',
+          }"
+          type="button"
+          class="text-white w-1/3 bg-gray-600 hover:bg-gray-900 focus:outline-none rounded-tr-lg text-sm px-5 py-2.5"
+        >
+          Datos Laborales
+        </button>
+        <button
+          @click="activateButton('datasMot')"
+          :class="{
+            'bg-gray-900 hover:bg-gray-900 font-bold text-white':
+              activeButton === 'datasMot',
+          }"
+          type="button"
+          class="text-white w-1/3 bg-gray-600 hover:bg-gray-900 focus:outline-none rounded-tr-lg text-sm px-5 py-2.5"
+        >
+          Datos de motivacion
         </button>
       </div>
     </div>
@@ -150,33 +163,6 @@ function confirmacion(idDoc){
       <div class="flex w-full justify-center" v-if="key === 'datasPers'">
         <div
           v-if="activeButton === 'datasPerson'"
-          class="grid gap-4 mb-4 grid-cols-4 w-4/5 p-6 bg-white border border-gray-200 rounded-lg shadow"
-        >
-          <div v-for="(value, innerKey) in datas" :key="innerKey">
-            <div>
-              <label
-                :for="innerKey"
-                class="block mb-2 text-base font-bold text-gray-900 dark:text-white"
-              >
-                {{ innerKey }}</label
-              >
-              <input
-                type="text"
-                :id="value"
-                :v-model="value"
-                class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5"
-                required
-                :placeholder="value"
-                readonly
-              />
-            </div>
-          </div>
-        </div>
-      </div>
-      <!--  Datos socioeconomicos -->
-      <div class="flex w-full justify-center" v-else-if="key === 'datasSoci'">
-        <div
-          v-if="activeButton === 'datasSoci'"
           class="grid gap-4 mb-4 grid-cols-4 w-4/5 p-6 bg-white border border-gray-200 rounded-lg shadow"
         >
           <div v-for="(value, innerKey) in datas" :key="innerKey">
@@ -227,7 +213,62 @@ function confirmacion(idDoc){
           </div>
         </div>
       </div>
+      <!--  Datos Laboral -->
+      <div class="flex w-full justify-center" v-else-if="key === 'datasLab'">
+        <div
+          v-if="activeButton === 'datasLab'"
+          class="grid gap-4 mb-4 grid-cols-4 w-4/5 p-6 bg-white border border-gray-200 rounded-lg shadow"
+        >
+          <div v-for="(value, innerKey) in datas" :key="innerKey">
+            <div>
+              <label
+                :for="innerKey"
+                class="block mb-2 text-base font-bold text-gray-900 dark:text-white"
+              >
+                {{ innerKey }}</label
+              >
+              <input
+                type="text"
+                :id="value"
+                :v-model="value"
+                class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5"
+                required
+                :placeholder="value"
+                readonly
+              />
+            </div>
+          </div>
+        </div>
+      </div>
+      <!--  Datos Motivacionales -->
+      <div class="flex w-full justify-center" v-else-if="key === 'datasMot'">
+        <div
+          v-if="activeButton === 'datasMot'"
+          class="grid gap-4 mb-4 grid-cols-4 w-4/5 p-6 bg-white border border-gray-200 rounded-lg shadow"
+        >
+          <div v-for="(value, innerKey) in datas" :key="innerKey">
+            <div>
+              <label
+                :for="innerKey"
+                class="block mb-2 text-base font-bold text-gray-900 dark:text-white"
+              >
+                {{ innerKey }}</label
+              >
+              <input
+                type="text"
+                :id="value"
+                :v-model="value"
+                class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5"
+                required
+                :placeholder="value"
+                readonly
+              />
+            </div>
+          </div>
+        </div>
+      </div>
     </div>
+    
     <Separador></Separador>
   </section>
 </template>

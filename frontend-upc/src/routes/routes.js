@@ -14,6 +14,11 @@ const routes = [
         component: () => import("../pages/Consulta/Consulta.view.vue"),
       },
       {
+        path: "/consulta_egresados",
+        name: "consulta_egresados",
+        component: () => import("../pages/Consulta/ConsultaEgresado.view.vue"),
+      },
+      {
         path: "/inscripcion",
         name: "inscripcion",
         component: () => import("../pages/Inscripcion/Inscripcion.view.vue"),
