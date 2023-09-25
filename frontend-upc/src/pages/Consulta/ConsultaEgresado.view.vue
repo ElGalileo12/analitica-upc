@@ -1,7 +1,7 @@
 <script setup>
 import { ref, toRaw } from "vue";
 import {EgreuseConsulta} from "@/composable/useConsulta";
-import { changeId } from "./validation/funtions";
+import { changeId } from "./validation/funtions egre";
 import Swal from 'sweetalert2'
 import Separador from "../../components/things/separador.things.vue";
 const { EgreconsultaByApi,EgredeleteByApi, rqConsult } = EgreuseConsulta();
@@ -19,7 +19,7 @@ async function deleteConsult(idDoc){
 
 async function searchConsult(idDoc) {
   await EgreconsultaByApi(idDoc);
-  consultValidation.value = rqConsult.value;
+  consultValidation.value = changeId(toRaw(rqConsult.value));
   activateButton("datasPerson");
 }
 

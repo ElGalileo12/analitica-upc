@@ -63,9 +63,9 @@ class EgresadosAgrupadoSerializer(serializers.Serializer):
     def to_representation(self, instance):
         data = {
             'datasPers': EgresadosSerializer(instance).data,
-            'datasAcad': InfoAcademicaEgresadosSerializer().data,
-            'datasLab': LaboralEgresadosSerializer().data,
-            'datasMot': MotivacionEgresadosSerializer().data
+            'datasAcad': InfoAcademicaEgresadosSerializer(instance.info_academica).data,
+            'datasLab': LaboralEgresadosSerializer(instance.info_laboral).data,
+            'datasMot': MotivacionEgresadosSerializer(instance.info_motivacion).data
         }
         return data
 
