@@ -66,7 +66,7 @@
               <router-link class="dropdown-item" to="/inscripcion"
                 >Inscripcion
               </router-link>
-              <router-link class="dropdown-item" to="/consulta"
+              <router-link class="dropdown-item" to="/consulta_egresados"
                 >Consulta de datos
               </router-link>
               <router-link class="dropdown-item" to="/dash"

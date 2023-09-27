@@ -33,7 +33,7 @@ function dataPersonal(dataPers) {
   const etniaMapping = {
     Indigena: 1,
     Palenquero: 2,
-    "Sin distinción racial": 3,
+    "Sin distincion racial": 3,
     "Negro, mulato, afrodescendiente, afrocolombiano": 4,
     Raizal: 5,
   };

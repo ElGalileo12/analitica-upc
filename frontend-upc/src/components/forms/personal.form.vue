@@ -146,7 +146,7 @@ const dataInscri = reactive({
   "Ocupacion del padre": {
     options: {
       0: "Ninguna",
-      1: "Padre cabeza hogar",
+      1: "Padre cabeza de hogar",
       2: "Pensionado",
       3: "Fallecido",
       4: "Independiente",
