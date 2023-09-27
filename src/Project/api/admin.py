@@ -1,5 +1,6 @@
 from django.contrib import admin
-from .models import InfoAcademica, SocioEconomica, Estudiante
+from .models import InfoAcademica, SocioEconomica, Estudiante, Egresados , EgreMotivacion ,EgreAcademica, EgreLaboral 
+
 
 #admin.site.register(Estudiante)
 #admin.site.register(SocioEconomica)
@@ -34,3 +35,24 @@ class SocioAdmin(admin.ModelAdmin):
    list_display = ('ID_ESTUDIANTE', 'ID_ESTRATO','ID_OCUPACION')
 def datos(self, obj):
     return obj.ID_PROGR_ACTUAL.upper()  
+
+#EGRESADOS
+@admin.register(Egresados)
+class EgresadosAdmin(admin.ModelAdmin):
+   list_display = ('ID_DOCUMENTO', 'ID_NOMBRE')
+def datos(self, obj):
+    return obj.ID_NOMBRE.upper()
+
+@admin.register(EgreAcademica)
+class EgreAcademicoAdmin(admin.ModelAdmin):
+   list_display = ('ID_EGRESADO', 'ID_TITULO')
+
+
+@admin.register(EgreLaboral)
+class EgreLaboralAdmin(admin.ModelAdmin):
+   list_display = ('ID_EGRESADO', 'ID_TRABAJA_CIUDAD')
+
+
+@admin.register(EgreMotivacion)
+class EgreMotivacionAdmin(admin.ModelAdmin):
+   list_display = ('ID_EGRESADO', 'ID_MOT_NIVELS')
