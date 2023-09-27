@@ -31,7 +31,7 @@
                 </a>
                 <div class="dropdown-menu" aria-labelledby="navbarDropdown">
                   <a class="dropdown-item" href="/inscripcion">Inscripcion</a>
-                  <a class="dropdown-item" href="/consulta">Consulta de datos</a>
+                  <a class="dropdown-item" href="/consulta_egresados">Consulta de datos</a>
                   <a class="dropdown-item" href="/dash">DashBoards</a>
                 </div>
               </li>

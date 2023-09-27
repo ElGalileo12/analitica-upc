@@ -6,15 +6,19 @@ export const useConsulta = () => {
 
   const { rqConsult } = storeToRefs(useConsultaApi);
   const { consultaByApi } = useConsultaApi;
+  const { deleteByApi } = useConsultaApi;
 
-  return { consultaByApi, rqConsult };
+  return { deleteByApi, consultaByApi, rqConsult };
 };
 
-export const useDeleteConsulta = () => { 
-  const useDeleteApi = useConsultaStore();
+//EGRESADOS
+export const EgreuseConsulta = () => {
+  const useConsultaApi = useConsultaStore();
 
-  const { deleteByApi } = useDeleteApi;
+  const { rqConsult } = storeToRefs(useConsultaApi);
+  const { EgreconsultaByApi } = useConsultaApi;
+  const { EgredeleteByApi } = useConsultaApi;
 
-  return { deleteByApi };
+  return { EgredeleteByApi, EgreconsultaByApi, rqConsult };
 };
 

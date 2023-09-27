@@ -1,17 +1,20 @@
 from django.http.response import JsonResponse
 from django.shortcuts import render, redirect
-from .models import Estudiante , SocioEconomica, InfoAcademica
+from .models import InfoAcademica, SocioEconomica, Estudiante, Egresados , EgreMotivacion ,EgreAcademica, EgreLaboral 
 from django.views.generic import ListView
-from random import randrange
 from rest_framework.response import Response
 from rest_framework.decorators import api_view
 from rest_framework import viewsets
-from .serializer import EstudianteAgrupadoSerializer
+from .serializer import EstudianteAgrupadoSerializer, EgresadosAgrupadoSerializer
 # Create your views here.
 
 class studentViewSet(viewsets.ModelViewSet):
     queryset = Estudiante.objects.select_related('socioeconomica', 'infoacademica').all()
     serializer_class = EstudianteAgrupadoSerializer
+
+class EgresadoViewSet(viewsets.ModelViewSet):
+    queryset = Egresados.objects.select_related('info_academica', 'info_laboral', 'info_motivacion').all()
+    serializer_class = EgresadosAgrupadoSerializer
 
 class EstdListView(ListView):
     model = Estudiante
