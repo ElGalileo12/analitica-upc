@@ -37,6 +37,19 @@ export const useConsultaStore = defineStore("payment", {
       } catch (error) {
         throw error;
       }
-    }
+    },
+    async inscriptionaByApi(concatInfo) {
+      try {
+        console.log(concatInfo);
+        var { data } = await axiosApi.post(`api/Estudiante/`, {
+          concatInfo,
+        },
+        
+        );
+        console.log(data);
+      } catch (error) {
+        throw error;
+      }
+    },
   },
 });

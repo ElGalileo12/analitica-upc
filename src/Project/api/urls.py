@@ -10,6 +10,8 @@ router.register(r'Egresados', views.EgresadoViewSet)
 
 urlpatterns = [
     path('', include(router.urls)),
+    #ruta inscripción
+    path('inscripcion/', views.crear_registro, name='crear_registro'),
     #rutas de graficas
     path('get_chart/', views.get_chart, name='get_chart'),
     path('get_chart_2/', views.get_chart_2, name='get_chart_2'),

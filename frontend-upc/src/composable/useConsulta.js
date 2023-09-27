@@ -5,10 +5,10 @@ export const useConsulta = () => {
   const useConsultaApi = useConsultaStore();
 
   const { rqConsult } = storeToRefs(useConsultaApi);
-  const { consultaByApi } = useConsultaApi;
+  const { consultaByApi, inscriptionaByApi } = useConsultaApi;
   const { deleteByApi } = useConsultaApi;
 
-  return { deleteByApi, consultaByApi, rqConsult };
+  return { deleteByApi, consultaByApi, inscriptionaByApi, rqConsult };
 };
 
 //EGRESADOS

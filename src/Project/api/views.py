@@ -5,12 +5,23 @@ from django.views.generic import ListView
 from rest_framework.response import Response
 from rest_framework.decorators import api_view
 from rest_framework import viewsets
+from rest_framework import status
 from .serializer import EstudianteAgrupadoSerializer, EgresadosAgrupadoSerializer
 # Create your views here.
 
 class studentViewSet(viewsets.ModelViewSet):
     queryset = Estudiante.objects.select_related('socioeconomica', 'infoacademica').all()
     serializer_class = EstudianteAgrupadoSerializer
+
+@api_view(['POST'])
+def crear_registro(request):
+    if request.method == 'POST':
+        serializer = TuModeloSerializer(data=request.data)
+        if serializer.is_valid():
+            serializer.save()
+            return Response(serializer.data, status=status.HTTP_201_CREATED)
+        return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
+
 
 class EgresadoViewSet(viewsets.ModelViewSet):
     queryset = Egresados.objects.select_related('info_academica', 'info_laboral', 'info_motivacion').all()
