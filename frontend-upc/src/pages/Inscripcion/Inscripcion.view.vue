@@ -6,7 +6,7 @@ import PersonalForm from "../../components/forms/personal.form.vue";
 import EconomicForm from "../../components/forms/socioeco.form.vue";
 import { changeDatas } from "./validation/funtions";
 
-const { inscriptionaByApi } = useConsulta();
+const { inscriptionaByApi   } = useConsulta();
 
 var concatObject = ref({});
 var datasPerson = ref({});
@@ -35,7 +35,6 @@ async function formAcademic(datas) {
     infoacademica: toRaw(datasAcad.value),
   };
   resultado.value = changeDatas(toRaw(concatObject.value), datasPerson.value.Documento);
-
   await inscriptionaByApi(toRaw(resultado.value));
 }
 </script>

@@ -6,11 +6,14 @@ class SocioEconomicaSerializer(serializers.ModelSerializer):
     class Meta:
         model = SocioEconomica
         fields = '__all__'
+    
+
 
 class InfoAcademicaSerializer(serializers.ModelSerializer):
     class Meta:
         model = InfoAcademica
         fields = '__all__'
+
 
 class EstudianteSerializer(serializers.ModelSerializer):
     class Meta:
@@ -18,11 +21,8 @@ class EstudianteSerializer(serializers.ModelSerializer):
         fields = '__all__'
         depth = 1
 
+    
 class EstudianteAgrupadoSerializer(serializers.Serializer):
-    socioeconomica = SocioEconomicaSerializer()
-    infoacademica = InfoAcademicaSerializer()
-    datosEstudiante = EstudianteSerializer()
-
     def to_representation(self, instance):
         data = {
             'datasPers': EstudianteSerializer(instance).data,
@@ -55,11 +55,6 @@ class EgresadosSerializer(serializers.ModelSerializer):
         depth = 1
 
 class EgresadosAgrupadoSerializer(serializers.Serializer):
-    egresados = EgresadosSerializer()
-    academica = InfoAcademicaEgresadosSerializer()
-    laboral = LaboralEgresadosSerializer()
-    motivacion = MotivacionEgresadosSerializer()
-
     def to_representation(self, instance):
         data = {
             'datasPers': EgresadosSerializer(instance).data,

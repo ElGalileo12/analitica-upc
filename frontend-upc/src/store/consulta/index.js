@@ -22,6 +22,19 @@ export const useConsultaStore = defineStore("payment", {
         throw error;
       }
     },
+    async inscriptionaByApi(concatInfo) {
+      try {
+        console.log(concatInfo);
+        var { data } = await axiosApi.post(`api/inscripcion/`, {
+          concatInfo,
+        },
+        
+        );
+        console.log(data);
+      } catch (error) {
+        throw error;
+      }
+    },
     //EGRESADOS
     async EgreconsultaByApi(ID_C_DOCUMENTO) {
       try {
@@ -34,19 +47,6 @@ export const useConsultaStore = defineStore("payment", {
     async EgredeleteByApi(ID_C_DOCUMENTO) {
       try {
         await axiosApi.delete(`api/Egresados/${ID_C_DOCUMENTO}/`);
-      } catch (error) {
-        throw error;
-      }
-    },
-    async inscriptionaByApi(concatInfo) {
-      try {
-        console.log(concatInfo);
-        var { data } = await axiosApi.post(`api/Estudiante/`, {
-          concatInfo,
-        },
-        
-        );
-        console.log(data);
       } catch (error) {
         throw error;
       }
