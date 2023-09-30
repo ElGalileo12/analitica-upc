@@ -1,19 +1,17 @@
 <script setup>
 import { ref, toRaw } from "vue";
-import { useConsulta} from "@/composable/useConsulta";
+import { useConsulta } from "@/composable/useConsulta";
 import { changeId } from "./validation/funtions";
-import Swal from 'sweetalert2'
-import Separador from "../../components/things/separador.things.vue";
+import Swal from "sweetalert2";
+
 const { deleteByApi, consultaByApi, rqConsult } = useConsulta();
-
-
 
 var identifications = ref("");
 var consultValidation = ref({});
 
 const activeButton = ref("");
 
-async function deleteConsult(idDoc){
+async function deleteConsult(idDoc) {
   await deleteByApi(idDoc);
 }
 
@@ -33,33 +31,32 @@ const activateButton = (buttonName) => {
   }
 };
 
-function confirmacion(idDoc){
+function confirmacion(idDoc) {
   var document = idDoc;
   Swal.fire({
-  title: `Estas seguro que quieres eliminar al estudiantes con documento ${document}`,
-  text: "No podras revertir este cambio!",
-  icon: 'warning',
-  showCancelButton: true,
-  confirmButtonColor: '#3085d6',
-  cancelButtonColor: '#d33',
-  confirmButtonText: 'Si, eliminarlo!'
-}).then((result) => {
-  if (result.isConfirmed) {
-    deleteConsult(idDoc);
-    Swal.fire({
-      title: 'Eliminado!',
-      text: 'Tu eliminacion ha sido exitosa.',
-      icon: 'success',
-      confirmButtonColor: '#3085d6'
+    title: `Estas seguro que quieres eliminar al estudiantes con documento ${document}`,
+    text: "No podras revertir este cambio!",
+    icon: "warning",
+    showCancelButton: true,
+    confirmButtonColor: "#3085d6",
+    cancelButtonColor: "#d33",
+    confirmButtonText: "Si, eliminarlo!",
+  }).then((result) => {
+    if (result.isConfirmed) {
+      deleteConsult(idDoc);
+      Swal.fire({
+        title: "Eliminado!",
+        text: "Tu eliminacion ha sido exitosa.",
+        icon: "success",
+        confirmButtonColor: "#3085d6",
+      });
     }
-    )
-  }
-})
+  });
 }
 </script>
 
 <template>
-  <section class="bg-gray-50">
+  <section class="">
     <div class="h-full flex flex-col items-center justify-center">
       <h1 class="mt-10 font-bold text-xl">Consulta de estudiantes</h1>
       <form
@@ -85,21 +82,21 @@ function confirmacion(idDoc){
           <button
             @click.prevent="searchConsult(identifications)"
             type="submit"
-            class="w-28 text-lg text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg  py-1.5 text-center"
+            class="w-28 text-lg text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg py-1.5 text-center"
           >
             Buscar
           </button>
-          <button
-            @click.prevent="changeId"
+          <router-link
+            :to="{ name: 'edition', query: { id: identifications } }"
             type="submit"
-            class="text-white w-28 text-lg bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg  py-1.5 text-center"
+            class="text-white w-28 text-lg bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg py-1.5 text-center"
           >
             Editar
-          </button>
+          </router-link>
           <button
-            @click.prevent="confirmacion(identifications)"            
+            @click.prevent="confirmacion(identifications)"
             type="submit"
-            class="text-white text-lg w-28 bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg  text-center"
+            class="text-white text-lg w-28 bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-center"
           >
             Eliminar
           </button>
@@ -228,6 +225,5 @@ function confirmacion(idDoc){
         </div>
       </div>
     </div>
-    <Separador></Separador>
   </section>
 </template>

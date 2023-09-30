@@ -1,5 +1,8 @@
 <script setup>
-import { ref, reactive } from "vue";
+import { ref, reactive, onMounted, watch } from "vue";
+import { useRoute } from "vue-router";
+
+const route = useRoute();
 
 const requiredFields = [
   "Documento",
@@ -107,27 +110,27 @@ const dataInscri = reactive({
       2: "No",
     },
   },
-  "Edad de su hijo mayor": {
+  "Edad hijo Mayor": {
     value: 0,
     type: "number",
   },
-  "Edad de su hijo menor": {
+  "Edad hijo Menor": {
     value: 0,
     type: "number",
   },
-  "¿Cuántos hijos tiene?": {
+  "Cantidad de hijos": {
     value: 0,
     type: "number",
   },
-  "¿Cuántos hermanos tiene?": {
+  "Cantidad de hermanos": {
     value: 0,
     type: "number",
   },
-  "¿Posicion de hijo?": {
+  "Posición hermanos": {
     value: 0,
     type: "number",
   },
-  "Número de miembros en la familia": {
+  Integrantes: {
     value: 0,
     type: "number",
   },
@@ -153,7 +156,7 @@ const dataInscri = reactive({
       5: "Labora",
     },
   },
-  "Nivel del sisben": {
+  Sisben: {
     value: 0,
     type: "text",
   },
@@ -174,7 +177,7 @@ const dataInscri = reactive({
       12: "Voleibol",
     },
   },
-  "¿Tiene EPS?": {
+  EPS: {
     options: {
       0: "Ninguna",
       1: "Sí",
@@ -207,7 +210,7 @@ const setDataTo = (key, value) => {
 
 var dataTo = ref({});
 
-//Prosps
+//Emitir evento
 const emisorOfWeek = defineEmits(["formPersonal"]);
 
 const sendInfoPersonal = () => {
@@ -244,6 +247,26 @@ const validateForm = () => {
 
   return true;
 };
+
+//Props
+const props = defineProps({
+  contendPersonarl: {
+    type: Object,
+  },
+});
+
+const onContendPersonarlChange = () => {
+  const Documento = route.query.id;
+  dataTo.value = props.contendPersonarl.datasPers;
+  dataTo.value.Documento = Documento;
+};
+
+watch(() => props.contendPersonarl, onContendPersonarlChange);
+/* onMounted(async () => {
+  if (props.contendPersonarl) {
+    console.log(dataTo.value);
+  }
+}); */
 </script>
 
 <template>
@@ -252,17 +275,17 @@ const validateForm = () => {
       <div class="flex flex-col justify-between items-center">
         <div class="">
           <div
-            class="px-4 sm:px-0 mt-10 flex justify-center items-center flex-col"
+            class="px-4 sm:px-6 flex justify-center items-center flex-col"
           >
-            <h3 class="text-2xl font-bold leading-6 text-gray-900">
+            <h3 class="text-3xl font-bold leading-6 text-gray-900">
               Información personal
             </h3>
-            <p class="mt-1 text-base text-gray-600">
+            <p class="mt-2 text-base text-gray-600">
               Complete todos los datos.
             </p>
           </div>
         </div>
-        <div class="mt-5 w-full">
+        <div class="mt-4 w-full">
           <form>
             <div class="overflow-hidden shadow sm:rounded-md">
               <div class="bg-gray-50 px-4 py-5 sm:p-6">

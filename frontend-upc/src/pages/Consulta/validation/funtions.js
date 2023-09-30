@@ -104,9 +104,9 @@ function dataPersonal(dataPers) {
     Email: dataPers.ID_EMAIL || "Valor no definido",
     "Madre Cabeza de Hogar":
       madCabHogarMapping[dataPers.ID_MAD_CAB_HOGAR] || "Valor no definido",
-    "Cantidad de hijos": dataPers.ID_CANT_HIJOS || "Valor no definido",
-    "Edad hijo Mayor": dataPers.ID_EDAD_MAYOR || "Valor no definido",
-    "Edad hijo Menor": dataPers.ID_EDAD_MENOR || "Valor no definido",
+    "Cantidad de hijos": dataPers.ID_CANT_HIJOS,
+    "Edad hijo Mayor": dataPers.ID_EDAD_MAYOR,
+    "Edad hijo Menor": dataPers.ID_EDAD_MENOR,
     "Ocupación Madre":
       ocupMadreMapping[dataPers.ID_OCUP_MADRE] || "Valor no definido",
     "Ocupación Padre":
@@ -413,7 +413,7 @@ function datasAcad(datasAcad) {
 
 export const changeId = (data) => {
   const resultado = {};
-
+  console.log(data);
   for (const key in data) {
     const value = data[key];
     if (key == "datasPers") {

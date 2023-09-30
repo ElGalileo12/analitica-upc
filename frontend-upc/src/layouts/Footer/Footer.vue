@@ -1,10 +1,6 @@
 <template>
-<div class="sectionfour">
-      <div class="col-lg-6 mx-5">
-        <h1>Contactanos</h1>
-        <p class="parrafo_1">Estudiante: Andres Camilo Reyes Galindo</p>
-        <p class="parrafo">Correo: acamiloreyes@unicesar.edu.co</p>
-      </div>
+  <!-- <div class="sectionfour">
+
       <div class="col-lg-6">
         <ul class="nav justify-content-center">
           <i class="fa-solid fa-house" style="color: #ffffff; margin-top: -21px;"></i>
@@ -20,88 +16,80 @@
     </div>
     <div class="sectionfive">
       <p class="text-center text-body-secondary border-top pt-3 my-3">© 2023 Company, Inc</p>
+    </div> -->
+
+  <footer class="bg-gray-800">
+    <div class="mx-auto w-full max-w-screen-xl p-4 py-6 lg:py-8">
+      <div class="md:flex md:justify-between">
+        <div class="flex flex-shrink-0 items-center">
+          <img src="@/assets/logo.png" width="130" height="130" class="px-4" />
+          <router-link to="/" class="text-2xl text-white"
+            >Proyecto institucional
+          </router-link>
+        </div>
+        <div class="grid grid-cols-2 gap-8 sm:gap-32 sm:grid-cols-2">
+          <div>
+            <h2 class="teme mb-3 text-base font-semibold text-white uppercase">
+              Contactenos
+            </h2>
+            <ul class="text-gray-400 font-medium temeTwo">
+              <li class="mb-4">
+                <h2 class="hover:underline hover:text-white">Andres Camilo Reyes Galindo</h2>
+              </li>
+              <li class="mb-4">
+                <h2 class="hover:underline hover:text-white">acamiloreyes@unicesar.edu.co</h2>
+              </li>
+              <li>
+                <router-link
+                  to="https://www.unicesar.edu.co"
+                  class="hover:underline hover:text-white"
+                >
+                  Universidad popular del cesar
+                </router-link>
+              </li>
+            </ul>
+          </div>
+          <div>
+            <h2 class="teme mb-3 text-base font-semibold text-white uppercase">
+              Recursos
+            </h2>
+            <ul class="text-gray-400 font-medium temeTwo">
+              <li class="mb-4">
+                <router-link to="/inscripcion" class="hover:underline hover:text-white"
+                  >Inscripción</router-link
+                >
+              </li>
+              <li class="mb-4">
+                <router-link to="/Consulta" class="hover:underline hover:text-white"
+                  >Consulta</router-link
+                >
+              </li>
+            </ul>
+          </div>
+        </div>
+      </div>
+      <hr
+        class="my-6 border-gray-200 sm:mx-auto dark:border-gray-700 lg:my-8"
+      />
+      <div class="sm:flex sm:items-center sm:justify-center">
+        <span class="text-sm text-gray-400 sm:text-center"
+          >© 2023 <a href="#" class="hover:underline"> Copyright 2023</a> -
+          Reservados todos los derechos.
+        </span>
+      </div>
     </div>
+  </footer>
 </template>
+
 <style>
-.sectionfour{
-    text-align: center;
-    padding-top: 1rem;
-    display: flex;
-    align-items: center;
-    background-color: #306de0;
-    height: 30vh;
-    padding-right: 150px;
+@import url("https://fonts.googleapis.com/css2?family=Roboto:wght@700&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Roboto:wght@400&display=swap");
+
+.teme {
+  font-family: "Roboto", sans-serif;
 }
-
-.sectionfour li a{
-    margin-top: -2rem;
-    font-family: "Handlee", cursive;
-    font-weight: bold;
-    display: block;
-    color: #fdfdfd;
-    text-transform: none;
-    font-size: 18px;
-    
-}
-.sectionfour p{
-    font-family: "Handlee", cursive;
-    font-weight: bold;
-    display: block;
-    color: #fdfdfd;
-    text-transform: none;
-    font-size: 18px;
-    padding-top: 10px;
-    
-}
-.sectionfour li a:hover{
-    color: #889fca; 
-}
-
-.sectionfour h1{
-    margin-top: -4rem;
-    color: #f7f7f7;
-    font-weight: bold;
-    font-family: "Handlee", cursive;
-    font-size: 40px;
-
-}
-
-.sectionfour h1::before{
-    content: "\f0e0"; /* Código Unicode del icono de corazón en Font Awesome */
-    font-family: "Font Awesome 5 Free"; /* Nombre de la fuente de Font Awesome */
-    margin-top: 11px; /* Añade margen a la derecha del icono para separarlo del texto */
-    margin-right: 5px;
-}
-
-.sectionfour p.parrafo_1::before{
-    content: "\f007"; /* Código Unicode del icono de corazón en Font Awesome */
-    font-family: "Font Awesome 5 Free"; /* Nombre de la fuente de Font Awesome */
-    margin-top: 11px; /* Añade margen a la derecha del icono para separarlo del texto */
-    margin-right: 5px;
-    margin-bottom: 0px;
-}
-
-.sectionfour p.parrafo::before{
-    content: "\e4e8"; /* Código Unicode del icono de corazón en Font Awesome */
-    font-family: "Font Awesome 5 Free"; /* Nombre de la fuente de Font Awesome */
-    margin-top: 11px; /* Añade margen a la derecha del icono para separarlo del texto */
-    margin-right: 5px;
-    margin-bottom: 0px;
-}
-
-
-.sectionfour p.parrafo{
-    font-family: "Nunito",sans-serif;
-    color: #f8f8f8;
-    margin-top: -1rem;
-    margin-bottom: 0px;
-
-}
-
-.sectionfive{
-    color: #ffffff;
-    background: #306de0;
-    margin-top: -61px;
-    margin-bottom: -18px;
+.temeTwo {
+  font-family: "Roboto", sans-serif;
+  font-weight: 400;
 }
 </style>

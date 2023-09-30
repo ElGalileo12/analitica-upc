@@ -376,17 +376,17 @@ const validateForm = () => {
       <div class="flex flex-col justify-between items-center">
         <div class="">
           <div
-            class="px-4 sm:px-0 mt-10 flex justify-center items-center flex-col"
+            class="px-4 sm:px-6 flex justify-center items-center flex-col"
           >
-            <h3 class="text-2xl font-bold leading-6 text-gray-900">
+            <h3 class="text-3xl font-bold leading-6 text-gray-900">
               Información Academica
             </h3>
-            <p class="mt-1 text-base text-gray-600">
+            <p class="mt-2 text-base text-gray-600">
               Complete todos los datos.
             </p>
           </div>
         </div>
-        <div class="mt-5 w-full">
+        <div class="mt-4 w-full">
           <form>
             <div class="overflow-hidden shadow sm:rounded-md">
               <div class="bg-gray-50 px-4 py-5 sm:p-6">

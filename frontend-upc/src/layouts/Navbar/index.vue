@@ -1,146 +1,149 @@
-<script setup></script>
+<script setup>
+import {
+  Disclosure,
+  DisclosureButton,
+  DisclosurePanel,
+  Menu,
+  MenuButton,
+  MenuItem,
+  MenuItems,
+} from "@headlessui/vue";
+import { Bars3Icon, BellIcon, XMarkIcon } from "@heroicons/vue/24/outline";
+
+const navigation = [
+  {
+    name: "Dashboard",
+    current: true,
+    menu: {
+      1: { link: "/dashStu", name: "Estudiantes" },
+      2: { link: "/dashGra", name: "Egresados" },
+    },
+  },
+  {
+    name: "Estudiantes",
+    current: false,
+    menu: {
+      1: { link: "/inscripcion", name: "Inscripción" },
+      2: { link: "/consulta", name: "Consulta" },
+    },
+  },
+  {
+    name: "Egresados",
+    current: false,
+    menu: {
+      1: { link: "/inscripcion", name: "Inscripción" },
+      2: { link: "/consulta", name: "Consulta" },
+    },
+  },
+  { name: "Quienes Somos", current: false },
+];
+</script>
 
 <template>
-  <header>
-    <!-- Nav-bar -->
-    <nav class="navbar navbar-expand-lg">
-      <img src="@/assets/logo.png" width="100" height="100" class="px-4" />
-      <router-link to="/" class="navbar-brand"
-        >Projecto institucional
-      </router-link>
-      <button
-        class="navbar-toggler"
-        type="button"
-        data-toggle="collapse"
-        data-target="#navbarSupportedContent"
-        aria-controls="navbarSupportedContent"
-        aria-expanded="false"
-        aria-label="Toggle navigation"
-      >
-        <span class="navbar-toggler-icon"></span>
-      </button>
-      <div class="ex">
-        <ul class="navbar-nav mr-auto">
-          <li class="nav-item active">
-            <router-link to="/" class="nav-link"
-              >Home <span class="sr-only"></span
-            ></router-link>
-          </li>
-          <li class="nav-item dropdown">
-            <router-link
-              to="#"
-              class="nav-link dropdown-toggle"
-              id="navbarDropdown"
-              role="button"
-              data-toggle="dropdown"
-              aria-haspopup="true"
-              aria-expanded="false"
-            >
-              Estudiantes
+  <Disclosure as="nav" class="bg-gray-800" v-slot="{ open }">
+    <div class="mx-auto max-w-7xl px-2 sm:px-6 lg:px-8">
+      <div class="relative flex h-16 items-center justify-between">
+        <div class="absolute inset-y-0 left-0 flex items-center sm:hidden">
+          <!-- Mobile menu button-->
+          <DisclosureButton
+            class="relative inline-flex items-center justify-center rounded-md p-2 text-gray-400 hover:bg-gray-700 hover:text-white focus:outline-none focus:ring-2 focus:ring-inset focus:ring-white"
+          >
+            <span class="absolute -inset-0.5" />
+            <span class="sr-only">Open main menu</span>
+            <Bars3Icon v-if="!open" class="block h-6 w-6" aria-hidden="true" />
+            <XMarkIcon v-else class="block h-6 w-6" aria-hidden="true" />
+          </DisclosureButton>
+        </div>
+        <div
+          class="flex flex-1 items-center justify-center sm:items-stretch sm:justify-between"
+        >
+          <div class="flex flex-shrink-0 items-center">
+            <img
+              src="@/assets/logo.png"
+              width="80"
+              height="80"
+              class="px-4"
+            />
+            <router-link to="/" class="text-2xl text-white"
+              >Proyecto institucional
             </router-link>
-            <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-              <router-link to="/inscripcion" class="dropdown-item"
-                >Inscripcion
-              </router-link>
-              <router-link to="/consulta" class="dropdown-item"
-                >Consulta de datos
-              </router-link>
-              <router-link to="/dash" class="dropdown-item"
-                >DashBoards
-              </router-link>
+          </div>
+          <div class="hidden sm:ml-6 sm:block mt-1">
+            <div class="flex space-x-8">
+              <div
+                v-for="item in navigation"
+                :key="item.name"
+                :href="item.href"
+                :class="[
+                  item.current
+                    ? 'bg-gray-900 text-white hover:bg-gray-600'
+                    : 'text-gray-300 hover:bg-gray-700 hover:text-white',
+                  'rounded-md px-3 py-2 text-lg font-medium',
+                ]"
+                :aria-current="item.current ? 'page' : undefined"
+              >
+                <Menu as="div" class="relative ml-3">
+                  <div>
+                    <MenuButton>
+                      {{ item.name }}
+                      <span class="absolute -inset-1.5" />
+                      <span class="sr-only"></span>
+                    </MenuButton>
+                  </div>
+                  <transition
+                    enter-active-class="transition ease-out duration-100"
+                    enter-from-class="transform opacity-0 scale-95"
+                    enter-to-class="transform opacity-100 scale-100"
+                    leave-active-class="transition ease-in duration-75"
+                    leave-from-class="transform opacity-100 scale-100"
+                    leave-to-class="transform opacity-0 scale-95"
+                  >
+                    <MenuItems
+                      class="absolute z-10 mt-4 w-40 rounded-md bg-white py-1 shadow-lg ring-1 ring-black ring-opacity-5 focus:outline-none"
+                      v-if="item.menu"
+                    >
+                      <MenuItem
+                        v-for="data in item.menu"
+                        :key="data"
+                        v-slot="{ active }"
+                      >
+                        <router-link
+                          :to="data.link"
+                          :class="[
+                            active ? 'bg-gray-100' : '',
+                            'block px-4 py-2 text-base text-gray-800',
+                          ]"
+                        >
+                          {{ data.name }}
+                        </router-link>
+                      </MenuItem>
+                    </MenuItems>
+                  </transition>
+                </Menu>
+              </div>
             </div>
-          </li>
-          <li class="nav-item dropdown">
-            <router-link
-              class="nav-link dropdown-toggle"
-              to="#"
-              id="navbarDropdown"
-              role="button"
-              data-toggle="dropdown"
-              aria-haspopup="true"
-              aria-expanded="false"
-            >
-              Egresados
-            </router-link>
-            <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-              <router-link class="dropdown-item" to="/inscripcion"
-                >Inscripcion
-              </router-link>
-              <router-link class="dropdown-item" to="/consulta_egresados"
-                >Consulta de datos
-              </router-link>
-              <router-link class="dropdown-item" to="/dash"
-                >DashBoards
-              </router-link>
-            </div>
-          </li>
-          <li class="nav-item active">
-            <a class="nav-link" href="Home#Quienes"
-              >Quienes Somos<span class="sr-only"></span
-            ></a>
-          </li>
-        </ul>
+          </div>
+        </div>
       </div>
-    </nav>
-  </header>
+    </div>
+
+    <DisclosurePanel class="sm:hidden">
+      <div class="space-y-1 px-2 pb-3 pt-2">
+        <DisclosureButton
+          v-for="item in navigation"
+          :key="item.name"
+          as="a"
+          :href="item.href"
+          :class="[
+            item.current
+              ? 'bg-gray-900 text-white'
+              : 'text-gray-300 hover:bg-gray-700 hover:text-white',
+            'block rounded-md px-3 py-2 text-base font-medium',
+          ]"
+          :aria-current="item.current ? 'page' : undefined"
+          >{{ item.name }}</DisclosureButton
+        >
+      </div>
+    </DisclosurePanel>
+  </Disclosure>
 </template>
-
-<style>
-* {
-  margin: 0;
-  padding: 0;
-  border: 0;
-  font-size: 100%;
-  vertical-align: baseline;
-}
-
-body {
-  font-family: "Nunito", sans-serif;
-  font-size: 1rem;
-  font-weight: 400;
-  line-height: 1.5;
-}
-
-.navbar {
-  background-color: #1056dc;
-  width: 100%;
-  z-index: 100;
-}
-.ex {
-  margin-left: 25rem;
-}
-.navbar-brand {
-  margin-left: 1rem;
-  color: #ffffff;
-  display: flex;
-  font-family: "Handlee", cursive;
-  font-weight: bold;
-}
-.navbar-nav.mr-auto li {
-  padding-right: 23px;
-  padding-left: 20px;
-}
-.navbar-nav.mr-auto li a {
-  font-family: "Handlee", cursive;
-  font-weight: bold;
-  display: block;
-  color: #fdfdfd;
-  text-transform: none;
-  font-size: 18px;
-}
-
-.navbar-nav.mr-auto li a:hover {
-  color: #889fca;
-}
-
-.dropdown-menu {
-  align-items: center;
-  background-color: #1056dc;
-  width: 100%;
-  z-index: 100;
-}
-.navbar-nav.mr-auto li .dropdown-item {
-  text-transform: none;
-  color: #ffffff;
-}
-</style>
