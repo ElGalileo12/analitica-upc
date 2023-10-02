@@ -35,7 +35,6 @@ const navigation = [
       2: { link: "/consulta", name: "Consulta" },
     },
   },
-  { name: "Quienes Somos", current: false },
 ];
 </script>
 
@@ -58,12 +57,7 @@ const navigation = [
           class="flex flex-1 items-center justify-center sm:items-stretch sm:justify-between"
         >
           <div class="flex flex-shrink-0 items-center">
-            <img
-              src="@/assets/logo.png"
-              width="80"
-              height="80"
-              class="px-4"
-            />
+            <img src="@/assets/logo.png" width="80" height="80" class="px-4" />
             <router-link to="/" class="text-2xl text-white"
               >Proyecto institucional
             </router-link>
@@ -99,7 +93,7 @@ const navigation = [
                     leave-to-class="transform opacity-0 scale-95"
                   >
                     <MenuItems
-                      class="absolute z-10 mt-4 w-40 rounded-md bg-white py-1 shadow-lg ring-1 ring-black ring-opacity-5 focus:outline-none"
+                      class="absolute z-10 mt-3 w-40 rounded-md bg-white py-1 shadow-lg ring-1 ring-black ring-opacity-5 focus:outline-none"
                       v-if="item.menu"
                     >
                       <MenuItem

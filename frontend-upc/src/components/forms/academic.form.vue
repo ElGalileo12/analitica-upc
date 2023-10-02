@@ -63,11 +63,11 @@ const dataInscri = reactive({
       1: "Ing. Electronica",
     },
   },
-  "¿Tiene hermanos estudiando actualmente en alguna IES?": {
-    value: 0,
-    type: "number",
-  },
-
+  "Su nota obtenida actualmente en la asignatura donde esta siendo encuestado":
+    {
+      value: 0,
+      type: "number",
+    },
   "Usted ingresó a la Universidad Popular del Cesar por medio de según su oferta acamédica":
     {
       options: {
@@ -98,18 +98,6 @@ const dataInscri = reactive({
         4: "Excelente",
       },
     },
-  "Validó el bachillerato": {
-    options: {
-      1: "Sí",
-      2: "No",
-    },
-  },
-  "Tipo de colegio en el que estudio": {
-    options: {
-      1: "Privado",
-      2: "Público",
-    },
-  },
   "En qué semestre iniciaste tu carrera profesional en la Universidad Popular del Cesar":
     {
       options: {
@@ -142,6 +130,18 @@ const dataInscri = reactive({
         27: "2011-2",
       },
     },
+  "Tipo de colegio en el que estudio": {
+    options: {
+      1: "Privado",
+      2: "Público",
+    },
+  },
+  "Validó el bachillerato": {
+    options: {
+      1: "Sí",
+      2: "No",
+    },
+  },
   "Repitió usted las pruebas saber 11° ICFES": {
     options: {
       1: "Sí",
@@ -201,10 +201,6 @@ const dataInscri = reactive({
     type: "number",
   },
   "Créditos matriculados este semestre 2023-1": {
-    value: 0,
-    type: "number",
-  },
-  "¿Ha cancelado alguna asignatura este semestre 2023-1?": {
     value: 0,
     type: "number",
   },
@@ -290,11 +286,7 @@ const dataInscri = reactive({
       2: "Nocturno",
     },
   },
-  "Su nota obtenida actualmente en la asignatura donde esta siendo encuestado":
-    {
-      value: 0,
-      type: "number",
-    },
+
   "Actual rendimiento académico en la asignatura": {
     options: {
       1: "Bajo",
@@ -310,6 +302,14 @@ const dataInscri = reactive({
       3: "Alto",
       4: "Excelente",
     },
+  },
+  "¿Tiene hermanos estudiando actualmente en alguna IES?": {
+    value: 0,
+    type: "number",
+  },
+  "¿Ha cancelado alguna asignatura este semestre 2023-1?": {
+    value: 0,
+    type: "number",
   },
 });
 
@@ -375,9 +375,7 @@ const validateForm = () => {
     <div class="mt-10 sm:mt-0">
       <div class="flex flex-col justify-between items-center">
         <div class="">
-          <div
-            class="px-4 sm:px-6 flex justify-center items-center flex-col"
-          >
+          <div class="px-4 sm:px-6 flex justify-center items-center flex-col">
             <h3 class="text-3xl font-bold leading-6 text-gray-900">
               Información Academica
             </h3>
@@ -390,11 +388,11 @@ const validateForm = () => {
           <form>
             <div class="overflow-hidden shadow sm:rounded-md">
               <div class="bg-gray-50 px-4 py-5 sm:p-6">
-                <div class="grid gap-4 mb-4 grid-cols-4">
+                <div class="grid gap-6 mb-4 grid-cols-3">
                   <div v-for="(group, groupKey) in dataInscri" :key="groupKey">
                     <label
                       for="Nombres"
-                      class="block mb-2 text-base font-bold text-gray-900 dark:text-white"
+                      class="block mb-2 text-base font-bold text-gray-900 dark:text-white px-2"
                     >
                       {{ groupKey }}
                     </label>
@@ -409,7 +407,7 @@ const validateForm = () => {
                       <button
                         id="dropdownDefaultButton"
                         @click="toggleDropdown(groupKey)"
-                        class="w-full border border-gray-300 bg-white shadow-sm text-whit focus:outline-none focus:ring-blue-300 font-medium rounded-md mt-1 text-sm px-5 py-2 justify-between inline-flex items-center"
+                        class="w-full border border-gray-300 bg-white shadow-sm text-whit focus:outline-none focus:ring-blue-300 font-medium rounded-md mt-0 text-sm px-5 py-2 justify-between inline-flex items-center"
                         type="button"
                       >
                         {{ selectedOption[groupKey] || "Seleccionar" }}
@@ -457,7 +455,7 @@ const validateForm = () => {
                 <button
                   @click.prevent="sendInfoAcademic()"
                   type="button"
-                  class="text-white mb-10 mr-20 bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:ring-blue-300 font-bold rounded-lg text-base px-5 py-2.5"
+                  class="text-gray-200 mb-10 mr-20 bg-gray-900 hover:bg-gray-700 focus:ring-4 focus:ring-blue-300 font-bold rounded-lg text-base px-5 py-2.5"
                 >
                   Enviar
                 </button>

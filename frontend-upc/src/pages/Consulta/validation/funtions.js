@@ -392,14 +392,13 @@ function datasAcad(datasAcad) {
       datasAcad.ID_CREDITOS_NO_APROBADOS || "Valor no definido",
     "Créditos matriculados":
       datasAcad.ID_CREDITOS_MATRIC || "Valor no definido",
-    "Materias canceladas":
-      datasAcad.ID_MATERIAS_CANCELADAS || "Valor no definido",
+    "Materias canceladas": datasAcad.ID_MATERIAS_CANCELADAS,
     "Asignatura Encuesta":
       asignatuaEncuestaMapping[datasAcad.ID_ASIGNATURA_ENCUESTA] ||
       "Valor no definido",
     "Jornada académica":
       jornadaAcademMapping[datasAcad.ID_JORNADA_ACAD] || "Valor no definido",
-    "Nota actual": datasAcad.ID_NOTA_ACTUAL || "Valor no definido",
+    "Nota actual": datasAcad.ID_NOTA_ACTUAL,
     "Rendimiento actual":
       rendimientoMapping[datasAcad.ID_RENDIMIENTO_ACTUAL] ||
       "Valor no definido",

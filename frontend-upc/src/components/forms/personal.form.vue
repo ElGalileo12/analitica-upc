@@ -355,7 +355,7 @@ watch(() => props.contendPersonarl, onContendPersonarlChange);
                 <button
                   @click.prevent="sendInfoPersonal()"
                   type="button"
-                  class="text-white mb-10 mr-20 bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:ring-blue-300 font-bold rounded-lg text-base px-5 py-2.5"
+                  class="text-gray-200 mb-10 mr-20 bg-gray-900 hover:bg-gray-700 focus:ring-4 focus:ring-blue-300 font-bold rounded-lg text-base px-5 py-2.5"
                 >
                   Siguiente
                 </button>

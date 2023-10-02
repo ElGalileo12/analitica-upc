@@ -118,7 +118,8 @@ const option_5 = config_5
             <div class="col-md-3 my-4" >
                 <div id="rounded-square" class="rounded-square">
                     <p id="text-1" class="text-1 text-center"> </p>
-                    <p id="text-2" class="text-2 text-center">Estudiantes encuestados</p>
+                    <p id="text-2" class="text-2 text-center text-xl font-bold text-black">Estudiantes encuestados</p>
+                    <h1 class="text-7xl text-center mt-12 text-purple-700">266</h1>
                 </div>
             </div>
             <div class="col-md-6 my-4" >
