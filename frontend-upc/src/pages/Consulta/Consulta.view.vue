@@ -3,6 +3,7 @@ import { ref, toRaw } from "vue";
 import { useConsulta } from "@/composable/useConsulta";
 import { changeId } from "./validation/funtions";
 import Swal from "sweetalert2";
+import separadorThings from "../../components/things/separador.things.vue";
 
 const { deleteByApi, consultaByApi, rqConsult } = useConsulta();
 
@@ -16,9 +17,22 @@ async function deleteConsult(idDoc) {
 }
 
 async function searchConsult(idDoc) {
-  await consultaByApi(idDoc);
-  consultValidation.value = changeId(toRaw(rqConsult.value));
-  activateButton("datasPerson");
+  try {
+    await consultaByApi(idDoc);
+    consultValidation.value = changeId(toRaw(rqConsult.value));
+    activateButton("datasPerson");
+  } catch (error) {
+    if (error.response && error.response.status === 404) {
+      // Aquí puedes mostrar un mensaje de error al usuario, por ejemplo:
+      Swal.fire({
+        icon: 'error',
+        title: 'No se encontró la consulta.',
+        text: 'Por favor, verifique el ID del documento.',})
+    } else {
+      // Otros tipos de errores, manéjalos según corresponda.
+      console.error("Ocurrió un error inesperado:", error);
+    }
+  }
 }
 
 const activateButton = (buttonName) => {
@@ -225,5 +239,6 @@ function confirmacion(idDoc) {
         </div>
       </div>
     </div>
+    <separadorThings></separadorThings>
   </section>
 </template>

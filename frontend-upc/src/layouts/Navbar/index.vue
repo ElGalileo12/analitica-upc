@@ -13,7 +13,7 @@ import { Bars3Icon, BellIcon, XMarkIcon } from "@heroicons/vue/24/outline";
 const navigation = [
   {
     name: "Dashboard",
-    current: true,
+    current: false,
     menu: {
       1: { link: "/dashStu", name: "Estudiantes" },
       2: { link: "/dashGra", name: "Egresados" },
@@ -32,7 +32,7 @@ const navigation = [
     current: false,
     menu: {
       1: { link: "/inscripcion", name: "Inscripción" },
-      2: { link: "/consulta", name: "Consulta" },
+      2: { link: "/consulta_egresados", name: "Consulta" },
     },
   },
 ];
@@ -71,12 +71,12 @@ const navigation = [
                 :class="[
                   item.current
                     ? 'bg-gray-900 text-white hover:bg-gray-600'
-                    : 'text-gray-300 hover:bg-gray-700 hover:text-white',
+                    : 'text-gray-300 hover:bg-gray-700 hover:text-white text',
                   'rounded-md px-3 py-2 text-lg font-medium',
                 ]"
                 :aria-current="item.current ? 'page' : undefined"
               >
-                <Menu as="div" class="relative ml-3">
+                <Menu as="div" class="relative ml-3 text-center">
                   <div>
                     <MenuButton>
                       {{ item.name }}
