@@ -33,6 +33,11 @@ const routes = [
         name: "dashboard",
         component: () => import("../pages/Dashboard/dash_1.vue"),
       },
+      {
+        path: "/dashGra",
+        name: "dashboardGra",
+        component: () => import("../pages/Dashboard/DashEgre.view.vue"),
+      },
     ],
   },
 

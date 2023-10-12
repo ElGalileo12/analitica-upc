@@ -22,7 +22,7 @@
           </div>
           <div class="lg:order-first lg:row-span-2">
             <h1
-              class="teme text-4xl font-bold tracking-tight text-zinc-800 sm:text-5xl mt-10"
+              class="teme text-4xl font-bold tracking-tight text-zinc-800 sm:text-5xl mt-10 text-center"
             >
               ¿Quiénes Somos?
             </h1>

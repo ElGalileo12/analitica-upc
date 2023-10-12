@@ -1,12 +1,12 @@
 <script setup>
 import { ref, toRaw } from "vue";
-import { useConsulta } from "@/composable/useConsulta";
+import { useStudent } from "@/composable/useStudent";
 import AcademicForm from "../../components/forms/academic.form.vue";
 import PersonalForm from "../../components/forms/personal.form.vue";
 import EconomicForm from "../../components/forms/socioeco.form.vue";
 import { changeDatas } from "./validation/funtions";
 
-const { inscriptionaByApi   } = useConsulta();
+const { inscriptionaByApi } = useStudent();
 
 var concatObject = ref({});
 var datasPerson = ref({});
@@ -34,7 +34,10 @@ async function formAcademic(datas) {
     socioeconomica: toRaw(datasSoci.value),
     infoacademica: toRaw(datasAcad.value),
   };
-  resultado.value = changeDatas(toRaw(concatObject.value), datasPerson.value.Documento);
+  resultado.value = changeDatas(
+    toRaw(concatObject.value),
+    datasPerson.value.Documento
+  );
   await inscriptionaByApi(toRaw(resultado.value));
 }
 </script>
@@ -43,14 +46,23 @@ async function formAcademic(datas) {
   <section>
     <div class="m-8">
       <transition name="fade" mode="out-in">
-        <div :key="showEconomicForm
-          ? 'economic'
-          : showAcademicForm
-            ? 'academic'
-            : 'personal'
-          ">
-          <PersonalForm v-if="!showEconomicForm && !showAcademicForm" @formPersonal="formPersonal"></PersonalForm>
-          <EconomicForm v-if="showEconomicForm && !showAcademicForm" @formSocio="formSocio" />
+        <div
+          :key="
+            showEconomicForm
+              ? 'economic'
+              : showAcademicForm
+              ? 'academic'
+              : 'personal'
+          "
+        >
+          <PersonalForm
+            v-if="!showEconomicForm && !showAcademicForm"
+            @formPersonal="formPersonal"
+          />
+          <EconomicForm
+            v-if="showEconomicForm && !showAcademicForm"
+            @formSocio="formSocio"
+          />
           <AcademicForm v-if="showAcademicForm" @formAcademic="formAcademic" />
         </div>
       </transition>
