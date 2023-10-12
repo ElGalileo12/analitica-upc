@@ -1,20 +1,16 @@
 <script setup>
 import { ref, toRaw } from "vue";
-import {EgreuseConsulta} from "@/composable/useConsulta";
+import { useEgresadoConsulta } from "@/composable/useEgresados";
 import { changeId } from "./validation/funtions egre";
-import Swal from 'sweetalert2'
-import Separador from "../../components/things/separador.things.vue";
-const { EgreconsultaByApi,EgredeleteByApi, rqConsult } = EgreuseConsulta();
+import Swal from "sweetalert2";
 
-
+const { EgreconsultaByApi, EgredeleteByApi, rqConsult } = useEgresadoConsulta();
 
 var identifications = ref("");
 var consultValidation = ref({});
-
-
 const activeButton = ref("");
 
-async function deleteConsult(idDoc){
+async function deleteConsult(idDoc) {
   await EgredeleteByApi(idDoc);
 }
 
@@ -49,35 +45,34 @@ const activateButton = (buttonName) => {
   }
 };
 
-function confirmacion(idDoc){
+function confirmacion(idDoc) {
   var document = idDoc;
   Swal.fire({
-  title: `Estas seguro que quieres eliminar a la persona con documento ${document}`,
-  text: "No podras revertir este cambio!",
-  icon: 'warning',
-  showCancelButton: true,
-  confirmButtonColor: '#3085d6',
-  cancelButtonColor: '#d33',
-  confirmButtonText: 'Si, eliminarlo!'
-}).then((result) => {
-  if (result.isConfirmed) {
-    deleteConsult(idDoc);
-    Swal.fire({
-      title: 'Eliminado!',
-      text: 'Tu eliminacion ha sido exitosa.',
-      icon: 'success',
-      confirmButtonColor: '#3085d6'
+    title: `Estas seguro que quieres eliminar a la persona con documento ${document}`,
+    text: "No podras revertir este cambio!",
+    icon: "warning",
+    showCancelButton: true,
+    confirmButtonColor: "#3085d6",
+    cancelButtonColor: "#d33",
+    confirmButtonText: "Si, eliminarlo!",
+  }).then((result) => {
+    if (result.isConfirmed) {
+      deleteConsult(idDoc);
+      Swal.fire({
+        title: "Eliminado!",
+        text: "Tu eliminacion ha sido exitosa.",
+        icon: "success",
+        confirmButtonColor: "#3085d6",
+      });
     }
-    )
-  }
-})
+  });
 }
 </script>
 
 <template>
-  <section class="bg-gray-50">
+  <section>
     <div class="h-full flex flex-col items-center justify-center">
-      <h1 class="mt-10 font-bold text-xl">Consulta de Egresados</h1>
+      <h1 class="mt-10 font-bold text-2xl">Consulta de Egresados</h1>
       <form
         class="block h-48 mt-6 w-1/3 p-6 bg-white border border-gray-200 rounded-lg shadow"
       >
@@ -101,21 +96,21 @@ function confirmacion(idDoc){
           <button
             @click.prevent="searchConsult(identifications)"
             type="submit"
-            class="w-28 text-lg text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg  py-1.5 text-center"
+            class="w-28 text-gray-200 bg-gray-900 hover:bg-gray-700 focus:ring-4 focus:ring-blue-900 font-bold rounded-lg text-lg py-1.5"
           >
             Buscar
           </button>
-          <button
-            @click.prevent="prueba(estudiante)"
+          <router-link
+            :to="{ name: 'edition', query: { id: identifications } }"
             type="submit"
-            class="text-white w-28 text-lg bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg  py-1.5 text-center"
+            class="w-28 text-gray-200 bg-gray-900 hover:bg-gray-700 focus:ring-4 focus:ring-blue-900 rounded-lg text-lg font-medium py-1.5 text-center"
           >
             Editar
-          </button>
+          </router-link>
           <button
-            @click.prevent="confirmacion(identifications)"            
+            @click.prevent="confirmacion(identifications)"
             type="submit"
-            class="text-white text-lg w-28 bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg  text-center"
+            class="w-28 text-gray-200 bg-gray-900 hover:bg-gray-700 focus:ring-4 focus:ring-blue-900 rounded-lg text-lg font-medium py-1.5 text-center"
           >
             Eliminar
           </button>
@@ -282,7 +277,5 @@ function confirmacion(idDoc){
         </div>
       </div>
     </div>
-    
-    <Separador></Separador>
   </section>
 </template>

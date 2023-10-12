@@ -51,13 +51,13 @@ function dataPersonal(dataPers) {
     Fallecida: 3,
     Independiente: 4,
     Labora: 5,
-    "Madre cabeza de hogar": 6,
+    "Madre Cabeza de Hogar": 6,
     Pensionada: 7,
   };
 
   const ocupPadreMapping = {
     Ninguna: 0,
-    "Padre cabeza de hogar": 1,
+    "Padre Cabeza de Hogar": 1,
     Pensionado: 2,
     Fallecido: 3,
     Independiente: 4,
@@ -100,26 +100,25 @@ function dataPersonal(dataPers) {
     ID_NUM_CONTACTO: dataPers["Telefono"],
     ID_GENERO: generoMapping[dataPers["Genero"]],
     ID_VIC_CONFLICTO: victimaConMapping[dataPers["¿Es victima del conflicto?"]],
-    ID_ESTADO_CIVIL: estadoCivilMapping[dataPers["Estado Cívil"]],
+    ID_ESTADO_CIVIL: estadoCivilMapping[dataPers["Estado Civil"]],
     ID_DPTO_NAC: dataPers["Departamento"],
     ID_MUN_NAC: dataPers["Municipio"],
     ID_TIPO_DISC:
       tipoDiscapacidadMapping[dataPers["¿Tiene alguna discapacidad?"]],
     ID_ETNIA: etniaMapping[dataPers["Etnia"]],
     ID_EMAIL: dataPers["Email"],
-    ID_MAD_CAB_HOGAR:
-      madCabHogarMapping[dataPers["¿Es Madre o Padre Cabeza de hogar?"]],
-    ID_EDAD_MAYOR: dataPers["Edad de su hijo mayor"],
-    ID_EDAD_MENOR: dataPers["Edad de su hijo menor"],
-    ID_CANT_HIJOS: dataPers["¿Cuántos hijos tiene?"],
-    ID_OCUP_MADRE: ocupMadreMapping[dataPers["Ocupacion de la madre"]],
-    ID_OCUP_PADRE: ocupPadreMapping[dataPers["Ocupacion del padre"]],
+    ID_MAD_CAB_HOGAR: madCabHogarMapping[dataPers["Madre Cabeza de Hogar"]],
+    ID_EDAD_MAYOR: dataPers["Edad hijo Mayor"],
+    ID_EDAD_MENOR: dataPers["Edad hijo Menor"],
+    ID_CANT_HIJOS: dataPers["Cantidad de hijos"],
+    ID_OCUP_MADRE: ocupMadreMapping[dataPers["Ocupación Madre"]],
+    ID_OCUP_PADRE: ocupPadreMapping[dataPers["Ocupación Padre"]],
     ID_CANT_HERMANOS: dataPers["¿Cuántos hermanos tiene?"],
     ID_POS_HERMANO: dataPers["¿Posicion de hijo?"],
-    ID_INTEGRANTES: dataPers["Número de miembros en la familia"],
+    ID_INTEGRANTES: dataPers["Integrantes"],
     ID_TALENTO: talentoMapping[dataPers["Talento"]],
-    ID_EPS: EPSMapping[dataPers["¿Tiene EPS?"]],
-    ID_SISBEN: dataPers["Nivel del sisben"],
+    ID_EPS: EPSMapping[dataPers["EPS"]],
+    ID_SISBEN: dataPers["Sisben"],
     ID_LENTES: LentesMapping[dataPers["¿Usa lentes?"]],
   };
   return resultado;
@@ -148,32 +147,26 @@ function datasSoci(datasSoci, id) {
 
   const nivelAcademicoMapping = {
     Bachiller: 1,
-    Tecnico: 2,
-    "Tecnico Bachiller": 3,
+    Técnico: 2,
+    "Técnico Bachiller": 3,
     Tecnologo: 4,
     Universitario: 5,
   };
 
   const resultado = {
     ID_ESTUDIANTE: id,
-    ID_OCUPACION: ocupacionMapping[datasSoci["¿Tiene usted alguna ocupación?"]],
-    ID_ESTRATO: datasSoci["¿Estrato socioeconómico?"],
-    ID_TIPO_VIVIENDA: viviendaMapping[datasSoci["¿Tipo de vivienda?"]],
-    ID_RECIBE_INGRESOS:
-      yesOrNo[datasSoci["¿Recibe usted ingresos mensualmente?"]],
-    ID_ACUDIENTE: yesOrNo[datasSoci["¿Alguien lo representa legalmente?"]],
-    ID_NIVEL_ACADEMICO:
-      yesOrNo[datasSoci["¿Alguien lo representa legalmente?"]],
+    ID_OCUPACION: ocupacionMapping[datasSoci["Ocupación"]],
+    ID_ESTRATO: datasSoci["Estrato"],
+    ID_TIPO_VIVIENDA: viviendaMapping[datasSoci["Tipo de vivienda"]],
+    ID_RECIBE_INGRESOS: yesOrNo[datasSoci["¿Recibe ingresos mensualmente?"]],
+    ID_ACUDIENTE: yesOrNo[datasSoci["Acudiente"]],
     ID_NIVEL_ACADEMICO: nivelAcademicoMapping[datasSoci["Nivel académico"]],
     ID_INGRESO_FAMILIAR: datasSoci["¿Cuánto es el ingreso familiar?"],
-    ID_TIENE_PC: yesOrNo[datasSoci["¿Posee usted computador?"]],
-    ID_TIENE_INTERNET: yesOrNo[datasSoci["¿Tiene acceso a Internet?"]],
-    ID_CEL_SMART: yesOrNo[datasSoci["¿Posee usted un celular inteligente?"]],
-    ID_PLAN_DATOS: yesOrNo[datasSoci["¿Posee usted un plan de datos?"]],
-    ID_INGRESO_TRABAJA:
-      yesOrNo[
-        datasSoci["¿Al momento de entrar a la universidad usted trabajaba?"]
-      ],
+    ID_TIENE_PC: yesOrNo[datasSoci["Posee computador"]],
+    ID_TIENE_INTERNET: yesOrNo[datasSoci["Tiene acceso a Internet"]],
+    ID_CEL_SMART: yesOrNo[datasSoci["Tiene celular smart"]],
+    ID_PLAN_DATOS: yesOrNo[datasSoci["Tiene plan de datos"]],
+    ID_INGRESO_TRABAJA: yesOrNo[datasSoci["¿Ingresos por trabajar?"]],
   };
 
   return resultado;
@@ -361,13 +354,13 @@ function datasAcad(datasAcad, id) {
       ],
     ID_HERMANOS_IES:
       datasAcad["¿Tiene hermanos estudiando actualmente en alguna IES?"],
-    ID_INGRESO_UPC:
+    ID_INGRESO_OFERTA:
       ingresoMapping[
         datasAcad[
           "Usted ingresó a la Universidad Popular del Cesar por medio de según su oferta acamédica"
         ]
       ],
-    ID_INGRESO_OFERTA:
+    ID_INGRESO_UPC:
       yesOrNo[
         datasAcad[
           "Ingresó a la universidad por (Mejor bachiller, preuniversitario o deportista)"

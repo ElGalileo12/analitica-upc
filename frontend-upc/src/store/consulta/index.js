@@ -1,7 +1,7 @@
 import { defineStore } from "pinia";
 import { axiosApi } from "@/plugins/axios";
 
-export const useConsultaStore = defineStore("payment", {
+export const useStudentStore = defineStore("student", {
   state: () => ({
     rqConsult: {},
   }),
@@ -15,6 +15,22 @@ export const useConsultaStore = defineStore("payment", {
         throw error;
       }
     },
+    async editionByApi(concatInfo) {
+      try {
+        //Ya aquí configuras lo que vas a enviar
+        console.log(concatInfo);
+        try {
+          var { data } = await axiosApi.post(`api/inscripcion/`, {
+            concatInfo,
+          });
+          this.rqConsult = data;
+        } catch (error) {
+          throw error;
+        }
+      } catch (error) {
+        throw error;
+      }
+    },
     async deleteByApi(ID_C_DOCUMENTO) {
       try {
         await axiosApi.delete(`api/Estudiante/${ID_C_DOCUMENTO}/`);
@@ -24,29 +40,10 @@ export const useConsultaStore = defineStore("payment", {
     },
     async inscriptionaByApi(concatInfo) {
       try {
-        console.log(concatInfo);
         var { data } = await axiosApi.post(`api/inscripcion/`, {
           concatInfo,
-        },
-        
-        );
-        console.log(data);
-      } catch (error) {
-        throw error;
-      }
-    },
-    //EGRESADOS
-    async EgreconsultaByApi(ID_C_DOCUMENTO) {
-      try {
-        let { data } = await axiosApi.get(`api/Egresados/${ID_C_DOCUMENTO}/`);
+        });
         this.rqConsult = data;
-      } catch (error) {
-        throw error;
-      }
-    },
-    async EgredeleteByApi(ID_C_DOCUMENTO) {
-      try {
-        await axiosApi.delete(`api/Egresados/${ID_C_DOCUMENTO}/`);
       } catch (error) {
         throw error;
       }

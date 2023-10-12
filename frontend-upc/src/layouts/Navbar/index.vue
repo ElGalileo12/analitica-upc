@@ -8,17 +8,8 @@ import {
   MenuItem,
   MenuItems,
 } from "@headlessui/vue";
-import { Bars3Icon, BellIcon, XMarkIcon } from "@heroicons/vue/24/outline";
 
 const navigation = [
-  {
-    name: "Dashboard",
-    current: false,
-    menu: {
-      1: { link: "/dashStu", name: "Estudiantes" },
-      2: { link: "/dashGra", name: "Egresados" },
-    },
-  },
   {
     name: "Estudiantes",
     current: false,
@@ -33,6 +24,14 @@ const navigation = [
     menu: {
       1: { link: "/inscripcion", name: "Inscripción" },
       2: { link: "/consulta_egresados", name: "Consulta" },
+    },
+  },
+  {
+    name: "Dashboard",
+    current: true,
+    menu: {
+      1: { link: "/dashStu", name: "Estudiantes" },
+      2: { link: "/dashGra", name: "Egresados" },
     },
   },
 ];
@@ -63,20 +62,20 @@ const navigation = [
             </router-link>
           </div>
           <div class="hidden sm:ml-6 sm:block mt-1">
-            <div class="flex space-x-8">
+            <div class="flex space-x-7">
               <div
                 v-for="item in navigation"
                 :key="item.name"
                 :href="item.href"
                 :class="[
                   item.current
-                    ? 'bg-gray-900 text-white hover:bg-gray-600'
-                    : 'text-gray-300 hover:bg-gray-700 hover:text-white text',
+                    ? 'bg-gray-900 text-white hover:bg-gray-600 px-5'
+                    : 'text-gray-300 hover:bg-gray-700 hover:text-white px-5',
                   'rounded-md px-3 py-2 text-lg font-medium',
                 ]"
                 :aria-current="item.current ? 'page' : undefined"
               >
-                <Menu as="div" class="relative ml-3 text-center">
+                <Menu as="div" class="relative text-center">
                   <div>
                     <MenuButton>
                       {{ item.name }}

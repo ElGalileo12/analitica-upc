@@ -1,5 +1,8 @@
 <script setup>
-import { ref, reactive } from "vue";
+import { ref, reactive, onMounted } from "vue";
+import { useRoute } from "vue-router";
+
+const route = useRoute();
 
 const requiredFields = [
   "¿Tiene hermanos estudiando actualmente en alguna IES?",
@@ -331,14 +334,19 @@ const setDataTo = (key, value) => {
 
 const dataTo = ref({});
 //Prosps
-const emisorOfWeek = defineEmits(["formAcademic"]);
+const emisorOfWeek = defineEmits(["formAcademic", "formEditAcad"]);
 
 const sendInfoAcademic = () => {
   if (validateForm()) {
     emisorOfWeek("formAcademic", dataTo);
   }
 };
-
+//Emitir evento edit
+const sendEditAcademic = () => {
+  if (validateForm()) {
+    emisorOfWeek("formEditAcad", dataTo);
+  }
+};
 //Validation
 const validateForm = () => {
   const areAllRequiredFieldsFilled = requiredFields.every((fieldName) => {
@@ -368,6 +376,23 @@ const validateForm = () => {
 
   return true;
 };
+
+//Props
+const props = defineProps({
+  contendAcademic: {
+    type: Object,
+  },
+});
+
+const onContendAcademicChange = () => {
+  dataTo.value = props.contendAcademic.datasAcad;
+};
+
+onMounted(() => {
+  if (route.query.id) {
+    onContendAcademicChange();
+  }
+});
 </script>
 
 <template>
@@ -410,7 +435,11 @@ const validateForm = () => {
                         class="w-full border border-gray-300 bg-white shadow-sm text-whit focus:outline-none focus:ring-blue-300 font-medium rounded-md mt-0 text-sm px-5 py-2 justify-between inline-flex items-center"
                         type="button"
                       >
-                        {{ selectedOption[groupKey] || "Seleccionar" }}
+                        {{
+                          selectedOption[groupKey] ||
+                          dataTo[groupKey] ||
+                          "Seleccionar"
+                        }}
                         <svg
                           class="w-2.5 h-2.5 ml-2.5"
                           aria-hidden="true"
@@ -451,13 +480,28 @@ const validateForm = () => {
                   </div>
                 </div>
               </div>
-              <div class="w-full flex justify-end bg-gray-50">
+              <div
+                v-if="!route.query.id"
+                class="w-full flex justify-end bg-gray-50"
+              >
                 <button
                   @click.prevent="sendInfoAcademic()"
                   type="button"
                   class="text-gray-200 mb-10 mr-20 bg-gray-900 hover:bg-gray-700 focus:ring-4 focus:ring-blue-300 font-bold rounded-lg text-base px-5 py-2.5"
                 >
                   Enviar
+                </button>
+              </div>
+              <div
+                v-if="route.query.id"
+                class="w-full flex justify-end bg-gray-50"
+              >
+                <button
+                  @click.prevent="sendEditAcademic()"
+                  type="button"
+                  class="text-gray-200 mb-10 mr-20 bg-gray-900 hover:bg-gray-700 focus:ring-4 focus:ring-blue-300 font-bold rounded-lg text-base px-5 py-2.5"
+                >
+                  Siguiente
                 </button>
               </div>
             </div>

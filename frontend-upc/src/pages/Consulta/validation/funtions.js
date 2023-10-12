@@ -41,7 +41,7 @@ function dataPersonal(dataPers) {
 
   const ocupMadreMapping = {
     0: "No Registra",
-    1: "Ama de Casa",
+    1: "Ama de casa",
     2: "Estudiante",
     3: "Fallecida",
     4: "Independiente",
@@ -87,18 +87,25 @@ function dataPersonal(dataPers) {
     2: "No",
   };
 
+  const TipodocumentoMapping = {
+    cedulaCiudadania: "Cédula",
+    tarjetaIdentidad: "Tarjeta de identidad",
+  };
+
   const resultado = {
+    "Tipo de documento":
+      TipodocumentoMapping[dataPers.ID_TIPO_DOCUMENTO] || "Valor no definido",
     Nombre: dataPers.ID_NOMBRE || "Valor no definido",
     Edad: dataPers.ID_EDAD || "Valor no definido",
     Telefono: dataPers.ID_NUM_CONTACTO || "Valor no definido",
     Genero: generoMapping[dataPers.ID_GENERO] || "Valor no definido",
-    "Victima del conflicto":
+    "¿Es victima del conflicto?":
       victimaConMapping[dataPers.ID_VIC_CONFLICTO] || "Valor no definido",
     "Estado Civil":
       estadoCivilMapping[dataPers.ID_ESTADO_CIVIL] || "Valor no definido",
     Departamento: dataPers.ID_DPTO_NAC || "Valor no definido",
     Municipio: dataPers.ID_MUN_NAC || "Valor no definido",
-    "Tipo de Discapacidad":
+    "¿Tiene alguna discapacidad?":
       tipoDiscapacidadMapping[dataPers.ID_TIPO_DISC] || "Valor no definido",
     Etnia: etniaMapping[dataPers.ID_ETNIA] || "Valor no definido",
     Email: dataPers.ID_EMAIL || "Valor no definido",
@@ -111,13 +118,13 @@ function dataPersonal(dataPers) {
       ocupMadreMapping[dataPers.ID_OCUP_MADRE] || "Valor no definido",
     "Ocupación Padre":
       ocupPadreMapping[dataPers.ID_OCUP_PADRE] || "Valor no definido",
-    "Cantidad de hermanos": dataPers.ID_CANT_HERMANOS || "Valor no definido",
-    "Posición hermanos": dataPers.ID_POS_HERMANO || "Valor no definido",
+    "¿Cuántos hermanos tiene?": dataPers.ID_CANT_HERMANOS || "Valor no definido",
+    "¿Posicion de hijo?": dataPers.ID_POS_HERMANO || "Valor no definido",
     Integrantes: dataPers.ID_INTEGRANTES || "Valor no definido",
     Talento: talentoMapping[dataPers.ID_TALENTO] || "Valor no definido",
     EPS: EPSMapping[dataPers.ID_EPS] || "Valor no definido",
     Sisben: dataPers.ID_SISBEN || "Valor no definido",
-    Lentes: LentesMapping[dataPers.ID_LENTES] || "Valor no definido",
+    "¿Usa lentes?": LentesMapping[dataPers.ID_LENTES] || "Valor no definido",
   };
 
   return resultado;
@@ -159,25 +166,27 @@ function datasSoci(datasSoci) {
   };
 
   const resultado = {
-    Ocupacion: ocupacionMapping[datasSoci.ID_OCUPACION] || "Valor no definido",
+    Ocupación: ocupacionMapping[datasSoci.ID_OCUPACION] || "Valor no definido",
     Estrato: datasSoci.ID_ESTRATO || "Valor no definido",
     "Tipo de vivienda":
       viviendaMapping[datasSoci.ID_TIPO_VIVIENDA] || "Valor no definido",
-    "Recibe ingresos":
+    "¿Recibe ingresos mensualmente?":
       yesOrNo[datasSoci.ID_RECIBE_INGRESOS] || "Valor no definido",
     Acudiente: yesOrNo[datasSoci.ID_ACUDIENTE] || "Valor no definido",
-    "Nivel academico":
+    "Nivel académico":
       nivelAcademicoMapping[datasSoci.ID_NIVEL_ACADEMICO] ||
       "Valor no definido",
-    "Ingreso familiar": datasSoci.ID_INGRESO_FAMILIAR || "Valor no definido",
-    "Tiene PC": tienePcMapping[datasSoci.ID_TIENE_PC] || "Valor no definido",
-    "Tiene internet":
+    "¿Cuánto es el ingreso familiar?":
+      datasSoci.ID_INGRESO_FAMILIAR || "Valor no definido",
+    "Posee computador":
+      tienePcMapping[datasSoci.ID_TIENE_PC] || "Valor no definido",
+    "Tiene acceso a Internet":
       yesOrNo[datasSoci.ID_TIENE_INTERNET] || "Valor no definido",
     "Tiene celular smart":
       yesOrNo[datasSoci.ID_CEL_SMART] || "Valor no definido",
     "Tiene plan de datos":
       yesOrNo[datasSoci.ID_PLAN_DATOS] || "Valor no definido",
-    "Ingresos por trabajar":
+    "¿Ingresos por trabajar?":
       yesOrNo[datasSoci.ID_INGRESO_TRABAJA] || "Valor no definido",
   };
 
@@ -388,8 +397,7 @@ function datasAcad(datasAcad) {
       datasAcad.ID_PROMEDIO_ACUMULADO || "Valor no definido",
     "Promedio semestre anterior":
       datasAcad.ID_PROMEDIO_SEMESTRE_ANT || "Valor no definido",
-    "Crérditos no aprobados":
-      datasAcad.ID_CREDITOS_NO_APROBADOS || "Valor no definido",
+    "Créditos no aprobados": datasAcad.ID_CREDITOS_NO_APROBADOS,
     "Créditos matriculados":
       datasAcad.ID_CREDITOS_MATRIC || "Valor no definido",
     "Materias canceladas": datasAcad.ID_MATERIAS_CANCELADAS,
@@ -412,7 +420,7 @@ function datasAcad(datasAcad) {
 
 export const changeId = (data) => {
   const resultado = {};
-  console.log(data);
+
   for (const key in data) {
     const value = data[key];
     if (key == "datasPers") {
@@ -423,9 +431,6 @@ export const changeId = (data) => {
       resultado[key] = datasAcad(value);
     }
   }
-
-  // resultado es el nuevo objeto con las traducciones
-  console.log("Nuevo objeto:", resultado);
 
   return resultado;
 };

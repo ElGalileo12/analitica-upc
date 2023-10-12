@@ -1,11 +1,11 @@
 <script setup>
 import { ref, toRaw } from "vue";
-import { useConsulta } from "@/composable/useConsulta";
+import { useStudent } from "@/composable/useStudent";
 import { changeId } from "./validation/funtions";
 import Swal from "sweetalert2";
 import separadorThings from "../../components/things/separador.things.vue";
 
-const { deleteByApi, consultaByApi, rqConsult } = useConsulta();
+const { deleteByApi, consultaByApi, rqConsult } = useStudent();
 
 var identifications = ref("");
 var consultValidation = ref({});
@@ -70,9 +70,9 @@ function confirmacion(idDoc) {
 </script>
 
 <template>
-  <section class="">
+  <section>
     <div class="h-full flex flex-col items-center justify-center">
-      <h1 class="mt-10 font-bold text-xl">Consulta de estudiantes</h1>
+      <h1 class="mt-10 font-bold text-2xl">Consulta de estudiantes</h1>
       <form
         class="block h-48 mt-6 w-1/3 p-6 bg-white border border-gray-200 rounded-lg shadow"
       >
@@ -96,21 +96,21 @@ function confirmacion(idDoc) {
           <button
             @click.prevent="searchConsult(identifications)"
             type="submit"
-            class="w-28 text-lg text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg py-1.5 text-center"
+            class="w-28 text-gray-200 bg-gray-900 hover:bg-gray-700 focus:ring-4 focus:ring-blue-900 font-bold rounded-lg text-lg py-1.5"
           >
             Buscar
           </button>
           <router-link
             :to="{ name: 'edition', query: { id: identifications } }"
             type="submit"
-            class="text-white w-28 text-lg bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg py-1.5 text-center"
+            class="w-28 text-gray-200 bg-gray-900 hover:bg-gray-700 focus:ring-4 focus:ring-blue-900 rounded-lg text-lg font-medium py-1.5 text-center"
           >
             Editar
           </router-link>
           <button
             @click.prevent="confirmacion(identifications)"
             type="submit"
-            class="text-white text-lg w-28 bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-center"
+            class="w-28 text-gray-200 bg-gray-900 hover:bg-gray-700 focus:ring-4 focus:ring-blue-900 rounded-lg text-lg font-medium py-1.5 text-center"
           >
             Eliminar
           </button>
@@ -127,7 +127,7 @@ function confirmacion(idDoc) {
               activeButton === 'datasPerson',
           }"
           type="button"
-          class="text-white w-1/3 bg-gray-600 hover:bg-gray-900 focus:outline-none rounded-tl-lg text-sm px-5 py-2.5"
+          class="text-white w-1/3 bg-gray-600 hover:bg-gray-900 focus:outline-none rounded-tl-lg text-base px-5 py-2.5"
         >
           Datos personales
         </button>
@@ -138,7 +138,7 @@ function confirmacion(idDoc) {
               activeButton === 'datasSoci',
           }"
           type="button"
-          class="text-white w-1/3 bg-gray-600 hover:bg-gray-900 focus:outline-none text-sm px-5 py-2.5"
+          class="text-white w-2/5 bg-gray-600 hover:bg-gray-900 focus:outline-none text-base px-5 py-2.5"
         >
           Datos socioeconomicos
         </button>
@@ -149,9 +149,9 @@ function confirmacion(idDoc) {
               activeButton === 'datasAcad',
           }"
           type="button"
-          class="text-white w-1/3 bg-gray-600 hover:bg-gray-900 focus:outline-none rounded-tr-lg text-sm px-5 py-2.5"
+          class="text-white w-1/3 bg-gray-600 hover:bg-gray-900 focus:outline-none rounded-tr-lg text-base px-5 py-2.5"
         >
-          Datos academicos
+          Datos académicos
         </button>
       </div>
     </div>
@@ -161,7 +161,7 @@ function confirmacion(idDoc) {
       <div class="flex w-full justify-center" v-if="key === 'datasPers'">
         <div
           v-if="activeButton === 'datasPerson'"
-          class="grid gap-4 mb-4 grid-cols-4 w-4/5 p-6 bg-white border border-gray-200 rounded-lg shadow"
+          class="grid gap-4 mb-4 grid-cols-4 w-5/6 p-6 bg-white border border-gray-200 rounded-lg shadow"
         >
           <div v-for="(value, innerKey) in datas" :key="innerKey">
             <div>
@@ -188,7 +188,7 @@ function confirmacion(idDoc) {
       <div class="flex w-full justify-center" v-else-if="key === 'datasSoci'">
         <div
           v-if="activeButton === 'datasSoci'"
-          class="grid gap-4 mb-4 grid-cols-4 w-4/5 p-6 bg-white border border-gray-200 rounded-lg shadow"
+          class="grid gap-4 mb-4 grid-cols-4 w-5/6 p-6 bg-white border border-gray-200 rounded-lg shadow"
         >
           <div v-for="(value, innerKey) in datas" :key="innerKey">
             <div>
@@ -215,7 +215,7 @@ function confirmacion(idDoc) {
       <div class="flex w-full justify-center" v-else-if="key === 'datasAcad'">
         <div
           v-if="activeButton === 'datasAcad'"
-          class="grid gap-4 mb-4 grid-cols-4 w-4/5 p-6 bg-white border border-gray-200 rounded-lg shadow"
+          class="grid gap-4 mb-4 grid-cols-4 w-5/6 p-6 bg-white border border-gray-200 rounded-lg shadow"
         >
           <div v-for="(value, innerKey) in datas" :key="innerKey">
             <div>
