@@ -1,5 +1,5 @@
 <script setup>
-import { ref, reactive, onMounted, watch } from "vue";
+import { ref, reactive, watch } from "vue";
 import { useRoute } from "vue-router";
 
 const route = useRoute();
@@ -63,7 +63,7 @@ const dataInscri = reactive({
   Genero: {
     options: { 0: "otro", 1: "Masculino", 2: "Femenino" },
   },
-  "Estado Cívil": {
+  "Estado Civil": {
     options: {
       1: "Casado",
       2: "Separado",
@@ -104,7 +104,7 @@ const dataInscri = reactive({
       2: "No",
     },
   },
-  "¿Es Madre o Padre Cabeza de hogar?": {
+  "Madre Cabeza de Hogar": {
     options: {
       1: "Sí",
       2: "No",
@@ -122,11 +122,11 @@ const dataInscri = reactive({
     value: 0,
     type: "number",
   },
-  "Cantidad de hermanos": {
+  "¿Cuántos hermanos tiene?": {
     value: 0,
     type: "number",
   },
-  "Posición hermanos": {
+  "¿Posicion de hijo?": {
     value: 0,
     type: "number",
   },
@@ -134,7 +134,7 @@ const dataInscri = reactive({
     value: 0,
     type: "number",
   },
-  "Ocupacion de la madre": {
+  "Ocupación Madre": {
     options: {
       0: "Ninguna",
       1: "Ama de casa",
@@ -146,7 +146,7 @@ const dataInscri = reactive({
       7: "Pensionada",
     },
   },
-  "Ocupacion del padre": {
+  "Ocupación Padre": {
     options: {
       0: "Ninguna",
       1: "Padre cabeza de hogar",
@@ -211,11 +211,18 @@ const setDataTo = (key, value) => {
 var dataTo = ref({});
 
 //Emitir evento
-const emisorOfWeek = defineEmits(["formPersonal"]);
+const emisorOfWeek = defineEmits(["formPersonal", "formEditPersonal"]);
 
 const sendInfoPersonal = () => {
   if (validateForm()) {
     emisorOfWeek("formPersonal", dataTo);
+  }
+};
+
+//Emitir evento edit
+const sendEditInfoPersonal = () => {
+  if (validateForm()) {
+    emisorOfWeek("formEditPersonal", dataTo);
   }
 };
 //Validation
@@ -255,18 +262,13 @@ const props = defineProps({
   },
 });
 
-const onContendPersonarlChange = () => {
+const onContendEconomicChange = () => {
   const Documento = route.query.id;
   dataTo.value = props.contendPersonarl.datasPers;
   dataTo.value.Documento = Documento;
 };
 
-watch(() => props.contendPersonarl, onContendPersonarlChange);
-/* onMounted(async () => {
-  if (props.contendPersonarl) {
-    console.log(dataTo.value);
-  }
-}); */
+watch(() => props.contendPersonarl, onContendEconomicChange);
 </script>
 
 <template>
@@ -274,9 +276,7 @@ watch(() => props.contendPersonarl, onContendPersonarlChange);
     <div class="mt-10 sm:mt-0">
       <div class="flex flex-col justify-between items-center">
         <div class="">
-          <div
-            class="px-4 sm:px-6 flex justify-center items-center flex-col"
-          >
+          <div class="px-4 sm:px-6 flex justify-center items-center flex-col">
             <h3 class="text-3xl font-bold leading-6 text-gray-900">
               Información personal
             </h3>
@@ -310,7 +310,11 @@ watch(() => props.contendPersonarl, onContendPersonarlChange);
                         class="w-full border border-gray-300 bg-white shadow-sm text-whit focus:outline-none focus:ring-blue-300 font-medium rounded-md mt-1 text-sm px-5 py-2 justify-between inline-flex items-center"
                         type="button"
                       >
-                        {{ selectedOption[groupKey] || "Seleccionar" }}
+                        {{
+                          selectedOption[groupKey] ||
+                          dataTo[groupKey] ||
+                          "Seleccionar"
+                        }}
                         <svg
                           class="w-2.5 h-2.5 ml-2.5"
                           aria-hidden="true"
@@ -351,9 +355,24 @@ watch(() => props.contendPersonarl, onContendPersonarlChange);
                   </div>
                 </div>
               </div>
-              <div class="w-full flex justify-end bg-gray-50">
+              <div
+                v-if="!route.query.id"
+                class="w-full flex justify-end bg-gray-50"
+              >
                 <button
                   @click.prevent="sendInfoPersonal()"
+                  type="button"
+                  class="text-gray-200 mb-10 mr-20 bg-gray-900 hover:bg-gray-700 focus:ring-4 focus:ring-blue-300 font-bold rounded-lg text-base px-5 py-2.5"
+                >
+                  Siguiente
+                </button>
+              </div>
+              <div
+                v-if="route.query.id"
+                class="w-full flex justify-end bg-gray-50"
+              >
+                <button
+                  @click.prevent="sendEditInfoPersonal()"
                   type="button"
                   class="text-gray-200 mb-10 mr-20 bg-gray-900 hover:bg-gray-700 focus:ring-4 focus:ring-blue-300 font-bold rounded-lg text-base px-5 py-2.5"
                 >

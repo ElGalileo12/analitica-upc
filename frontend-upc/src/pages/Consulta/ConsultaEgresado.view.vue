@@ -1,107 +1,16 @@
 <script setup>
 import { ref, toRaw } from "vue";
-import {EgreuseConsulta} from "@/composable/useConsulta";
-import { useConsulta } from "@/composable/useConsulta";
+import { useEgresadoConsulta } from "@/composable/useEgresados";
 import { changeId } from "./validation/funtions egre";
-import Swal from 'sweetalert2'
-import Separador from "../../components/things/separador.things.vue";
-const { EgreconsultaByApi,EgredeleteByApi, rqConsult } = EgreuseConsulta();
-const {  inscriptionaByApi } = useConsulta();
+import Swal from "sweetalert2";
 
+const { EgreconsultaByApi, EgredeleteByApi, rqConsult } = useEgresadoConsulta();
 
 var identifications = ref("");
 var consultValidation = ref({});
-var estudiante = {
-  datosEstudiante:{
-      "ID_CANT_HERMANOS": 4,
-      "ID_CANT_HIJOS": 0,
-      "ID_DOCUMENTO": 1234567,
-      "ID_DPTO_NAC": "Kevin",
-      "ID_EDAD": 0,
-      "ID_EDAD_MAYOR": 0,
-      "ID_EDAD_MENOR": 0,
-      "ID_EMAIL": "Kevin",
-      "ID_EPS": 0,
-      "ID_ESTADO_CIVIL": 1,
-      "ID_ETNIA": 1,
-      "ID_GENERO": 1,
-      "ID_INTEGRANTES": 4,
-      "ID_LENTES": 1,
-      "ID_MAD_CAB_HOGAR": 1,
-      "ID_MUN_NAC": "Kevin",
-      "ID_NOMBRE": "Kevin",
-      "ID_NUM_CONTACTO": "33333",
-      "ID_OCUP_MADRE": 0,
-      "ID_OCUP_PADRE": 0,
-      "ID_POS_HERMANO": 4,
-      "ID_SISBEN": "A12",
-      "ID_TALENTO": 0,
-      "ID_TIPO_DISC": 2,
-      "ID_TIPO_DOCUMENTO": "cedulaCiudadania",
-      "ID_VIC_CONFLICTO": 1},
-      socioeconomica:
-        {
-          "ID_ESTUDIANTE": 1234567,
-          "ID_OCUPACION": 2,
-          "ID_ESTRATO": 1,
-          "ID_TIPO_VIVIENDA": 2,
-          "ID_RECIBE_INGRESOS": 2,
-          "ID_ACUDIENTE": 1,
-          "ID_NIVEL_ACADEMICO": 1,
-          "ID_INGRESO_FAMILIAR": 200,
-          "ID_TIENE_PC": 2,
-          "ID_TIENE_INTERNET": 1,
-          "ID_CEL_SMART": 1,
-          "ID_PLAN_DATOS": 1,
-          "ID_INGRESO_TRABAJA": 1
-          },
-          infoacademica:{
-            "ID_ESTUDIANTE": 1234567,
-            "ID_PROGR_ACTUAL": 1,
-            "ID_HERMANOS_IES": 1,
-            "ID_INGRESO_UPC": 2,
-            "ID_INGRESO_OFERTA": 2,
-            "ID_VALIDO_BACH": 2,
-            "ID_MOTIVACION": 1,
-            "ID_TIPO_COLEGIO": 1,
-            "ID_SEMESTRE_INICIO": 2,
-            "ID_REPITIO_ICFES": 1,
-            "ID_PUNTAJE_ICFES": 1,
-            "ID_PUESTO_ICFES": 1,
-            "ID_LECTURA_CRITICA": 1,
-            "ID_MATEMATICA": 1,
-            "ID_CIUDADANOS": 1,
-            "ID_CIENCIAS": 1,
-            "ID_INGLES": 1,
-            "ID_SEMESTRES_CURSADOS": 1,
-            "ID_UBICACION_SEMESTRE": 1,
-            "ID_CREDITOS_APROBADOS": 1,
-            "ID_PROMEDIO_ACUMULADO": 1,
-            "ID_PROMEDIO_SEMESTRE_ANT": 1,
-            "ID_CREDITOS_NO_APROBADOS": 1,
-            "ID_CREDITOS_MATRIC": 1,
-            "ID_MATERIAS_CANCELADAS": 1,
-            "ID_ASIGNATURA_ENCUESTA": 1,
-            "ID_JORNADA_ACAD": 2,
-            "ID_NOTA_ACTUAL": 1,
-            "ID_RENDIMIENTO_ACTUAL": 2,
-            "ID_NIVEL_SATISFACION_ASIG": 2
-}
-
-      
-
-
-}
-
-async function prueba(datas){
-  console.log(datas);
-  await inscriptionaByApi(datas);
-
-}
-
 const activeButton = ref("");
 
-async function deleteConsult(idDoc){
+async function deleteConsult(idDoc) {
   await EgredeleteByApi(idDoc);
 }
 
@@ -123,35 +32,34 @@ const activateButton = (buttonName) => {
   }
 };
 
-function confirmacion(idDoc){
+function confirmacion(idDoc) {
   var document = idDoc;
   Swal.fire({
-  title: `Estas seguro que quieres eliminar a la persona con documento ${document}`,
-  text: "No podras revertir este cambio!",
-  icon: 'warning',
-  showCancelButton: true,
-  confirmButtonColor: '#3085d6',
-  cancelButtonColor: '#d33',
-  confirmButtonText: 'Si, eliminarlo!'
-}).then((result) => {
-  if (result.isConfirmed) {
-    deleteConsult(idDoc);
-    Swal.fire({
-      title: 'Eliminado!',
-      text: 'Tu eliminacion ha sido exitosa.',
-      icon: 'success',
-      confirmButtonColor: '#3085d6'
+    title: `Estas seguro que quieres eliminar a la persona con documento ${document}`,
+    text: "No podras revertir este cambio!",
+    icon: "warning",
+    showCancelButton: true,
+    confirmButtonColor: "#3085d6",
+    cancelButtonColor: "#d33",
+    confirmButtonText: "Si, eliminarlo!",
+  }).then((result) => {
+    if (result.isConfirmed) {
+      deleteConsult(idDoc);
+      Swal.fire({
+        title: "Eliminado!",
+        text: "Tu eliminacion ha sido exitosa.",
+        icon: "success",
+        confirmButtonColor: "#3085d6",
+      });
     }
-    )
-  }
-})
+  });
 }
 </script>
 
 <template>
-  <section class="bg-gray-50">
+  <section>
     <div class="h-full flex flex-col items-center justify-center">
-      <h1 class="mt-10 font-bold text-xl">Consulta de Egresados</h1>
+      <h1 class="mt-10 font-bold text-2xl">Consulta de Egresados</h1>
       <form
         class="block h-48 mt-6 w-1/3 p-6 bg-white border border-gray-200 rounded-lg shadow"
       >
@@ -175,21 +83,21 @@ function confirmacion(idDoc){
           <button
             @click.prevent="searchConsult(identifications)"
             type="submit"
-            class="w-28 text-lg text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg  py-1.5 text-center"
+            class="w-28 text-gray-200 bg-gray-900 hover:bg-gray-700 focus:ring-4 focus:ring-blue-900 font-bold rounded-lg text-lg py-1.5"
           >
             Buscar
           </button>
-          <button
-            @click.prevent="prueba(estudiante)"
+          <router-link
+            :to="{ name: 'edition', query: { id: identifications } }"
             type="submit"
-            class="text-white w-28 text-lg bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg  py-1.5 text-center"
+            class="w-28 text-gray-200 bg-gray-900 hover:bg-gray-700 focus:ring-4 focus:ring-blue-900 rounded-lg text-lg font-medium py-1.5 text-center"
           >
             Editar
-          </button>
+          </router-link>
           <button
-            @click.prevent="confirmacion(identifications)"            
+            @click.prevent="confirmacion(identifications)"
             type="submit"
-            class="text-white text-lg w-28 bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg  text-center"
+            class="w-28 text-gray-200 bg-gray-900 hover:bg-gray-700 focus:ring-4 focus:ring-blue-900 rounded-lg text-lg font-medium py-1.5 text-center"
           >
             Eliminar
           </button>
@@ -356,7 +264,5 @@ function confirmacion(idDoc){
         </div>
       </div>
     </div>
-    
-    <Separador></Separador>
   </section>
 </template>
