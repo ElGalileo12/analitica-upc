@@ -23,6 +23,7 @@ class EstudianteSerializer(serializers.ModelSerializer):
 
     
 class EstudianteAgrupadoSerializer(serializers.Serializer):
+
     def to_representation(self, instance):
         data = {
             'datasPers': EstudianteSerializer(instance).data,
@@ -55,6 +56,7 @@ class EgresadosSerializer(serializers.ModelSerializer):
         depth = 1
 
 class EgresadosAgrupadoSerializer(serializers.Serializer):
+    
     def to_representation(self, instance):
         data = {
             'datasPers': EgresadosSerializer(instance).data,

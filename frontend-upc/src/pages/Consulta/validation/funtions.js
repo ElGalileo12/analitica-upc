@@ -109,20 +109,20 @@ function dataPersonal(dataPers) {
       tipoDiscapacidadMapping[dataPers.ID_TIPO_DISC] || "Valor no definido",
     Etnia: etniaMapping[dataPers.ID_ETNIA] || "Valor no definido",
     Email: dataPers.ID_EMAIL || "Valor no definido",
-    "Madre Cabeza de Hogar":
+    "¿Es Madre o Padre Cabeza de hogar?":
       madCabHogarMapping[dataPers.ID_MAD_CAB_HOGAR] || "Valor no definido",
-    "Cantidad de hijos": dataPers.ID_CANT_HIJOS,
+    "¿Cuántos hijos tiene?": dataPers.ID_CANT_HIJOS,
     "Edad hijo Mayor": dataPers.ID_EDAD_MAYOR,
     "Edad hijo Menor": dataPers.ID_EDAD_MENOR,
-    "Ocupación Madre":
+    "Ocupacion de la madre":
       ocupMadreMapping[dataPers.ID_OCUP_MADRE] || "Valor no definido",
-    "Ocupación Padre":
+    "Ocupacion del padre":
       ocupPadreMapping[dataPers.ID_OCUP_PADRE] || "Valor no definido",
     "¿Cuántos hermanos tiene?": dataPers.ID_CANT_HERMANOS || "Valor no definido",
-    "¿Posicion de hijo?": dataPers.ID_POS_HERMANO || "Valor no definido",
-    Integrantes: dataPers.ID_INTEGRANTES || "Valor no definido",
+    "¿Posicion entre hermanos?": dataPers.ID_POS_HERMANO || "Valor no definido",
+    "Integrantes de su familia": dataPers.ID_INTEGRANTES || "Valor no definido",
     Talento: talentoMapping[dataPers.ID_TALENTO] || "Valor no definido",
-    EPS: EPSMapping[dataPers.ID_EPS] || "Valor no definido",
+    "¿Tiene EPS?": EPSMapping[dataPers.ID_EPS] || "Valor no definido",
     Sisben: dataPers.ID_SISBEN || "Valor no definido",
     "¿Usa lentes?": LentesMapping[dataPers.ID_LENTES] || "Valor no definido",
   };

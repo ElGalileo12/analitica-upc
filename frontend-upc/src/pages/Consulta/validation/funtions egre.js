@@ -19,9 +19,19 @@ function dataPersonal(datasPers) {
     3: "Indígena",
     4: "Raizal",
     5: "Palenquero",
+    6: "Rrom o Gitano",
   };
 
+  const discaMapping = {
+    1: "Ninguna",
+    2: "Movilidad reducida",
+    3: "Auditiva",
+    4: "Visual",
+  }
+
+
   const resultado = {
+    "Tipo de documento": datasPers.ID_TIPO_DOCUMENTO || "Valor no definido",
     Nombre: datasPers.ID_NOMBRE || "Valor no definido",
     Telefono: datasPers.ID_NUM_CONTACTO || "Valor no definido",
     Genero: generoMapping[datasPers.ID_GENERO] || "Valor no definido",
@@ -29,6 +39,8 @@ function dataPersonal(datasPers) {
     "Estado Civil":
       estadoCivilMapping[datasPers.ID_ESTADO_CIVIL] || "Valor no definido",
     Etnia: etniaMapping[datasPers.ID_ETNIA] || "Valor no definido",
+    "¿Tiene alguna discapacidad?":
+    discaMapping[datasPers.ID_TIPO_DISC] || "Valor no definido",
     Email: datasPers.ID_EMAIL || "Valor no definido",
     Estrato: datasPers.ID_ESTRATO || "Valor no definido",
   };
@@ -58,24 +70,41 @@ function datasAca(datasAcad) {
     2: "Maestría",
     3: "Doctorado",
     4: "Pos-Doctorado",
+    5: "Ninguno"
   };
 
   const postlugarMapping = {
     1: "Nacional",
     2: "Extranjera",
+    3: "Ninguno"
   };
 
+  const segundalenguaMapping = {
+    1: "Si",
+    2: "No",
+  }
+
+  const nivellenguaMapping = {
+    1:	"A1",
+    2:	"A2",
+    3:	"B1",
+    4:	"B2",
+    5:	"C1",
+    6:	"C2",
+  }
   const resultado = {
     Titulo: tituloMapping[datasAcad.ID_TITULO] || "Valor no definido",
     "Semestre de inicio": datasAcad.ID_SEMESTRE_INICIO || "Valor no definido",
     "Semestre Cursados": datasAcad.ID_SEMESTRES_CURSADOS || "Valor no definido",
     "Promedio Acumulado": datasAcad.ID_PROMEDIO_ACUMULADO || "Valor no definido",
-    "Año en el que termino el pregrado": datasAcad.ID_SEMESTRE_FIN || "Valor no definido",
+    "Año de finalizacion pregrado": datasAcad.ID_SEMESTRE_FIN || "Valor no definido",
     "Año de grado": datasAcad.ID_FECHA_GRADO || "Valor no definido",
+    "¿Domina una segunda lengua?": segundalenguaMapping[datasAcad.ID_SEGNDALENGUA] || "Valor no definido",
+    "¿Cuál nivel?": nivellenguaMapping[datasAcad.ID_SEGNDALENGUA] || "Valor no definido",
     "¿Hizo practicas?": practicasMapping[datasAcad.ID_PRACTICAS] || "Valor no definido",
     "¿Tiene estudios de postgrados?": postMapping[datasAcad.ID_POSTGRADO] || "Valor no definido",
     "Último estudio de posgrado": postnivelMapping[datasAcad.ID_POSTGRADO_NIVEL] || "Valor no definido",
-    "Su estudio de posgrado es de nivel": postlugarMapping[datasAcad.ID_POSTGRADO_LUGAR] || "Valor no definido",
+    "Nivel del posgrado": postlugarMapping[datasAcad.ID_POSTGRADO_LUGAR] || "Valor no definido",
 
   };
 
@@ -188,24 +217,33 @@ function datasLabo(datasLab) {
     2: "No",
   };
 
+  const experiencia = {
+    1:	"de 0 a 3 años",
+    2:	"de 3 a 5 años",
+    3:	"más de 5 años"
+  };
 
   const resultado = {
   "¿Trabaja actualmente?": trabajaMapping[datasLab.ID_TRABAJA] || "Valor no definido",
+  "Nombre de la empresa": datasLab.ID_TRABAJA_NOMBRE_EMPRESA || "Valor no definido",
+  "Experiencia en la empresa": datasLab.ID_EXP_ACOMU || "Valor no definido",
   "Pais donde trabaja": datasLab.ID_TRABAJA_PAIS || "Valor no definido",
   "Ciudad donde trabaja": datasLab.ID_TRABAJA_CIUDAD || "Valor no definido",
   "Situación laboral actual": trabaja_situacion_Mapping[datasLab.ID_TRABAJA_SITUACION] || "Valor no definido",
-  "Su trabajo actualmente es acorde a su perfil profesional": trabaja_perfil_Mapping[datasLab.ID_TRABAJA_PERFIL] || "Valor no definido",
-  "Sector de la empresa donde trabaja": trabaja_sector_Mapping[datasLab.ID_TRABAJA_SECTOR] || "Valor no definido",
-  "Tiempo transcurrido para la contratación  en su empleo actual": trabaja_tiempo_Mapping[datasLab.ID_TRABAJA_TIEMPO] || "Valor no definido",
+  "Es su trabajo acorde a su perfil profesional": trabaja_perfil_Mapping[datasLab.ID_TRABAJA_PERFIL] || "Valor no definido",
+  "Sector donde trabaja": trabaja_sector_Mapping[datasLab.ID_TRABAJA_SECTOR] || "Valor no definido",
+  "Tiempo transcurrido para la contratación en su empleo actual": trabaja_tiempo_Mapping[datasLab.ID_TRABAJA_TIEMPO] || "Valor no definido",
   "Nivel jerárquico en el trabajo": trabaja_nivel_Mapping[datasLab.ID_TRABAJA_NIVEL] || "Valor no definido",
   "Primer empleo": trabaja_tiempo_primer_Mapping[datasLab.ID_TRABAJA_TIEMPO_PRIMER] || "Valor no definido",
   "Medio usado para obtener el empleo": trabaja_medio_Mapping[datasLab.ID_TRABAJA_MEDIO] || "Valor no definido",
-  "Sector en los se ha desempeñado o laborado": trabaja_sector_dos[datasLab.ID_TRABAJA_SECTOR_DOS] || "Valor no definido",
-  "Sector productivo en el que ha laborado o desempeñado": trabaja_sector_tres[datasLab.ID_TRABAJA_SECTOR_TRES] || "Valor no definido",
-  "Requisitos que te solicitaron para tu contratación": trabaja_requisitos[datasLab.ID_TRABAJA_REQUISITOS] || "Valor no definido",
+  "Sector en los se ha desempeñado": trabaja_sector_dos[datasLab.ID_TRABAJA_SECTOR_DOS] || "Valor no definido",
+  "Sector productivo en el que ha laborado": trabaja_sector_tres[datasLab.ID_TRABAJA_SECTOR_TRES] || "Valor no definido",
+  "Requisitos que para su contratación": trabaja_requisitos[datasLab.ID_TRABAJA_REQUISITOS] || "Valor no definido",
   "Rango salarial actualmente": trabaja_rango[datasLab.ID_TRABAJA_RANGO] || "Valor no definido",
-  "Ha tenido reconocimiento en su lugar de trabajo": trabaja_reconocimiento[datasLab.ID_TRABAJA_RECONOCIMIENTO] || "Valor no definido",
+  "Ha tenido reconocimiento en el trabajo": trabaja_reconocimiento[datasLab.ID_TRABAJA_RECONOCIMIENTO] || "Valor no definido",
   "Tiene empresa?": trabaja_Empresa[datasLab.ID_EMPRESA] || "Valor no definido",
+  "Nombre de su empresa": datasLab.ID_NOMBRE_EMPRESA || "Valor no definido",
+  "Ubicacion de la empresa": datasLab.ID_UBICACION_EMPRESA || "Valor no definido",
   "Creo su empresa antes de graduarse?": trabaja_Empresa_antes[datasLab.ID_EMPRESA_ANTES] || "Valor no definido",
   "Sector de la empresa": datasLab.ID_EMPRESA_SECTOR || "Valor no definido",
   };
@@ -335,19 +373,37 @@ function datasMoti(datasMot) {
     2: "No",
   };
   
-  const resultado = {
+  const mot_servicio_Mapping = {
+    1:	"Carnetización",
+    2:	"Biblioteca",
+    3:	"Espacio Deportivo",
+    4:	"Otros",
+    5:	"Ninguno",
+  }
+
+  const mot_carnet_Mapping = {
+    1:	"Si",
+    2:	"No",
+  }
+
+
+
+const resultado = {
 
 "Motivacion del pregrado": mot_pregrado_Mapping[datasMot.ID_MOT_PREGRADO] || "Valor no definido",
 "Volumen de trabajo exigido": mot_volumen_Mapping[datasMot.ID_MOT_VOLUMEN] || "Valor no definido",
-"Nivel de satisfacción del equilibrio entre las horas teóricas y prácticas": mot_nivels_Mapping[datasMot.ID_MOT_NIVELS] || "Valor no definido",
-"Ambiente de aprendizaje impartido por los docentes": mot_ambiente_Mapping[datasMot.ID_MOT_AMBIENTE] || "Valor no definido",
-"Cree que hay alguna o algunas materias que se deban fortalecer": mot_fortalecer_Mapping[datasMot.ID_MOT_FORTALECER] || "Valor no definido",
+"Nivel de satisfacción entre las horas teóricas y prácticas": mot_nivels_Mapping[datasMot.ID_MOT_NIVELS] || "Valor no definido",
+"Ambiente de aprendizaje": mot_ambiente_Mapping[datasMot.ID_MOT_AMBIENTE] || "Valor no definido",
+"Se deben fortaler algunas materias?": mot_fortalecer_Mapping[datasMot.ID_MOT_FORTALECER] || "Valor no definido",
 "Materias a fortalecer": datasMot.ID_MOT_MATERIAS || "Valor no definido",
 "La institución le brindó servicios de apoyo": mot_apoyo_Mapping[datasMot.ID_MOT_APOYO] || "Valor no definido",
+"¿Ha utilizado como egresado algún servicio de la universidad?":  mot_servicio_Mapping[datasMot.ID_MOT_SERVICIO] || "Valor no definido",
+"¿Qué servicio le gustaría que ofreciera la institución como egresado?": datasMot.ID_MOT_SERVICIO_DESEADO  || "Valor no definido",
+"¿Cuenta con carnet de egresado?": mot_carnet_Mapping[datasMot.ID_MOT_CARNET] || "Valor no definido",
 "Los recursos de la institucion fueron adecuados": mot_recursos_Mapping[datasMot.ID_MOT_RECURSOS] || "Valor no definido",
 "¿Cuál fue su modalidad de grado?": mot_modalidad_Mapping[datasMot.ID_MOT_MODALIDAD] || "Valor no definido",
 "Las Prácticas te han permitido aplicar los conocimientos": mot_modalidad_p_Mapping[datasMot.ID_MOT_MODALIDAD_P] || "Valor no definido",
-"El trabajo final de carrera me ha resultado útil para consolidar las competencias de la titulación": mot_modalidad_t_Mapping[datasMot.ID_MOT_MODALIDAD_T] || "Valor no definido",
+"El trabajo final le ha sido de utilidad para aplicar conocimientos?": mot_modalidad_t_Mapping[datasMot.ID_MOT_MODALIDAD_T] || "Valor no definido",
 "Linea de profundización del trabajo final": mot_profundizacion_Mapping[datasMot.ID_MOT_PROFUNDIZACION] || "Valor no definido",
 "¿Cómo evalúa las expectativas de formación profesional que tenía al ingresar?": mot_ingresar_Mapping[datasMot.ID_MOT_INGRESAR] || "Valor no definido",
 "¿En que medida ha aplicado los conocimientos adquiridos de su carrera en su ocupación profesional?": mot_conocimientos_Mapping[datasMot.ID_MOT_CONOCIMIENTOS] || "Valor no definido",

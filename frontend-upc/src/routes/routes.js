@@ -29,6 +29,11 @@ const routes = [
         component: () => import("../pages/Inscripcion/Inscripcion.view.vue"),
       },
       {
+        path: "/inscripcion_egresados",
+        name: "inscripcion_egresados",
+        component: () => import("../pages/Inscripcion/Inscripcion_egre.view.vue"),
+      },
+      {
         path: "/dashStu",
         name: "dashboard",
         component: () => import("../pages/Dashboard/dash_1.vue"),

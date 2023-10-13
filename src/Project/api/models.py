@@ -106,7 +106,8 @@ class Egresados(models.Model):
     ID_EDAD= models.IntegerField()
     ID_ESTADO_CIVIL = models.IntegerField()
     ID_ETNIA = models.IntegerField()
-    ID_EMAIL = models.CharField(max_length=40)
+    ID_DISCAPACIDAD = models.IntegerField()
+    ID_EMAIL = models.CharField(max_length=50)
     ID_ESTRATO = models.IntegerField()
     
     def __str__(self):
@@ -123,6 +124,8 @@ class EgreAcademica(models.Model):
     ID_PROMEDIO_ACUMULADO = models.FloatField()
     ID_SEMESTRE_FIN = models.IntegerField()
     ID_FECHA_GRADO = models.IntegerField()
+    ID_SEGNDALENGUA = models.IntegerField()
+    ID_NIVEL = models.IntegerField()
     ID_PRACTICAS = models.IntegerField()
     ID_POSTGRADO = models.IntegerField()
     ID_POSTGRADO_NIVEL = models.IntegerField()
@@ -132,6 +135,8 @@ class EgreAcademica(models.Model):
 class EgreLaboral(models.Model):
     ID_EGRESADO = models.OneToOneField(Egresados, on_delete=models.CASCADE, primary_key=True, related_name='info_laboral')
     ID_TRABAJA = models.IntegerField()
+    ID_TRABAJA_NOMBRE_EMPRESA = models.CharField(max_length=35)
+    ID_EXP_ACOMU = models.IntegerField()
     ID_TRABAJA_PAIS = models.CharField(max_length=35)
     ID_TRABAJA_CIUDAD = models.CharField(max_length=30)
     ID_TRABAJA_SITUACION = models.IntegerField()
@@ -147,6 +152,8 @@ class EgreLaboral(models.Model):
     ID_TRABAJA_RANGO = models.IntegerField()
     ID_TRABAJA_RECONOCIMIENTO = models.IntegerField()
     ID_EMPRESA = models.IntegerField()
+    ID_NOMBRE_EMPRESA = models.CharField(max_length=35)
+    ID_UBICACION_EMPRESA = models.CharField(max_length=35)
     ID_EMPRESA_ANTES = models.IntegerField()
     ID_EMPRESA_SECTOR = models.CharField(max_length=35)
     def __str__(self):
@@ -162,6 +169,9 @@ class EgreMotivacion(models.Model):
     ID_MOT_FORTALECER = models.IntegerField()
     ID_MOT_MATERIAS = models.CharField(max_length=60)
     ID_MOT_APOYO = models.IntegerField()
+    ID_MOT_SERVICIO = models.IntegerField()
+    ID_MOT_SERVICIO_DESEADO = models.CharField(max_length=60)
+    ID_MOT_CARNET = models.IntegerField()
     ID_MOT_RECURSOS = models.IntegerField()
     ID_MOT_MODALIDAD = models.IntegerField()
     ID_MOT_MODALIDAD_P = models.IntegerField()

@@ -20,7 +20,7 @@ export const useStudentStore = defineStore("student", {
         //Ya aquí configuras lo que vas a enviar
         console.log(concatInfo);
         try {
-          var { data } = await axiosApi.post(`api/inscripcion/`, {
+          var { data } = await axiosApi.post(`api/change/`, {
             concatInfo,
           });
           this.rqConsult = data;

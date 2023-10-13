@@ -3,6 +3,7 @@ import { ref, toRaw } from "vue";
 import { useStudent } from "@/composable/useStudent";
 import { changeId } from "./validation/funtions";
 import Swal from "sweetalert2";
+import separadorThings from "../../components/things/separador.things.vue";
 
 const { deleteByApi, consultaByApi, rqConsult } = useStudent();
 
@@ -16,9 +17,22 @@ async function deleteConsult(idDoc) {
 }
 
 async function searchConsult(idDoc) {
-  await consultaByApi(idDoc);
-  consultValidation.value = changeId(toRaw(rqConsult.value));
-  activateButton("datasPerson");
+  try {
+    await consultaByApi(idDoc);
+    consultValidation.value = changeId(toRaw(rqConsult.value));
+    activateButton("datasPerson");
+  } catch (error) {
+    if (error.response && error.response.status === 404) {
+      // Aquí puedes mostrar un mensaje de error al usuario, por ejemplo:
+      Swal.fire({
+        icon: 'error',
+        title: 'No se encontró la consulta.',
+        text: 'Por favor, verifique el ID del documento.',})
+    } else {
+      // Otros tipos de errores, manéjalos según corresponda.
+      console.error("Ocurrió un error inesperado:", error);
+    }
+  }
 }
 
 const activateButton = (buttonName) => {
@@ -31,27 +45,60 @@ const activateButton = (buttonName) => {
   }
 };
 
-function confirmacion(idDoc) {
+async function confirmacion(idDoc) {
   var document = idDoc;
   Swal.fire({
-    title: `Estas seguro que quieres eliminar al estudiantes con documento ${document}`,
-    text: "No podras revertir este cambio!",
+    title: `¿Estás seguro de que quieres eliminar al estudiante con documento ${document}?`,
+    text: "¡No podrás revertir este cambio!",
     icon: "warning",
     showCancelButton: true,
     confirmButtonColor: "#3085d6",
     cancelButtonColor: "#d33",
-    confirmButtonText: "Si, eliminarlo!",
-  }).then((result) => {
+    confirmButtonText: "Sí, eliminarlo",
+  }).then(async (result) => {
     if (result.isConfirmed) {
-      deleteConsult(idDoc);
-      Swal.fire({
-        title: "Eliminado!",
-        text: "Tu eliminacion ha sido exitosa.",
-        icon: "success",
-        confirmButtonColor: "#3085d6",
-      });
+      try {
+        // Intenta eliminar al estudiante
+        await deleteConsult(idDoc);
+        Swal.fire({
+          title: "Eliminado",
+          text: "La eliminación ha sido exitosa",
+          icon: "success",
+          confirmButtonColor: "#3085d6",
+        });
+      } catch (error) {
+        if (error.response && error.response.status === 404) {
+          // Muestra un mensaje de error específico para el error 404
+          Swal.fire({
+            icon: 'error',
+            title: 'Estudiante no encontrado',
+            text: 'Verifique el ID del documento.',
+          });
+        } else {
+          // Otros tipos de errores, manéjalos según corresponda.
+          console.error("Ocurrió un error inesperado:", error);
+        }
+      }
     }
   });
+}
+
+async function mostrarAlerta(id){
+   const resultado = await Swal.fire({
+        title: '¿Estás seguro de que quieres editar?',
+        text: 'No podrás revertir este cambio.',
+        icon: 'warning',
+        showCancelButton: true,
+        confirmButtonColor: '#3085d6',
+        cancelButtonColor: '#d33',
+        confirmButtonText: 'Sí, editar',
+        cancelButtonText: 'Cancelar',
+    });
+    if (resultado.isConfirmed) {
+        // El usuario ha confirmado, redirige a la página de edición con el id
+        window.location.href = `/edition?id=${id}`
+      }
+
 }
 </script>
 
@@ -86,13 +133,14 @@ function confirmacion(idDoc) {
           >
             Buscar
           </button>
-          <router-link
-            :to="{ name: 'edition', query: { id: identifications } }"
+          <button
+            @click.prevent="mostrarAlerta(identifications)"
             type="submit"
             class="w-28 text-gray-200 bg-gray-900 hover:bg-gray-700 focus:ring-4 focus:ring-blue-900 rounded-lg text-lg font-medium py-1.5 text-center"
-          >
+            
+            >
             Editar
-          </router-link>
+          </button>
           <button
             @click.prevent="confirmacion(identifications)"
             type="submit"
@@ -225,5 +273,6 @@ function confirmacion(idDoc) {
         </div>
       </div>
     </div>
+    <separadorThings></separadorThings>
   </section>
 </template>

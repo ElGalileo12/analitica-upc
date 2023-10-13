@@ -37,7 +37,7 @@ const datasCards = {
       :key="data"
     >
       <h2
-        class="mb-2 text-2xl font-bold tracking-tight text-gray-900 dark:text-white"
+        class="mb-2 text-2xl font-bold tracking-tight text-gray-900 dark:text-white text-center"
       >
         {{ data.title }}
       </h2>

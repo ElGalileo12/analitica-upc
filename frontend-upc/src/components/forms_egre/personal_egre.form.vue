@@ -10,15 +10,8 @@ const requiredFields = [
   "Edad",
   "Telefono",
   "Email",
-  "Departamento",
-  "Municipio",
-  "Edad hijo Mayor",
-  "Edad hijo Menor",
-  "¿Cuántos hijos tiene?",
-  "¿Cuántos hermanos tiene?",
-  "¿Posicion entre hermanos?",
-  "Integrantes de su familia",
-  "Sisben",
+  "Estrato"
+  
 ];
 
 const fieldsWithOptions = [
@@ -27,18 +20,11 @@ const fieldsWithOptions = [
     "Estado Civil",
     "¿Tiene alguna discapacidad?",
     "Etnia",
-    "¿Es victima del conflicto?",
-    "¿Es Madre o Padre Cabeza de hogar?",
-    "Ocupacion de la madre",
-    "Ocupacion del padre",
-    "Talento",
-    "¿Tiene EPS?",
-    "¿Usa lentes?",
 ];
 
 const dataInscri = reactive({
   "Tipo de documento": {
-    options: ["Cédula", "Tarjeta de identidad"],
+    options: ["Cédula", "Pasaporte","Tarjeta de identidad"],
   },
   Documento: {
     value: 0,
@@ -48,20 +34,16 @@ const dataInscri = reactive({
     value: 0,
     type: "text",
   },
-  Edad: {
+  Telefono: {
     value: 0,
     type: "number",
   },
-  Telefono: {
-    value: 0,
-    type: "text",
-  },
-  Email: {
-    value: 0,
-    type: "text",
-  },
   Genero: {
     options: { 0: "Otro", 1: "Masculino", 2: "Femenino" },
+  },
+  Edad: {
+    value: 0,
+    type: "number",
   },
   "Estado Civil": {
     options: {
@@ -70,22 +52,6 @@ const dataInscri = reactive({
       3: "Soltero",
       4: "Unión libre",
       5: "Viudo",
-    },
-  },
-  Departamento: {
-    value: 0,
-    type: "text",
-  },
-  Municipio: {
-    value: 0,
-    type: "text",
-  },
-  "¿Tiene alguna discapacidad?": {
-    options: {
-      1: "Movilidad reducida",
-      2: "Ninguna",
-      3: "Auditiva",
-      4: "Visual",
     },
   },
   Etnia: {
@@ -97,96 +63,26 @@ const dataInscri = reactive({
       5: "Raizal",
     },
   },
-  "¿Es victima del conflicto?": {
+  "¿Tiene alguna discapacidad?": {
     options: {
-      1: "Sí",
-      2: "No",
+      1: "Movilidad reducida",
+      2: "Ninguna",
+      3: "Auditiva",
+      4: "Visual",
     },
   },
-  "¿Es Madre o Padre Cabeza de hogar?": {
-    options: {
-      1: "Sí",
-      2: "No",
-    },
-  },
-  "Edad hijo Mayor": {
-    value: 0,
-    type: "number",
-  },
-  "Edad hijo Menor": {
-    value: 0,
-    type: "number",
-  },
-  "¿Cuántos hijos tiene?": {
-    value: 0,
-    type: "number",
-  },
-  "¿Cuántos hermanos tiene?": {
-    value: 0,
-    type: "number",
-  },
-  "¿Posicion entre hermanos?": {
-    value: 0,
-    type: "number",
-  },
-  "Integrantes de su familia": {
-    value: 0,
-    type: "number",
-  },
-  "Ocupacion de la madre": {
-    options: {
-      0: "Ninguna",
-      1: "Ama de casa",
-      2: "Estudiante",
-      3: "Fallecida",
-      4: "Independiente",
-      5: "Labora",
-      6: "Madre cabeza hogar",
-      7: "Pensionada",
-    },
-  },
-  "Ocupacion del padre": {
-    options: {
-      0: "Ninguna",
-      1: "Padre cabeza de hogar",
-      2: "Pensionado",
-      3: "Fallecido",
-      4: "Independiente",
-      5: "Labora",
-    },
-  },
-  Sisben: {
+  Email: {
     value: 0,
     type: "text",
   },
-  Talento: {
+  Estrato: {
     options: {
-      0: "Ninguna",
-      1: "Actor",
-      2: "Atletismo",
-      3: "Bailarin",
-      4: "Baloncesto",
-      5: "Fútbol",
-      6: "Fútbol sala",
-      7: "Músico",
-      8: "Natación",
-      9: "Softbol",
-      10: "Taewondo",
-      11: "Tenis de mesa",
-      12: "Voleibol",
-    },
-  },
-  "¿Tiene EPS?": {
-    options: {
-      0: "Ninguna",
-      1: "Sí",
-      2: "No",
-    },
-  },
-  "¿Usa lentes?": {
-    options: {
-      1: "Sí",
-      2: "No",
+      1: "1",
+      2: "2",
+      3: "3",
+      4: "4",
+      5: "5",
+      6: "6",
     },
   },
 });
@@ -270,13 +166,13 @@ const props = defineProps({
   },
 });
 
-const onContendEconomicChange = () => {
+const onContendAcademicChange = () => {
   const Documento = route.query.id;
   dataTo.value = props.contendPersonarl.datasPers;
   dataTo.value.Documento = Documento;
 };
 
-watch(() => props.contendPersonarl, onContendEconomicChange);
+watch(() => props.contendPersonarl, onContendAcademicChange);
 </script>
 
 <template>

@@ -1,194 +1,103 @@
 <script setup>
-import { ref, reactive, watch } from "vue";
+import { ref, reactive, onMounted } from "vue";
 import { useRoute } from "vue-router";
 import Swal from "sweetalert2";
 const route = useRoute();
 
 const requiredFields = [
-  "Documento",
-  "Nombre",
-  "Edad",
-  "Telefono",
-  "Email",
-  "Departamento",
-  "Municipio",
-  "Edad hijo Mayor",
-  "Edad hijo Menor",
-  "¿Cuántos hijos tiene?",
-  "¿Cuántos hermanos tiene?",
-  "¿Posicion entre hermanos?",
-  "Integrantes de su familia",
-  "Sisben",
+ "Semestre de inicio",
+ "Semestre Cursados",
+ "Promedio Acumulado",
+ "Año de finalizacion pregrado",
+ "Año de grado",
 ];
 
 const fieldsWithOptions = [
-    "Tipo de documento",
-    "Genero",
-    "Estado Civil",
-    "¿Tiene alguna discapacidad?",
-    "Etnia",
-    "¿Es victima del conflicto?",
-    "¿Es Madre o Padre Cabeza de hogar?",
-    "Ocupacion de la madre",
-    "Ocupacion del padre",
-    "Talento",
-    "¿Tiene EPS?",
-    "¿Usa lentes?",
+  "Titulo",
+  "¿Domina una segunda lengua?",
+  "¿Cuál nivel?",
+  "¿Hizo practicas?",
+  "¿Tiene estudios de postgrados?",
+  "Último estudio de posgrado",
+  "Nivel del posgrado",
+ 
 ];
 
 const dataInscri = reactive({
-  "Tipo de documento": {
-    options: ["Cédula", "Tarjeta de identidad"],
-  },
-  Documento: {
-    value: 0,
-    type: "number",
-  },
-  Nombre: {
-    value: 0,
-    type: "text",
-  },
-  Edad: {
-    value: 0,
-    type: "number",
-  },
-  Telefono: {
-    value: 0,
-    type: "text",
-  },
-  Email: {
-    value: 0,
-    type: "text",
-  },
-  Genero: {
-    options: { 0: "Otro", 1: "Masculino", 2: "Femenino" },
-  },
-  "Estado Civil": {
+  Titulo: {
     options: {
-      1: "Casado",
-      2: "Separado",
-      3: "Soltero",
-      4: "Unión libre",
-      5: "Viudo",
+    1: "Ing. Electronica",
+    2: "Ing. Electronica",
+    3: "Ing. Electronica",
     },
   },
-  Departamento: {
-    value: 0,
-    type: "text",
-  },
-  Municipio: {
-    value: 0,
-    type: "text",
-  },
-  "¿Tiene alguna discapacidad?": {
-    options: {
-      1: "Movilidad reducida",
-      2: "Ninguna",
-      3: "Auditiva",
-      4: "Visual",
+  "Semestre de inicio":
+    {
+      value: 0,
+      type: "text",
     },
-  },
-  Etnia: {
-    options: {
-      1: "Indigena",
-      2: "Palenquero",
-      3: "Sin distincion racial",
-      4: "Negro, mulato, afrodescendiente, afrocolombiano",
-      5: "Raizal",
+    "Semestre Cursados":
+    {
+      value: 0,
+      type: "number",
     },
-  },
-  "¿Es victima del conflicto?": {
+    "Promedio Acumulado":{
+      value: 0,
+      type: "number",
+    },
+    "Año de finalizacion pregrado":
+    {
+      value: 0,
+      type: "text",
+    },
+    "Año de grado":{
+      value: 0,
+      type: "text",
+    },
+    "¿Domina una segunda lengua?":{
     options: {
-      1: "Sí",
+      1: "Si",
       2: "No",
     },
-  },
-  "¿Es Madre o Padre Cabeza de hogar?": {
+    },
+    "¿Cuál nivel?":{
     options: {
-      1: "Sí",
+      1:	"A1",
+      2:	"A2",
+      3:	"B1",
+      4:	"B2",
+      5:	"C1",
+      6:	"C2",
+    },
+    },
+    "¿Hizo practicas?":{
+    options: {
+      1: "Si",
       2: "No",
     },
-  },
-  "Edad hijo Mayor": {
-    value: 0,
-    type: "number",
-  },
-  "Edad hijo Menor": {
-    value: 0,
-    type: "number",
-  },
-  "¿Cuántos hijos tiene?": {
-    value: 0,
-    type: "number",
-  },
-  "¿Cuántos hermanos tiene?": {
-    value: 0,
-    type: "number",
-  },
-  "¿Posicion entre hermanos?": {
-    value: 0,
-    type: "number",
-  },
-  "Integrantes de su familia": {
-    value: 0,
-    type: "number",
-  },
-  "Ocupacion de la madre": {
-    options: {
-      0: "Ninguna",
-      1: "Ama de casa",
-      2: "Estudiante",
-      3: "Fallecida",
-      4: "Independiente",
-      5: "Labora",
-      6: "Madre cabeza hogar",
-      7: "Pensionada",
     },
-  },
-  "Ocupacion del padre": {
+    "¿Tiene estudios de postgrados?":{
     options: {
-      0: "Ninguna",
-      1: "Padre cabeza de hogar",
-      2: "Pensionado",
-      3: "Fallecido",
-      4: "Independiente",
-      5: "Labora",
-    },
-  },
-  Sisben: {
-    value: 0,
-    type: "text",
-  },
-  Talento: {
-    options: {
-      0: "Ninguna",
-      1: "Actor",
-      2: "Atletismo",
-      3: "Bailarin",
-      4: "Baloncesto",
-      5: "Fútbol",
-      6: "Fútbol sala",
-      7: "Músico",
-      8: "Natación",
-      9: "Softbol",
-      10: "Taewondo",
-      11: "Tenis de mesa",
-      12: "Voleibol",
-    },
-  },
-  "¿Tiene EPS?": {
-    options: {
-      0: "Ninguna",
-      1: "Sí",
+      1: "Si",
       2: "No",
     },
-  },
-  "¿Usa lentes?": {
-    options: {
-      1: "Sí",
-      2: "No",
     },
-  },
+    "Último estudio de posgrado":{
+    options: {
+      1: "Especialización",
+      2: "Maestría",
+      3: "Doctorado",
+      4: "Pos-Doctorado",
+      5: "Ninguno"
+    },
+    },
+    "Nivel del posgrado":{
+    options: {
+      1: "Nacional",
+      2: "Extranjera",
+      3: "Ninguno"
+    },
+    },
 });
 
 const selectedOption = reactive({});
@@ -207,28 +116,26 @@ const setDataTo = (key, value) => {
   dataTo.value[key] = value;
 };
 
-var dataTo = ref({});
+const dataTo = ref({});
+//Prosps
+const emisorOfWeek = defineEmits(["formAcademico", "formEditAcademico"]);
 
-//Emitir evento
-const emisorOfWeek = defineEmits(["formPersonal", "formEditPersonal"]);
-
-const sendInfoPersonal = () => {
+const sendInfoAcademic = () => {
   if (validateForm()) {
-    emisorOfWeek("formPersonal", dataTo);
+    emisorOfWeek("formAcademico", dataTo);
   }
 };
-
 //Emitir evento edit
-const sendEditInfoPersonal = () => {
+const sendEditAcademic = () => {
   if (validateForm()) {
-    emisorOfWeek("formEditPersonal", dataTo);
+    emisorOfWeek("formEditAcademico", dataTo);
   }
 };
 //Validation
 const validateForm = () => {
   const areAllRequiredFieldsFilled = requiredFields.every((fieldName) => {
     const value = dataTo.value[fieldName];
-     if (value === undefined) {
+    if (value === undefined) {
       Swal.fire({
         icon: 'error',
         title: 'Oops...',
@@ -265,18 +172,20 @@ const validateForm = () => {
 
 //Props
 const props = defineProps({
-  contendPersonarl: {
+  contendAcademic: {
     type: Object,
   },
 });
 
-const onContendEconomicChange = () => {
-  const Documento = route.query.id;
-  dataTo.value = props.contendPersonarl.datasPers;
-  dataTo.value.Documento = Documento;
+const onContendPersonarlChange = () => {
+  dataTo.value = props.contendAcademic.datasAcad;
 };
 
-watch(() => props.contendPersonarl, onContendEconomicChange);
+onMounted(() => {
+  if (route.query.id) {
+    onContendPersonarlChange();
+  }
+});
 </script>
 
 <template>
@@ -286,7 +195,7 @@ watch(() => props.contendPersonarl, onContendEconomicChange);
         <div class="">
           <div class="px-4 sm:px-6 flex justify-center items-center flex-col">
             <h3 class="text-3xl font-bold leading-6 text-gray-900">
-              Información personal
+              Información Academica
             </h3>
             <p class="mt-2 text-base text-gray-600">
               Complete todos los datos.
@@ -297,10 +206,11 @@ watch(() => props.contendPersonarl, onContendEconomicChange);
           <form>
             <div class="overflow-hidden shadow sm:rounded-md">
               <div class="bg-gray-50 px-4 py-5 sm:p-6">
-                <div class="grid gap-4 mb-4 grid-cols-4">
+                <div class="grid gap-6 mb-4 grid-cols-3">
                   <div v-for="(group, groupKey) in dataInscri" :key="groupKey">
                     <label
-                      class="block mb-2 text-base font-bold text-gray-900 dark:text-white"
+                      for="Nombres"
+                      class="block mb-2 text-base font-bold text-gray-900 dark:text-white px-2"
                     >
                       {{ groupKey }}
                     </label>
@@ -315,7 +225,7 @@ watch(() => props.contendPersonarl, onContendEconomicChange);
                       <button
                         id="dropdownDefaultButton"
                         @click="toggleDropdown(groupKey)"
-                        class="w-full border border-gray-300 bg-white shadow-sm text-whit focus:outline-none focus:ring-blue-300 font-medium rounded-md mt-1 text-sm px-5 py-2 justify-between inline-flex items-center"
+                        class="w-full border border-gray-300 bg-white shadow-sm text-whit focus:outline-none focus:ring-blue-300 font-medium rounded-md mt-0 text-sm px-5 py-2 justify-between inline-flex items-center"
                         type="button"
                       >
                         {{
@@ -368,11 +278,11 @@ watch(() => props.contendPersonarl, onContendEconomicChange);
                 class="w-full flex justify-end bg-gray-50"
               >
                 <button
-                  @click.prevent="sendInfoPersonal()"
+                  @click.prevent="sendInfoAcademic()"
                   type="button"
                   class="text-gray-200 mb-10 mr-20 bg-gray-900 hover:bg-gray-700 focus:ring-4 focus:ring-blue-300 font-bold rounded-lg text-base px-5 py-2.5"
                 >
-                  Siguiente
+                  Enviar
                 </button>
               </div>
               <div
@@ -380,11 +290,11 @@ watch(() => props.contendPersonarl, onContendEconomicChange);
                 class="w-full flex justify-end bg-gray-50"
               >
                 <button
-                  @click.prevent="sendEditInfoPersonal()"
+                  @click.prevent="sendEditAcademic()"
                   type="button"
                   class="text-gray-200 mb-10 mr-20 bg-gray-900 hover:bg-gray-700 focus:ring-4 focus:ring-blue-300 font-bold rounded-lg text-base px-5 py-2.5"
                 >
-                  Siguiente
+                  Enviar
                 </button>
               </div>
             </div>
