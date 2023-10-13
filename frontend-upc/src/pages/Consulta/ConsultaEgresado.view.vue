@@ -3,6 +3,7 @@ import { ref, toRaw } from "vue";
 import { useEgresadoConsulta } from "@/composable/useEgresados";
 import { changeId } from "./validation/funtions egre";
 import Swal from "sweetalert2";
+import separadorThings from "../../components/things/separador.things.vue";
 
 const { EgreconsultaByApi, EgredeleteByApi, rqConsult } = useEgresadoConsulta();
 
@@ -45,25 +46,40 @@ const activateButton = (buttonName) => {
   }
 };
 
-function confirmacion(idDoc) {
+async function confirmacion(idDoc) {
   var document = idDoc;
   Swal.fire({
-    title: `Estas seguro que quieres eliminar a la persona con documento ${document}`,
-    text: "No podras revertir este cambio!",
+    title: `¿Estás seguro de que quieres eliminar al estudiante con documento ${document}?`,
+    text: "¡No podrás revertir este cambio!",
     icon: "warning",
     showCancelButton: true,
     confirmButtonColor: "#3085d6",
     cancelButtonColor: "#d33",
-    confirmButtonText: "Si, eliminarlo!",
-  }).then((result) => {
+    confirmButtonText: "Sí, eliminarlo",
+  }).then(async (result) => {
     if (result.isConfirmed) {
-      deleteConsult(idDoc);
-      Swal.fire({
-        title: "Eliminado!",
-        text: "Tu eliminacion ha sido exitosa.",
-        icon: "success",
-        confirmButtonColor: "#3085d6",
-      });
+      try {
+        // Intenta eliminar al estudiante
+        await deleteConsult(idDoc);
+        Swal.fire({
+          title: "Eliminado",
+          text: "La eliminación ha sido exitosa",
+          icon: "success",
+          confirmButtonColor: "#3085d6",
+        });
+      } catch (error) {
+        if (error.response && error.response.status === 404) {
+          // Muestra un mensaje de error específico para el error 404
+          Swal.fire({
+            icon: 'error',
+            title: 'Estudiante no encontrado',
+            text: 'Verifique el ID del documento.',
+          });
+        } else {
+          // Otros tipos de errores, manéjalos según corresponda.
+          console.error("Ocurrió un error inesperado:", error);
+        }
+      }
     }
   });
 }

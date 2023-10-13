@@ -22,7 +22,7 @@ const navigation = [
     name: "Egresados",
     current: false,
     menu: {
-      1: { link: "/inscripcion", name: "Inscripción" },
+      1: { link: "/inscripcion_egresados", name: "Inscripción" },
       2: { link: "/consulta_egresados", name: "Consulta" },
     },
   },

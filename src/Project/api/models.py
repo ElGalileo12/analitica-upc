@@ -107,7 +107,7 @@ class Egresados(models.Model):
     ID_ESTADO_CIVIL = models.IntegerField()
     ID_ETNIA = models.IntegerField()
     ID_DISCAPACIDAD = models.IntegerField()
-    ID_EMAIL = models.CharField(max_length=40)
+    ID_EMAIL = models.CharField(max_length=50)
     ID_ESTRATO = models.IntegerField()
     
     def __str__(self):
