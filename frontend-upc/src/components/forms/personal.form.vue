@@ -1,39 +1,39 @@
 <script setup>
 import { ref, reactive, watch } from "vue";
 import { useRoute } from "vue-router";
-
+import Swal from "sweetalert2";
 const route = useRoute();
 
 const requiredFields = [
   "Documento",
-  /*   "Nombre",
-    "Edad",
-    "Telefono",
-    "Email",
-    "Departamento",
-    "Municipio",
-    "Edad de su hijo mayor",
-    "Edad de su hijo menor",
-    "¿Es Madre o Padre Cabeza de hogar?",
-    "¿Cuántos hijos tiene?",
-    "¿Cuántos hermanos tiene?",
-    "¿Posicion de hijo?",
-    "Número de miembros en la familia",
-    "Nivel del sisben", */
+  "Nombre",
+  "Edad",
+  "Telefono",
+  "Email",
+  "Departamento",
+  "Municipio",
+  "Edad hijo Mayor",
+  "Edad hijo Menor",
+  "¿Cuántos hijos tiene?",
+  "¿Cuántos hermanos tiene?",
+  "¿Posicion entre hermanos?",
+  "Integrantes de su familia",
+  "Sisben",
 ];
 
 const fieldsWithOptions = [
-  "Tipo de documento",
-  /*   "Genero",
-    "Estado Cívil",
+    "Tipo de documento",
+    "Genero",
+    "Estado Civil",
     "¿Tiene alguna discapacidad?",
     "Etnia",
     "¿Es victima del conflicto?",
+    "¿Es Madre o Padre Cabeza de hogar?",
     "Ocupacion de la madre",
     "Ocupacion del padre",
     "Talento",
     "¿Tiene EPS?",
-    "¿Usa lentes?", */
+    "¿Usa lentes?",
 ];
 
 const dataInscri = reactive({
@@ -61,7 +61,7 @@ const dataInscri = reactive({
     type: "text",
   },
   Genero: {
-    options: { 0: "otro", 1: "Masculino", 2: "Femenino" },
+    options: { 0: "Otro", 1: "Masculino", 2: "Femenino" },
   },
   "Estado Civil": {
     options: {
@@ -99,12 +99,11 @@ const dataInscri = reactive({
   },
   "¿Es victima del conflicto?": {
     options: {
-      0: "Ninguna",
       1: "Sí",
       2: "No",
     },
   },
-  "Madre Cabeza de Hogar": {
+  "¿Es Madre o Padre Cabeza de hogar?": {
     options: {
       1: "Sí",
       2: "No",
@@ -118,7 +117,7 @@ const dataInscri = reactive({
     value: 0,
     type: "number",
   },
-  "Cantidad de hijos": {
+  "¿Cuántos hijos tiene?": {
     value: 0,
     type: "number",
   },
@@ -126,15 +125,15 @@ const dataInscri = reactive({
     value: 0,
     type: "number",
   },
-  "¿Posicion de hijo?": {
+  "¿Posicion entre hermanos?": {
     value: 0,
     type: "number",
   },
-  Integrantes: {
+  "Integrantes de su familia": {
     value: 0,
     type: "number",
   },
-  "Ocupación Madre": {
+  "Ocupacion de la madre": {
     options: {
       0: "Ninguna",
       1: "Ama de casa",
@@ -146,7 +145,7 @@ const dataInscri = reactive({
       7: "Pensionada",
     },
   },
-  "Ocupación Padre": {
+  "Ocupacion del padre": {
     options: {
       0: "Ninguna",
       1: "Padre cabeza de hogar",
@@ -177,7 +176,7 @@ const dataInscri = reactive({
       12: "Voleibol",
     },
   },
-  EPS: {
+  "¿Tiene EPS?": {
     options: {
       0: "Ninguna",
       1: "Sí",
@@ -229,20 +228,29 @@ const sendEditInfoPersonal = () => {
 const validateForm = () => {
   const areAllRequiredFieldsFilled = requiredFields.every((fieldName) => {
     const value = dataTo.value[fieldName];
-    return value !== null && value !== undefined && value !== "";
+     if (value === undefined) {
+      Swal.fire({
+        icon: 'error',
+        title: 'Oops...',
+        text: `Por favor, selecciona una opción válida para "${fieldName}".`,
+      })
+      return false;
+    }
+    return true;
   });
 
   if (!areAllRequiredFieldsFilled) {
-    alert(
-      "Por favor, completa todos los campos obligatorios antes de continuar."
-    );
     return false;
   }
 
   const areAllOptionsSelected = fieldsWithOptions.every((fieldName) => {
     const selectedOption = dataTo.value[fieldName];
     if (selectedOption === undefined) {
-      alert(`Por favor, selecciona una opción válida para "${fieldName}".`);
+      Swal.fire({
+        icon: 'error',
+        title: 'Oops...',
+        text: `Por favor, selecciona una opción válida para "${fieldName}".`,
+      })
       return false;
     }
     return true;

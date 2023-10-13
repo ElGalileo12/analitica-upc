@@ -1,7 +1,7 @@
 <script setup>
 import { ref, reactive, onMounted } from "vue";
 import { useRoute } from "vue-router";
-
+import Swal from "sweetalert2";
 const route = useRoute();
 
 const requiredFields = ["¿Cuánto es el ingreso familiar?"];
@@ -141,20 +141,29 @@ const sendEditInfoEconomic = () => {
 const validateForm = () => {
   const areAllRequiredFieldsFilled = requiredFields.every((fieldName) => {
     const value = dataTo.value[fieldName];
-    return value !== null && value !== undefined && value !== "";
+    if (value === undefined) {
+      Swal.fire({
+        icon: 'error',
+        title: 'Oops...',
+        text: `Por favor, selecciona una opción válida para "${fieldName}".`,
+      })
+      return false;
+    }
+    return true;
   });
 
   if (!areAllRequiredFieldsFilled) {
-    alert(
-      "Por favor, completa todos los campos obligatorios antes de continuar."
-    );
     return false;
   }
 
   const areAllOptionsSelected = fieldsWithOptions.every((fieldName) => {
     const selectedOption = dataTo.value[fieldName];
     if (selectedOption === undefined) {
-      alert(`Por favor, selecciona una opción válida para "${fieldName}".`);
+      Swal.fire({
+        icon: 'error',
+        title: 'Oops...',
+        text: `Por favor, selecciona una opción válida para "${fieldName}".`,
+      })
       return false;
     }
     return true;

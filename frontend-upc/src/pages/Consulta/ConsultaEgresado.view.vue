@@ -277,5 +277,6 @@ function confirmacion(idDoc) {
         </div>
       </div>
     </div>
+    <separadorThings></separadorThings>
   </section>
 </template>

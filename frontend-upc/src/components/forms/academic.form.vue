@@ -1,12 +1,12 @@
 <script setup>
 import { ref, reactive, onMounted } from "vue";
 import { useRoute } from "vue-router";
-
+import Swal from "sweetalert2";
 const route = useRoute();
 
 const requiredFields = [
   "¿Tiene hermanos estudiando actualmente en alguna IES?",
-  /*   "PUNTAJE de las pruebas saber 11° ICFES",
+  "PUNTAJE de las pruebas saber 11° ICFES",
   "PERCENTIL de las pruebas saber 11° ICFES",
   "Puntaje de lectura critica",
   "Puntaje de matematicas",
@@ -21,12 +21,12 @@ const requiredFields = [
   "Cuantos créditos no aprobados?",
   "Créditos matriculados este semestre 2023-1",
   "¿Ha cancelado alguna asignatura este semestre 2023-1?",
-  "Su nota obtenida actualmente en la asignatura donde esta siendo encuestado", */
+  "Su nota obtenida actualmente en la asignatura donde esta siendo encuestado",
 ];
 
 const fieldsWithOptions = [
   "Seleccione la carrera universitaria que está estudiando actualmente",
-  /*   "Usted ingresó a la Universidad Popular del Cesar por medio de según su oferta acamédica",
+  "Usted ingresó a la Universidad Popular del Cesar por medio de según su oferta acamédica",
   "Ingresó a la universidad por (Mejor bachiller, preuniversitario o deportista)",
   "Qué tan motivado te sentías al momento de ingresar a estudiar su carrera profesional",
   "Validó el bachillerato",
@@ -36,7 +36,7 @@ const fieldsWithOptions = [
   "Desde que asignatura esta haciendo la encuesta",
   "Jornada académica",
   "Actual rendimiento académico en la asignatura",
-  "Nivel de satisfacción con la asignatura", */
+  "Nivel de satisfacción con la asignatura",
 ];
 
 const dataInscri = reactive({
@@ -339,32 +339,57 @@ const emisorOfWeek = defineEmits(["formAcademic", "formEditAcad"]);
 const sendInfoAcademic = () => {
   if (validateForm()) {
     emisorOfWeek("formAcademic", dataTo);
+    Swal.fire({
+      icon: 'success',
+      title: 'El registro ha sido Exitoso',
+      showConfirmButton: false,
+      timer: 1500
+    })
+    setTimeout(function() { location.reload();}, 1500);
   }
+  
 };
 //Emitir evento edit
 const sendEditAcademic = () => {
   if (validateForm()) {
     emisorOfWeek("formEditAcad", dataTo);
+    Swal.fire({
+      icon: 'success',
+      title: 'Se han modificado los datos correctamente',
+      showConfirmButton: false,
+      timer: 1500
+    })
+    setTimeout(function() { window.location.href = '/consulta'; }, 1500);
   }
+  
 };
 //Validation
 const validateForm = () => {
   const areAllRequiredFieldsFilled = requiredFields.every((fieldName) => {
     const value = dataTo.value[fieldName];
-    return value !== null && value !== undefined && value !== "";
+    if (value === undefined) {
+      Swal.fire({
+        icon: 'error',
+        title: 'Oops...',
+        text: `Por favor, selecciona una opción válida para "${fieldName}".`,
+      })
+      return false;
+    }
+    return true;
   });
 
   if (!areAllRequiredFieldsFilled) {
-    alert(
-      "Por favor, completa todos los campos obligatorios antes de continuar."
-    );
     return false;
   }
 
   const areAllOptionsSelected = fieldsWithOptions.every((fieldName) => {
     const selectedOption = dataTo.value[fieldName];
     if (selectedOption === undefined) {
-      alert(`Por favor, selecciona una opción válida para "${fieldName}".`);
+      Swal.fire({
+        icon: 'error',
+        title: 'Oops...',
+        text: `Por favor, selecciona una opción válida para "${fieldName}".`,
+      })
       return false;
     }
     return true;
@@ -501,7 +526,7 @@ onMounted(() => {
                   type="button"
                   class="text-gray-200 mb-10 mr-20 bg-gray-900 hover:bg-gray-700 focus:ring-4 focus:ring-blue-300 font-bold rounded-lg text-base px-5 py-2.5"
                 >
-                  Siguiente
+                  Enviar
                 </button>
               </div>
             </div>
