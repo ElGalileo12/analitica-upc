@@ -95,8 +95,23 @@ async function mostrarAlerta(id){
         cancelButtonText: 'Cancelar',
     });
     if (resultado.isConfirmed) {
-        // El usuario ha confirmado, redirige a la página de edición con el id
-        window.location.href = `/edition?id=${id}`
+      try {
+        await consultaByApi(id);
+        window.location.href = `/edition?id=${id}` 
+      } catch (error) {
+        if (error.response && error.response.status === 404) {
+          // Muestra un mensaje de error específico para el error 404
+          Swal.fire({
+            icon: 'error',
+            title: 'Estudiante no encontrado',
+            text: 'Verifique el ID del documento.',
+          });
+        } else {
+          // Otros tipos de errores, manéjalos según corresponda.
+          console.error("Ocurrió un error inesperado:", error);
+        }
+      }
+        // El usuario ha confirmado, redirige a la página de edición con el id         
       }
 
 }

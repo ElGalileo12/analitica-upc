@@ -1,14 +1,22 @@
 <script setup>
-import { ref, toRaw } from "vue";
+import { ref, onMounted, toRaw } from "vue";
 import { useEgresadoConsulta } from "@/composable/useEgresados";
+import { changeId } from "../Consulta/validation/funtions egre";
+import { changedos } from "../Edition/validation/funtions_egre";
+import { useRoute } from "vue-router";
 import AcademicForm_egre from "../../components/forms_egre/academic_egre.form.vue";
 import PersonalForm_egre from "../../components/forms_egre/personal_egre.form.vue";
 import Laboral_egre from "../../components/forms_egre/Laboral_egre.form.vue";
 import Moti_egre from "../../components/forms_egre/Moti_egre.form.vue";
-import { changeDatas } from "./validation/funtions_egre.js";
-const { EgreinscriptionaByApi } = useEgresadoConsulta();
+import { changeDatas } from "../Inscripcion/validation/funtions_egre";
+
+const route = useRoute();
+
+const { EgreditionByApi, EgreconsultaByApi, rqConsult } = useEgresadoConsulta();
 
 var concatObject = ref({});
+var consultValidation = ref({});
+var consultValidationAcad = ref({});
 var datasPerson = ref({});
 var dastasLabo = ref({});
 var datasAcad = ref({});
@@ -18,22 +26,22 @@ var showLaboralForm = ref(false);
 var showAcademicForm = ref(false);
 var showMotForm = ref(false);
 
-async function formPersonal(datas) {
+async function formPersonaledit(datas) {
   datasPerson.value = datas.value;
   showAcademicForm.value = true;
 }
 
-async function formAcademic(datas) {
+async function formAcademicedit(datas) {
   datasAcad.value = datas.value;
   showLaboralForm.value = true;
 }
 
-async function formLab(datas) {
+async function formLabedit(datas) {
   dastasLabo.value = datas.value;
   showMotForm.value = true;
 }
 
-async function formMot(datas) {
+async function formMotedit(datas) {
   datasMot.value = datas.value;
   const resultado = ref({});
   concatObject.value = {
@@ -42,47 +50,51 @@ async function formMot(datas) {
     infolaboral: toRaw(dastasLabo.value),
     infomotivacion: toRaw(datasMot.value),
   };
+
   resultado.value = changeDatas(
     toRaw(concatObject.value),
     datasPerson.value.Documento
   );
-  await EgreinscriptionaByApi(toRaw(resultado.value));
+  
+  await EgreditionByApi(toRaw(resultado.value));
+  console.log(await EgreditionByApi(toRaw(resultado.value)));
 }
+
+onMounted(async () => {
+  if (route.query.id != undefined) {
+    await EgreconsultaByApi(route.query.id);
+    
+    consultValidation.value = changeId(toRaw(rqConsult.value));
+    console.log(consultValidationAcad.value);
+  }
+});
 </script>
 
 <template>
   <section>
     <div class="m-8">
-      <transition name="fade" mode="out-in">
-        <div
-          :key="
-             showLaboralForm
-              ? 'economic'
-              : showMotForm
-              ? 'motivation'
-              : showAcademicForm
-              ? 'academic' 
-              : 'personal'
-          "
-        >
           <PersonalForm_egre
-            v-if="!showLaboralForm && !showAcademicForm && !showMotForm" 
-            @formPersonal="formPersonal"
+            v-if="!showLaboralForm && !showAcademicForm && !showMotForm"
+            :contendPersonarl="consultValidation" 
+            @formEditPersonal="formPersonaledit"
           />
           <AcademicForm_egre
             v-if="showAcademicForm && !showLaboralForm && !showMotForm"
-            @formAcademic="formAcademic"
+            :contendAcademic="consultValidation"
+            @formEditAcademic="formAcademicedit"
           />
           <Laboral_egre 
             v-if="showLaboralForm && !showMotForm"  
-            @formLab="formLab" 
+            :contendLab="consultValidation"
+            @formEditLab="formLabedit" 
           />
-          <Moti_egre v-if="showMotForm"  @formMot="formMot" />
+          <Moti_egre v-if="showMotForm"  
+          :contendMot="consultValidation"
+          @formEditMot="formMotedit" />
         </div>
-    </transition>
-  </div>
   </section>
 </template>
+
 
 <style>
 .fade-enter-active,

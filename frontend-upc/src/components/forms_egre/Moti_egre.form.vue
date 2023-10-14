@@ -5,99 +5,196 @@ import Swal from "sweetalert2";
 const route = useRoute();
 
 const requiredFields = [
- "Semestre de inicio",
- "Semestre Cursados",
- "Promedio Acumulado",
- "Año de finalizacion pregrado",
- "Año de grado",
+  "Materias a fortalecer",
+  "¿Qué servicio le gustaría que ofreciera la institución como egresado?"
 ];
 
 const fieldsWithOptions = [
-  "Titulo",
-  "¿Domina una segunda lengua?",
-  "¿Cuál nivel?",
-  "¿Hizo practicas?",
-  "¿Tiene estudios de postgrados?",
-  "Último estudio de posgrado",
-  "Nivel del posgrado",
- 
+    "Motivacion del pregrado",
+    "Volumen de trabajo exigido",
+    "Nivel de satisfacción entre las horas teóricas y prácticas",
+    "Ambiente de aprendizaje",
+    "Se deben fortalecer algunas materias?",
+    "La institución le brindó servicios de apoyo",
+    "¿Ha utilizado como egresado algún servicio de la universidad?",
+    "¿Cuenta con carnet de egresado?",
+    "Los recursos de la institución fueron adecuados",
+    "¿Cuál fue su modalidad de grado?",
+    "Las Prácticas te han permitido aplicar los conocimientos",
+    "El trabajo final le ha sido de utilidad para aplicar conocimientos?",
+    "Linea de profundización del trabajo final",
+    "¿Cómo evalúa las expectativas de formación profesional que tenía al ingresar?",
+    "¿En qué medida ha aplicado los conocimientos adquiridos de su carrera en su ocupación profesional?",
+    "En qué medida cree que ha contribuido con su trabajo al desarrollo de su comunidad, ciudad, región y/o empresa?",
+    "¿Usted considera que la formación recibida en el programa fue de Calidad?",
+    "¿El programa del cual egresó ha favorecido en su proyecto de vida?",
+    "Daría continuidad a estudio de posgrado en la institución"
 ];
 
 const dataInscri = reactive({
-  Titulo: {
-    options: {
-    1: "Ing. Electronica",
-    2: "Ing. Electronica",
-    3: "Ing. Electronica",
-    },
+  "Motivacion del pregrado": {
+    options:{
+    1: "Muy bajo",
+    2: "Bajo",
+    3: "Bueno",
+    4: "Alto",
+    5: "Excelente",
+    }
   },
-  "Semestre de inicio":
-    {
-      value: 0,
-      type: "text",
-    },
-    "Semestre Cursados":
-    {
-      value: 0,
-      type: "number",
-    },
-    "Promedio Acumulado":{
-      value: 0,
-      type: "number",
-    },
-    "Año de finalizacion pregrado":
-    {
-      value: 0,
-      type: "text",
-    },
-    "Año de grado":{
-      value: 0,
-      type: "text",
-    },
-    "¿Domina una segunda lengua?":{
-    options: {
+  "Volumen de trabajo exigido": {
+    options:{
+      1: "Muy bajo",
+      2: "Poco",
+      3: "Regular",
+      4: "Exigente",
+      5: "Muy exigente",
+    }
+  },
+  "Nivel de satisfacción entre las horas teóricas y prácticas": {
+    options:{
+    1: "Muy bajo",
+    2: "Bajo",
+    3: "Bueno",
+    4: "Alto",
+    5: "Muy alto",
+    }
+  },
+  "Ambiente de aprendizaje": {
+    options:{
+    1: "Muy bajo",
+    2: "Bajo",
+    3: "Bueno",
+    4: "Alto",
+    5: "Muy alto",
+    }
+  },
+  "Se deben fortalecer algunas materias?": {
+    options:{
       1: "Si",
       2: "No",
-    },
-    },
-    "¿Cuál nivel?":{
-    options: {
-      1:	"A1",
-      2:	"A2",
-      3:	"B1",
-      4:	"B2",
-      5:	"C1",
-      6:	"C2",
-    },
-    },
-    "¿Hizo practicas?":{
-    options: {
+    }
+  },
+
+  "Materias a fortalecer": {
+    value: 0,
+    type: "text",
+  },
+  "La institución le brindó servicios de apoyo": {
+    options:{
       1: "Si",
       2: "No",
-    },
-    },
-    "¿Tiene estudios de postgrados?":{
-    options: {
+    }
+  },
+  "¿Ha utilizado como egresado algún servicio de la universidad?": {
+    options:{
+      1:	"Carnetización",
+      2:	"Biblioteca",
+      3:	"Espacio Deportivo",
+      4:	"Otros",
+      5:	"Ninguno",
+    }
+  },
+  "¿Qué servicio le gustaría que ofreciera la institución como egresado?": {
+    value: 0,
+    type: "text",
+  },
+  "¿Cuenta con carnet de egresado?": {
+    options:{
       1: "Si",
       2: "No",
-    },
-    },
-    "Último estudio de posgrado":{
-    options: {
-      1: "Especialización",
-      2: "Maestría",
-      3: "Doctorado",
-      4: "Pos-Doctorado",
-      5: "Ninguno"
-    },
-    },
-    "Nivel del posgrado":{
-    options: {
-      1: "Nacional",
-      2: "Extranjera",
-      3: "Ninguno"
-    },
-    },
+    }
+  },
+  "Los recursos de la institución fueron adecuados": {
+    options:{
+      1: "Muy poco adecuados",
+      2: "Adecuados",
+      3: "Muy adecuados",
+    }
+  },
+  "¿Cuál fue su modalidad de grado?": {
+    options:{
+      1: "Prácticas",
+      2: "Trabajo final de carrera",
+    }
+  },
+  "Las Prácticas te han permitido aplicar los conocimientos": {
+    options:{
+      1: "Muy poco",
+      2: "Poco",
+      3: "Moderado",
+      4: "Alto",
+      5: "Muy alto",
+    }
+  },
+  "El trabajo final le ha sido de utilidad para aplicar conocimientos?": {
+    options:{
+      1: "Muy poco",
+      2: "Poco",
+      3: "Moderado",
+      4: "Alto",
+      5: "Muy alto",
+    }
+  },
+  "Linea de profundización del trabajo final": {
+    options:{
+      1: "Optoelectrónica",
+      2: "Telecomunicaciones",
+      3: "Instrumentación Electrónica",
+      4: "Procesamiento de Señales",
+      5: "Automatización y Control",
+      6: "Bioingeniería",
+    }
+  },
+  "¿Cómo evalúa las expectativas de formación profesional que tenía al ingresar?": {
+    options:{
+      1: "Mala",
+      2: "Buena",
+      3: "Excelente",
+    }
+  },
+  "¿En qué medida ha aplicado los conocimientos adquiridos de su carrera en su ocupación profesional?": {
+    options:{
+      1: "Muy poco",
+      2: "Poco",
+      3: "Regularmente",
+      4: "La mayoría de las veces",
+      5: "Siempre",
+    }
+  },
+  "En qué medida cree que ha contribuido con su trabajo al desarrollo de su comunidad, ciudad, región y/o empresa?": {
+    options:{
+      1: "Muy poco",
+      2: "Poco",
+      3: "Moderado",
+      4: "Alto",
+      5: "Muy alto",
+    }
+  },
+  "¿Usted considera que la formación recibida en el programa fue de Calidad?": {
+    options:{
+      1: "Totalmente en desacuerdo",
+      2: "En desacuerdo",
+      3: "Ni de acuerdo ni en desacuerdo",
+      4: "De acuerdo",
+      5: "Totalmente de acuerdo",
+    }
+  },
+  "¿El programa del cual egresó ha favorecido en su proyecto de vida?": {
+    options:{
+      1: "Totalmente en desacuerdo",
+      2: "En desacuerdo",
+      3: "Ni de acuerdo ni en desacuerdo",
+      4: "De acuerdo",
+      5: "Totalmente de acuerdo",
+    }
+  },
+  "Daría continuidad a estudio de posgrado en la institución": {
+    options:{
+      1: "Si",
+      2: "No",
+    }
+  },
+
 });
 
 const selectedOption = reactive({});
@@ -118,18 +215,35 @@ const setDataTo = (key, value) => {
 
 const dataTo = ref({});
 //Prosps
-const emisorOfWeek = defineEmits(["formAcademic", "formEditAcademic"]);
+const emisorOfWeek = defineEmits(["formMot", "formEditMot"]);
 
-const sendInfoAcademic = () => {
+const sendInfoMot = () => {
   if (validateForm()) {
-    emisorOfWeek("formAcademic", dataTo);
+    emisorOfWeek("formMot", dataTo);
+    Swal.fire({
+      icon: 'success',
+      title: 'El registro ha sido Exitoso',
+      showConfirmButton: false,
+      timer: 1500
+    })
+
+     setTimeout(function() { location.reload();}, 1500);
   }
+  
 };
 //Emitir evento edit
-const sendEditAcademic = () => {
+const sendEditMot = () => {
   if (validateForm()) {
-    emisorOfWeek("formEditAcademic", dataTo);
+    emisorOfWeek("formEditMot", dataTo);
+    Swal.fire({
+      icon: 'success',
+      title: 'Se han modificado los datos correctamente',
+      showConfirmButton: false,
+      timer: 1500
+    })
+    setTimeout(function() { window.location.href = '/consulta_egresados'; }, 1500);
   }
+  
 };
 //Validation
 const validateForm = () => {
@@ -172,18 +286,18 @@ const validateForm = () => {
 
 //Props
 const props = defineProps({
-  contendAcademic: {
+  contendMot: {
     type: Object,
   },
 });
 
-const onContendPersonarlChange = () => {
-  dataTo.value = props.contendAcademic.datasAcad;
+const onContendMotChange = () => {
+  dataTo.value = props.contendMot.datasMot;
 };
 
 onMounted(() => {
   if (route.query.id) {
-    onContendPersonarlChange();
+    onContendMotChange();
   }
 });
 </script>
@@ -195,7 +309,7 @@ onMounted(() => {
         <div class="">
           <div class="px-4 sm:px-6 flex justify-center items-center flex-col">
             <h3 class="text-3xl font-bold leading-6 text-gray-900">
-              Información Academica
+              Información Motivacional
             </h3>
             <p class="mt-2 text-base text-gray-600">
               Complete todos los datos.
@@ -278,11 +392,11 @@ onMounted(() => {
                 class="w-full flex justify-end bg-gray-50"
               >
                 <button
-                  @click.prevent="sendInfoAcademic()"
+                  @click.prevent="sendInfoMot()"
                   type="button"
                   class="text-gray-200 mb-10 mr-20 bg-gray-900 hover:bg-gray-700 focus:ring-4 focus:ring-blue-300 font-bold rounded-lg text-base px-5 py-2.5"
                 >
-                  Siguiente
+                  Enviar
                 </button>
               </div>
               <div
@@ -290,11 +404,11 @@ onMounted(() => {
                 class="w-full flex justify-end bg-gray-50"
               >
                 <button
-                  @click.prevent="sendEditAcademic()"
+                  @click.prevent="sendEditMot()"
                   type="button"
                   class="text-gray-200 mb-10 mr-20 bg-gray-900 hover:bg-gray-700 focus:ring-4 focus:ring-blue-300 font-bold rounded-lg text-base px-5 py-2.5"
                 >
-                  Siguiente
+                  Enviar
                 </button>
               </div>
             </div>
