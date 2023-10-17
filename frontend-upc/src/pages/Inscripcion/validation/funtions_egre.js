@@ -12,27 +12,27 @@ function dataPersonal(dataPers) {
   };
 
   const estadoCivilMapping = {
-    Casado: 1,
-    Separado: 2,
-    Soltero: 3,
-    "Unión libre": 4,
-    "Viudo(a)": 5,
+    "Soltero": 1,
+    "Casado": 2,
+    "Unión libre": 3,
+    "Viudo(a)": 4,
+    "Separado": 5,
     
   };
 
   const tipoDiscapacidadMapping = {
-    "Movilidad reducida": 1,
-    Ninguna: 2,
+    "Movilidad reducida": 2,
+    Ninguna: 1,
     Auditiva: 3,
     Visual: 4,
   };
 
   const etniaMapping = {
-    Indigena: 1,
-    Palenquero: 2,
-    "Sin distincion racial": 3,
-    "Negro, mulato, afrodescendiente, afrocolombiano": 4,
-    Raizal: 5,
+    "Sin reconocimiento étnico": 1,
+    "Negro, mulato, afrodescendiente, afrocolombiano": 2,
+    Indígena: 3,
+    "Raizal": 4,
+    "Palenquero": 5,
     "Rrom o Gitano": 6,
   };
 

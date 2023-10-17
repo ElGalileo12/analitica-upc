@@ -56,7 +56,7 @@ const dataInscri = reactive({
   },
   Etnia: {
     options: {
-      1: "Indigena",
+      1: "Indígena",
       2: "Palenquero",
       3: "Sin distincion racial",
       4: "Negro, mulato, afrodescendiente, afrocolombiano",
