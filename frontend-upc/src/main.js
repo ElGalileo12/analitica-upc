@@ -1,6 +1,5 @@
 import { createApp } from "vue";
 import { createPinia } from "pinia";
-import Flicking from "@egjs/vue3-flicking";
 import "./style.css";
 import router from "./routes/index";
 import App from "./App.vue";

@@ -76,9 +76,7 @@
 <style>
 @import url("https://fonts.googleapis.com/css2?family=Roboto:wght@700&display=swap");
 @import url("https://fonts.googleapis.com/css2?family=Roboto:wght@400&display=swap");
-p{
-  text-align: justify;
-}
+
 .teme {
   font-family: "Roboto", sans-serif;
 }
