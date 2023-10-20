@@ -1,7 +1,7 @@
 <script setup>
 import { ref, onMounted, toRaw } from "vue";
 import { useStudent } from "@/composable/useStudent";
-import { changeId } from "../Consulta/validation/funtions";
+import { changeId } from "../Consulta/validation/funtions.js";
 import { changeAcad } from "../Edition/validation/funtions";
 import { useRoute } from "vue-router";
 import PersonalForm from "../../components/forms/personal.form.vue";

@@ -83,6 +83,38 @@ async function confirmacion(idDoc) {
     }
   });
 }
+
+async function mostrarAlerta(id){
+   const resultado = await Swal.fire({
+        title: '¿Estás seguro de que quieres editar?',
+        text: 'No podrás revertir este cambio.',
+        icon: 'warning',
+        showCancelButton: true,
+        confirmButtonColor: '#3085d6',
+        cancelButtonColor: '#d33',
+        confirmButtonText: 'Sí, editar',
+        cancelButtonText: 'Cancelar',
+    });
+    if (resultado.isConfirmed) {
+      try {
+        await EgreconsultaByApi(id);
+        window.location.href = `/edition_egresados?id=${id}` 
+      } catch (error) {
+        if (error.response && error.response.status === 404) {
+          // Muestra un mensaje de error específico para el error 404
+          Swal.fire({
+            icon: 'error',
+            title: 'No se ha encontrado al Egresado',
+            text: 'Verifique el ID del documento.',
+          });
+        } else {
+          // Otros tipos de errores, manéjalos según corresponda.
+          console.error("Ocurrió un error inesperado:", error);
+        }
+      }
+        // El usuario ha confirmado, redirige a la página de edición con el id         
+      }
+    }
 </script>
 
 <template>
@@ -116,13 +148,13 @@ async function confirmacion(idDoc) {
           >
             Buscar
           </button>
-          <router-link
-            :to="{ name: 'edition', query: { id: identifications } }"
+          <button
+            @click.prevent="mostrarAlerta(identifications)"
             type="submit"
             class="w-28 text-gray-200 bg-gray-900 hover:bg-gray-700 focus:ring-4 focus:ring-blue-900 rounded-lg text-lg font-medium py-1.5 text-center"
-          >
+            >
             Editar
-          </router-link>
+          </button>
           <button
             @click.prevent="confirmacion(identifications)"
             type="submit"

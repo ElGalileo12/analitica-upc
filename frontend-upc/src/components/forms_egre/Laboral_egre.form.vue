@@ -1,91 +1,189 @@
 <script setup>
-import { ref, reactive, watch } from "vue";
+import { ref, reactive, onMounted } from "vue";
 import { useRoute } from "vue-router";
 import Swal from "sweetalert2";
 const route = useRoute();
 
 const requiredFields = [
-  "Documento",
-  "Nombre",
-  "Edad",
-  "Telefono",
-  "Email",
-  "Estrato"
-  
+  "Nombre de la empresa",
+  "Ciudad donde trabaja",
+  "Nombre de su empresa",
+  "Ubicación de la empresa",
+  "Sector de la empresa",
 ];
 
 const fieldsWithOptions = [
-    "Tipo de documento",
-    "Genero",
-    "Estado Civil",
-    "¿Tiene alguna discapacidad?",
-    "Etnia",
+    "¿Trabaja actualmente?",
+    "Experiencia en la empresa",
+    "Situación laboral actual",
+    "Es su trabajo acorde a su perfil profesional",
+    "Sector donde trabaja",
+    "Tiempo transcurrido para la contratación en su empleo actual",
+    "Nivel jerárquico en el trabajo",
+    "Primer empleo",
+    "Medio usado para obtener el empleo",
+    "Sector en los que se ha desempeñado",
+    "Sector productivo en el que ha laborado",
+    "Requisitos que para su contratación",
+    "Rango salarial actualmente",
+    "Ha tenido reconocimiento en el trabajo",
+    "¿Tiene empresa?",
+    "Creó su empresa antes de graduarse?",
 ];
 
 const dataInscri = reactive({
-  "Tipo de documento": {
-    options: ["Cédula", "Pasaporte","Tarjeta de identidad"],
+  "¿Trabaja actualmente?": {
+    options: {
+      1: "Si",
+      2: "No",
+    },
   },
-  Documento: {
-    value: 0,
-    type: "number",
-  },
-  Nombre: {
+  "Nombre de la empresa":{
     value: 0,
     type: "text",
   },
-  Telefono: {
-    value: 0,
-    type: "number",
-  },
-  Genero: {
-    options: { 0: "Otro", 1: "Masculino", 2: "Femenino" },
-  },
-  Edad: {
-    value: 0,
-    type: "number",
-  },
-  "Estado Civil": {
+  "Experiencia en la empresa": {
     options: {
-      1: "Casado",
-      2: "Separado",
-      3: "Soltero",
-      4: "Unión libre",
-      5: "Viudo",
+      1:	"de 0 a 3 años",
+      2:	"de 3 a 5 años",
+      3:	"más de 5 años"
     },
   },
-  Etnia: {
-    options: {
-      1: "Indígena",
-      2: "Palenquero",
-      3: "Sin distincion racial",
-      4: "Negro, mulato, afrodescendiente, afrocolombiano",
-      5: "Raizal",
-      6: "Rrom o Gitano"
-    },
-  },
-  "¿Tiene alguna discapacidad?": {
-    options: {
-      1: "Movilidad reducida",
-      2: "Ninguna",
-      3: "Auditiva",
-      4: "Visual",
-    },
-  },
-  Email: {
+  "Ciudad donde trabaja":{
     value: 0,
     type: "text",
   },
-  Estrato: {
+  "Pais donde trabaja":{
+    value: 0,
+    type: "text",
+  },
+  "Situación laboral actual": {
     options: {
-      1: "1",
-      2: "2",
-      3: "3",
-      4: "4",
-      5: "5",
-      6: "6",
+      1: "Empleado",
+      2: "Independiente",
     },
   },
+  "Es su trabajo acorde a su perfil profesional": {
+    options: {
+      1: "Sí",
+      2: "No",
+    },
+  },
+  "Sector donde trabaja": {
+    options: {
+    1: "Agropecuario",
+    2: "Industrial",
+    3: "Transporte",
+    4: "Comercial",
+    5: "Comunicaciones",
+    6: "Minero y energético",
+    7: "Salud",
+    8: "Educación",
+    },
+  },
+  "Tiempo transcurrido para la contratación en su empleo actual": {
+    options: {
+    1: "Menos de seis meses",
+    2: "Entre seis meses y un año",
+    3: "Más de un año",
+    4: "Más de dos años",
+    },
+  },
+  "Nivel jerárquico en el trabajo": {
+    options: {
+    1: "Técnico",
+    2: "Supervisor",
+    3: "Jefe de área",
+    4: "Funcionario",
+    5: "Directivo",
+    6: "Empresario",
+    },
+  },
+  "Primer empleo": {
+    options:{
+    1: "Antes de graduarse",
+    2: "Menos de seis meses",
+    3: "Entre seis meses y un año",
+    4: "Más de un año",
+    }
+  },
+  "Medio usado para obtener el empleo": {
+    options: {
+    1: "Bolsa de trabajo de la Universidad",
+    2: "Contactos personales",
+    3: "Residencia profesional",
+    4: "Medios masivos de comunicación",
+    5: "Concurso de merito",
+    },
+  },
+  "Sector en los que se ha desempeñado": {
+    options: {
+      1: "Pública",
+      2: "Privada",
+    },
+  },
+  "Sector productivo en el que ha laborado": {
+    options: {
+      1: "Investigación",
+      2: "Industria",
+      3: "Administrativo",
+      4: "Comercial",
+      5: "Educación",
+      6: "Desarrollo de Software",
+      7: "Minero",
+      8: "Salud",
+      9: "Comunicaciones",
+      10: "OTRA",
+    },
+  },
+  "Requisitos que para su contratación": {
+    options: {
+      1: "Competencias laborales",
+      2: "Título profesional",
+      3: "Examen de Selección",
+      4: "Idioma extranjero",
+      5: "Todas las anteriores",
+      6: "Ninguno",
+    },
+  },
+  "Rango salarial actualmente": {
+    options: {
+      1: "Entre 1 un SMMLV y 3 un SMMLV",
+      2: "Entre 3 un SMMLV y 5 un SMMLV",
+      3: "Mas de 5 SMMLV",
+    },
+  },
+  "Ha tenido reconocimiento en el trabajo": {
+    options: {
+      1: "Sí",
+      2: "No",
+    },
+  },
+  "¿Tiene empresa?": {
+    options: {
+      1: "Sí",
+      2: "No",
+    },
+  },
+  "Nombre de su empresa": {
+    value: 0,
+    type: "text",
+  },
+  "Ubicación de la empresa": {
+    value: 0,
+    type: "text",
+  },
+  "Creó su empresa antes de graduarse?": {
+    options: {
+      1: "Sí",
+      2: "No",
+    },
+  },
+  "Sector de la empresa": {
+      value: 0,
+      type: "text",
+  },
+
 });
 
 const selectedOption = reactive({});
@@ -104,28 +202,27 @@ const setDataTo = (key, value) => {
   dataTo.value[key] = value;
 };
 
-var dataTo = ref({});
+const dataTo = ref({});
+//Prosps
+const emisorOfWeek = defineEmits(["formLab", "formEditLab"]);
 
-//Emitir evento
-const emisorOfWeek = defineEmits(["formPersonal", "formEditPersonal"]);
-
-const sendInfoPersonal = () => {
+const sendInfoLab = () => {
   if (validateForm()) {
-    emisorOfWeek("formPersonal", dataTo);
+    emisorOfWeek("formLab", dataTo);
   }
 };
 
 //Emitir evento edit
-const sendEditInfoPersonal = () => {
+const sendEditInfoLab = () => {
   if (validateForm()) {
-    emisorOfWeek("formEditPersonal", dataTo);
+    emisorOfWeek("formEditLab", dataTo);
   }
 };
 //Validation
 const validateForm = () => {
   const areAllRequiredFieldsFilled = requiredFields.every((fieldName) => {
     const value = dataTo.value[fieldName];
-     if (value === undefined) {
+    if (value === undefined) {
       Swal.fire({
         icon: 'error',
         title: 'Oops...',
@@ -162,18 +259,20 @@ const validateForm = () => {
 
 //Props
 const props = defineProps({
-  contendPersonarl: {
+  contendLab: {
     type: Object,
   },
 });
 
-const onContendAcademicChange = () => {
-  const Documento = route.query.id;
-  dataTo.value = props.contendPersonarl.datasPers;
-  dataTo.value.Documento = Documento;
+const onContendPersonarlChange = () => {
+  dataTo.value = props.contendLab.datasLab;
 };
 
-watch(() => props.contendPersonarl, onContendAcademicChange);
+onMounted(() => {
+  if (route.query.id) {
+    onContendPersonarlChange();
+  }
+});
 </script>
 
 <template>
@@ -183,7 +282,7 @@ watch(() => props.contendPersonarl, onContendAcademicChange);
         <div class="">
           <div class="px-4 sm:px-6 flex justify-center items-center flex-col">
             <h3 class="text-3xl font-bold leading-6 text-gray-900">
-              Información personal
+              Información Laboral
             </h3>
             <p class="mt-2 text-base text-gray-600">
               Complete todos los datos.
@@ -194,9 +293,10 @@ watch(() => props.contendPersonarl, onContendAcademicChange);
           <form>
             <div class="overflow-hidden shadow sm:rounded-md">
               <div class="bg-gray-50 px-4 py-5 sm:p-6">
-                <div class="grid gap-4 mb-4 grid-cols-4">
+                <div class="grid gap-4 mb-4 grid-cols-3">
                   <div v-for="(group, groupKey) in dataInscri" :key="groupKey">
                     <label
+                      for="Nombres"
                       class="block mb-2 text-base font-bold text-gray-900 dark:text-white"
                     >
                       {{ groupKey }}
@@ -264,20 +364,27 @@ watch(() => props.contendPersonarl, onContendAcademicChange);
                 v-if="!route.query.id"
                 class="w-full flex justify-end bg-gray-50"
               >
+                <!--                 <button
+                  type="button"
+                  class="text-white w-44 text-center mb-10 ml-20 bg-gray-800 hover:bg-gray-900 focus:outline-none focus:ring-4 focus:ring-gray-300 font-medium rounded-lg text-base py-2.5"
+                >
+                  Atrás
+                </button> -->
                 <button
-                  @click.prevent="sendInfoPersonal()"
+                  @click.prevent="sendInfoLab()"
                   type="button"
                   class="text-gray-200 mb-10 mr-20 bg-gray-900 hover:bg-gray-700 focus:ring-4 focus:ring-blue-300 font-bold rounded-lg text-base px-5 py-2.5"
                 >
                   Siguiente
                 </button>
               </div>
+
               <div
                 v-if="route.query.id"
                 class="w-full flex justify-end bg-gray-50"
               >
                 <button
-                  @click.prevent="sendEditInfoPersonal()"
+                  @click.prevent="sendEditInfoLab()"
                   type="button"
                   class="text-gray-200 mb-10 mr-20 bg-gray-900 hover:bg-gray-700 focus:ring-4 focus:ring-blue-300 font-bold rounded-lg text-base px-5 py-2.5"
                 >
