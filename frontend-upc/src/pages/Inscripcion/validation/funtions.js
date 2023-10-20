@@ -51,7 +51,7 @@ function dataPersonal(dataPers) {
     Fallecida: 3,
     Independiente: 4,
     Labora: 5,
-    "Madre Cabeza de Hogar": 6,
+    "Madre cabeza de Hogar": 6,
     Pensionada: 7,
   };
 

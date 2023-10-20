@@ -119,7 +119,7 @@ class Egresados(models.Model):
 class EgreAcademica(models.Model):
     ID_EGRESADO = models.OneToOneField(Egresados, on_delete=models.CASCADE, primary_key=True, related_name='info_academica')
     ID_TITULO = models.IntegerField()
-    ID_SEMESTRE_INICIO = models.IntegerField()
+    ID_SEMESTRE_INICIO = models.CharField(max_length=15)
     ID_SEMESTRES_CURSADOS = models.IntegerField()
     ID_PROMEDIO_ACUMULADO = models.FloatField()
     ID_SEMESTRE_FIN = models.IntegerField()

@@ -4,10 +4,10 @@ import { useRoute } from "vue-router";
 import Swal from "sweetalert2";
 const route = useRoute();
 
-const requiredFields = ["¿Cuánto es el ingreso familiar?"];
+const requiredFields = [/*"¿Cuánto es el ingreso familiar?"*/];
 
 const fieldsWithOptions = [
-  "Ocupación",
+  /*"Ocupación",
   "Estrato",
   "Tipo de vivienda",
   "¿Recibe ingresos mensualmente?",
@@ -18,7 +18,7 @@ const fieldsWithOptions = [
   "Tiene acceso a Internet",
   "Tiene celular smart",
   "Tiene plan de datos",
-  "¿Ingresos por trabajar?",
+  "¿Ingresos por trabajar?",*/
 ];
 
 const dataInscri = reactive({

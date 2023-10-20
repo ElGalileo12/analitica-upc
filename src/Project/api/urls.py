@@ -12,7 +12,9 @@ urlpatterns = [
     path('', include(router.urls)),
     #ruta inscripción
     path('inscripcion/', views.registrar_Estudiante, name='crear_registro'),
+    path('inscripcion_egresados/', views.registrar_Egresados, name='crear_registro_e'),
     path('change/', views.change_std, name='edita_registro'),
+    path('change_egresados/', views.change_egre, name='edita_registro_e'),
     #rutas de graficas
     path('get_chart/', views.get_chart, name='get_chart'),
     path('get_chart_2/', views.get_chart_2, name='get_chart_2'),

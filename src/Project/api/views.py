@@ -354,6 +354,355 @@ def change_std(request):
     else:
         return HttpResponseNotAllowed(['POST'])
 
+def registrar_Egresados(request):
+    #informacion personal
+    if request.method == 'POST':
+        try:
+        # Obtener y analizar el cuerpo de la solicitud como JSON
+            data = json.loads(request.body.decode('utf-8'))
+        except json.JSONDecodeError:
+            return JsonResponse({'error': 'Formato JSON no válido'}, status=400)
+        
+        # Obtener los datos enviados en la solicitud POST
+        concat_info = data.get('concatInfo', {})
+        egresados_info = concat_info.get('datosEgresado', {})  
+        ID_DOCUMENTO = egresados_info.get('ID_DOCUMENTO')
+        ID_TIPO_DOCUMENTO = egresados_info.get('ID_TIPO_DOCUMENTO')
+        ID_NOMBRE = egresados_info.get('ID_NOMBRE')
+        ID_NUM_CONTACTO = egresados_info.get('ID_NUM_CONTACTO')
+        ID_GENERO = egresados_info.get('ID_GENERO')
+        ID_EDAD = egresados_info.get('ID_EDAD')
+        ID_ESTADO_CIVIL = egresados_info.get('ID_ESTADO_CIVIL')
+        ID_ETNIA = egresados_info.get('ID_ETNIA')
+        ID_DISCAPACIDAD = egresados_info.get('ID_DISCAPACIDAD')
+        ID_EMAIL = egresados_info.get('ID_EMAIL')
+        ID_ESTRATO = egresados_info.get('ID_ESTRATO')
+
+
+        #Tabla academica
+        infoaca_info = concat_info.get('infoacademica', {})
+        ID_TITULO = infoaca_info.get('ID_TITULO')
+        ID_SEMESTRE_INICIO = infoaca_info.get('ID_SEMESTRE_INICIO')
+        ID_SEMESTRES_CURSADOS = infoaca_info.get('ID_SEMESTRES_CURSADOS')
+        ID_PROMEDIO_ACUMULADO = infoaca_info.get('ID_PROMEDIO_ACUMULADO')
+        ID_SEMESTRE_FIN = infoaca_info.get('ID_SEMESTRE_FIN')
+        ID_FECHA_GRADO = infoaca_info.get('ID_FECHA_GRADO')
+        ID_SEGNDALENGUA = infoaca_info.get('ID_SEGNDALENGUA')
+        ID_NIVEL = infoaca_info.get('ID_NIVEL')
+        ID_PRACTICAS = infoaca_info.get('ID_PRACTICAS')
+        ID_POSTGRADO = infoaca_info.get('ID_POSTGRADO')
+        ID_POSTGRADO_NIVEL = infoaca_info.get('ID_POSTGRADO_NIVEL')
+        ID_POSTGRADO_LUGAR = infoaca_info.get('ID_POSTGRADO_LUGAR')
+
+
+        #Tabla Laboral
+        labo_info = concat_info.get('infolaboral', {})
+        ID_TRABAJA = labo_info.get('ID_TRABAJA')
+        ID_TRABAJA_NOMBRE_EMPRESA = labo_info.get('ID_TRABAJA_NOMBRE_EMPRESA')
+        ID_EXP_ACOMU = labo_info.get('ID_EXP_ACOMU')
+        ID_TRABAJA_PAIS = labo_info.get('ID_TRABAJA_PAIS')
+        ID_TRABAJA_CIUDAD = labo_info.get('ID_TRABAJA_CIUDAD')
+        ID_TRABAJA_SITUACION = labo_info.get('ID_TRABAJA_SITUACION')
+        ID_TRABAJA_PERFIL = labo_info.get('ID_TRABAJA_PERFIL')
+        ID_TRABAJA_SECTOR = labo_info.get('ID_TRABAJA_SECTOR')
+        ID_TRABAJA_TIEMPO = labo_info.get('ID_TRABAJA_TIEMPO')
+        ID_TRABAJA_NIVEL = labo_info.get('ID_TRABAJA_NIVEL')
+        ID_TRABAJA_TIEMPO_PRIMER = labo_info.get('ID_TRABAJA_TIEMPO_PRIMER')
+        ID_TRABAJA_MEDIO = labo_info.get('ID_TRABAJA_MEDIO')
+        ID_TRABAJA_SECTOR_DOS = labo_info.get('ID_TRABAJA_SECTOR_DOS')
+        ID_TRABAJA_SECTOR_TRES = labo_info.get('ID_TRABAJA_SECTOR_TRES')
+        ID_TRABAJA_REQUISITOS = labo_info.get('ID_TRABAJA_REQUISITOS')
+        ID_TRABAJA_RANGO = labo_info.get('ID_TRABAJA_RANGO')
+        ID_TRABAJA_RECONOCIMIENTO = labo_info.get('ID_TRABAJA_RECONOCIMIENTO')
+        ID_EMPRESA = labo_info.get('ID_EMPRESA')
+        ID_NOMBRE_EMPRESA = labo_info.get('ID_NOMBRE_EMPRESA')
+        ID_UBICACION_EMPRESA = labo_info.get('ID_UBICACION_EMPRESA')
+        ID_EMPRESA_ANTES = labo_info.get('ID_EMPRESA_ANTES')
+        ID_EMPRESA_SECTOR = labo_info.get('ID_EMPRESA_SECTOR')
+
+        #Tabla Motivacional
+        Mot_info = concat_info.get('infomotivacion', {})
+        ID_MOT_PREGRADO = Mot_info.get('ID_MOT_PREGRADO')
+        ID_MOT_VOLUMEN = Mot_info.get('ID_MOT_VOLUMEN')
+        ID_MOT_NIVELS = Mot_info.get('ID_MOT_NIVELS')
+        ID_MOT_AMBIENTE = Mot_info.get('ID_MOT_AMBIENTE')
+        ID_MOT_FORTALECER = Mot_info.get('ID_MOT_FORTALECER')
+        ID_MOT_MATERIAS = Mot_info.get('ID_MOT_MATERIAS')
+        ID_MOT_APOYO = Mot_info.get('ID_MOT_APOYO')
+        ID_MOT_SERVICIO = Mot_info.get('ID_MOT_SERVICIO')
+        ID_MOT_SERVICIO_DESEADO = Mot_info.get('ID_MOT_SERVICIO_DESEADO')
+        ID_MOT_CARNET = Mot_info.get('ID_MOT_CARNET')
+        ID_MOT_RECURSOS = Mot_info.get('ID_MOT_RECURSOS')
+        ID_MOT_MODALIDAD = Mot_info.get('ID_MOT_MODALIDAD')
+        ID_MOT_MODALIDAD_P = Mot_info.get('ID_MOT_MODALIDAD_P')
+        ID_MOT_MODALIDAD_T = Mot_info.get('ID_MOT_MODALIDAD_T')
+        ID_MOT_PROFUNDIZACION = Mot_info.get('ID_MOT_PROFUNDIZACION')
+        ID_MOT_INGRESAR = Mot_info.get('ID_MOT_INGRESAR')
+        ID_MOT_CONOCIMIENTOS = Mot_info.get('ID_MOT_CONOCIMIENTOS')
+        ID_MOT_CONTRIBUCION = Mot_info.get('ID_MOT_CONTRIBUCION')
+        ID_MOT_CALIDAD = Mot_info.get('ID_MOT_CALIDAD')
+        ID_MOT_FAVORECIDO = Mot_info.get('ID_MOT_FAVORECIDO')
+        ID_MOT_POST_CONT = Mot_info.get('ID_MOT_POST_CONT')
+
+
+        Std = Egresados.objects.create(
+            # Modelo Egresados
+            ID_DOCUMENTO = ID_DOCUMENTO,
+            ID_TIPO_DOCUMENTO = ID_TIPO_DOCUMENTO,
+            ID_NOMBRE = ID_NOMBRE,
+            ID_NUM_CONTACTO = ID_NUM_CONTACTO,
+            ID_GENERO = ID_GENERO,
+            ID_EDAD = ID_EDAD,
+            ID_ESTADO_CIVIL = ID_ESTADO_CIVIL,
+            ID_ETNIA = ID_ETNIA,
+            ID_DISCAPACIDAD = ID_DISCAPACIDAD,
+            ID_EMAIL = ID_EMAIL,
+            ID_ESTRATO = ID_ESTRATO )
+
+            # Modelo EgreAcademica
+        Academica = EgreAcademica.objects.create(
+            ID_EGRESADO = Std,
+            ID_TITULO = ID_TITULO,
+            ID_SEMESTRE_INICIO = ID_SEMESTRE_INICIO,
+            ID_SEMESTRES_CURSADOS = ID_SEMESTRES_CURSADOS,
+            ID_PROMEDIO_ACUMULADO = ID_PROMEDIO_ACUMULADO,
+            ID_SEMESTRE_FIN = ID_SEMESTRE_FIN,
+            ID_FECHA_GRADO = ID_FECHA_GRADO,
+            ID_SEGNDALENGUA = ID_SEGNDALENGUA,
+            ID_NIVEL = ID_NIVEL,
+            ID_PRACTICAS = ID_PRACTICAS,
+            ID_POSTGRADO = ID_POSTGRADO,
+            ID_POSTGRADO_NIVEL = ID_POSTGRADO_NIVEL,
+            ID_POSTGRADO_LUGAR = ID_POSTGRADO_LUGAR )
+
+            # Modelo EgreLaboral
+        Laboral = EgreLaboral.objects.create(
+            ID_EGRESADO = Std,
+            ID_TRABAJA = ID_TRABAJA,
+            ID_TRABAJA_NOMBRE_EMPRESA = ID_TRABAJA_NOMBRE_EMPRESA,
+            ID_EXP_ACOMU = ID_EXP_ACOMU,
+            ID_TRABAJA_PAIS = ID_TRABAJA_PAIS,
+            ID_TRABAJA_CIUDAD = ID_TRABAJA_CIUDAD,
+            ID_TRABAJA_SITUACION = ID_TRABAJA_SITUACION,
+            ID_TRABAJA_PERFIL = ID_TRABAJA_PERFIL,
+            ID_TRABAJA_SECTOR = ID_TRABAJA_SECTOR,
+            ID_TRABAJA_TIEMPO = ID_TRABAJA_TIEMPO,
+            ID_TRABAJA_NIVEL = ID_TRABAJA_NIVEL,
+            ID_TRABAJA_TIEMPO_PRIMER = ID_TRABAJA_TIEMPO_PRIMER,
+            ID_TRABAJA_MEDIO = ID_TRABAJA_MEDIO,
+            ID_TRABAJA_SECTOR_DOS = ID_TRABAJA_SECTOR_DOS,
+            ID_TRABAJA_SECTOR_TRES = ID_TRABAJA_SECTOR_TRES,
+            ID_TRABAJA_REQUISITOS = ID_TRABAJA_REQUISITOS,
+            ID_TRABAJA_RANGO = ID_TRABAJA_RANGO,
+            ID_TRABAJA_RECONOCIMIENTO = ID_TRABAJA_RECONOCIMIENTO,
+            ID_EMPRESA = ID_EMPRESA,
+            ID_NOMBRE_EMPRESA = ID_NOMBRE_EMPRESA,
+            ID_UBICACION_EMPRESA = ID_UBICACION_EMPRESA,
+            ID_EMPRESA_ANTES = ID_EMPRESA_ANTES,
+            ID_EMPRESA_SECTOR = ID_EMPRESA_SECTOR)
+
+            # Modelo EgreMotivacion
+        mot = EgreMotivacion.objects.create(
+            ID_EGRESADO = Std,
+            ID_MOT_PREGRADO = ID_MOT_PREGRADO,
+            ID_MOT_VOLUMEN = ID_MOT_VOLUMEN,
+            ID_MOT_NIVELS = ID_MOT_NIVELS,
+            ID_MOT_AMBIENTE = ID_MOT_AMBIENTE,
+            ID_MOT_FORTALECER = ID_MOT_FORTALECER,
+            ID_MOT_MATERIAS = ID_MOT_MATERIAS,
+            ID_MOT_APOYO = ID_MOT_APOYO,
+            ID_MOT_SERVICIO = ID_MOT_SERVICIO,
+            ID_MOT_SERVICIO_DESEADO = ID_MOT_SERVICIO_DESEADO,
+            ID_MOT_CARNET = ID_MOT_CARNET,
+            ID_MOT_RECURSOS = ID_MOT_RECURSOS,
+            ID_MOT_MODALIDAD = ID_MOT_MODALIDAD,
+            ID_MOT_MODALIDAD_P = ID_MOT_MODALIDAD_P,
+            ID_MOT_MODALIDAD_T = ID_MOT_MODALIDAD_T,
+            ID_MOT_PROFUNDIZACION = ID_MOT_PROFUNDIZACION,
+            ID_MOT_INGRESAR = ID_MOT_INGRESAR,
+            ID_MOT_CONOCIMIENTOS = ID_MOT_CONOCIMIENTOS,
+            ID_MOT_CONTRIBUCION = ID_MOT_CONTRIBUCION,
+            ID_MOT_CALIDAD = ID_MOT_CALIDAD,
+            ID_MOT_FAVORECIDO = ID_MOT_FAVORECIDO,
+            ID_MOT_POST_CONT = ID_MOT_POST_CONT)
+
+        
+
+        return HttpResponse("Registrado correctamente")
+    else:
+        return HttpResponseNotAllowed(['POST'])
+
+def change_egre(request):
+
+        #informacion personal
+    if request.method == 'POST':
+        try:
+        # Obtener y analizar el cuerpo de la solicitud como JSON
+            data = json.loads(request.body.decode('utf-8'))
+        except json.JSONDecodeError:
+            return JsonResponse({'error': 'Formato JSON no válido'}, status=400)
+        
+        # Obtener los datos enviados en la solicitud POST
+        concat_info = data.get('concatInfo', {})
+        egresados_info = concat_info.get('datosEgresado', {})  
+        ID_c_DOCUMENTO = egresados_info.get('ID_DOCUMENTO')
+        ID_TIPO_DOCUMENTO = egresados_info.get('ID_TIPO_DOCUMENTO')
+        ID_NOMBRE = egresados_info.get('ID_NOMBRE')
+        ID_NUM_CONTACTO = egresados_info.get('ID_NUM_CONTACTO')
+        ID_GENERO = egresados_info.get('ID_GENERO')
+        ID_EDAD = egresados_info.get('ID_EDAD')
+        ID_ESTADO_CIVIL = egresados_info.get('ID_ESTADO_CIVIL')
+        ID_ETNIA = egresados_info.get('ID_ETNIA')
+        ID_DISCAPACIDAD = egresados_info.get('ID_DISCAPACIDAD')
+        ID_EMAIL = egresados_info.get('ID_EMAIL')
+        ID_ESTRATO = egresados_info.get('ID_ESTRATO')
+
+        #Tabla academica
+        infoaca_info = concat_info.get('infoacademica', {})
+        ID_TITULO = infoaca_info.get('ID_TITULO')
+        ID_SEMESTRE_INICIO = infoaca_info.get('ID_SEMESTRE_INICIO')
+        ID_SEMESTRES_CURSADOS = infoaca_info.get('ID_SEMESTRES_CURSADOS')
+        ID_PROMEDIO_ACUMULADO = infoaca_info.get('ID_PROMEDIO_ACUMULADO')
+        ID_SEMESTRE_FIN = infoaca_info.get('ID_SEMESTRE_FIN')
+        ID_FECHA_GRADO = infoaca_info.get('ID_FECHA_GRADO')
+        ID_SEGNDALENGUA = infoaca_info.get('ID_SEGNDALENGUA')
+        ID_NIVEL = infoaca_info.get('ID_NIVEL')
+        ID_PRACTICAS = infoaca_info.get('ID_PRACTICAS')
+        ID_POSTGRADO = infoaca_info.get('ID_POSTGRADO')
+        ID_POSTGRADO_NIVEL = infoaca_info.get('ID_POSTGRADO_NIVEL')
+        ID_POSTGRADO_LUGAR = infoaca_info.get('ID_POSTGRADO_LUGAR')
+
+        #Tabla Laboral
+        labo_info = concat_info.get('infolaboral', {})
+        ID_TRABAJA = labo_info.get('ID_TRABAJA')
+        ID_TRABAJA_NOMBRE_EMPRESA = labo_info.get('ID_TRABAJA_NOMBRE_EMPRESA')
+        ID_EXP_ACOMU = labo_info.get('ID_EXP_ACOMU')
+        ID_TRABAJA_PAIS = labo_info.get('ID_TRABAJA_PAIS')
+        ID_TRABAJA_CIUDAD = labo_info.get('ID_TRABAJA_CIUDAD')
+        ID_TRABAJA_SITUACION = labo_info.get('ID_TRABAJA_SITUACION')
+        ID_TRABAJA_PERFIL = labo_info.get('ID_TRABAJA_PERFIL')
+        ID_TRABAJA_SECTOR = labo_info.get('ID_TRABAJA_SECTOR')
+        ID_TRABAJA_TIEMPO = labo_info.get('ID_TRABAJA_TIEMPO')
+        ID_TRABAJA_NIVEL = labo_info.get('ID_TRABAJA_NIVEL')
+        ID_TRABAJA_TIEMPO_PRIMER = labo_info.get('ID_TRABAJA_TIEMPO_PRIMER')
+        ID_TRABAJA_MEDIO = labo_info.get('ID_TRABAJA_MEDIO')
+        ID_TRABAJA_SECTOR_DOS = labo_info.get('ID_TRABAJA_SECTOR_DOS')
+        ID_TRABAJA_SECTOR_TRES = labo_info.get('ID_TRABAJA_SECTOR_TRES')
+        ID_TRABAJA_REQUISITOS = labo_info.get('ID_TRABAJA_REQUISITOS')
+        ID_TRABAJA_RANGO = labo_info.get('ID_TRABAJA_RANGO')
+        ID_TRABAJA_RECONOCIMIENTO = labo_info.get('ID_TRABAJA_RECONOCIMIENTO')
+        ID_EMPRESA = labo_info.get('ID_EMPRESA')
+        ID_NOMBRE_EMPRESA = labo_info.get('ID_NOMBRE_EMPRESA')
+        ID_UBICACION_EMPRESA = labo_info.get('ID_UBICACION_EMPRESA')
+        ID_EMPRESA_ANTES = labo_info.get('ID_EMPRESA_ANTES')
+        ID_EMPRESA_SECTOR = labo_info.get('ID_EMPRESA_SECTOR')
+
+        #Tabla Motivacional
+        Mot_info = concat_info.get('infomotivacion', {})
+        ID_MOT_PREGRADO = Mot_info.get('ID_MOT_PREGRADO')
+        ID_MOT_VOLUMEN = Mot_info.get('ID_MOT_VOLUMEN')
+        ID_MOT_NIVELS = Mot_info.get('ID_MOT_NIVELS')
+        ID_MOT_AMBIENTE = Mot_info.get('ID_MOT_AMBIENTE')
+        ID_MOT_FORTALECER = Mot_info.get('ID_MOT_FORTALECER')
+        ID_MOT_MATERIAS = Mot_info.get('ID_MOT_MATERIAS')
+        ID_MOT_APOYO = Mot_info.get('ID_MOT_APOYO')
+        ID_MOT_SERVICIO = Mot_info.get('ID_MOT_SERVICIO')
+        ID_MOT_SERVICIO_DESEADO = Mot_info.get('ID_MOT_SERVICIO_DESEADO')
+        ID_MOT_CARNET = Mot_info.get('ID_MOT_CARNET')
+        ID_MOT_RECURSOS = Mot_info.get('ID_MOT_RECURSOS')
+        ID_MOT_MODALIDAD = Mot_info.get('ID_MOT_MODALIDAD')
+        ID_MOT_MODALIDAD_P = Mot_info.get('ID_MOT_MODALIDAD_P')
+        ID_MOT_MODALIDAD_T = Mot_info.get('ID_MOT_MODALIDAD_T')
+        ID_MOT_PROFUNDIZACION = Mot_info.get('ID_MOT_PROFUNDIZACION')
+        ID_MOT_INGRESAR = Mot_info.get('ID_MOT_INGRESAR')
+        ID_MOT_CONOCIMIENTOS = Mot_info.get('ID_MOT_CONOCIMIENTOS')
+        ID_MOT_CONTRIBUCION = Mot_info.get('ID_MOT_CONTRIBUCION')
+        ID_MOT_CALIDAD = Mot_info.get('ID_MOT_CALIDAD')
+        ID_MOT_FAVORECIDO = Mot_info.get('ID_MOT_FAVORECIDO')
+        ID_MOT_POST_CONT = Mot_info.get('ID_MOT_POST_CONT')
+    
+    
+        Std_S = Egresados.objects.get(ID_DOCUMENTO=ID_c_DOCUMENTO)
+        Std_S.ID_TIPO_DOCUMENTO = ID_TIPO_DOCUMENTO
+        Std_S.ID_NOMBRE = ID_NOMBRE
+        Std_S.ID_NUM_CONTACTO = ID_NUM_CONTACTO
+        Std_S.ID_GENERO = ID_GENERO
+        Std_S.ID_EDAD = ID_EDAD
+        Std_S.ID_ESTADO_CIVIL = ID_ESTADO_CIVIL
+        Std_S.ID_ETNIA = ID_ETNIA
+        Std_S.ID_DISCAPACIDAD = ID_DISCAPACIDAD
+        Std_S.ID_EMAIL = ID_EMAIL
+        Std_S.ID_ESTRATO = ID_ESTRATO 
+        Std_S.save()
+
+        aca = EgreAcademica.objects.get(ID_EGRESADO=Std_S)
+        
+        aca.ID_TITULO = ID_TITULO
+        aca.ID_SEMESTRE_INICIO = ID_SEMESTRE_INICIO
+        aca.ID_SEMESTRES_CURSADOS = ID_SEMESTRES_CURSADOS
+        aca.ID_PROMEDIO_ACUMULADO = ID_PROMEDIO_ACUMULADO
+        aca.ID_SEMESTRE_FIN = ID_SEMESTRE_FIN
+        aca.ID_FECHA_GRADO = ID_FECHA_GRADO
+        aca.ID_SEGNDALENGUA = ID_SEGNDALENGUA
+        aca.ID_NIVEL = ID_NIVEL
+        aca.ID_PRACTICAS = ID_PRACTICAS
+        aca.ID_POSTGRADO = ID_POSTGRADO
+        aca.ID_POSTGRADO_NIVEL = ID_POSTGRADO_NIVEL
+        aca.ID_POSTGRADO_LUGAR = ID_POSTGRADO_LUGAR
+        aca.save()
+        
+        lab= EgreLaboral.objects.get(ID_EGRESADO=Std_S)
+        lab.ID_TRABAJA = ID_TRABAJA
+        lab.ID_TRABAJA_NOMBRE_EMPRESA = ID_TRABAJA_NOMBRE_EMPRESA
+        lab.ID_EXP_ACOMU = ID_EXP_ACOMU
+        lab.ID_TRABAJA_PAIS = ID_TRABAJA_PAIS
+        lab.ID_TRABAJA_CIUDAD = ID_TRABAJA_CIUDAD
+        lab.ID_TRABAJA_SITUACION = ID_TRABAJA_SITUACION
+        lab.ID_TRABAJA_PERFIL = ID_TRABAJA_PERFIL
+        lab.ID_TRABAJA_SECTOR = ID_TRABAJA_SECTOR
+        lab.ID_TRABAJA_TIEMPO = ID_TRABAJA_TIEMPO
+        lab.ID_TRABAJA_NIVEL = ID_TRABAJA_NIVEL
+        lab.ID_TRABAJA_TIEMPO_PRIMER = ID_TRABAJA_TIEMPO_PRIMER
+        lab.ID_TRABAJA_MEDIO = ID_TRABAJA_MEDIO
+        lab.ID_TRABAJA_SECTOR_DOS = ID_TRABAJA_SECTOR_DOS
+        lab.ID_TRABAJA_SECTOR_TRES = ID_TRABAJA_SECTOR_TRES
+        lab.ID_TRABAJA_REQUISITOS = ID_TRABAJA_REQUISITOS
+        lab.ID_TRABAJA_RANGO = ID_TRABAJA_RANGO
+        lab.ID_TRABAJA_RECONOCIMIENTO = ID_TRABAJA_RECONOCIMIENTO
+        lab.ID_EMPRESA = ID_EMPRESA
+        lab.ID_NOMBRE_EMPRESA = ID_NOMBRE_EMPRESA
+        lab.ID_UBICACION_EMPRESA = ID_UBICACION_EMPRESA
+        lab.ID_EMPRESA_ANTES = ID_EMPRESA_ANTES
+        lab.ID_EMPRESA_SECTOR = ID_EMPRESA_SECTOR
+        lab.save()
+        
+        mot= EgreMotivacion.objects.get(ID_EGRESADO=Std_S)
+        mot.ID_MOT_PREGRADO = ID_MOT_PREGRADO
+        mot.ID_MOT_VOLUMEN = ID_MOT_VOLUMEN
+        mot.ID_MOT_NIVELS = ID_MOT_NIVELS
+        mot.ID_MOT_AMBIENTE = ID_MOT_AMBIENTE
+        mot.ID_MOT_FORTALECER = ID_MOT_FORTALECER
+        mot.ID_MOT_MATERIAS = ID_MOT_MATERIAS
+        mot.ID_MOT_APOYO = ID_MOT_APOYO
+        mot.ID_MOT_SERVICIO = ID_MOT_SERVICIO
+        mot.ID_MOT_SERVICIO_DESEADO = ID_MOT_SERVICIO_DESEADO
+        mot.ID_MOT_CARNET = ID_MOT_CARNET
+        mot.ID_MOT_RECURSOS = ID_MOT_RECURSOS
+        mot.ID_MOT_MODALIDAD = ID_MOT_MODALIDAD
+        mot.ID_MOT_MODALIDAD_P = ID_MOT_MODALIDAD_P
+        mot.ID_MOT_MODALIDAD_T = ID_MOT_MODALIDAD_T
+        mot.ID_MOT_PROFUNDIZACION = ID_MOT_PROFUNDIZACION
+        mot.ID_MOT_INGRESAR = ID_MOT_INGRESAR
+        mot.ID_MOT_CONOCIMIENTOS = ID_MOT_CONOCIMIENTOS
+        mot.ID_MOT_CONTRIBUCION = ID_MOT_CONTRIBUCION
+        mot.ID_MOT_CALIDAD = ID_MOT_CALIDAD
+        mot.ID_MOT_FAVORECIDO = ID_MOT_FAVORECIDO
+        mot.ID_MOT_POST_CONT = ID_MOT_POST_CONT
+        mot.save()
+        return HttpResponse("Registrado correctamente")
+    else:
+        return HttpResponseNotAllowed(['POST'])
+    
 def dashboard(request):
     Total=Estudiante.objects.count()
     context = {'total_estudiantes': Total}

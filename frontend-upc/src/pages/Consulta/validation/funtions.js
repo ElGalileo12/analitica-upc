@@ -46,13 +46,13 @@ function dataPersonal(dataPers) {
     3: "Fallecida",
     4: "Independiente",
     5: "Labora",
-    6: "Madre Cabeza de Hogar",
+    6: "Madre cabeza de hogar",
     7: "Pensionada",
   };
 
   const ocupPadreMapping = {
     0: "No Registra",
-    1: "Padre Cabeza de Hogar",
+    1: "Padre cabeza de hogar",
     2: "Pensionado",
     3: "Fallecido",
     4: "Independiente",
