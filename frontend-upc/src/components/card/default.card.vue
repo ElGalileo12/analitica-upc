@@ -32,16 +32,16 @@ const datasCards = {
 <template>
   <section class="grid gap-4 grid-cols-3 mt-10 px-10">
     <div
-      class="teme block max-w-sm p-6 bg-white border border-gray-200 rounded-lg shadow hover:bg-gray-100"
+      class="teme block max-w-sm p-6 bg-white border border-gray-200 rounded-lg shadow hover:bg-gray-100 text-center"
       v-for="data in datasCards"
       :key="data"
     >
       <h2
-        class="mb-2 text-2xl font-bold tracking-tight text-gray-900"
+        class="mb-2 text-2xl font-bold tracking-tight text-green-700"
       >
         {{ data.title }}
       </h2>
-      <p class="font-normal text-gray-700 dark:text-gray-400">
+      <p class="font-normal text-gray-700 dark:text-gray-950">
         {{ data.Description }}
       </p>
     </div>

@@ -141,7 +141,7 @@
 				3: "Fallecida",
 				4: "Independiente",
 				5: "Labora",
-				6: "Madre cabeza hogar",
+				6: "Madre Cabeza de Hogar",
 				7: "Pensionada",
 			},
 		},
@@ -164,7 +164,7 @@
 				0: "Ninguna",
 				1: "Actor",
 				2: "Atletismo",
-				3: "Bailarin",
+				3: "Bailarín",
 				4: "Baloncesto",
 				5: "Fútbol",
 				6: "Fútbol sala",
@@ -178,7 +178,6 @@
 		},
 		"¿Tiene EPS?": {
 			options: {
-				0: "Ninguna",
 				1: "Sí",
 				2: "No",
 			},
@@ -300,7 +299,7 @@
 								<div class="grid gap-4 mb-4 grid-cols-4">
 									<div v-for="(group, groupKey) in dataInscri" :key="groupKey">
 										<label
-											class="block mb-2 text-base font-bold text-gray-900 dark:text-white">
+											class="block mb-2 text-base font-bold text-gray-900 dark:text-dark">
 											{{ groupKey }}
 										</label>
 										<input

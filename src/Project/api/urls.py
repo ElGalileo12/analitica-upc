@@ -21,6 +21,8 @@ urlpatterns = [
     path('get_chart_3/', views.get_chart_3, name='get_chart_3'),
     path('get_chart_4/', views.get_chart_4, name='get_chart_4'),
     path('get_chart_5/', views.get_chart_5, name='get_chart_5'),
+    path('get_chart_6/', views.get_chart_6, name='get_chart_6'),
+    path('get_chart_7/', views.get_chart_7, name='get_chart_7'),
     #---------------------#
     path('grafico/', dashboard, name='fp'),
 

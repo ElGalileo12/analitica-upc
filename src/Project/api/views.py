@@ -702,7 +702,7 @@ def change_egre(request):
         return HttpResponse("Registrado correctamente")
     else:
         return HttpResponseNotAllowed(['POST'])
-    
+@api_view(['GET'])      
 def dashboard(request):
     Total=Estudiante.objects.count()
     context = {'total_estudiantes': Total}
@@ -714,10 +714,12 @@ def get_chart(_request):
         A=len(Estudiante.objects.filter(ID_GENERO=2))
         B=len(Estudiante.objects.filter(ID_GENERO=1))
         C=len(Estudiante.objects.filter(ID_GENERO=0))
+        Total=Estudiante.objects.count()
         chart = {
             'a' : A,
             'b' : B,
-            'c' : C
+            'c' : C,
+            't' : Total,
         }
         return Response(chart)
     
@@ -804,3 +806,39 @@ def get_chart_5(_request):
             'd2' : len(D2)
         }
     return Response(chart_5)
+
+@api_view(['GET'])
+def get_chart_6(_request): 
+    YF =  Estudiante.objects.filter(ID_VIC_CONFLICTO=1,ID_GENERO=2) 
+    NF =  Estudiante.objects.filter(ID_VIC_CONFLICTO=2,ID_GENERO=2)
+    YM =  Estudiante.objects.filter(ID_VIC_CONFLICTO=1,ID_GENERO=1) 
+    NM =  Estudiante.objects.filter(ID_VIC_CONFLICTO=2,ID_GENERO=1) 
+    YO =  Estudiante.objects.filter(ID_VIC_CONFLICTO=1,ID_GENERO=0)
+    NO =  Estudiante.objects.filter(ID_VIC_CONFLICTO=2,ID_GENERO=0)
+    chart_6 = {
+            'yf' : len(YF),
+            'nf' : len(NF),
+            'ym' : len(YM),
+            'nm' : len(NM),
+            'yo' : len(YO),
+            'no' : len(NO),
+        }
+    return Response(chart_6)
+
+@api_view(['GET'])
+def get_chart_7(_request): 
+    YF =  Estudiante.objects.filter(ID_MAD_CAB_HOGAR=1,ID_GENERO=2) 
+    NF =  Estudiante.objects.filter(ID_MAD_CAB_HOGAR=2,ID_GENERO=2)
+    YM =  Estudiante.objects.filter(ID_MAD_CAB_HOGAR=1,ID_GENERO=1) 
+    NM =  Estudiante.objects.filter(ID_MAD_CAB_HOGAR=2,ID_GENERO=1) 
+    YO =  Estudiante.objects.filter(ID_MAD_CAB_HOGAR=1,ID_GENERO=0)
+    NO =  Estudiante.objects.filter(ID_MAD_CAB_HOGAR=2,ID_GENERO=0)
+    chart_7 = {
+            'yf' : len(YF),
+            'nf' : len(NF),
+            'ym' : len(YM),
+            'nm' : len(NM),
+            'yo' : len(YO),
+            'no' : len(NO),
+        }
+    return Response(chart_7)

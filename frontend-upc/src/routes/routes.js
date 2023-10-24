@@ -55,6 +55,7 @@ const routes = [
     path: "/:catchAll(.*)*",
     component: () => import("../pages/ErrorView.vue"),
   },
+
 ];
 
 export default routes;

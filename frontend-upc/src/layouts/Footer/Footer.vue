@@ -18,48 +18,59 @@
       <p class="text-center text-body-secondary border-top pt-3 my-3">© 2023 Company, Inc</p>
     </div> -->
 
-  <footer class="bg-gray-800">
+  <footer class="bg-green-700">
     <div class="mx-auto w-full max-w-screen-xl p-4 py-6 lg:py-8">
       <div class="md:flex md:justify-between">
         <div class="flex flex-shrink-0 items-center">
-          <img src="@/assets/logo.png" width="130" height="130" class="px-4" />
-          <router-link to="/" class="text-2xl text-white"
-            >Proyecto institucional
-          </router-link>
+          <img src="@/assets/logocarre.png" width="250" height="250" class="px-4" />
+          <img src="@/assets/logoacre.png" width="150" height="150" class="px-4" />
         </div>
-        <div class="grid grid-cols-2 gap-8 sm:gap-32 sm:grid-cols-2">
+        <div class="grid grid-cols-2 gap-8 sm:gap-16 sm:grid-cols-2">
           <div>
             <h2 class="teme mb-3 text-base font-semibold text-white uppercase">
               Contactenos
             </h2>
-            <ul class="text-gray-400 font-medium temeTwo">
-              <li class="mb-4">
-                <h2 class="hover:underline hover:text-white">Andres Camilo Reyes Galindo</h2>
+            <ul class="text-white-400 font-medium temeTwo">
+              <li class="icon mb-2">
+                <i class="fa-solid fa-users mr-2" style="color: #ffffff;"></i>
+                <h2> Semillero TRIAC</h2>
               </li>
-              <li class="mb-4">
-                <h2 class="hover:underline hover:text-white">acamiloreyes@unicesar.edu.co</h2>
+              <li class="icon mb-2">
+                <i class="fa-solid fa-envelope mr-3" style="color: #ffffff;"></i>
+                <h2>   acamiloreyes@unicesar.edu.co</h2>
+              </li>
+              <li class="icon mb-2">
+                <i class="fa-solid fa-bolt mr-3" style="color: #ffffff;"></i>
+                <h2> Ing. Electronica - Acreditada por alta calidad</h2>
+              </li>
+              <li class="icon mb-2">
+                <i class="fa-solid fa-city mr-2" style="color: #ffffff;"></i>
+                <h2>Valledupar - Cesar</h2>
               </li>
               <li>
+                <i class="fa-solid fa-envelope mr-2" style="color: #ffffff;"></i>
                 <router-link
                   to="https://www.unicesar.edu.co"
                   class="hover:underline hover:text-white"
                 >
-                  Universidad popular del cesar
+                   Universidad popular del cesar
                 </router-link>
               </li>
             </ul>
           </div>
-          <div>
+          <div class="ml-20">
             <h2 class="teme mb-3 text-base font-semibold text-white uppercase">
               Recursos
             </h2>
-            <ul class="text-gray-400 font-medium temeTwo">
+            <ul class="text-gray-950 font-medium temeTwo">
               <li class="mb-4">
+                <i class="fa-solid fa-pen mr-2" style="color: #ffffff;"></i>
                 <router-link to="/inscripcion" class="hover:underline hover:text-white"
                   >Inscripción</router-link
                 >
               </li>
               <li class="mb-4">
+                <i class="fa-solid fa-magnifying-glass mr-2" style="color: #ffffff;"></i>
                 <router-link to="/Consulta" class="hover:underline hover:text-white"
                   >Consulta</router-link
                 >
@@ -69,10 +80,10 @@
         </div>
       </div>
       <hr
-        class="my-6 border-gray-200 sm:mx-auto dark:border-gray-700 lg:my-8"
+        class="my-6 border-gray-950 sm:mx-auto dark:border-gray-950 lg:my-8"
       />
       <div class="sm:flex sm:items-center sm:justify-center">
-        <span class="text-sm text-gray-400 sm:text-center"
+        <span class="text-sm text-gray-950 sm:text-center"
           >© 2023 <a href="#" class="hover:underline"> Copyright 2023</a> -
           Reservados todos los derechos.
         </span>
@@ -90,6 +101,13 @@
 }
 .temeTwo {
   font-family: "Roboto", sans-serif;
-  font-weight: 400;
+  font-weight: 300;
 }
+
+.icon.mb-2 {
+  display: flex;
+  align-items: center;
+  margin-bottom: 2px; /* Ajusta el valor según tus necesidades */
+}
+
 </style>

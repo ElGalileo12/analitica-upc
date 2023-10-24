@@ -17,7 +17,7 @@ export const config_2 = ref({
      },
     tooltip: {
         trigger: 'item',
-        formatter: '{b}: {c}'
+        formatter: '{b}: {c} '
     },
    xAxis: {
         type: 'category',

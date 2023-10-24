@@ -144,14 +144,14 @@ async function mostrarAlerta(id){
           <button
             @click.prevent="searchConsult(identifications)"
             type="submit"
-            class="w-28 text-gray-200 bg-gray-900 hover:bg-gray-700 focus:ring-4 focus:ring-blue-900 font-bold rounded-lg text-lg py-1.5"
+            class="w-28 text-white bg-green-700 hover:bg-green-800 focus:ring-4 focus:ring-blue-900 font-bold rounded-lg text-lg py-1.5"
           >
             Buscar
           </button>
           <button
             @click.prevent="mostrarAlerta(identifications)"
             type="submit"
-            class="w-28 text-gray-200 bg-gray-900 hover:bg-gray-700 focus:ring-4 focus:ring-blue-900 rounded-lg text-lg font-medium py-1.5 text-center"
+            class="w-28 text-white bg-green-700 hover:bg-green-800 focus:ring-4 focus:ring-blue-900 rounded-lg text-lg font-medium py-1.5 text-center"
             
             >
             Editar
@@ -159,7 +159,7 @@ async function mostrarAlerta(id){
           <button
             @click.prevent="confirmacion(identifications)"
             type="submit"
-            class="w-28 text-gray-200 bg-gray-900 hover:bg-gray-700 focus:ring-4 focus:ring-blue-900 rounded-lg text-lg font-medium py-1.5 text-center"
+            class="w-28 text-white bg-green-700 hover:bg-green-800 focus:ring-4 focus:ring-blue-900 rounded-lg text-lg font-medium py-1.5 text-center"
           >
             Eliminar
           </button>
@@ -172,33 +172,33 @@ async function mostrarAlerta(id){
         <button
           @click="activateButton('datasPerson')"
           :class="{
-            'bg-gray-900 hover:bg-gray-900 font-bold text-white':
+            'bg-green-700 hover:bg-green-800 font-bold text-white':
               activeButton === 'datasPerson',
           }"
           type="button"
-          class="text-white w-1/3 bg-gray-600 hover:bg-gray-900 focus:outline-none rounded-tl-lg text-base px-5 py-2.5"
+          class="text-white w-1/3 bg-green-700 hover:bg-green-800 focus:outline-none rounded-tl-lg text-base px-5 py-2.5"
         >
           Datos personales
         </button>
         <button
           @click="activateButton('datasSoci')"
           :class="{
-            'bg-gray-900 hover:bg-gray-900 font-bold text-white':
+            'bg-green-700 hover:bg-green-800 font-bold text-white':
               activeButton === 'datasSoci',
           }"
           type="button"
-          class="text-white w-2/5 bg-gray-600 hover:bg-gray-900 focus:outline-none text-base px-5 py-2.5"
+          class="text-white w-2/5 bg-green-700 hover:bg-green-800 focus:outline-none text-base px-5 py-2.5"
         >
           Datos socioeconomicos
         </button>
         <button
           @click="activateButton('datasAcad')"
           :class="{
-            'bg-gray-900 hover:bg-gray-900 font-bold text-white':
+            'bg-green-700 hover:bg-green-800 font-bold text-white':
               activeButton === 'datasAcad',
           }"
           type="button"
-          class="text-white w-1/3 bg-gray-600 hover:bg-gray-900 focus:outline-none rounded-tr-lg text-base px-5 py-2.5"
+          class="text-white w-1/3 bg-green-700 hover:bg-green-800 focus:outline-none rounded-tr-lg text-base px-5 py-2.5"
         >
           Datos académicos
         </button>
@@ -216,7 +216,7 @@ async function mostrarAlerta(id){
             <div>
               <label
                 :for="innerKey"
-                class="block mb-2 text-base font-bold text-gray-900 dark:text-white"
+                class="block mb-2 text-base font-bold text-gray-900 dark:text-dark"
               >
                 {{ innerKey }}</label
               >
@@ -243,7 +243,7 @@ async function mostrarAlerta(id){
             <div>
               <label
                 :for="innerKey"
-                class="block mb-2 text-base font-bold text-gray-900 dark:text-white"
+                class="block mb-2 text-base font-bold text-gray-900 dark:text-dark"
               >
                 {{ innerKey }}</label
               >
@@ -270,7 +270,7 @@ async function mostrarAlerta(id){
             <div>
               <label
                 :for="innerKey"
-                class="block mb-2 text-base font-bold text-gray-900 dark:text-white"
+                class="block mb-2 text-base font-bold text-gray-900 dark:text-dark"
               >
                 {{ innerKey }}</label
               >
