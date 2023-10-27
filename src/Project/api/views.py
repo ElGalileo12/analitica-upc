@@ -741,9 +741,11 @@ def get_chart_2(_request):
 def get_chart_3(_request): 
     sixy = Estudiante.objects.filter(ID_GENERO=2,ID_CANT_HIJOS__gt=0)  
     sixy_m = Estudiante.objects.filter(ID_GENERO=1,ID_CANT_HIJOS__gt=0)
+    Total=Estudiante.objects.count()
     chart_3 = {
             'a' : len(sixy),
             'b' : len(sixy_m ),
+            't' : Total,
         }
     return Response(chart_3)
 @api_view(['GET'])
@@ -842,3 +844,84 @@ def get_chart_7(_request):
             'no' : len(NO),
         }
     return Response(chart_7)
+#socio economico
+@api_view(['GET'])
+def get_chart_2_1(_request): 
+    A =  SocioEconomica.objects.filter(ID_ESTRATO=1) 
+    B =  SocioEconomica.objects.filter(ID_ESTRATO=2) 
+    C =  SocioEconomica.objects.filter(ID_ESTRATO=3)  
+    D =  SocioEconomica.objects.filter(ID_ESTRATO=4)
+    E =  SocioEconomica.objects.filter(ID_ESTRATO=5) 
+    chart_2_1 = {
+            'a' : len(A),
+            'b' : len(B),
+            'c' : len(C),
+            'd' : len(D),
+            'e' : len(E),
+        }
+    return Response(chart_2_1)
+
+@api_view(['GET'])
+def get_chart_2_2(_request): 
+    A =  SocioEconomica.objects.filter(ID_INGRESO_FAMILIAR__lte = 1300000) 
+    B =  SocioEconomica.objects.filter(ID_INGRESO_FAMILIAR__gt = 1300000, ID_INGRESO_FAMILIAR__lte=2500000) 
+    C =  SocioEconomica.objects.filter(ID_INGRESO_FAMILIAR__gt = 2500000, ID_INGRESO_FAMILIAR__lte=4000000)  
+    D =  SocioEconomica.objects.filter(ID_INGRESO_FAMILIAR__gt = 4000000)
+    chart_2_2 = {
+            'a' : len(A),
+            'b' : len(B),
+            'c' : len(C),
+            'd' : len(D),
+        }
+    return Response(chart_2_2)
+
+@api_view(['GET'])
+def get_chart_2_3(_request): 
+    A =  SocioEconomica.objects.filter(ID_OCUPACION = 1) 
+    B =  SocioEconomica.objects.filter(ID_OCUPACION = 2) 
+    C =  SocioEconomica.objects.filter(ID_OCUPACION = 3)  
+    D =  SocioEconomica.objects.filter(ID_OCUPACION = 4)
+    E =  SocioEconomica.objects.filter(ID_OCUPACION = 5)
+    chart_2_3 = {
+            'a' : len(A),
+            'b' : len(B) + len(D) + len(E),
+            'c' : len(C),
+        }
+    return Response(chart_2_3)
+
+@api_view(['GET'])
+def get_chart_2_4(_request): 
+    A =  SocioEconomica.objects.filter(ID_TIPO_VIVIENDA = 1) 
+    B =  SocioEconomica.objects.filter(ID_TIPO_VIVIENDA = 2) 
+    C =  SocioEconomica.objects.filter(ID_TIPO_VIVIENDA = 3)  
+    D =  SocioEconomica.objects.filter(ID_TIPO_VIVIENDA = 4)
+    chart_2_4 = {
+            'a' : len(A),
+            'b' : len(B),
+            'c' : len(C),
+            'd' : len(D),
+        }
+    return Response(chart_2_4)
+
+@api_view(['GET'])
+def get_chart_2_5(_request): 
+    YP =  SocioEconomica.objects.filter(ID_TIENE_PC=1) 
+    NP =  SocioEconomica.objects.filter(ID_TIENE_PC=2)
+    YI =  SocioEconomica.objects.filter(ID_TIENE_INTERNET=1) 
+    NI =  SocioEconomica.objects.filter(ID_TIENE_INTERNET=2) 
+    YC =  SocioEconomica.objects.filter(ID_CEL_SMART=1)
+    NC =  SocioEconomica.objects.filter(ID_CEL_SMART=2)
+    YPD =  SocioEconomica.objects.filter(ID_PLAN_DATOS=1)
+    NPD =  SocioEconomica.objects.filter(ID_PLAN_DATOS=2)
+    chart_2_5 = {
+            'yp' : len(YP),
+            'np' : len(NP),
+            'yi' : len(YI),
+            'ni' : len(NI),
+            'yc' : len(YC),
+            'nc' : len(NC),
+            'ypd' : len(YPD),
+            'npd' : len(NPD),
+        }
+        
+    return Response(chart_2_5)

@@ -15,7 +15,7 @@ urlpatterns = [
     path('inscripcion_egresados/', views.registrar_Egresados, name='crear_registro_e'),
     path('change/', views.change_std, name='edita_registro'),
     path('change_egresados/', views.change_egre, name='edita_registro_e'),
-    #rutas de graficas
+    #rutas de graficas estudiantes
     path('get_chart/', views.get_chart, name='get_chart'),
     path('get_chart_2/', views.get_chart_2, name='get_chart_2'),
     path('get_chart_3/', views.get_chart_3, name='get_chart_3'),
@@ -24,6 +24,12 @@ urlpatterns = [
     path('get_chart_6/', views.get_chart_6, name='get_chart_6'),
     path('get_chart_7/', views.get_chart_7, name='get_chart_7'),
     #---------------------#
+     #rutas de graficas 2 estudiantes
+    path('get_chart_2_1/', views.get_chart_2_1, name='get_chart_2_1'),
+    path('get_chart_2_2/', views.get_chart_2_2, name='get_chart_2_2'),
+    path('get_chart_2_3/', views.get_chart_2_3, name='get_chart_2_3'),
+    path('get_chart_2_4/', views.get_chart_2_4, name='get_chart_2_4'),
+    path('get_chart_2_5/', views.get_chart_2_5, name='get_chart_2_5'),
     path('grafico/', dashboard, name='fp'),
 
 ]

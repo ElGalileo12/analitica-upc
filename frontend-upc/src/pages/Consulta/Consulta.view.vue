@@ -172,7 +172,7 @@ async function mostrarAlerta(id){
         <button
           @click="activateButton('datasPerson')"
           :class="{
-            'bg-green-700 hover:bg-green-800 font-bold text-white':
+            'bg-green-800 hover:bg-green-800 font-bold text-white':
               activeButton === 'datasPerson',
           }"
           type="button"
@@ -183,7 +183,7 @@ async function mostrarAlerta(id){
         <button
           @click="activateButton('datasSoci')"
           :class="{
-            'bg-green-700 hover:bg-green-800 font-bold text-white':
+            'bg-green-800 hover:bg-green-800 font-bold text-white':
               activeButton === 'datasSoci',
           }"
           type="button"
@@ -194,7 +194,7 @@ async function mostrarAlerta(id){
         <button
           @click="activateButton('datasAcad')"
           :class="{
-            'bg-green-700 hover:bg-green-800 font-bold text-white':
+            'bg-green-800 hover:bg-green-800 font-bold text-white':
               activeButton === 'datasAcad',
           }"
           type="button"
