@@ -22,11 +22,11 @@
           </div>
           <div class="lg:order-first lg:row-span-2">
             <h1
-              class="teme text-4xl font-bold tracking-tight text-zinc-800 sm:text-5xl mt-10 text-center"
+              class="teme text-4xl font-bold tracking-tight text-green-700 sm:text-5xl mt-10 text-center"
             >
               ¿Quiénes Somos?
             </h1>
-            <div class="mt-6 space-y-7 text-base text-zinc-600 temeTwo">
+            <div class="mt-6 space-y-7 text-base text-zinc-600 temeTwo text-justify">
               <p>
                 Somos un grupo de estudiantes apasionados de Ingeniería
                 Electrónica de la Universidad Popular del César, unidos por un

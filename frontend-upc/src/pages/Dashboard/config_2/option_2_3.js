@@ -1,30 +1,26 @@
 import { ref} from 'vue';
 import { axiosApi } from "@/plugins/axios";
-export const getOptionChart_3 = async () => {
+export const getOptionChart_2_3 = async () => {
     try {
-      let { data } = await axiosApi.get(`/api/get_chart_3/`);
+      let { data } = await axiosApi.get(`/api/get_chart_2_3/`);
       return data;
     } catch (ex) {
       console.error(ex);
     }
   };
-export const config_3 = ref({
+export const config_2_3 = ref({
+    color: ["#16a34a","#facc15","#9333ea"],
     title: {
-        text: 'Estudiantes con hijos',
+        text: 'Situacion laboral',
         left: 'center',
-        top: '0%'
+        top: '5%'
     },
     tooltip: {
         trigger: 'item',
-        formatter: function percent(datos) {
-            let percentage = null
-            console.log(datos);
-            percentage = ((datos.data.value / 267) * 100).toFixed(2) + "%" 
-            // Devolver el contenido personalizado para el tooltip
-            return datos.name + ': ' + datos.value + ' (' + percentage + ')'}
+        formatter: '{b}: {c} ({d}%)'
     },
     legend: {
-        right: '0%',
+        right: '-1%',
         top: '30%',
         orient: 'vertical'
     },
@@ -33,10 +29,16 @@ export const config_3 = ref({
             type: 'pie',
             radius: ['40%', '70%'],
             avoidLabelOverlap: 'false',
-            left: '-30%',
+            left: '-14%',
             top: '25',
+            itemStyle: {
+                borderRadius: 5,
+                borderColor: '#fff',
+                borderWidth: 2
+              },
             label: {
                 show: 'false',
+                formatter: '({d}%)',
             },
             emphasis: {
                 label: {
@@ -49,8 +51,9 @@ export const config_3 = ref({
                 show: 'false'
             },
             data: [
-                { itemStyle: { color: "rgb(101, 197, 189)" }, value: 1, name: 'Mujeres' },
-                { itemStyle: { color: "rgb(147,112,219)" }, value: 1, name: 'Hombres' },
+                {  value: 1, name: 'Estudiante' },
+                {  value: 1, name: 'Empleado' },
+                {  value: 1, name: 'Independiente' },
             ]
         }
     ]

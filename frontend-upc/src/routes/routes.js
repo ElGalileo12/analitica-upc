@@ -46,7 +46,7 @@ const routes = [
       {
         path: "/dashGra",
         name: "dashboardGra",
-        component: () => import("../pages/Dashboard/DashEgre.view.vue"),
+        component: () => import("../pages/Dashboard/dash_2.vue"),
       },
     ],
   },
@@ -55,6 +55,7 @@ const routes = [
     path: "/:catchAll(.*)*",
     component: () => import("../pages/ErrorView.vue"),
   },
+
 ];
 
 export default routes;

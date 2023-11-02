@@ -297,7 +297,7 @@ onMounted(() => {
                   <div v-for="(group, groupKey) in dataInscri" :key="groupKey">
                     <label
                       for="Nombres"
-                      class="block mb-2 text-base font-bold text-gray-900 dark:text-white"
+                      class="block mb-2 text-base font-bold text-gray-900 dark:text-dark"
                     >
                       {{ groupKey }}
                     </label>
@@ -343,7 +343,7 @@ onMounted(() => {
                         class="z-10 bg-white divide-y divide-gray-100 rounded-lg shadow w-52 absolute mt-11"
                       >
                         <ul
-                          class="py-2 text-sm text-gray-700 dark:text-gray-200"
+                          class="py-2 text-sm text-gray-700 dark:text-dark-200"
                           aria-labelledby="dropdownDefaultButton"
                         >
                           <li v-for="(data, id) in group.options" :key="id">

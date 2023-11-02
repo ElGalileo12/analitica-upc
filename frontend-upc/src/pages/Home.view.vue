@@ -16,7 +16,8 @@ import otherInfo from "../components/other/info.other.vue";
 .container-fluid,
 .sectiontwo,
 .sectionthree {
-  background: url(../assets/cool-background.jpg) center no-repeat;
+  background-color: rgb(231, 231, 231);
+  /*background: url(../assets/cool-background-g.svg) center no-repeat;*/
   background-attachment: fixed;
   background-size: cover;
 }

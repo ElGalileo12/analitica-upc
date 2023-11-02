@@ -206,7 +206,7 @@
 									<div v-for="(group, groupKey) in dataInscri" :key="groupKey">
 										<label
 											for="Nombres"
-											class="block mb-2 text-base font-bold text-gray-900 dark:text-white px-2">
+											class="block mb-2 text-base font-bold text-gray-900 dark:text-dark px-2">
 											{{ groupKey }}
 										</label>
 										<input
