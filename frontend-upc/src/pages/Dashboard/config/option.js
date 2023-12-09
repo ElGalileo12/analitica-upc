@@ -32,6 +32,11 @@ export const config = ref({
         avoidLabelOverlap: false,
         left: '-30%',
         top: '40',
+        itemStyle: {
+            borderRadius: 5,
+            borderColor: '#fff',
+            borderWidth: 2
+          },
         label: {
             show: 'false',
             formatter: '({d}%)'

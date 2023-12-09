@@ -11,7 +11,7 @@ export const getOptionChart_6 = async () => {
 
 export const config_6 = ref({
     
-    color: ["rgb(147,112,219)", "rgb(101, 197, 189)", "rgb(255, 251, 13, 1)"],
+    color: ["#16a34a","#facc15","#9333ea","#0284c7"],
     title: {
         text: 'Victimas del conflicto segun su genero',
         right: '13%',
