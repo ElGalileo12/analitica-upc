@@ -48,6 +48,11 @@ const routes = [
         name: "dashboardGra",
         component: () => import("../pages/Dashboard/dash_2.vue"),
       },
+      {
+        path: "/dashPre",
+        name: "dashboardPre",
+        component: () => import("../pages/Dashboard/dash_3.vue"),
+      },
     ],
   },
 

@@ -11,7 +11,7 @@ export const getOptionChart_7 = async () => {
 
 export const config_7 = ref({
     
-    color: ["rgb(147,112,219)", "rgb(101, 197, 189)", "rgb(255, 251, 13, 1)"],
+    color: ["#16a34a","#facc15","#9333ea","#0284c7"],
     title: {
         text: 'Estudiantes cabeza de hogar segun su genero',
         right: '7%',

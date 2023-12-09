@@ -16,7 +16,11 @@ export const config_4 = ref({
     },
     tooltip: {
         trigger: 'item',
-        formatter: '{b}: {c} ({d}%)'
+        formatter: function percent(datos) {
+            let percentage = null
+            percentage = ((datos.data.value / 267) * 100).toFixed(2) + "%" 
+            // Devolver el contenido personalizado para el tooltip
+            return datos.name + ': ' + datos.value + ' (' + percentage + ')'}
     },
     legend: {
         right: '0%',
@@ -30,10 +34,11 @@ export const config_4 = ref({
             avoidLabelOverlap: 'false',  // 'false' como string
             left: '-30%',
             top: '25',
-            label: {
-                show: 'false',  // 'false' como string
-                formatter: '({d}%)'
-            },
+            itemStyle: {
+                borderRadius: 5,
+                borderColor: '#fff',
+                borderWidth: 2
+              },
             emphasis: {
                 label: {
                     show: 'false',  // 'false' como string

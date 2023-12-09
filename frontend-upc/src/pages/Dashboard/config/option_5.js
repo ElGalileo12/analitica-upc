@@ -9,7 +9,7 @@ export const getOptionChart_5 = async () => {
     }
   };
 export const config_5 = ref({
-    color: ["rgb(147,112,219)", "rgb(101, 197, 189)", "rgb(255, 251, 13, 1)"],
+    color: ["#16a34a","#facc15","#9333ea","#0284c7"],
     title: {
         text: 'Grado de motivaciion de los estudiantes',
         right: '10%',

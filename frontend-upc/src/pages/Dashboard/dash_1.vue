@@ -43,17 +43,17 @@ getOptionChart().then((data) => {
   // Actualizar los valores en la opción del gráfico
   option.value.series[0].data = [
     {
-      itemStyle: { color: "rgb(101, 197, 189)" },
+      itemStyle: { color: "#facc15" },
       value: chartData.a,
       name: "Mujeres",
     },
     {
-      itemStyle: { color: "rgb(147,112,219)" },
+      itemStyle: { color: "#16a34a" },
       value: chartData.b,
       name: "Hombres",
     },
     {
-      itemStyle: { color: "rgba(255, 251, 13, 1)" },
+      itemStyle: { color: "#9333ea" },
       value: chartData.c,
       name: "Otro Genero",
     },
@@ -66,8 +66,8 @@ getOptionChart_2().then((data) => {
   chartData_2 = data;
   // Actualizar los valores en la opción del gráfico
   option_2.value.series[0].data = [
-    { itemStyle: { color: "rgb(101, 197, 189)" }, value: chartData_2.a },
-    { itemStyle: { color: "rgb(147,112,219)" }, value: chartData_2.b },
+    { itemStyle: { color: "#facc15" }, value: chartData_2.a },
+    { itemStyle: { color: "#16a34a" }, value: chartData_2.b },
   ];
 });
 // Obtener los datos de getOptionChart_3
@@ -77,12 +77,12 @@ getOptionChart_3().then((data) => {
   // Actualizar los valores en la opción del gráfico
   option_3.value.series[0].data = [
     {
-      itemStyle: { color: "rgb(101, 197, 189)" },
+      itemStyle: { color: "#facc15" },
       value: chartData_3.a,
       name: "Mujeres",
     },
     {
-      itemStyle: { color: "rgb(147,112,219)" },
+      itemStyle: { color: "#16a34a" },
       value: chartData_3.b,
       name: "Hombres",
     },
@@ -95,17 +95,17 @@ getOptionChart_4().then((data) => {
   // Actualizar los valores en la opción del gráfico
   option_4.value.series[0].data = [
     {
-      itemStyle: { color: "rgb(101, 197, 189)" },
+      itemStyle: { color: "#facc15" },
       value: chartData_4.a,
       name: "Mujeres",
     },
     {
-      itemStyle: { color: "rgb(147,112,219)" },
+      itemStyle: { color: "#16a34a" },
       value: chartData_4.b,
       name: "Hombres",
     },
     {
-      itemStyle: { color: "rgb(255, 251, 13, 1)" },
+      itemStyle: { color: "#9333ea" },
       value: chartData_4.c,
       name: "Otros",
     },
@@ -193,7 +193,7 @@ const option_7 = config_7;
           <p class="text-center text-xl font-bold text-black mt-10">
             Estudiantes encuestados
           </p>
-          <p class="text-7xl text-purple-700 text-center mt-8">{{total}}</p>
+          <p class="text-7xl text-green-700 text-center mt-8">{{total}}</p>
         </div>
         <div class="square2">
           <v-chart class="chart_2" :option="option_7" />

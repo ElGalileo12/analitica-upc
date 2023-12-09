@@ -30,8 +30,9 @@ const navigation = [
     name: "Dashboard",
     current: true,
     menu: {
-      1: { link: "/dashStu", name: "Estudiantes" },
-      2: { link: "/dashGra", name: "Egresados" },
+      1: { link: "/dashStu", name: "Dashboard #1" },
+      2: { link: "/dashGra", name: "Dashboard #2" },
+      3: { link: "/dashPre", name: "Dashboard #3" },
     },
   },
 ];
